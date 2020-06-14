@@ -2,7 +2,7 @@ package com.mrh0.buildersaddition;
 
 import com.mrh0.buildersaddition.blocks.base.BasePillar;
 import com.mrh0.buildersaddition.blocks.base.BaseVerticalSlab;
-
+import com.mrh0.buildersaddition.blocks.base.IConnects;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 
@@ -50,16 +50,51 @@ public class Index {
 	public static Block POLISHED_ANDESITE_VERTICAL_SLAB = new BaseVerticalSlab("polished_andesite", Blocks.POLISHED_ANDESITE);
 	public static Block DIORITE_VERTICAL_SLAB = new BaseVerticalSlab("diorite", Blocks.DIORITE);
 	
-	public static Block CUT_STONE_PILLAR = new BasePillar("stone", Blocks.STONE);
-	public static Block CUT_SANDSTONE_PILLAR = new BasePillar("sandstone", Blocks.SANDSTONE);
-	public static Block CUT_COBBLESTONE_PILLAR = new BasePillar("cobblestone", Blocks.COBBLESTONE);
-	public static Block CUT_BRICKS_PILLAR = new BasePillar("bricks", Blocks.BRICKS);
-	public static Block CUT_STONE_BRICKS_PILLAR = new BasePillar("stone_bricks", Blocks.STONE_BRICKS);
-	public static Block CUT_QUARTZ_PILLAR = new BasePillar("quartz", Blocks.QUARTZ_BLOCK);
-	public static Block CUT_RED_SANDSTONE_PILLAR = new BasePillar("red_sandstone", Blocks.RED_SANDSTONE);
-	public static Block CUT_PURPUR_PILLAR = new BasePillar("purpur", Blocks.PURPUR_PILLAR);
-	public static Block CUT_PRISMARINE_PILLAR = new BasePillar("prismarine", Blocks.PRISMARINE, 15);
-	public static Block CUT_MOSSY_STONE_BRICKS_PILLAR = new BasePillar("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS);
-	public static Block CUT_MOSSY_COBBLESTONE_PILLAR = new BasePillar("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
-	public static Block CUT_END_STONE_BRICKS_PILLAR = new BasePillar("end_stone_bricks", Blocks.END_STONE_BRICKS);
+	
+	
+	public static Block CUT_STONE_PILLAR;
+	public static Block CUT_SMOOTH_STONE_PILLAR;
+	public static Block CUT_SANDSTONE_PILLAR;
+	public static Block CUT_COBBLESTONE_PILLAR;
+	public static Block CUT_BRICKS_PILLAR;
+	public static Block CUT_STONE_BRICKS_PILLAR;
+	public static Block CUT_QUARTZ_PILLAR;
+	public static Block CUT_RED_SANDSTONE_PILLAR;
+	public static Block CUT_PURPUR_PILLAR;
+	public static Block CUT_PRISMARINE_PILLAR;
+	public static Block CUT_SMOOTH_RED_SANDSTONE_PILLAR;
+	public static Block CUT_SMOOTH_SANDSTONE_PILLAR;
+	public static Block CUT_MOSSY_STONE_BRICKS_PILLAR;
+	public static Block CUT_MOSSY_COBBLESTONE_PILLAR;
+	public static Block CUT_END_STONE_BRICKS_PILLAR;
+	
+	
+		
+	static {
+		
+		final IConnects cobbleConnector = (state, source) -> { 
+			return state.getBlock() == CUT_MOSSY_COBBLESTONE_PILLAR || state.getBlock() == CUT_COBBLESTONE_PILLAR; };
+			
+		final IConnects sandstoneConnector = (state, source) -> { 
+			return state.getBlock() == CUT_SMOOTH_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SMOOTH_SANDSTONE_PILLAR || state.getBlock() == CUT_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SANDSTONE_PILLAR; };
+		
+		final IConnects stoneBricksConnector = (state, source) -> { 
+			return state.getBlock() == CUT_STONE_BRICKS_PILLAR || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR; };
+		
+		CUT_STONE_PILLAR = new BasePillar("stone", Blocks.STONE);
+		CUT_SMOOTH_STONE_PILLAR = new BasePillar("smooth_stone", Blocks.SMOOTH_STONE);
+		CUT_SANDSTONE_PILLAR = new BasePillar("sandstone", Blocks.SANDSTONE, sandstoneConnector);
+		CUT_COBBLESTONE_PILLAR = new BasePillar("cobblestone", Blocks.COBBLESTONE, cobbleConnector);
+		CUT_BRICKS_PILLAR = new BasePillar("bricks", Blocks.BRICKS);
+		CUT_STONE_BRICKS_PILLAR = new BasePillar("stone_bricks", Blocks.STONE_BRICKS, stoneBricksConnector);
+		CUT_QUARTZ_PILLAR = new BasePillar("quartz", Blocks.QUARTZ_BLOCK);
+		CUT_RED_SANDSTONE_PILLAR = new BasePillar("red_sandstone", Blocks.RED_SANDSTONE, sandstoneConnector);
+		CUT_PURPUR_PILLAR = new BasePillar("purpur", Blocks.PURPUR_PILLAR);
+		CUT_PRISMARINE_PILLAR = new BasePillar("prismarine", Blocks.PRISMARINE, 15);
+		CUT_SMOOTH_RED_SANDSTONE_PILLAR = new BasePillar("smooth_red_sandstone", Blocks.SMOOTH_RED_SANDSTONE, sandstoneConnector);
+		CUT_SMOOTH_SANDSTONE_PILLAR = new BasePillar("smooth_sandstone", Blocks.SMOOTH_SANDSTONE, sandstoneConnector);
+		CUT_MOSSY_STONE_BRICKS_PILLAR = new BasePillar("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS, stoneBricksConnector);
+		CUT_MOSSY_COBBLESTONE_PILLAR = new BasePillar("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE, cobbleConnector);
+		CUT_END_STONE_BRICKS_PILLAR = new BasePillar("end_stone_bricks", Blocks.END_STONE_BRICKS);
+	}
 }

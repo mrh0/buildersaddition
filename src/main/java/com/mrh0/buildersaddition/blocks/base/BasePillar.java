@@ -43,13 +43,23 @@ public class BasePillar extends BaseBlock implements IWaterLoggable {
 	
 	private final Block source;
 	private final int light;
+	private final IConnects iconnect;
 
-	public BasePillar(String name, Block source, int light) {
+	public BasePillar(String name, Block source, int light, IConnects connects) {
 		super("cut_" + name + "_pillar", Properties.create(Material.ROCK));
 		this.source = source;
 		this.light = light;
 		this.setDefaultState(
 				this.getDefaultState().with(STATE, PillarState.Both).with(WATERLOGGED, Boolean.valueOf(false)));
+		this.iconnect = connects;
+	}
+	
+	public BasePillar(String name, Block source, IConnects connects) {
+		this(name, source, 0, connects);
+	}
+	
+	public BasePillar(String name, Block source, int light) {
+		this(name, source, (state, b) -> state.getBlock() == b);
 	}
 	
 	public BasePillar(String name, Block source) {
@@ -122,30 +132,6 @@ public class BasePillar extends BaseBlock implements IWaterLoggable {
 		return getShape(state);
 	}
 	
-	public void setState(BlockState state, World worldIn, BlockPos pos) {
-		BlockState bstop = worldIn.getBlockState(pos.up());
-		boolean top = connects(bstop, this);
-		BlockState bsbottom = worldIn.getBlockState(pos.down());
-		boolean bottom = connects(bsbottom, this);
-		if(top && bottom) {
-			if(worldIn.getBlockState(pos).get(STATE) != PillarState.Both)
-				worldIn.setBlockState(pos, state.with(STATE, PillarState.Both));
-			return;
-		}
-		else if(top) {
-			if(worldIn.getBlockState(pos).get(STATE) != PillarState.Top)
-				worldIn.setBlockState(pos, state.with(STATE, PillarState.Top));
-			return;
-		}
-		else if(bottom) {
-			if(worldIn.getBlockState(pos).get(STATE) != PillarState.Bottom)
-				worldIn.setBlockState(pos, state.with(STATE, PillarState.Bottom));
-			return;
-		}
-		if(worldIn.getBlockState(pos).get(STATE) != PillarState.None)
-			worldIn.setBlockState(pos, state.with(STATE, PillarState.None));
-	}
-	
 	public BlockState getState(BlockState state, IWorld worldIn, BlockPos pos) {
 		BlockState bstop = worldIn.getBlockState(pos.up());
 		boolean top = !connects(bstop, this);
@@ -165,11 +151,16 @@ public class BasePillar extends BaseBlock implements IWaterLoggable {
 	
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		return getState(this.getDefaultState(), c.getWorld(), c.getPos());
+		BlockPos blockpos = c.getPos();
+
+		IFluidState ifluidstate = c.getWorld().getFluidState(blockpos);
+		BlockState blockstate1 = this.getDefaultState().with(STATE, PillarState.Both).with(WATERLOGGED,
+				Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));
+		return getState(blockstate1, c.getWorld(), c.getPos());
 	}
 	
 	public boolean connects(BlockState state, Block b) {
-		return state.getBlock() == b;
+		return iconnect.connect(state, b);
 	}
 	
 	@Override
@@ -193,7 +184,7 @@ public class BasePillar extends BaseBlock implements IWaterLoggable {
 		if (stateIn.get(WATERLOGGED)) {
 			worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
 		}
-		return getState(this.getDefaultState(), worldIn, currentPos);
+		return getState(stateIn, worldIn, currentPos);
 	}
 
 	@Override

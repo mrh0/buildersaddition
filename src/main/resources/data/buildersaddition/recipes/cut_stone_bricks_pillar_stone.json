@@ -1,7 +1,7 @@
 {
 	"type": "minecraft:stonecutting",
 	"ingredient": {
-		"item": "minecraft:stone_bricks"
+		"item": "minecraft:stone"
 	},
 	"result": "buildersaddition:cut_stone_bricks_pillar",
 	"count": 1

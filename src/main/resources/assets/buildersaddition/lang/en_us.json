@@ -47,5 +47,8 @@
 	"block.buildersaddition.cut_stone_bricks_pillar":"Cut Stone Bricks Pillar",
 	"block.buildersaddition.cut_bricks_pillar":"Cut Bricks Pillar",
 	"block.buildersaddition.cut_mossy_stone_bricks_pillar":"Cut Mossy Stone Bricks Pillar",
-	"block.buildersaddition.cut_end_stone_bricks_pillar":"Cut End Stone Bricks Pillar"
+	"block.buildersaddition.cut_end_stone_bricks_pillar":"Cut End Stone Bricks Pillar",
+	"block.buildersaddition.cut_smooth_sandstone_pillar":"Cut Smooth Sandstone Pillar",
+	"block.buildersaddition.cut_smooth_red_sandstone_pillar":"Cut Smooth Red Sandstone Pillar",
+	"block.buildersaddition.cut_smooth_stone_pillar":"Cut Smooth Stone Pillar"
 }

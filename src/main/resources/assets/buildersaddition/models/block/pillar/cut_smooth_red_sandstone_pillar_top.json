@@ -1,0 +1,66 @@
+{
+    "textures": {
+        "top": "minecraft:block/red_sandstone_top",
+        "platform": "minecraft:block/red_sandstone_top",
+        "side": "minecraft:block/red_sandstone_top",
+        "particle": "minecraft:block/red_sandstone_top"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Pillar",
+            "from": [ 2, 0, 2 ], 
+            "to": [ 14, 14, 14 ], 
+            "faces": {
+                "north": { "texture": "#side", "uv": [ 2, 2, 14, 16 ] },
+                "east": { "texture": "#side", "uv": [ 2, 2, 14, 16 ] },
+                "south": { "texture": "#side", "uv": [ 2, 2, 14, 16 ] },
+                "west": { "texture": "#side", "uv": [ 2, 2, 14, 16 ] }
+            }
+        },
+        {
+            "name": "Top",
+            "from": [ 1, 14, 1 ], 
+            "to": [ 15, 16, 15 ], 
+            "faces": {
+                "north": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
+                "east": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
+                "south": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
+                "west": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
+                "up": { "texture": "#top", "uv": [ 1, 1, 15, 15 ] },
+                "down": { "texture": "#top", "uv": [ 1, 1, 15, 15 ] }
+            }
+        }
+    ]
+}
