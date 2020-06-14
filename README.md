@@ -7,7 +7,7 @@ Minecraft Forge Mod by MRH0
 
 Latest Version: 20200614a for Minecraft 1.15.2
 
-At: [SOON]
+At: https://www.curseforge.com/minecraft/mc-mods/builders-crafts-additions
 
 # History
 
