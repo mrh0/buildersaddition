@@ -1,9 +1,9 @@
 {
     "textures": {
-        "top": "minecraft:block/smooth_stone",
-        "side": "minecraft:block/smooth_stone_slab_side",
-        "platform": "minecraft:block/smooth_stone",
-        "particle": "minecraft:block/smooth_stone"
+        "top": "minecraft:block/red_nether_bricks",
+        "side": "minecraft:block/red_nether_bricks",
+		 "platform": "minecraft:block/red_nether_bricks",
+        "particle": "minecraft:block/red_nether_bricks"
     },
     "display": {
         "gui": {
@@ -41,25 +41,12 @@
         {
             "name": "Pillar",
             "from": [ 2, 2, 2 ], 
-            "to": [ 14, 14, 14 ], 
+            "to": [ 14, 16, 14 ], 
             "faces": {
-                "north": { "texture": "#side", "uv": [ 2, 2, 14, 12 ] },
-                "east": { "texture": "#side", "uv": [ 2, 2, 14, 12 ] },
-                "south": { "texture": "#side", "uv": [ 2, 2, 14, 12 ] },
-                "west": { "texture": "#side", "uv": [ 2, 2, 14, 12 ] }
-            }
-        },
-        {
-            "name": "Top",
-            "from": [ 1, 14, 1 ], 
-            "to": [ 15, 16, 15 ], 
-            "faces": {
-                "north": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "east": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "south": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "west": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "up": { "texture": "#top", "uv": [ 1, 1, 15, 15 ] },
-                "down": { "texture": "#top", "uv": [ 1, 1, 15, 15 ] }
+                "north": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] },
+                "east": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] },
+                "south": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] },
+                "west": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] }
             }
         },
         {

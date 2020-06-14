@@ -1,9 +1,9 @@
 {
     "textures": {
-        "top": "minecraft:block/smooth_stone",
-        "side": "minecraft:block/smooth_stone_slab_side",
-        "platform": "minecraft:block/smooth_stone",
-        "particle": "minecraft:block/smooth_stone"
+        "top": "minecraft:block/nether_bricks",
+        "side": "minecraft:block/nether_bricks",
+        "platform": "minecraft:block/nether_bricks",
+        "particle": "minecraft:block/nether_bricks"
     },
     "display": {
         "gui": {

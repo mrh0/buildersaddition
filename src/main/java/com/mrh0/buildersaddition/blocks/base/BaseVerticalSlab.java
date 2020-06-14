@@ -80,7 +80,17 @@ public class BaseVerticalSlab extends BaseBlock implements IWaterLoggable {
 	
 	@Override
 	public ToolType getHarvestTool(BlockState state) {
-		return super.getHarvestTool(source.getDefaultState());//stone ? ToolType.PICKAXE : ToolType.AXE;
+		return source.getHarvestTool(source.getDefaultState());
+	}
+	
+	@Override
+	public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+		return source.isFlammable(source.getDefaultState(), world, pos, face);
+	}
+	
+	@Override
+	public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
+		return source.getFlammability(source.getDefaultState(), world, pos, face);
 	}
 
 	@Override

@@ -2,7 +2,7 @@
     "textures": {
         "top": "minecraft:block/smooth_stone",
         "platform": "minecraft:block/smooth_stone",
-        "side": "minecraft:block/smooth_stone",
+        "side": "minecraft:block/smooth_stone_slab_side",
         "particle": "minecraft:block/smooth_stone"
     },
     "display": {

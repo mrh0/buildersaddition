@@ -58,6 +58,7 @@ public class Index {
 	public static Block CUT_COBBLESTONE_PILLAR;
 	public static Block CUT_BRICKS_PILLAR;
 	public static Block CUT_STONE_BRICKS_PILLAR;
+	public static Block CUT_NETHER_BRICKS_PILLAR;
 	public static Block CUT_QUARTZ_PILLAR;
 	public static Block CUT_RED_SANDSTONE_PILLAR;
 	public static Block CUT_PURPUR_PILLAR;
@@ -67,6 +68,7 @@ public class Index {
 	public static Block CUT_MOSSY_STONE_BRICKS_PILLAR;
 	public static Block CUT_MOSSY_COBBLESTONE_PILLAR;
 	public static Block CUT_END_STONE_BRICKS_PILLAR;
+	public static Block CUT_RED_NETHER_BRICKS_PILLAR;
 	
 	
 		
@@ -80,6 +82,9 @@ public class Index {
 		
 		final IConnects stoneBricksConnector = (state, source) -> { 
 			return state.getBlock() == CUT_STONE_BRICKS_PILLAR || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR; };
+			
+			final IConnects netherBricksConnector = (state, source) -> { 
+				return state.getBlock() == CUT_NETHER_BRICKS_PILLAR || state.getBlock() == CUT_RED_NETHER_BRICKS_PILLAR; };
 		
 		CUT_STONE_PILLAR = new BasePillar("stone", Blocks.STONE);
 		CUT_SMOOTH_STONE_PILLAR = new BasePillar("smooth_stone", Blocks.SMOOTH_STONE);
@@ -87,6 +92,7 @@ public class Index {
 		CUT_COBBLESTONE_PILLAR = new BasePillar("cobblestone", Blocks.COBBLESTONE, cobbleConnector);
 		CUT_BRICKS_PILLAR = new BasePillar("bricks", Blocks.BRICKS);
 		CUT_STONE_BRICKS_PILLAR = new BasePillar("stone_bricks", Blocks.STONE_BRICKS, stoneBricksConnector);
+		CUT_NETHER_BRICKS_PILLAR = new BasePillar("nether_bricks", Blocks.NETHER_BRICKS, netherBricksConnector);
 		CUT_QUARTZ_PILLAR = new BasePillar("quartz", Blocks.QUARTZ_BLOCK);
 		CUT_RED_SANDSTONE_PILLAR = new BasePillar("red_sandstone", Blocks.RED_SANDSTONE, sandstoneConnector);
 		CUT_PURPUR_PILLAR = new BasePillar("purpur", Blocks.PURPUR_PILLAR);
@@ -96,5 +102,6 @@ public class Index {
 		CUT_MOSSY_STONE_BRICKS_PILLAR = new BasePillar("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS, stoneBricksConnector);
 		CUT_MOSSY_COBBLESTONE_PILLAR = new BasePillar("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE, cobbleConnector);
 		CUT_END_STONE_BRICKS_PILLAR = new BasePillar("end_stone_bricks", Blocks.END_STONE_BRICKS);
+		CUT_RED_NETHER_BRICKS_PILLAR = new BasePillar("red_nether_bricks", Blocks.RED_NETHER_BRICKS, netherBricksConnector);
 	}
 }
