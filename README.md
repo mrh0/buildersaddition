@@ -1,5 +1,5 @@
-# buildersaddition
-Builders Addition Minecraft Forge Mod by MRH0
+# Builders Addition
+Minecraft Forge Mod by MRH0
 
 Latest Version: 20200614a
 
