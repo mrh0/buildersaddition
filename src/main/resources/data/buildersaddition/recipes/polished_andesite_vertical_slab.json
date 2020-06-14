@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"S",
+		"S",
+		"S"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:polished_andesite"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:polished_andesite_vertical_slab",
+		"count": 6
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"S",
+		"S",
+		"S"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:granite"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:granite_vertical_slab",
+		"count": 6
+	}
+}

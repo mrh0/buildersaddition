@@ -1,0 +1,17 @@
+{
+    "variants": {
+    	"type=north,waterlogged=false": { "model": "buildersaddition:block/slab/cobblestone_north"},
+    	"type=east,waterlogged=false": { "model": "buildersaddition:block/slab/cobblestone_east"},
+    	"type=south,waterlogged=false": { "model": "buildersaddition:block/slab/cobblestone_south"},
+    	"type=west,waterlogged=false": { "model": "buildersaddition:block/slab/cobblestone_west"},
+    	"type=double_x,waterlogged=false": { "model": "buildersaddition:block/slab/cobblestone_double"},
+		"type=double_z,waterlogged=false": { "model": "buildersaddition:block/slab/cobblestone_double"},
+    	
+    	"type=north,waterlogged=true": { "model": "buildersaddition:block/slab/cobblestone_north"},
+    	"type=east,waterlogged=true": { "model": "buildersaddition:block/slab/cobblestone_east"},
+    	"type=south,waterlogged=true": { "model": "buildersaddition:block/slab/cobblestone_south"},
+    	"type=west,waterlogged=true": { "model": "buildersaddition:block/slab/cobblestone_west"},
+    	"type=double_x,waterlogged=true": { "model": "buildersaddition:block/slab/cobblestone_double"},
+		"type=double_z,waterlogged=true": { "model": "buildersaddition:block/slab/cobblestone_double"}
+    }
+}

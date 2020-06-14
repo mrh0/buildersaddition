@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"S",
+		"S",
+		"S"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:birch_planks"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:birch_vertical_slab",
+		"count": 6
+	}
+}

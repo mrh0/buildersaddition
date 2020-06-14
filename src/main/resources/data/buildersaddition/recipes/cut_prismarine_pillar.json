@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"LL",
+		"PP",
+		"PP"
+	],
+	"key":
+	{
+		"L":
+		{
+			"item": "minecraft:sea_lantern"
+		},
+		"P":
+		{
+			"item": "minecraft:prismarine_bricks"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cut_prismarine_pillar",
+		"count": 6
+	}
+}

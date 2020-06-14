@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "minecraft:block/quartz_block_top",
+        "particle": "minecraft:block/quartz_block_top"
+    }
+}
