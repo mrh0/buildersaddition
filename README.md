@@ -11,7 +11,7 @@ At: https://www.curseforge.com/minecraft/mc-mods/buildersaddition
 
 # History
 
-Formarly part of Vanilla Crafts & Expansion (https://github.com/mrh0/vanillaexpansion)
+Formally part of Vanilla Crafts & Expansion (https://github.com/mrh0/vanillaexpansion)
 
 # License
 
