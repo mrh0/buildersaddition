@@ -7,6 +7,8 @@ Minecraft Forge Mod by MRH0
 
 Latest Version: 20200614a for Minecraft 1.15.2
 
-At: 
+At: [SOON]
+
+# History
 
 Formarly part of Vanilla Crafts & Expansion (https://github.com/mrh0/vanillaexpansion)
