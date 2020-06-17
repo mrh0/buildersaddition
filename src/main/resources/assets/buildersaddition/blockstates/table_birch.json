@@ -1,0 +1,23 @@
+{
+	"multipart": [
+		{
+			"apply": { "model": "buildersaddition:block/table/table_birch_base" }
+		},
+		{
+			"when": { "ne": "true" },
+			"apply": { "model": "buildersaddition:block/table/table_birch_leg" }
+		},
+		{
+			"when": { "nw": "true" },
+			"apply": { "model": "buildersaddition:block/table/table_birch_leg", "y":270 }
+		},
+		{
+			"when": { "se": "true" },
+			"apply": { "model": "buildersaddition:block/table/table_birch_leg", "y":90 }
+		},
+		{
+			"when": { "sw": "true" },
+			"apply": { "model": "buildersaddition:block/table/table_birch_leg", "y":180 }
+		}
+	]
+}

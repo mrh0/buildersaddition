@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"WW",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "minecraft:yellow_wool"
+		},
+		"S":
+		{
+			"item": "minecraft:spruce_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:spruce_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_spruce_yellow",
+		"count": 2
+	}
+}

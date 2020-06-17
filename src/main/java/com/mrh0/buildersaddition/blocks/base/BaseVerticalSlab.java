@@ -33,12 +33,10 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.ToolType;
 
-public class BaseVerticalSlab extends BaseBlock implements IWaterLoggable {
+public class BaseVerticalSlab extends BaseDerivativeBlock implements IWaterLoggable {
 	public static final EnumProperty<VerticalSlabState> TYPE = EnumProperty.<VerticalSlabState>create("type",
 			VerticalSlabState.class);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-	
-	private Block source;
 
 	protected static final VoxelShape WEST_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 8.0D, 16.0D, 16.0D);
 	protected static final VoxelShape EAST_SHAPE = Block.makeCuboidShape(8D, 0.0D, 0.0D, 16D, 16.0D, 16.0D);
@@ -46,53 +44,11 @@ public class BaseVerticalSlab extends BaseBlock implements IWaterLoggable {
 	protected static final VoxelShape SOUTH_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 8D, 16D, 16D, 16D);
 
 	public BaseVerticalSlab(String name, Block source) {
-		super(name + "_vertical_slab", Properties.create(Material.ROCK));
-		this.source = source;
+		super(name + "_vertical_slab", source);
 		this.setDefaultState(
 				this.getDefaultState().with(TYPE, VerticalSlabState.NORTH).with(WATERLOGGED, Boolean.valueOf(false)));
 	}
 	
-	@Override
-	public int getHarvestLevel(BlockState state) {
-		return source.getHarvestLevel(source.getDefaultState());
-	}
-	
-	@Override
-	public Material getMaterial(BlockState state) {
-		return source.getMaterial(source.getDefaultState());
-	}
-	
-	@Override
-	public SoundType getSoundType(BlockState state) {
-		return source.getSoundType(source.getDefaultState());
-	}
-	
-	@Override
-	public float getBlockHardness(BlockState blockState, IBlockReader worldIn, BlockPos pos) {
-		return source.getBlockHardness(source.getDefaultState(), worldIn, pos);
-	}
-	
-	@Override
-	public float getExplosionResistance(BlockState state, IWorldReader world, BlockPos pos, Entity exploder,
-			Explosion explosion) {
-		return source.getExplosionResistance(source.getDefaultState(), world, pos, exploder, explosion);
-	}
-	
-	@Override
-	public ToolType getHarvestTool(BlockState state) {
-		return source.getHarvestTool(source.getDefaultState());
-	}
-	
-	@Override
-	public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.isFlammable(source.getDefaultState(), world, pos, face);
-	}
-	
-	@Override
-	public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.getFlammability(source.getDefaultState(), world, pos, face);
-	}
-
 	@Override
 	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
 		builder.add(TYPE, WATERLOGGED);

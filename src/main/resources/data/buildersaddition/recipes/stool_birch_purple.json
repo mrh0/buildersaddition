@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"WW",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "minecraft:purple_wool"
+		},
+		"S":
+		{
+			"item": "minecraft:birch_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:birch_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_birch_purple",
+		"count": 2
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"WW",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "minecraft:magenta_wool"
+		},
+		"S":
+		{
+			"item": "minecraft:acacia_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:acacia_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_acacia_magenta",
+		"count": 2
+	}
+}

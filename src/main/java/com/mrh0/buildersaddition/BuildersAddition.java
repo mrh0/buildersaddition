@@ -3,7 +3,10 @@ package com.mrh0.buildersaddition;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.ItemRegistry;
 import com.mrh0.buildersaddition.itemgroup.ModGroup;
+import com.mrh0.buildersaddition.proxy.*;
+
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
@@ -20,6 +23,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class BuildersAddition {
 	public static final String MODID = "buildersaddition";
 	
+	public static CommonProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+	
 	public BuildersAddition() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     	FMLJavaModLoadingContext.get().getModEventBus().addListener(this::postInit);
@@ -35,7 +40,7 @@ public class BuildersAddition {
 	}
 
     private void setup(final FMLCommonSetupEvent evt) {
-
+    	proxy.init(evt);
     }
 
     public void postInit(FMLLoadCompleteEvent evt) {

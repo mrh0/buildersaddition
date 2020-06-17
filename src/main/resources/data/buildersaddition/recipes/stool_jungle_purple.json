@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"WW",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "minecraft:purple_wool"
+		},
+		"S":
+		{
+			"item": "minecraft:jungle_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:jungle_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_jungle_purple",
+		"count": 2
+	}
+}

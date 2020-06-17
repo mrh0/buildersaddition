@@ -32,7 +32,7 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-public class BasePillar extends BaseBlock implements IWaterLoggable {
+public class BasePillar extends BaseDerivativeBlock implements IWaterLoggable {
 	
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	public static final EnumProperty<PillarState> STATE = EnumProperty.<PillarState>create("state", PillarState.class);
@@ -41,13 +41,11 @@ public class BasePillar extends BaseBlock implements IWaterLoggable {
 	protected static final AxisAlignedBB PILLAR_BOTTOM = new AxisAlignedBB(1D/16D, 0.0D, 1D/16D, 15D/16D, 2D/16D, 15D/16D);
 	protected static final AxisAlignedBB PILLAR_TOP = new AxisAlignedBB(1D/16D, 14D/16D, 1D/16D, 15D/16D, 1D, 15D/16D);
 	
-	private final Block source;
 	private final int light;
 	private final IConnects iconnect;
 
 	public BasePillar(String name, Block source, int light, IConnects connects) {
-		super("cut_" + name + "_pillar", Properties.create(Material.ROCK));
-		this.source = source;
+		super("cut_" + name + "_pillar", source);
 		this.light = light;
 		this.setDefaultState(
 				this.getDefaultState().with(STATE, PillarState.Both).with(WATERLOGGED, Boolean.valueOf(false)));
@@ -74,47 +72,6 @@ public class BasePillar extends BaseBlock implements IWaterLoggable {
 	@Override
 	public int getLightValue(BlockState state) {
 		return (state.get(STATE) == PillarState.Top) ? light : 0;
-	}
-	
-	@Override
-	public int getHarvestLevel(BlockState state) {
-		return source.getHarvestLevel(source.getDefaultState());
-	}
-	
-	@Override
-	public Material getMaterial(BlockState state) {
-		return source.getMaterial(source.getDefaultState());
-	}
-	
-	@Override
-	public SoundType getSoundType(BlockState state) {
-		return source.getSoundType(source.getDefaultState());
-	}
-	
-	@Override
-	public float getBlockHardness(BlockState blockState, IBlockReader worldIn, BlockPos pos) {
-		return source.getBlockHardness(source.getDefaultState(), worldIn, pos);
-	}
-	
-	@Override
-	public float getExplosionResistance(BlockState state, IWorldReader world, BlockPos pos, Entity exploder,
-			Explosion explosion) {
-		return source.getExplosionResistance(source.getDefaultState(), world, pos, exploder, explosion);
-	}
-	
-	@Override
-	public ToolType getHarvestTool(BlockState state) {
-		return source.getHarvestTool(source.getDefaultState());//stone ? ToolType.PICKAXE : ToolType.AXE;
-	}
-	
-	@Override
-	public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.isFlammable(source.getDefaultState(), world, pos, face);
-	}
-	
-	@Override
-	public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.getFlammability(source.getDefaultState(), world, pos, face);
 	}
 	
 	@Override
