@@ -5,6 +5,7 @@ import com.mrh0.buildersaddition.event.ItemRegistry;
 import com.mrh0.buildersaddition.itemgroup.ModGroup;
 import com.mrh0.buildersaddition.proxy.*;
 
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;

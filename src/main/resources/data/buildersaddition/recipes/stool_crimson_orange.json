@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"WW",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "minecraft:orange_wool"
+		},
+		"S":
+		{
+			"item": "minecraft:crimson_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:crimson_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_crimson_orange",
+		"count": 2
+	}
+}

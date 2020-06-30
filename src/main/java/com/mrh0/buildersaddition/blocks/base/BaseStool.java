@@ -19,7 +19,9 @@ import net.minecraftforge.common.ToolType;
 
 public class BaseStool extends BaseDerivativeBlock implements ISeat {
 
-	private static AxisAlignedBB shape = new AxisAlignedBB(2D/16D, 0D/16D, 2D/16D, 14D/16D, 9D/16D, 14D/16D);
+	//private static AxisAlignedBB shape = new AxisAlignedBB(2D/16D, 0D/16D, 2D/16D, 14D/16D, 9D/16D, 14D/16D);
+	private static VoxelShape SHAPE = Block.makeCuboidShape(3d, 0d, 3d, 13d, 9d, 13d);
+	private static VoxelShape SHAPE_TWO = Block.makeCuboidShape(2d, 6d, 2d, 14d, 8d, 14d);
 	
 	public BaseStool(String name, Block source) {
 		super(name, source);
@@ -32,6 +34,6 @@ public class BaseStool extends BaseDerivativeBlock implements ISeat {
 	
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return VoxelShapes.create(shape);
+		return VoxelShapes.or(SHAPE, SHAPE_TWO);
 	}
 }

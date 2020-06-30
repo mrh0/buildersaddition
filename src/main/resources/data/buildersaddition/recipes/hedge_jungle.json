@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+		    "item": "minecraft:jungle_leaves"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:hedge_jungle",
+		"count": 2
+	}
+}

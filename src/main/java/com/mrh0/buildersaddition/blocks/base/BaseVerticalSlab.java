@@ -1,7 +1,6 @@
 package com.mrh0.buildersaddition.blocks.base;
 
 import javax.annotation.Nullable;
-
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import com.mrh0.buildersaddition.state.VerticalSlabState;
@@ -12,8 +11,8 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathType;
@@ -93,7 +92,7 @@ public class BaseVerticalSlab extends BaseDerivativeBlock implements IWaterLogga
 			return blockstate.with(TYPE, getDoubleState(blockstate.get(TYPE))).with(WATERLOGGED,
 					Boolean.valueOf(false));
 		} else {
-			IFluidState ifluidstate = c.getWorld().getFluidState(blockpos);
+			FluidState ifluidstate = c.getWorld().getFluidState(blockpos);
 			BlockState blockstate1 = this.getDefaultState().with(TYPE, VerticalSlabState.NORTH).with(WATERLOGGED,
 					Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));
 			Direction face = c.getFace();
@@ -145,12 +144,12 @@ public class BaseVerticalSlab extends BaseDerivativeBlock implements IWaterLogga
 	}
 
 	@Override
-	public IFluidState getFluidState(BlockState state) {
+	public FluidState getFluidState(BlockState state) {
 		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}
 
 	@Override
-	public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+	public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
 		return (state.get(TYPE) != VerticalSlabState.DOUBLEX && state.get(TYPE) != VerticalSlabState.DOUBLEZ)
 				? IWaterLoggable.super.receiveFluid(worldIn, pos, state, fluidStateIn)
 				: false;

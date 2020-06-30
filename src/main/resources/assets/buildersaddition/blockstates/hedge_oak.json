@@ -1,0 +1,21 @@
+{
+    "variants": {
+        "state=none": { "model": "buildersaddition:block/hedge/hedge_none_oak"},
+        
+        "state=straight_z": { "model": "buildersaddition:block/hedge/hedge_straight_oak"},
+        "state=straight_x": { "model": "buildersaddition:block/hedge/hedge_straight_oak", "y": 90},
+        
+        "state=corner_nw": { "model": "buildersaddition:block/hedge/hedge_corner_oak"},
+        "state=corner_ne": { "model": "buildersaddition:block/hedge/hedge_corner_oak", "y": 90},
+        "state=corner_sw": { "model": "buildersaddition:block/hedge/hedge_corner_oak", "y": 270},
+        "state=corner_se": { "model": "buildersaddition:block/hedge/hedge_corner_oak", "y": 180},
+        
+        
+        "state=tcross_n": { "model": "buildersaddition:block/hedge/hedge_tcross_oak"},
+        "state=tcross_w": { "model": "buildersaddition:block/hedge/hedge_tcross_oak", "y": 270},
+        "state=tcross_s": { "model": "buildersaddition:block/hedge/hedge_tcross_oak", "y": 180},
+        "state=tcross_e": { "model": "buildersaddition:block/hedge/hedge_tcross_oak", "y": 90},
+        
+        "state=cross": { "model": "buildersaddition:block/hedge/hedge_cross_oak"}
+    }
+}

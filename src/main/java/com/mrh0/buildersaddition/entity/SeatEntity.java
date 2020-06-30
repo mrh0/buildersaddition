@@ -34,7 +34,7 @@ public class SeatEntity extends Entity{
 	public void tick() {
 		super.tick();
 		if(!world.isRemote) {
-			if(this.getPassengers().isEmpty() || !(world.getBlockState(this.getPosition()).getBlock() instanceof ISeat)) {
+			if(this.getPassengers().isEmpty() || !(world.getBlockState(new BlockPos(this.getPosX(), this.getPosY(), this.getPosZ())).getBlock() instanceof ISeat)) {
 				this.remove();
 			}
 		}

@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"S",
+		"S",
+		"S"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:warped_planks"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:warped_vertical_slab",
+		"count": 6
+	}
+}

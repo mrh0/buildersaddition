@@ -3,8 +3,7 @@ package com.mrh0.buildersaddition.state;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IStringSerializable;
 
-public enum VerticalSlabState implements IStringSerializable
-{
+public enum VerticalSlabState implements IStringSerializable {
     NORTH(0, "north", Direction.NORTH),
     WEST(1, "west", Direction.WEST),
     EAST(2, "east", Direction.EAST),
@@ -17,30 +16,25 @@ public enum VerticalSlabState implements IStringSerializable
     private final String name;
     private final Direction facing;
 
-    private VerticalSlabState(int meta, String name, Direction facing)
-    {
+    private VerticalSlabState(int meta, String name, Direction facing) {
         this.meta = meta;
         this.name = name;
         this.facing = facing;
     }
 
-    public int getMetadata()
-    {
+    public int getMetadata() {
         return this.meta;
     }
 
-    public Direction getFacing()
-    {
+    public Direction getFacing() {
         return this.facing;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return this.name;
     }
 
-    public static VerticalSlabState byMetadata(int meta)
-    {
+    public static VerticalSlabState byMetadata(int meta) {
         if (meta < 0 || meta >= META_LOOKUP.length)
         {
             meta = 0;
@@ -49,8 +43,7 @@ public enum VerticalSlabState implements IStringSerializable
         return META_LOOKUP[meta];
     }
 
-    public static VerticalSlabState forFacings(Direction clickedSide, Direction entityFacing)
-    {
+    public static VerticalSlabState forFacings(Direction clickedSide, Direction entityFacing) {
         if(clickedSide == Direction.UP || clickedSide == Direction.DOWN) {
         	if(entityFacing == Direction.NORTH)
         		return VerticalSlabState.NORTH;
@@ -76,16 +69,18 @@ public enum VerticalSlabState implements IStringSerializable
         return VerticalSlabState.NORTH;
     }
 
-    public String getName()
-    {
+    /*public String getName() {
         return this.name;
-    }
+    }*/
 
-    static
-    {
-        for (VerticalSlabState d : values())
-        {
+    static {
+        for (VerticalSlabState d : values()) {
             META_LOOKUP[d.getMetadata()] = d;
         }
     }
+
+	@Override
+	public String func_176610_l() {
+		return this.name;
+	}
 }

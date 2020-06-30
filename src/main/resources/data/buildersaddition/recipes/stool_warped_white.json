@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"WW",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"W":
+		{
+			"item": "minecraft:white_wool"
+		},
+		"S":
+		{
+			"item": "minecraft:warped_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:warped_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_warped_white",
+		"count": 2
+	}
+}

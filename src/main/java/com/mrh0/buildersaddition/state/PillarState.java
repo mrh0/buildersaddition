@@ -2,7 +2,7 @@ package com.mrh0.buildersaddition.state;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum PillarState  implements IStringSerializable {
+public enum PillarState implements IStringSerializable {
 	None("none"),
 	Bottom("bottom"),
 	Top("top"),
@@ -14,8 +14,13 @@ public enum PillarState  implements IStringSerializable {
 		this.name = name;
 	}
 	
-	@Override
+	/*@Override
 	public String getName() {
+		return this.name;
+	}*/
+
+	@Override
+	public String func_176610_l() {
 		return this.name;
 	}
 }

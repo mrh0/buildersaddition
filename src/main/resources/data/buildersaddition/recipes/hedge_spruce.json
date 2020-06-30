@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+		    "item": "minecraft:spruce_leaves"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:hedge_spruce",
+		"count": 2
+	}
+}

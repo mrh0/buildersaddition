@@ -1,17 +1,12 @@
 package com.mrh0.buildersaddition.blocks.base;
 
 import com.mrh0.buildersaddition.state.PillarState;
-import com.mrh0.buildersaddition.state.VerticalSlabState;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
@@ -25,12 +20,10 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
 
 public class BasePillar extends BaseDerivativeBlock implements IWaterLoggable {
 	
@@ -66,11 +59,6 @@ public class BasePillar extends BaseDerivativeBlock implements IWaterLoggable {
 	
 	@Override
 	public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-		return getLightValue(state);
-	}
-	
-	@Override
-	public int getLightValue(BlockState state) {
 		return (state.get(STATE) == PillarState.Top) ? light : 0;
 	}
 	
@@ -101,9 +89,10 @@ public class BasePillar extends BaseDerivativeBlock implements IWaterLoggable {
 	
 	public BlockState getState(BlockState state, IWorld worldIn, BlockPos pos) {
 		BlockState bstop = worldIn.getBlockState(pos.up());
-		boolean top = !connects(bstop, this);
 		BlockState bsbottom = worldIn.getBlockState(pos.down());
+		boolean top = !connects(bstop, this);
 		boolean bottom = !connects(bsbottom, this);
+		
 		if(top && bottom) {
 			return state.with(STATE, PillarState.Both);
 		}
@@ -116,14 +105,24 @@ public class BasePillar extends BaseDerivativeBlock implements IWaterLoggable {
 		return state.with(STATE, PillarState.None);
 	}
 	
+	public BlockState getState(BlockState state, IWorldReader worldIn, BlockPos pos) {
+		return getState(state, (IWorld)worldIn, pos);
+	}
+	
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		BlockPos blockpos = c.getPos();
+		/*BlockPos blockpos = c.getPos();
+		PillarState p = getState(this.getDefaultState(), c.getWorld(), blockpos).get(STATE);
+		BlockState cur = c.getWorld().getBlockState(blockpos);
+		if(cur.getBlock() instanceof BasePillar)
+			p = cur.get(STATE);
+		
 
-		IFluidState ifluidstate = c.getWorld().getFluidState(blockpos);
-		BlockState blockstate1 = this.getDefaultState().with(STATE, PillarState.Both).with(WATERLOGGED,
-				Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));
-		return getState(blockstate1, c.getWorld(), c.getPos());
+		FluidState ifluidstate = c.getWorld().getFluidState(blockpos);
+		BlockState blockstate1 = this.getDefaultState().with(STATE, p).with(WATERLOGGED,
+				Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));*/
+		return getState(this.getDefaultState(), c.getWorld(), c.getPos()).with(WATERLOGGED, 
+				Boolean.valueOf(c.getWorld().getFluidState(c.getPos()).getFluid() == Fluids.WATER));
 	}
 	
 	public boolean connects(BlockState state, Block b) {
@@ -131,12 +130,12 @@ public class BasePillar extends BaseDerivativeBlock implements IWaterLoggable {
 	}
 	
 	@Override
-	public IFluidState getFluidState(BlockState state) {
+	public FluidState getFluidState(BlockState state) {
 		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
 	}
 
 	@Override
-	public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, IFluidState fluidStateIn) {
+	public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
 		return IWaterLoggable.super.receiveFluid(worldIn, pos, state, fluidStateIn);
 	}
 
@@ -148,12 +147,12 @@ public class BasePillar extends BaseDerivativeBlock implements IWaterLoggable {
 	@Override
 	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
 			BlockPos currentPos, BlockPos facingPos) {
-		if (stateIn.get(WATERLOGGED)) {
+		if(stateIn.get(WATERLOGGED)) {
 			worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
 		}
 		return getState(stateIn, worldIn, currentPos);
 	}
-
+	
 	@Override
 	public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
 		switch (type) {

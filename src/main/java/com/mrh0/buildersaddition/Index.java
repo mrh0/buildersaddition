@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition;
 
+import com.mrh0.buildersaddition.blocks.Planter;
+import com.mrh0.buildersaddition.blocks.base.BaseHedgeBlock;
 import com.mrh0.buildersaddition.blocks.base.BasePillar;
 import com.mrh0.buildersaddition.blocks.base.BaseStool;
 import com.mrh0.buildersaddition.blocks.base.BaseTable;
@@ -51,6 +53,12 @@ public class Index {
 	public static final Block POLISHED_ANDESITE_VERTICAL_SLAB = new BaseVerticalSlab("polished_andesite", Blocks.POLISHED_ANDESITE);
 	public static final Block DIORITE_VERTICAL_SLAB = new BaseVerticalSlab("diorite", Blocks.DIORITE);
 	
+	public static final Block CRIMSON_VERTICAL_SLAB = new BaseVerticalSlab("crimson", Blocks.field_235344_mC_);
+	public static final Block WARPED_VERTICAL_SLAB = new BaseVerticalSlab("warped", Blocks.field_235345_mD_);
+	public static final Block BLACKSTONE_VERTICAL_SLAB = new BaseVerticalSlab("blackstone", Blocks.field_235406_np_);
+	public static final Block POLISHED_BLACKSTONE_VERTICAL_SLAB = new BaseVerticalSlab("polished_blackstone", Blocks.field_235410_nt_);
+	public static final Block POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB = new BaseVerticalSlab("polished_blackstone_bricks", Blocks.field_235411_nu_);
+	
 	public static Block CUT_STONE_PILLAR;
 	public static Block CUT_SMOOTH_STONE_PILLAR;
 	public static Block CUT_SANDSTONE_PILLAR;
@@ -68,6 +76,8 @@ public class Index {
 	public static Block CUT_MOSSY_COBBLESTONE_PILLAR;
 	public static Block CUT_END_STONE_BRICKS_PILLAR;
 	public static Block CUT_RED_NETHER_BRICKS_PILLAR;
+	public static Block CUT_BASALT_PILLAR;
+	public static Block CUT_BLACKSTONE_PILLAR;
 	
 	public static final Block TABLE_OAK = new BaseTable("oak", Blocks.OAK_PLANKS);
 	public static final Block TABLE_SPRUCE = new BaseTable("spruce", Blocks.SPRUCE_PLANKS);
@@ -75,6 +85,8 @@ public class Index {
 	public static final Block TABLE_DARK_OAK = new BaseTable("dark_oak", Blocks.DARK_OAK_PLANKS);
 	public static final Block TABLE_JUNGLE = new BaseTable("jungle", Blocks.JUNGLE_PLANKS);
 	public static final Block TABLE_ACACIA = new BaseTable("acacia", Blocks.ACACIA_PLANKS);
+	public static final Block TABLE_CRIMSON = new BaseTable("crimson", Blocks.field_235344_mC_);
+	public static final Block TABLE_WARPED = new BaseTable("warped", Blocks.field_235345_mD_);
 	
 	public static final Block[] STOOL_OAK = new Block[16];
 	public static final Block[] STOOL_SPRUCE = new Block[16];
@@ -82,6 +94,17 @@ public class Index {
 	public static final Block[] STOOL_DARK_OAK = new Block[16];
 	public static final Block[] STOOL_JUNGLE = new Block[16];
 	public static final Block[] STOOL_ACACIA = new Block[16];
+	public static final Block[] STOOL_CRIMSON = new Block[16];
+	public static final Block[] STOOL_WARPED = new Block[16];
+	
+	public static final Block PLANTER = new Planter();
+	
+	public static final Block HEDGE_OAK = new BaseHedgeBlock("oak", Blocks.OAK_LEAVES);
+	public static final Block HEDGE_SPRUCE = new BaseHedgeBlock("spruce", Blocks.SPRUCE_LEAVES);
+	public static final Block HEDGE_BIRCH = new BaseHedgeBlock("birch", Blocks.BIRCH_LEAVES);
+	public static final Block HEDGE_DARK_OAK = new BaseHedgeBlock("dark_oak", Blocks.DARK_OAK_LEAVES);
+	public static final Block HEDGE_JUNGLE = new BaseHedgeBlock("jungle", Blocks.JUNGLE_LEAVES);
+	public static final Block HEDGE_ACACIA = new BaseHedgeBlock("acacia", Blocks.ACACIA_LEAVES);
 	
 		
 	static {
@@ -93,7 +116,7 @@ public class Index {
 			return state.getBlock() == CUT_SMOOTH_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SMOOTH_SANDSTONE_PILLAR || state.getBlock() == CUT_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SANDSTONE_PILLAR; };
 		
 		final IConnects stoneBricksConnector = (state, source) -> { 
-			return state.getBlock() == CUT_STONE_BRICKS_PILLAR || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR; };
+			return state.getBlock() == CUT_STONE_BRICKS_PILLAR || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR  || state.getBlock() == CUT_BLACKSTONE_PILLAR; };
 			
 			final IConnects netherBricksConnector = (state, source) -> { 
 				return state.getBlock() == CUT_NETHER_BRICKS_PILLAR || state.getBlock() == CUT_RED_NETHER_BRICKS_PILLAR; };
@@ -115,6 +138,8 @@ public class Index {
 		CUT_MOSSY_COBBLESTONE_PILLAR = new BasePillar("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE, cobbleConnector);
 		CUT_END_STONE_BRICKS_PILLAR = new BasePillar("end_stone_bricks", Blocks.END_STONE_BRICKS);
 		CUT_RED_NETHER_BRICKS_PILLAR = new BasePillar("red_nether_bricks", Blocks.RED_NETHER_BRICKS, netherBricksConnector);
+		CUT_BASALT_PILLAR = new BasePillar("basalt", Blocks.field_235337_cO_);
+		CUT_BLACKSTONE_PILLAR = new BasePillar("blackstone", Blocks.field_235338_cP_, stoneBricksConnector);
 		
 		for(int i = 0; i < colors.length; i++) {
 			STOOL_OAK[i] = new BaseStool("stool_oak_" + colors[i], Blocks.OAK_PLANKS);
@@ -123,6 +148,8 @@ public class Index {
 			STOOL_DARK_OAK[i] = new BaseStool("stool_dark_oak_" + colors[i], Blocks.DARK_OAK_PLANKS);
 			STOOL_JUNGLE[i] = new BaseStool("stool_jungle_" + colors[i], Blocks.JUNGLE_PLANKS);
 			STOOL_ACACIA[i] = new BaseStool("stool_acacia_" + colors[i], Blocks.ACACIA_PLANKS);
+			STOOL_CRIMSON[i] = new BaseStool("stool_crimson_" + colors[i], Blocks.field_235344_mC_);
+			STOOL_WARPED[i] = new BaseStool("stool_warped_" + colors[i], Blocks.field_235345_mD_);
 		}
 	}
 	
