@@ -1,7 +1,7 @@
 {
     "textures": {
-        "tex": "minecraft:block/birch_planks",
-        "particle": "minecraft:block/birch_planks"
+        "tex": "minecraft:block/stripped_birch_log",
+        "particle": "minecraft:block/stripped_birch_log"
     },
     "display": {
         "gui": {

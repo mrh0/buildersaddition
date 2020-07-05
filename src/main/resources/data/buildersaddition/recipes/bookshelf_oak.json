@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"PSP",
+		"PSP",
+		"PSP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:oak_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:oak_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bookshelf_oak",
+		"count": 2
+	}
+}

@@ -1,0 +1,91 @@
+{
+    "textures": {
+        "stripped": "minecraft:block/stripped_oak_log",
+        "detail": "minecraft:block/polished_andesite",
+        "planks": "minecraft:block/oak_planks",
+		"particle": "minecraft:block/oak_planks"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Main",
+            "from": [ 0, 0, 0 ], 
+            "to": [ 16, 16, 8 ], 
+            "faces": {
+                "north": { "texture": "#planks", "uv": [ 0, 0, 16, 16 ] },
+                "east": { "texture": "#planks", "uv": [ 8, 0, 16, 16 ] },
+                "south": { "texture": "#planks", "uv": [ 0, 0, 16, 16 ] },
+                "west": { "texture": "#planks", "uv": [ 0, 0, 8, 16 ] },
+                "up": { "texture": "#planks", "uv": [ 0, 0, 16, 8 ] },
+                "down": { "texture": "#planks", "uv": [ 0, 8, 16, 16 ] }
+            }
+        },
+        {
+            "name": "KnobLeft",
+            "from": [ 6.5, 7, 8.5 ], 
+            "to": [ 7.5, 9, 9.5 ], 
+            "faces": {
+                "east": { "texture": "#detail", "uv": [ 0, 0, 1, 2 ] },
+                "south": { "texture": "#detail", "uv": [ 0, 2, 1, 4 ] },
+                "west": { "texture": "#detail", "uv": [ 0, 0, 1, 2 ] },
+                "up": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] },
+                "down": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] }
+            }
+        },
+        {
+            "name": "Drawer",
+            "from": [ 1, 1, 8 ], 
+            "to": [ 15, 15, 9 ], 
+            "faces": {
+                "east": { "texture": "#stripped", "uv": [ 14, 1, 15, 15 ] },
+                "south": { "texture": "#stripped", "uv": [ 1, 1, 15, 15 ] },
+                "west": { "texture": "#stripped", "uv": [ 1, 1, 2, 15 ] },
+                "up": { "texture": "#stripped", "uv": [ 1, 1, 15, 2 ] },
+                "down": { "texture": "#stripped", "uv": [ 1, 14, 15, 15 ] }
+            }
+        },
+        {
+            "name": "KnobRight",
+            "from": [ 8.5, 7, 8.5 ], 
+            "to": [ 9.5, 9, 9.5 ], 
+            "faces": {
+                "east": { "texture": "#detail", "uv": [ 0, 0, 1, 2 ] },
+                "south": { "texture": "#detail", "uv": [ 0, 0, 1, 2 ] },
+                "west": { "texture": "#detail", "uv": [ 0, 0, 1, 2 ] },
+                "up": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] },
+                "down": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] }
+            }
+        }
+    ]
+}

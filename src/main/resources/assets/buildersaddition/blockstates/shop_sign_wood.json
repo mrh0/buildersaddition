@@ -1,0 +1,14 @@
+{
+    "variants": {
+    	"state=up_x": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":90, "x":90 },
+        "state=up_z": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "x":90 },
+        
+        "state=down_x": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":90, "x":270 },
+        "state=down_z": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "x":270 },
+    
+        "state=north": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":180 },
+        "state=west": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":90 },
+        "state=south": { "model": "buildersaddition:block/shop_sign/shop_sign_wood" },
+        "state=east": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":270 }
+    }
+}

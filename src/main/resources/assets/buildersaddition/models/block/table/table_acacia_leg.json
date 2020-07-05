@@ -1,7 +1,7 @@
 {
     "textures": {
-        "tex": "minecraft:block/acacia_planks",
-        "particle": "minecraft:block/acacia_planks"
+        "tex": "minecraft:block/stripped_acacia_log",
+        "particle": "minecraft:block/stripped_acacia_log"
     },
     "display": {
         "gui": {

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/cabinet/cabinet_crimson", "y":180 },
+        "facing=west": { "model": "buildersaddition:block/cabinet/cabinet_crimson", "y":90 },
+        "facing=south": { "model": "buildersaddition:block/cabinet/cabinet_crimson" },
+        "facing=east": { "model": "buildersaddition:block/cabinet/cabinet_crimson", "y":270 }
+    }
+}

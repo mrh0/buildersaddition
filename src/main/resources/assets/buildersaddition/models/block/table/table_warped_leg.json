@@ -1,7 +1,7 @@
 {
     "textures": {
-        "tex": "minecraft:block/warped_planks",
-        "particle": "minecraft:block/warped_planks"
+        "tex": "minecraft:block/stripped_warped_stem",
+        "particle": "minecraft:block/stripped_warped_stem"
     },
     "display": {
         "gui": {

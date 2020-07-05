@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/counter/counter_spruce_diorite", "y":180 },
+        "facing=west": { "model": "buildersaddition:block/counter/counter_spruce_diorite", "y":90 },
+        "facing=south": { "model": "buildersaddition:block/counter/counter_spruce_diorite" },
+        "facing=east": { "model": "buildersaddition:block/counter/counter_spruce_diorite", "y":270 }
+    }
+}

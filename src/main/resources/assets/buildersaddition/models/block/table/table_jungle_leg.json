@@ -1,7 +1,7 @@
 {
     "textures": {
-        "tex": "minecraft:block/jungle_planks",
-        "particle": "minecraft:block/jungle_planks"
+        "tex": "minecraft:block/stripped_jungle_log",
+        "particle": "minecraft:block/stripped_jungle_log"
     },
     "display": {
         "gui": {

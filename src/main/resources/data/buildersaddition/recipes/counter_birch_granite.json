@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SSS",
+		"P P",
+		"PPP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "minecraft:birch_planks"
+		},
+		"S":
+		{
+			"item": "minecraft:polished_granite_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:counter_birch_granite",
+		"count": 1
+	}
+}

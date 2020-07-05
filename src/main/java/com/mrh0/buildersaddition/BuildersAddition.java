@@ -1,11 +1,13 @@
 package com.mrh0.buildersaddition;
 
 import com.mrh0.buildersaddition.event.BlockRegistry;
+import com.mrh0.buildersaddition.event.ClientEventHandler;
+import com.mrh0.buildersaddition.event.ContainerRegistry;
 import com.mrh0.buildersaddition.event.ItemRegistry;
+import com.mrh0.buildersaddition.event.TileEntityRegistry;
 import com.mrh0.buildersaddition.itemgroup.ModGroup;
 import com.mrh0.buildersaddition.proxy.*;
-
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
@@ -36,12 +38,15 @@ public class BuildersAddition {
     	
     	new BlockRegistry();
     	new ItemRegistry();
+    	new TileEntityRegistry();
+    	new ContainerRegistry();
     	
     	new Index();
 	}
 
     private void setup(final FMLCommonSetupEvent evt) {
     	proxy.init(evt);
+    	DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEventHandler::clientRegistry);
     }
 
     public void postInit(FMLLoadCompleteEvent evt) {

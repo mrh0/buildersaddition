@@ -1,0 +1,74 @@
+{
+    "textures": {
+        "white_wool": "minecraft:block/white_wool",
+        "bookshelf": "minecraft:block/bookshelf",
+        "particle": "minecraft:block/bookshelf"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Book14",
+            "from": [ 6, 1, 2 ], 
+            "to": [ 8, 7, 7 ], 
+            "faces": {
+                "east": { "texture": "#bookshelf", "uv": [ 6, 9, 8, 15 ] },
+                "south": { "texture": "#bookshelf", "uv": [ 6, 9, 8, 15 ] },
+                "west": { "texture": "#bookshelf", "uv": [ 6, 9, 8, 15 ] },
+                "up": { "texture": "#white_wool", "uv": [ 0, 0, 2, 5 ] }
+            }
+        },
+        {
+            "name": "Book15",
+            "from": [ 8, 1, 2 ], 
+            "to": [ 9, 6, 6 ], 
+            "faces": {
+                "east": { "texture": "#bookshelf", "uv": [ 8, 10, 9, 15 ] },
+                "south": { "texture": "#bookshelf", "uv": [ 8, 10, 9, 15 ] },
+                "west": { "texture": "#bookshelf", "uv": [ 8, 10, 9, 15 ] },
+                "up": { "texture": "#white_wool", "uv": [ 0, 0, 1, 4 ] }
+            }
+        },
+        {
+            "name": "Book16",
+            "from": [ 9, 1, 2 ], 
+            "to": [ 11, 5, 6 ], 
+            "faces": {
+                "east": { "texture": "#bookshelf", "uv": [ 10, 11, 11, 15 ] },
+                "south": { "texture": "#bookshelf", "uv": [ 9, 11, 11, 15 ] },
+                "west": { "texture": "#bookshelf", "uv": [ 9, 11, 10, 15 ] },
+                "up": { "texture": "#white_wool", "uv": [ 0, 0, 2, 4 ] }
+            }
+        }
+    ]
+}

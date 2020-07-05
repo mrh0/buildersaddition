@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/bookshelf/bookshelf_base",
+  "textures": {
+        "planks": "minecraft:block/oak_planks",
+        "particle": "minecraft:block/oak_planks"
+    }
+}

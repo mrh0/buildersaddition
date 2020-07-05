@@ -1,7 +1,8 @@
 package com.mrh0.buildersaddition.proxy;
 
 import com.mrh0.buildersaddition.Index;
-import com.mrh0.buildersaddition.client.render.SeatRenderFactory;
+import com.mrh0.buildersaddition.client.render.entity.SeatRenderFactory;
+
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;

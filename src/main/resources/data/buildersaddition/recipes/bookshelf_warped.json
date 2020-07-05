@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"PSP",
+		"PSP",
+		"PSP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:warped_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:warped_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bookshelf_warped",
+		"count": 2
+	}
+}

@@ -1,7 +1,7 @@
 {
     "textures": {
-        "tex": "minecraft:block/crimson_planks",
-        "particle": "minecraft:block/crimson_planks"
+        "tex": "minecraft:block/stripped_crimson_stem",
+        "particle": "minecraft:block/stripped_crimson_stem"
     },
     "display": {
         "gui": {

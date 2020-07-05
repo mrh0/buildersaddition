@@ -1,0 +1,60 @@
+{
+	"multipart": [
+		{
+			"when": { "facing": "north" },
+			"apply": { "model": "buildersaddition:block/bookshelf/bookshelf_crimson", "y":180 }
+		},
+		{
+			"when": { "facing": "west" },
+			"apply": { "model": "buildersaddition:block/bookshelf/bookshelf_crimson", "y":90}
+		},
+		{
+			"when": { "facing": "south" },
+			"apply": { "model": "buildersaddition:block/bookshelf/bookshelf_crimson" }
+		},
+		{
+			"when": { "facing": "east" },
+			"apply": { "model": "buildersaddition:block/bookshelf/bookshelf_crimson", "y":270 }
+		},
+		
+		{ "when": { "book0": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_0", "y":180 } },
+		{ "when": { "book0": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_0", "y":90 } },
+		{ "when": { "book0": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_0" } },
+		{ "when": { "book0": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_0", "y":270 } },
+		
+		{ "when": { "book1": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_1", "y":180 } },
+		{ "when": { "book1": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_1", "y":90 } },
+		{ "when": { "book1": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_1" } },
+		{ "when": { "book1": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_1", "y":270 } },
+		
+		{ "when": { "book2": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_2", "y":180 } },
+		{ "when": { "book2": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_2", "y":90 } },
+		{ "when": { "book2": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_2" } },
+		{ "when": { "book2": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_2", "y":270 } },
+		
+		{ "when": { "book3": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_3", "y":180 } },
+		{ "when": { "book3": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_3", "y":90 } },
+		{ "when": { "book3": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_3" } },
+		{ "when": { "book3": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_3", "y":270 } },
+		
+		{ "when": { "book4": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_4", "y":180 } },
+		{ "when": { "book4": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_4", "y":90 } },
+		{ "when": { "book4": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_4" } },
+		{ "when": { "book4": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_4", "y":270 } },
+		
+		{ "when": { "book5": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_5", "y":180 } },
+		{ "when": { "book5": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_5", "y":90 } },
+		{ "when": { "book5": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_5" } },
+		{ "when": { "book5": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_5", "y":270 } },
+		
+		{ "when": { "book6": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_6", "y":180 } },
+		{ "when": { "book6": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_6", "y":90 } },
+		{ "when": { "book6": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_6" } },
+		{ "when": { "book6": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_6", "y":270 } },
+		
+		{ "when": { "book7": "true", "facing": "north" }, "apply": { "model": "buildersaddition:block/bookshelf/books_7", "y":180 } },
+		{ "when": { "book7": "true", "facing": "west" }, "apply": { "model": "buildersaddition:block/bookshelf/books_7", "y":90 } },
+		{ "when": { "book7": "true", "facing": "south" }, "apply": { "model": "buildersaddition:block/bookshelf/books_7" } },
+		{ "when": { "book7": "true", "facing": "east" }, "apply": { "model": "buildersaddition:block/bookshelf/books_7", "y":270 } }
+	]
+}
