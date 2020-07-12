@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:acacia_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:acacia_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:acacia_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_acacia"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_acacia",
+		"count": 1
+	}
+}

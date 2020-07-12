@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:jungle_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:jungle_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:jungle_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_jungle"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_jungle",
+		"count": 1
+	}
+}

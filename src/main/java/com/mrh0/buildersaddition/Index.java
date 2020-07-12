@@ -1,31 +1,43 @@
 package com.mrh0.buildersaddition;
 
+import com.mrh0.buildersaddition.blocks.BedsideTable;
 import com.mrh0.buildersaddition.blocks.Bookshelf;
 import com.mrh0.buildersaddition.blocks.Cabinet;
 import com.mrh0.buildersaddition.blocks.Counter;
-import com.mrh0.buildersaddition.blocks.HedgeBlock;
+import com.mrh0.buildersaddition.blocks.Hedge;
+import com.mrh0.buildersaddition.blocks.IronLadder;
 import com.mrh0.buildersaddition.blocks.Pillar;
 import com.mrh0.buildersaddition.blocks.Planter;
+import com.mrh0.buildersaddition.blocks.Shelf;
 import com.mrh0.buildersaddition.blocks.ShopSign;
 import com.mrh0.buildersaddition.blocks.Stool;
 import com.mrh0.buildersaddition.blocks.Table;
 import com.mrh0.buildersaddition.blocks.VerticalSlab;
+import com.mrh0.buildersaddition.blocks.base.GenericBlock;
 import com.mrh0.buildersaddition.blocks.base.IConnects;
 import com.mrh0.buildersaddition.container.BookshelfContainer;
 import com.mrh0.buildersaddition.entity.SeatEntity;
 import com.mrh0.buildersaddition.event.ContainerRegistry;
 import com.mrh0.buildersaddition.event.TileEntityRegistry;
+import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import com.mrh0.buildersaddition.event.opts.ContainerOptions;
+import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import com.mrh0.buildersaddition.event.opts.TileEntityOptions;
+import com.mrh0.buildersaddition.items.base.GenericItem;
+import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;
 import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.CabinetTileEntity;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
+import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShopSignTileEntity;
-
+import com.mrh0.buildersaddition.util.RegistryUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.PaintingType;
 import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.Properties;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 
@@ -36,6 +48,8 @@ public class Index {
 	public static final Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.field_235344_mC_, Blocks.field_235345_mD_};
 	public static final String[] colors = {"black", "blue", "brown", "cyan", "gray", "green", "light_blue", 
 			"light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow"};
+	
+	public static final Item IRON_ROD = new GenericItem("iron_rod", new Properties(), new ItemOptions());
 	
 	public static final Block OAK_VERTICAL_SLAB = new VerticalSlab("oak", Blocks.OAK_PLANKS);
 	public static final Block SPRUCE_VERTICAL_SLAB = new VerticalSlab("spruce", Blocks.SPRUCE_PLANKS);
@@ -118,12 +132,12 @@ public class Index {
 	
 	public static final Block PLANTER = new Planter();
 	
-	public static final Block HEDGE_OAK = new HedgeBlock("oak", Blocks.OAK_LEAVES);
-	public static final Block HEDGE_SPRUCE = new HedgeBlock("spruce", Blocks.SPRUCE_LEAVES);
-	public static final Block HEDGE_BIRCH = new HedgeBlock("birch", Blocks.BIRCH_LEAVES);
-	public static final Block HEDGE_DARK_OAK = new HedgeBlock("dark_oak", Blocks.DARK_OAK_LEAVES);
-	public static final Block HEDGE_JUNGLE = new HedgeBlock("jungle", Blocks.JUNGLE_LEAVES);
-	public static final Block HEDGE_ACACIA = new HedgeBlock("acacia", Blocks.ACACIA_LEAVES);
+	public static final Block HEDGE_OAK = new Hedge("oak", Blocks.OAK_LEAVES);
+	public static final Block HEDGE_SPRUCE = new Hedge("spruce", Blocks.SPRUCE_LEAVES);
+	public static final Block HEDGE_BIRCH = new Hedge("birch", Blocks.BIRCH_LEAVES);
+	public static final Block HEDGE_DARK_OAK = new Hedge("dark_oak", Blocks.DARK_OAK_LEAVES);
+	public static final Block HEDGE_JUNGLE = new Hedge("jungle", Blocks.JUNGLE_LEAVES);
+	public static final Block HEDGE_ACACIA = new Hedge("acacia", Blocks.ACACIA_LEAVES);
 	
 	public static final Block[] COUNTER_ANDESITE = new Block[8];
 	public static final Block[] COUNTER_DIORITE = new Block[8];
@@ -140,6 +154,15 @@ public class Index {
 	public static final Block BOOKSHELF_WARPED = new Bookshelf("warped");
 	public static final Block BOOKSHELF_CRIMSON = new Bookshelf("crimson");
 	
+	public static final Block SHELF_OAK = new Shelf("oak");
+	public static final Block SHELF_BIRCH = new Shelf("birch");
+	public static final Block SHELF_SPRUCE = new Shelf("spruce");
+	public static final Block SHELF_DARK_OAK = new Shelf("dark_oak");
+	public static final Block SHELF_JUNGLE = new Shelf("jungle");
+	public static final Block SHELF_ACACIA = new Shelf("acacia");
+	public static final Block SHELF_WARPED = new Shelf("warped");
+	public static final Block SHELF_CRIMSON = new Shelf("crimson");
+	
 	public static final Block CABINET_OAK = new Cabinet("oak");
 	public static final Block CABINET_BIRCH = new Cabinet("birch");
 	public static final Block CABINET_SPRUCE = new Cabinet("spruce");
@@ -150,6 +173,11 @@ public class Index {
 	public static final Block CABINET_CRIMSON = new Cabinet("crimson");
 	
 	public static final Block SHOP_SIGN_WOOD = new ShopSign("wood");
+	public static final Block IRON_LADDER = new IronLadder();
+	
+	public static final Block[] BEDSIDE_TABLE = new BedsideTable[8];
+	
+	public static final Block ROUGH_IRON_BLOCK = new GenericBlock("rough_iron_block", Block.Properties.from(Blocks.IRON_BLOCK), new BlockOptions());
 		
 	static {
 		final IConnects cobbleConnector = (state, source) -> { 
@@ -205,6 +233,10 @@ public class Index {
 			COUNTER_ALL[i*4+2] = COUNTER_GRANITE[i];
 			COUNTER_ALL[i*4+3] = COUNTER_BLACKSTONE[i];
 		}
+		
+		for(int i = 0; i < woods.length; i++) {
+			BEDSIDE_TABLE[i] = new BedsideTable(woods[i], woodBlocks[i]);
+		}
 	}
 	
 	public static EntityType<SeatEntity> SEAT_ENTITY_TYPE;
@@ -218,9 +250,25 @@ public class Index {
 	public static TileEntityType<BookshelfTileEntity> BOOKSHELF_TILE_ENTITY_TYPE = 
 			TileEntityRegistry.instance.<BookshelfTileEntity>register(BookshelfTileEntity::new, new TileEntityOptions("bookshelf", BOOKSHELF_OAK, BOOKSHELF_BIRCH, BOOKSHELF_SPRUCE, BOOKSHELF_DARK_OAK, BOOKSHELF_JUNGLE, BOOKSHELF_ACACIA, BOOKSHELF_WARPED, BOOKSHELF_CRIMSON));
 	
+	public static TileEntityType<ShelfTileEntity> SHELF_TILE_ENTITY_TYPE = 
+			TileEntityRegistry.instance.<ShelfTileEntity>register(ShelfTileEntity::new, new TileEntityOptions("shelf", SHELF_OAK));
+	
 	public static TileEntityType<ShopSignTileEntity> SHOP_SIGN_TILE_ENTITY_TYPE = 
 			TileEntityRegistry.instance.<ShopSignTileEntity>register(ShopSignTileEntity::new, new TileEntityOptions("shop_sign", SHOP_SIGN_WOOD));
+	
+	public static TileEntityType<BedsideTileEntity> BEDSIDE_TILE_ENTITY_TYPE = 
+			TileEntityRegistry.instance.<BedsideTileEntity>register(BedsideTileEntity::new, new TileEntityOptions("bedside_table", BEDSIDE_TABLE));
 
 	public static ContainerType<BookshelfContainer> BOOKSHELF_CONTAINER = (ContainerType<BookshelfContainer>) 
 			ContainerRegistry.instance.register(IForgeContainerType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
+
+
+
+	public static PaintingType SUMMER_FIELD_PAINTING = RegistryUtil.createPainting("summer_field", 1, 1);
+	public static PaintingType SHARD_PAINTING = RegistryUtil.createPainting("shard", 1, 1);
+	public static PaintingType SKARGARD_PAINTING = RegistryUtil.createPainting("skargard", 2, 1);
+	public static PaintingType HORIZONS_PAINTING = RegistryUtil.createPainting("horizons", 1, 1);
+	public static PaintingType PORTRAIT_PAINTING = RegistryUtil.createPainting("portrait", 1, 1);
+	public static PaintingType PROMO_PAINTING = RegistryUtil.createPainting("promo", 1, 1);
+
 }

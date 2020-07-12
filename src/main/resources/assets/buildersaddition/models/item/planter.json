@@ -1,5 +1,5 @@
 {
-    "parent": "buildersaddition:block/deco/planter_dirt",
+    "parent": "buildersaddition:block/other/planter_dirt",
     "display": {
         "gui": {
             "rotation": [ 30, 225, 0 ],

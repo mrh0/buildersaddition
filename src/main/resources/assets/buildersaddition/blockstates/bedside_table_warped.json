@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/bedside_table/bedside_table_warped", "y":270 },
+        "facing=west": { "model": "buildersaddition:block/bedside_table/bedside_table_warped", "y":180 },
+        "facing=south": { "model": "buildersaddition:block/bedside_table/bedside_table_warped", "y":90 },
+        "facing=east": { "model": "buildersaddition:block/bedside_table/bedside_table_warped" }
+    }
+}

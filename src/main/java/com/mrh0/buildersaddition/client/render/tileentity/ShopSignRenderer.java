@@ -3,6 +3,7 @@ package com.mrh0.buildersaddition.client.render.tileentity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mrh0.buildersaddition.blocks.ShopSign;
 import com.mrh0.buildersaddition.state.FullDirectionalState;
+import com.mrh0.buildersaddition.state.ShopSignState;
 import com.mrh0.buildersaddition.tileentity.ShopSignTileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
@@ -17,7 +18,6 @@ import net.minecraft.util.math.vector.Vector3f;
 public class ShopSignRenderer extends TileEntityRenderer<ShopSignTileEntity> {
 
 	private final Minecraft mc = Minecraft.getInstance();
-	private ItemStack item = new ItemStack(Items.DIAMOND_PICKAXE, 1);
 
 	public ShopSignRenderer(TileEntityRendererDispatcher rendererDispatcherIn) {
 		super(rendererDispatcherIn);
@@ -28,27 +28,57 @@ public class ShopSignRenderer extends TileEntityRenderer<ShopSignTileEntity> {
 	@Override
 	public void render(ShopSignTileEntity tileEntityIn, float partialTicks, MatrixStack matrixStackIn,
 			IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
-		FullDirectionalState state = tileEntityIn.getBlockState().get(ShopSign.STATE);
+		ShopSignState state = tileEntityIn.getBlockState().get(ShopSign.STATE);
+		
+		ItemStack item = tileEntityIn.getDisplayItem();
+		
+		if(item == ItemStack.EMPTY)
+			return;
+		
+		//First side
 		matrixStackIn.push();
-		matrixStackIn.translate(.5F, .5F, .5F);
-		if(state.getAxis() == Axis.X) {
-			matrixStackIn.translate(0, offsetY(state), u1);
+		matrixStackIn.translate(.5f, .5f, .5f);
+		if(state.getAxis() == Axis.Z) {
+			matrixStackIn.rotate(Vector3f.YP.rotationDegrees(90f));
 		}
-		else {
-			matrixStackIn.rotate(Vector3f.YP.rotationDegrees(90.0F));
-			matrixStackIn.translate(0, offsetY(state), u1);
+		matrixStackIn.translate(offsetSide(state), offsetY(state), u1);
+		matrixStackIn.scale(0.8f, 0.8f, .8f);
+        Minecraft.getInstance().getItemRenderer().renderItem(item, ItemCameraTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn);
+        matrixStackIn.pop();
+        
+        //Other side
+        matrixStackIn.push();
+		matrixStackIn.translate(.5f, .5f, .5f);
+		matrixStackIn.rotate(Vector3f.YP.rotationDegrees(180f));
+		if(state.getAxis() == Axis.Z) {
+			matrixStackIn.rotate(Vector3f.YP.rotationDegrees(90f));
 		}
-		matrixStackIn.scale(0.8F, 0.8F, .8F);
+		matrixStackIn.translate(-offsetSide(state), offsetY(state), u1);
+		matrixStackIn.scale(0.8f, 0.8f, .8f);
         Minecraft.getInstance().getItemRenderer().renderItem(item, ItemCameraTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn);
         matrixStackIn.pop();
 	}
 	
-	private float offsetY(FullDirectionalState state) {
+	private float offsetY(ShopSignState state) {
 		switch(state.getDirection()) {
 			case DOWN:
 				return -u1;
 			case UP:
 				return u1;
+		}
+		return 0f;
+	}
+	
+	private float offsetSide(ShopSignState state) {
+		switch(state.getDirection()) {
+			case NORTH:
+				return u1 - state.getOffset()/16f;
+			case SOUTH:
+				return -u1 + state.getOffset()/16f;
+			case EAST:
+				return u1 - state.getOffset()/16f;
+			case WEST:
+				return -u1 + state.getOffset()/16f;
 		}
 		return 0f;
 	}

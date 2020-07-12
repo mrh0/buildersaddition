@@ -1,0 +1,8 @@
+{
+  "parent": "buildersaddition:block/bedside_table/bedside_table_base",
+  "textures": {
+        "stripped": "minecraft:block/stripped_warped_stem",
+        "planks": "minecraft:block/warped_planks",
+        "particle": "minecraft:block/warped_planks"
+    }
+}

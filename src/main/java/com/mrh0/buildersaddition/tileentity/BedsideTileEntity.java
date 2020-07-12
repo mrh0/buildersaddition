@@ -19,7 +19,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 public class BedsideTileEntity extends BaseChestTileEntity {
 
 	public BedsideTileEntity() {
-		super(Index.CABINET_TILE_ENTITY_TYPE);
+		super(Index.BEDSIDE_TILE_ENTITY_TYPE);
 	}
 	
 	@Override

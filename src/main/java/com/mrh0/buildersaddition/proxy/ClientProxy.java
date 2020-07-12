@@ -10,15 +10,15 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 public class ClientProxy extends CommonProxy {
 	@Override
-	public void init(final FMLCommonSetupEvent evt){
+	public void init(final FMLCommonSetupEvent evt) {
 		RenderingRegistry.registerEntityRenderingHandler(Index.SEAT_ENTITY_TYPE, new SeatRenderFactory());
 		
-		RenderType translucent = RenderType.getTranslucent();        
-        RenderTypeLookup.setRenderLayer(Index.HEDGE_OAK, translucent);
-        RenderTypeLookup.setRenderLayer(Index.HEDGE_BIRCH, translucent);
-        RenderTypeLookup.setRenderLayer(Index.HEDGE_SPRUCE, translucent);
-        RenderTypeLookup.setRenderLayer(Index.HEDGE_DARK_OAK, translucent);
-        RenderTypeLookup.setRenderLayer(Index.HEDGE_JUNGLE, translucent);
-        RenderTypeLookup.setRenderLayer(Index.HEDGE_ACACIA, translucent);
+		RenderType cutout = RenderType.getCutoutMipped();        
+        RenderTypeLookup.setRenderLayer(Index.HEDGE_OAK, cutout);
+        RenderTypeLookup.setRenderLayer(Index.HEDGE_BIRCH, cutout);
+        RenderTypeLookup.setRenderLayer(Index.HEDGE_SPRUCE, cutout);
+        RenderTypeLookup.setRenderLayer(Index.HEDGE_DARK_OAK, cutout);
+        RenderTypeLookup.setRenderLayer(Index.HEDGE_JUNGLE, cutout);
+        RenderTypeLookup.setRenderLayer(Index.HEDGE_ACACIA, cutout);
 	}
 }

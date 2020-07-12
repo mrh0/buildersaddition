@@ -1,7 +1,14 @@
 {
+	"block.minecraft.stonecutter":"Bench Saw",
+	"container.stonecutter":"Bench Saw",
+
 	"itemGroup.buildersaddition:builders_addition_group": "Builders Crafts & Additions",
 	
+	"item.buildersaddition.iron_rod":"Iron Rod",
+	
 	"block.buildersaddition.planter":"Barrel Planter",
+	"block.buildersaddition.iron_ladder":"Iron Ladder",
+	"block.buildersaddition.shop_sign_wood":"Wooden Shop Sign",
 	
 	"block.buildersaddition.stone_vertical_slab":"Stone Panel",
 	"block.buildersaddition.acacia_vertical_slab":"Acacia Panel",
@@ -89,6 +96,15 @@
 	"block.buildersaddition.cabinet_jungle":"Jungle Cabinet",
 	"block.buildersaddition.cabinet_crimson":"Crimson Cabinet",
 	"block.buildersaddition.cabinet_warped":"Warped Cabinet",
+	
+	"block.buildersaddition.bedside_table_oak":"Oak Bedside Table",
+	"block.buildersaddition.bedside_table_spruce":"Spruce Bedside Table",
+	"block.buildersaddition.bedside_table_birch":"Birch Bedside Table",
+	"block.buildersaddition.bedside_table_dark_oak":"Dark Oak Bedside Table",
+	"block.buildersaddition.bedside_table_acacia":"Acacia Bedside Table",
+	"block.buildersaddition.bedside_table_jungle":"Jungle Bedside Table",
+	"block.buildersaddition.bedside_table_crimson":"Crimson Bedside Table",
+	"block.buildersaddition.bedside_table_warped":"Warped Bedside Table",
 	
 	"block.buildersaddition.hedge_oak":"Oak Hedge",
 	"block.buildersaddition.hedge_spruce":"Spruce Hedge",
@@ -263,5 +279,6 @@
 	
 	"container.buildersaddition.counter":"Counter",
 	"container.buildersaddition.cabinet":"Cabinet",
+	"container.buildersaddition.bedside_table":"Bedside Table",
 	"container.buildersaddition.bookshelf":"Bookshelf"
 }

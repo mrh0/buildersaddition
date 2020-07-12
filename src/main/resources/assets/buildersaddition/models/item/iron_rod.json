@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0" : "buildersaddition:item/iron_rod"
+	}
+}

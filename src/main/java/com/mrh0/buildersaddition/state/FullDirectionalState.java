@@ -75,4 +75,8 @@ public enum FullDirectionalState implements IStringSerializable {
 		}
 		return Direction.NORTH;
 	}
+	
+	public boolean isHorizontal() {
+		return this == North || this == East || this == South || this == West;
+	}
 }

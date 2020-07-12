@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"NN",
+		"PP",
+		"PP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"tag": "buildersaddition:vertical_slab"
+		},
+		"N":
+		{
+			"item": "minecraft:iron_nugget"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:shop_sign_wood",
+		"count": 1
+	}
+}

@@ -1,6 +1,6 @@
 {
     "variants": {
-    	"type=dirt": { "model": "buildersaddition:block/deco/planter_dirt"},
-    	"type=farmland": { "model": "buildersaddition:block/deco/planter"}
+    	"type=dirt": { "model": "buildersaddition:block/other/planter_dirt"},
+    	"type=farmland": { "model": "buildersaddition:block/other/planter"}
     }
 }

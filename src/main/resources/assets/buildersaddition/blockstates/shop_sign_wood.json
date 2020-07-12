@@ -9,6 +9,21 @@
         "state=north": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":180 },
         "state=west": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":90 },
         "state=south": { "model": "buildersaddition:block/shop_sign/shop_sign_wood" },
-        "state=east": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":270 }
+        "state=east": { "model": "buildersaddition:block/shop_sign/shop_sign_wood", "y":270 },
+        
+        "state=north_pillar": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_pillar", "y":180 },
+        "state=west_pillar": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_pillar", "y":90 },
+        "state=south_pillar": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_pillar" },
+        "state=east_pillar": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_pillar", "y":270 },
+        
+        "state=north_wall": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_wall", "y":180 },
+        "state=west_wall": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_wall", "y":90 },
+        "state=south_wall": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_wall" },
+        "state=east_wall": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_wall", "y":270 },
+        
+        "state=north_fence": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_fence", "y":180 },
+        "state=west_fence": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_fence", "y":90 },
+        "state=south_fence": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_fence" },
+        "state=east_fence": { "model": "buildersaddition:block/shop_sign/shop_sign_wood_fence", "y":270 }
     }
 }

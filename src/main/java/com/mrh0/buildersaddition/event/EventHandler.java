@@ -6,6 +6,7 @@ import com.mrh0.buildersaddition.entity.SeatEntity;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.PaintingType;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityType;
@@ -43,8 +44,20 @@ public class EventHandler {
 	
 	@SubscribeEvent
     public static void registerEntityType(Register<EntityType<?>> evt) {
-    	Index.SEAT_ENTITY_TYPE = EntityType.Builder.<SeatEntity>create(SeatEntity::new, EntityClassification.MISC).setCustomClientFactory((packet,world) -> new SeatEntity(Index.SEAT_ENTITY_TYPE, world)).build(BuildersAddition.MODID+":seat");
+    	Index.SEAT_ENTITY_TYPE = EntityType.Builder.<SeatEntity>create(SeatEntity::new, EntityClassification.MISC).setCustomClientFactory((packet, world) -> new SeatEntity(Index.SEAT_ENTITY_TYPE, world)).build(BuildersAddition.MODID+":seat");
     	Index.SEAT_ENTITY_TYPE.setRegistryName(new ResourceLocation(BuildersAddition.MODID, "seat"));
     	evt.getRegistry().register(Index.SEAT_ENTITY_TYPE);
     }
+	
+	@SubscribeEvent
+	public static void registerPaintings(Register<PaintingType> evt){
+		IForgeRegistry<PaintingType> reg = evt.getRegistry();
+		
+		reg.register(Index.SUMMER_FIELD_PAINTING);
+		reg.register(Index.SHARD_PAINTING);
+		reg.register(Index.SKARGARD_PAINTING);
+		reg.register(Index.HORIZONS_PAINTING);
+		reg.register(Index.PORTRAIT_PAINTING);
+		//reg.register(Index.PROMO_PAINTING);
+	}
 }

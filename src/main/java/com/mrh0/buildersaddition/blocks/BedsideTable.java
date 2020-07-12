@@ -46,14 +46,20 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 	public static final DirectionProperty FACING = DirectionProperty.create("facing",
 			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
 
-	private static VoxelShape SHAPE_COUNTERTOP = Block.makeCuboidShape(0d, 15d, 0d, 16d, 16d, 16d);
-	private static VoxelShape SHAPE_NORTH = Block.makeCuboidShape(0d, 0d, 1d, 16d, 16d, 16d);
-	private static VoxelShape SHAPE_EAST = Block.makeCuboidShape(0d, 0d, 0d, 15d, 16d, 16d);
-	private static VoxelShape SHAPE_SOUTH = Block.makeCuboidShape(0d, 0d, 0d, 16d, 16d, 15d);
-	private static VoxelShape SHAPE_WEST = Block.makeCuboidShape(1d, 0d, 0d, 16d, 16d, 16d);
+	protected static final VoxelShape SHAPE_BASE = Block.makeCuboidShape(0d, 14d, 0d, 16d, 16d, 16d);
+	protected static final VoxelShape SHAPE_NW = Block.makeCuboidShape(1d, 0d, 1d, 3d, 14d, 3d);
+	protected static final VoxelShape SHAPE_NE = Block.makeCuboidShape(13d, 0d, 1d, 15d, 14d, 3d);
+	protected static final VoxelShape SHAPE_SW = Block.makeCuboidShape(1d, 0d, 13d, 3d, 14d, 15d);
+	protected static final VoxelShape SHAPE_SE = Block.makeCuboidShape(13d, 0d, 13d, 15d, 14d, 15d);
+	
+	protected static final VoxelShape SHAPE_BOX_X = Block.makeCuboidShape(1d, 8d, 3d, 15d, 16d, 13d);
+	protected static final VoxelShape SHAPE_BOX_Z = Block.makeCuboidShape(3d, 8d, 1d, 13d, 16d, 15d);
+	
+	protected static final VoxelShape SHAPE_X = VoxelShapes.or(SHAPE_BASE, SHAPE_NW, SHAPE_NE, SHAPE_SW, SHAPE_SE, SHAPE_BOX_X);
+	protected static final VoxelShape SHAPE_Z = VoxelShapes.or(SHAPE_BASE, SHAPE_NW, SHAPE_NE, SHAPE_SW, SHAPE_SE, SHAPE_BOX_Z);
 
 	public BedsideTable(String name, Block source) {
-		super("counter_" + name, source);
+		super("bedside_table_" + name, source);
 	}
 
 	@Override
@@ -63,7 +69,7 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		return this.getDefaultState().with(FACING, c.getPlacementHorizontalFacing().getOpposite()).with(WATERLOGGED,
+		return this.getDefaultState().with(FACING, c.getPlacementHorizontalFacing()).with(WATERLOGGED,
 				Boolean.valueOf(c.getWorld().getFluidState(c.getPos()).getFluid() == Fluids.WATER));
 	}
 
@@ -99,22 +105,22 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 	private VoxelShape getShapeForDirection(Direction d) {
 		switch (d) {
 		case NORTH:
-			return SHAPE_NORTH;
+			return SHAPE_Z;
 		case SOUTH:
-			return SHAPE_SOUTH;
+			return SHAPE_Z;
 		case EAST:
-			return SHAPE_EAST;
+			return SHAPE_X;
 		case WEST:
-			return SHAPE_WEST;
+			return SHAPE_X;
 		default:
 			break;
 		}
-		return SHAPE_NORTH;
+		return SHAPE_Z;
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return VoxelShapes.or(SHAPE_COUNTERTOP, getShapeForDirection(state.get(FACING)));
+		return getShapeForDirection(state.get(FACING));
 	}
 
 	@Override

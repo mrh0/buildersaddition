@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"I I",
+		"III",
+		"I I"
+	],
+	"key":
+	{
+		"I":
+		{
+			"item": "buildersaddition:iron_rod"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:iron_ladder",
+		"count": 3
+	}
+}
