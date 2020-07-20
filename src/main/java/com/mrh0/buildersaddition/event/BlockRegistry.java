@@ -19,7 +19,7 @@ public class BlockRegistry extends GenericRegistry<Block, BlockOptions>{
 	public Block register(Block block, BlockOptions opts) {
 		Block b = super.register(block, opts);
 		if(opts.makeItem)
-			ItemRegistry.instance.register(new BaseBlockItem(block), opts.itemOpts);
+			ItemRegistry.instance.register(new BaseBlockItem(block, opts.itemOpts), opts.itemOpts);
 		return b;
 	}
 

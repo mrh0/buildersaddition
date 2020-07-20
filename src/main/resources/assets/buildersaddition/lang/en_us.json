@@ -8,7 +8,12 @@
 	
 	"block.buildersaddition.planter":"Barrel Planter",
 	"block.buildersaddition.iron_ladder":"Iron Ladder",
+	"block.buildersaddition.iron_fence":"Iron Fence",
+	"block.buildersaddition.iron_fence_rough":"Rough Iron Fence",
 	"block.buildersaddition.shop_sign_wood":"Wooden Shop Sign",
+	"block.buildersaddition.rough_iron_block":"Rough Iron Block",
+	"block.buildersaddition.gravel_path":"Gravel Path",
+	"block.buildersaddition.crossrail":"Crossrail",
 	
 	"block.buildersaddition.stone_vertical_slab":"Stone Panel",
 	"block.buildersaddition.acacia_vertical_slab":"Acacia Panel",
@@ -69,6 +74,7 @@
 	"block.buildersaddition.cut_smooth_stone_pillar":"Cut Smooth Stone Pillar",
 	"block.buildersaddition.cut_basalt_pillar":"Cut Basalt Pillar",
 	"block.buildersaddition.cut_blackstone_pillar":"Cut Blackstone Bricks Pillar",
+	"block.buildersaddition.cut_quartz_bricks_pillar":"Cut Quartz Bricks Pillar",
 	
 	"block.buildersaddition.table_oak":"Oak Table",
 	"block.buildersaddition.table_spruce":"Spruce Table",
@@ -87,6 +93,15 @@
 	"block.buildersaddition.bookshelf_jungle":"Jungle Bookshelf",
 	"block.buildersaddition.bookshelf_crimson":"Crimson Bookshelf",
 	"block.buildersaddition.bookshelf_warped":"Warped Bookshelf",
+	
+	"block.buildersaddition.shelf_oak":"Oak Shelf",
+	"block.buildersaddition.shelf_spruce":"Spruce Shelf",
+	"block.buildersaddition.shelf_birch":"Birch Shelf",
+	"block.buildersaddition.shelf_dark_oak":"Dark Oak Shelf",
+	"block.buildersaddition.shelf_acacia":"Acacia Shelf",
+	"block.buildersaddition.shelf_jungle":"Jungle Shelf",
+	"block.buildersaddition.shelf_crimson":"Crimson Shelf",
+	"block.buildersaddition.shelf_warped":"Warped Shelf",
 	
 	"block.buildersaddition.cabinet_oak":"Oak Cabinet",
 	"block.buildersaddition.cabinet_spruce":"Spruce Cabinet",
@@ -280,5 +295,28 @@
 	"container.buildersaddition.counter":"Counter",
 	"container.buildersaddition.cabinet":"Cabinet",
 	"container.buildersaddition.bedside_table":"Bedside Table",
-	"container.buildersaddition.bookshelf":"Bookshelf"
+	"container.buildersaddition.bookshelf":"Bookshelf",
+	"container.buildersaddition.shelf":"Shelf",
+	"container.buildersaddition.speaker": "Midi Speaker",
+	"container.buildersaddition.speaker.disconnect": "Disconnect",
+	"container.buildersaddition.speaker.connect": "Connect",
+	
+	"block.buildersaddition.speaker":"Midi Speaker [WIP]",
+	
+	"note.buildersaddition.bass": "Bass",
+	"note.buildersaddition.snare": "Snare",
+	"note.buildersaddition.hat": "Hat",
+	"note.buildersaddition.basedrum": "Basedrum",
+	"note.buildersaddition.bell": "Bell",
+	"note.buildersaddition.flute": "Flute",
+	"note.buildersaddition.chime": "Chime",
+	"note.buildersaddition.guitar": "Guitar",
+	"note.buildersaddition.xylophone": "Xylophone",
+	"note.buildersaddition.iron_xylophone": "Iron Xylophone",
+	"note.buildersaddition.cow_bell": "Cow Bell",
+	"note.buildersaddition.didgeridoo": "Didgeridoo",
+	"note.buildersaddition.bit": "Bit",
+	"note.buildersaddition.banjo": "Banjo",
+	"note.buildersaddition.pling": "Pling",
+	"note.buildersaddition.harp": "Harp"
 }

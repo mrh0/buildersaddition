@@ -16,7 +16,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class BookshelfContainer extends BaseContainer {
 
-	public BookshelfTileEntity te;
+	//public BookshelfTileEntity te;
 	private ItemStackHandler handler;
 	public static final int SLOTS = 18;
 	
@@ -29,15 +29,14 @@ public class BookshelfContainer extends BaseContainer {
 	}
 
 	public static BookshelfContainer create(int windowId, PlayerInventory playerInventory, PacketBuffer buf) {
-		return new BookshelfContainer(playerInventory, buf.readBlockPos(), windowId, null);
+		BlockPos pos = buf.readBlockPos();
+		return new BookshelfContainer(playerInventory, pos, windowId, ((BookshelfTileEntity) Minecraft.getInstance().world.getTileEntity(pos)).handler);
 	}
 
 	public BookshelfContainer(PlayerInventory playerInv, BlockPos pos, int window, ItemStackHandler inv){
 		super(Index.BOOKSHELF_CONTAINER, window);
-		this.te = (BookshelfTileEntity) Minecraft.getInstance().world.getTileEntity(pos);
+		//this.te = (BookshelfTileEntity) te.getWorld().getTileEntity(pos);
 		this.handler = inv;
-		if(this.handler == null)
-			this.handler = te.handler;
 		
 		int xPos = 8;
 		int yPos = 18;

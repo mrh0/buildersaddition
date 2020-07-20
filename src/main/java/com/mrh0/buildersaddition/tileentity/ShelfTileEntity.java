@@ -3,6 +3,7 @@ package com.mrh0.buildersaddition.tileentity;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.Bookshelf;
 import com.mrh0.buildersaddition.container.BookshelfContainer;
+import com.mrh0.buildersaddition.container.ShelfContainer;
 import com.mrh0.buildersaddition.inventory.ModInventory;
 
 import net.minecraft.block.BlockState;
@@ -12,6 +13,8 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
@@ -28,7 +31,7 @@ public class ShelfTileEntity extends LockableLootTileEntity implements INamedCon
 	
 	@Override
 	public Container createMenu(int windowId, PlayerInventory inv, PlayerEntity player) {
-		return BookshelfContainer.create(windowId, inv, this.getPos(), this.handler);
+		return ShelfContainer.create(windowId, inv, this.getPos(), this.handler);
 	}
 	
 	@Override
@@ -44,7 +47,7 @@ public class ShelfTileEntity extends LockableLootTileEntity implements INamedCon
 	}
 	
 	public void changed(int slot) {
-
+		this.markDirty();
 	}
 
 	@Override
@@ -120,5 +123,30 @@ public class ShelfTileEntity extends LockableLootTileEntity implements INamedCon
 			handler.setStackInSlot(i, itemsIn.get(i));
 		}
 		this.markDirty();
+	}
+	
+	@Override
+	public SUpdateTileEntityPacket getUpdatePacket() {
+		CompoundNBT update = getUpdateTag();
+        int data = 0;
+        return new SUpdateTileEntityPacket(this.pos, data, update);
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+		CompoundNBT update = pkt.getNbtCompound();
+        handleUpdateTag(this.getBlockState(), update);
+	}
+	
+	@Override
+	public CompoundNBT getUpdateTag() {
+		CompoundNBT nbt = new CompoundNBT();
+		write(nbt);
+        return nbt;
+	}
+	
+	@Override
+	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
+		func_230337_a_(state, nbt);
 	}
 }

@@ -15,15 +15,15 @@ public class BookshelfGui extends ContainerScreen<BookshelfContainer> {
 
 	private static final ResourceLocation GUI = new ResourceLocation(BuildersAddition.MODID,
 			"textures/gui/container/bookshelf.png");
-	public BookshelfTileEntity te;
-	public BookshelfContainer screenContainer;
+	//public BookshelfTileEntity te;
+	//public BookshelfContainer screenContainer;
 
 	private ArrayList<String> captext = new ArrayList<String>();
 
 	public BookshelfGui(BookshelfContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
 		super(screenContainer, inv, titleIn);
-		this.te = screenContainer.te;
-		this.screenContainer = screenContainer;
+		//this.te = screenContainer.te;
+		//this.screenContainer = screenContainer;
 
 		this.xSize = 176;
 		this.ySize = 148;

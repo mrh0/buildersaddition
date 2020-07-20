@@ -38,10 +38,11 @@ public class ShopSignRenderer extends TileEntityRenderer<ShopSignTileEntity> {
 		//First side
 		matrixStackIn.push();
 		matrixStackIn.translate(.5f, .5f, .5f);
+		matrixStackIn.rotate(Vector3f.YP.rotationDegrees(180f));
 		if(state.getAxis() == Axis.Z) {
 			matrixStackIn.rotate(Vector3f.YP.rotationDegrees(90f));
 		}
-		matrixStackIn.translate(offsetSide(state), offsetY(state), u1);
+		matrixStackIn.translate(-offsetSide(state), offsetY(state), u1);
 		matrixStackIn.scale(0.8f, 0.8f, .8f);
         Minecraft.getInstance().getItemRenderer().renderItem(item, ItemCameraTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn);
         matrixStackIn.pop();
@@ -49,11 +50,10 @@ public class ShopSignRenderer extends TileEntityRenderer<ShopSignTileEntity> {
         //Other side
         matrixStackIn.push();
 		matrixStackIn.translate(.5f, .5f, .5f);
-		matrixStackIn.rotate(Vector3f.YP.rotationDegrees(180f));
 		if(state.getAxis() == Axis.Z) {
 			matrixStackIn.rotate(Vector3f.YP.rotationDegrees(90f));
 		}
-		matrixStackIn.translate(-offsetSide(state), offsetY(state), u1);
+		matrixStackIn.translate(offsetSide(state), offsetY(state), u1);
 		matrixStackIn.scale(0.8f, 0.8f, .8f);
         Minecraft.getInstance().getItemRenderer().renderItem(item, ItemCameraTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn);
         matrixStackIn.pop();

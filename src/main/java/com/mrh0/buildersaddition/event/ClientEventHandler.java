@@ -2,8 +2,14 @@ package com.mrh0.buildersaddition.event;
 
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.Index;
+import com.mrh0.buildersaddition.client.render.tileentity.ShelfRenderer;
 import com.mrh0.buildersaddition.client.render.tileentity.ShopSignRenderer;
+import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.gui.BookshelfGui;
+import com.mrh0.buildersaddition.gui.ShelfGui;
+import com.mrh0.buildersaddition.gui.SpeakerGui;
+import com.mrh0.buildersaddition.midi.MidiHandler;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScreenManager;
@@ -43,32 +49,13 @@ public class ClientEventHandler {
 	
 	public static void clientRegistry() {
     	ScreenManager.registerFactory(Index.BOOKSHELF_CONTAINER, BookshelfGui::new);
+    	ScreenManager.registerFactory(Index.SHELF_CONTAINER, ShelfGui::new);
+    	ScreenManager.registerFactory(Index.SPEAKER_CONTAINER, SpeakerGui::new);
     	ClientRegistry.bindTileEntityRenderer(Index.SHOP_SIGN_TILE_ENTITY_TYPE, ShopSignRenderer::new);
+    	ClientRegistry.bindTileEntityRenderer(Index.SHELF_TILE_ENTITY_TYPE, ShelfRenderer::new);
+    	
+    	//Start MIDI controller.
+    	if(Config.MIDI_ENABLED.get() && Config.MIDI_INPUT_ENABLED.get())
+    		BuildersAddition.midi = new MidiHandler(null);
     }
-	
-	/*@SubscribeEvent
-	public static void registerModel(ModelRegistryEvent evt){
-		ModelLoaderRegistry.registerLoader(new ResourceLocation("buildersaddition:block/bookshelf"), 
-		new IModelLoader() {
-
-			@Override
-			public void onResourceManagerReload(IResourceManager resourceManager) {
-			}
-
-			@Override
-			public IMultipartModelGeometry read(JsonDeserializationContext deserializationContext, JsonObject modelContents) {
-				return new IMultipartModelGeometry() {
-					@Override
-					public Collection getParts() {
-						return null;
-					}
-
-					@Override
-					public Optional getPart(String name) {
-						return null;
-					}
-				};
-			}
-		});
-	}*/
 }

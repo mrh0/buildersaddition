@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition.blocks.base;
 
+import com.mrh0.buildersaddition.event.opts.BlockOptions;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
@@ -22,6 +24,11 @@ public class BaseDerivativeBlock extends BaseBlock {
 		this.source = source;
 	}
 	
+	public BaseDerivativeBlock(String name, Block source, BlockOptions opts) {
+		super(name, Properties.from(source), opts);
+		this.source = source;
+	}
+	
 	public Block getSourceBlock() {
 		return this.source;
 	}
@@ -38,6 +45,16 @@ public class BaseDerivativeBlock extends BaseBlock {
 	
 	@Override
 	public int getFireSpreadSpeed(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.getFireSpreadSpeed(state, world, pos, face);
+		return source.getFireSpreadSpeed(source.getDefaultState(), world, pos, face);
+	}
+	
+	@Override
+	public ToolType getHarvestTool(BlockState state) {
+		return source.getHarvestTool(source.getDefaultState());
+	}
+	
+	@Override
+	public int getHarvestLevel(BlockState state) {
+		return source.getHarvestLevel(source.getDefaultState());
 	}
 }

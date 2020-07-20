@@ -11,4 +11,10 @@ public class BaseBlock extends Block{
 		this.setRegistryName(name);
 		BlockRegistry.instance.register(this, new BlockOptions());
 	}
+	
+	public BaseBlock(String name, Properties block, BlockOptions opts) {
+		super(block);
+		this.setRegistryName(name);
+		BlockRegistry.instance.register(this, opts);
+	}
 }

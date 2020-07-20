@@ -1,0 +1,9 @@
+{
+  "parent": "buildersaddition:block/pillar/cut_pillar_bottom_base",
+  "textures": {
+        "side": "minecraft:block/quartz_bricks",
+        "particle": "minecraft:block/quartz_block_top",
+        "top": "minecraft:block/quartz_block_top",
+        "platform": "minecraft:block/quartz_block_top"
+    }
+}

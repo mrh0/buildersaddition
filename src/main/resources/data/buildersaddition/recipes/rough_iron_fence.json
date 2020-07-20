@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "buildersaddition:iron_fence"
+	},
+	"result": "buildersaddition:iron_fence_rough",
+	"experience": 0.15,
+	"cookingtime": 200
+}

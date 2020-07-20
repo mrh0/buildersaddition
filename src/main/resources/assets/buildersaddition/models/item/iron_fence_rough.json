@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:item/iron_fence",
+  "textures": {
+        "iron_block": "minecraft:block/anvil",
+        "particle": "minecraft:block/anvil"
+    }
+}

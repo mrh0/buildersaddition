@@ -129,7 +129,7 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 		if (worldIn.isRemote) {
 			return ActionResultType.SUCCESS;
 		} else {
-			BlockState front = worldIn.getBlockState(pos.offset(state.get(FACING)));
+			BlockState front = worldIn.getBlockState(pos.offset(state.get(FACING).getOpposite()));
 			if(front.isSolid())
 				return ActionResultType.CONSUME;
 			TileEntity tileentity = worldIn.getTileEntity(pos);

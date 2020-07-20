@@ -1,0 +1,92 @@
+{
+    "textures": {
+        "iron_block": "minecraft:block/iron_block",
+        "particle": "minecraft:block/iron_block"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Four",
+            "from": [ 7, 13, 0 ], 
+            "to": [ 9, 15, 6 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 1, 1, 3, 3 ] },
+                "east": { "texture": "#iron_block", "uv": [ 0, 1, 6, 3 ] },
+                "south": { "texture": "#iron_block", "uv": [ 7, 1, 9, 3 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 1, 16, 3 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 7 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 7 ] }
+            }
+        },
+        {
+            "name": "Three",
+            "from": [ 7, 9, 0 ], 
+            "to": [ 9, 11, 6 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 1, 1, 3, 3 ] },
+                "east": { "texture": "#iron_block", "uv": [ 0, 5, 6, 7 ] },
+                "south": { "texture": "#iron_block", "uv": [ 7, 1, 9, 3 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 5, 16, 7 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 7 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 7 ] }
+            }
+        },
+        {
+            "name": "Two",
+            "from": [ 7, 5, 0 ], 
+            "to": [ 9, 7, 6 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 1, 1, 3, 3 ] },
+                "east": { "texture": "#iron_block", "uv": [ 0, 9, 6, 11 ] },
+                "south": { "texture": "#iron_block", "uv": [ 7, 1, 9, 3 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 9, 16, 11 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 7 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 7 ] }
+            }
+        },
+        {
+            "name": "One",
+            "from": [ 7, 1, 0 ], 
+            "to": [ 9, 3, 6 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 1, 1, 3, 3 ] },
+                "east": { "texture": "#iron_block", "uv": [ 0, 13, 6, 15 ] },
+                "south": { "texture": "#iron_block", "uv": [ 7, 1, 9, 3 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 13, 16, 15 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 7 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 7 ] }
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"WNW",
+		"WNW",
+		"IPI"
+	],
+	"key":
+	{
+		"W":
+		{
+			"tag": "minecraft:logs"
+		},
+		"P":
+		{
+			"tag": "minecraft:planks"
+		},
+		"N":
+		{
+			"item": "minecraft:note_block"
+		},
+		"I":
+		{
+			"item": "minecraft:iron_ingot"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:speaker",
+		"count": 1
+	}
+}

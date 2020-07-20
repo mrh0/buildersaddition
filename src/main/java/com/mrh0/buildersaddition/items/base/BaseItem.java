@@ -11,12 +11,12 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-public class BaseItem extends Item{
+public class BaseItem extends Item {
 
 	private String itemName;
 	private ItemOptions opts;
 	public BaseItem(String name, Properties properties, ItemOptions opts) {
-		super(properties.group(ModGroup.MAIN));
+		super(properties.group(opts.hidden?null:ModGroup.MAIN));
 		this.itemName = name;
 		this.opts = opts;
 		setRegistryName(name);

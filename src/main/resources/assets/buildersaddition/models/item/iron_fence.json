@@ -1,0 +1,109 @@
+{
+    "textures": {
+        "iron_block": "minecraft:block/iron_block"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 225, 0 ],
+            "translation": [ 0, 0.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 225, 0 ],
+            "translation": [ 0, 0.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Pillar",
+            "from": [ 6, 0, 12 ], 
+            "to": [ 10, 16, 16 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "east": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "south": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "west": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "up": { "texture": "#iron_block", "uv": [ 6, 6, 10, 10 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 6, 10, 10 ] }
+            }
+        },
+        {
+            "name": "Four",
+            "from": [ 7, 13, 4 ], 
+            "to": [ 9, 15, 12 ], 
+            "faces": {
+                "east": { "texture": "#iron_block", "uv": [ 0, 1, 8, 3 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 1, 16, 3 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 9 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 9 ] }
+            }
+        },
+        {
+            "name": "Three",
+            "from": [ 7, 9, 4 ], 
+            "to": [ 9, 11, 12 ], 
+            "faces": {
+                "east": { "texture": "#iron_block", "uv": [ 0, 5, 8, 7 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 5, 16, 7 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 9 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 9 ] }
+            }
+        },
+        {
+            "name": "Two",
+            "from": [ 7, 5, 4 ], 
+            "to": [ 9, 7, 12 ], 
+            "faces": {
+                "east": { "texture": "#iron_block", "uv": [ 0, 9, 8, 11 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 9, 16, 11 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 9 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 9 ] }
+            }
+        },
+        {
+            "name": "One",
+            "from": [ 7, 1, 4 ], 
+            "to": [ 9, 3, 12 ], 
+            "faces": {
+                "east": { "texture": "#iron_block", "uv": [ 0, 13, 8, 15 ] },
+                "west": { "texture": "#iron_block", "uv": [ 10, 13, 16, 15 ] },
+                "up": { "texture": "#iron_block", "uv": [ 7, 1, 9, 9 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 1, 8, 9 ] }
+            }
+        },
+        {
+            "name": "Pillar",
+            "from": [ 6, 0, 0 ], 
+            "to": [ 10, 16, 4 ], 
+            "faces": {
+                "north": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "east": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "south": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "west": { "texture": "#iron_block", "uv": [ 6, 0, 10, 16 ] },
+                "up": { "texture": "#iron_block", "uv": [ 6, 6, 10, 10 ] },
+                "down": { "texture": "#iron_block", "uv": [ 6, 6, 10, 10 ] }
+            }
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "buildersaddition:block/other/iron_fence_post_rough"
+      }
+    },
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "buildersaddition:block/other/iron_fence_side_rough",
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "buildersaddition:block/other/iron_fence_side_rough",
+        "y": 90,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "buildersaddition:block/other/iron_fence_side_rough",
+        "y": 180,
+        "uvlock": true
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "buildersaddition:block/other/iron_fence_side_rough",
+        "y": 270,
+        "uvlock": true
+      }
+    }
+  ]
+}

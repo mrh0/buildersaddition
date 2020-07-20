@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["IRI",
+	 "IRI"],
+	"key":
+	{
+		"R":
+		{
+			"item": "buildersaddition:iron_rod"
+		},
+		"I":
+		{
+			"item": "minecraft:iron_ingot"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:iron_fence",
+		"count": 6
+	}
+}

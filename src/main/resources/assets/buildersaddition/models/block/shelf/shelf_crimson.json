@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/shelf/shelf_base",
+  "textures": {
+        "planks": "minecraft:block/crimson_planks",
+        "particle": "minecraft:block/crimson_planks"
+    }
+}

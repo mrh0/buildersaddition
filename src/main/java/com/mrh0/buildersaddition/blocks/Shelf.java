@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition.blocks;
 
+import javax.annotation.Nullable;
+
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
@@ -7,15 +9,28 @@ import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class Shelf extends BaseDerivativeBlock {
 	public static final DirectionProperty FACING = DirectionProperty.create("facing",
@@ -65,5 +80,62 @@ public class Shelf extends BaseDerivativeBlock {
 		default:
 			return NORTH_SHAPE;
 		}
+	}
+	
+	@Override
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+		if (player.isSpectator()) {
+            return ActionResultType.PASS;
+        }
+    	if (worldIn.isRemote) {
+            return ActionResultType.SUCCESS;
+        }
+    	
+    	ShelfTileEntity mte = (ShelfTileEntity) worldIn.getTileEntity(pos);
+		NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) mte, extraData -> {
+            extraData.writeBlockPos(mte.getPos());
+        });
+    	return ActionResultType.CONSUME;
+    }
+	
+	public int getBookSum(BlockState state, IWorldReader world, BlockPos pos) {
+		TileEntity te = world.getTileEntity(pos);
+		if(te != null) {
+			if(te instanceof ShelfTileEntity) {
+				ShelfTileEntity bte = (ShelfTileEntity)te;
+				int sum = 0;
+				for(int i = 0; i < bte.handler.getSlots(); i++) {
+					if(bte.handler.getStackInSlot(i).getCount() > 0)
+						sum++;
+				}
+				return sum;
+			}
+		}
+		return 0;
+	}
+	
+	@Override
+	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (!state.isIn(newState.getBlock())) {
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+			if (tileentity instanceof IInventory) {
+				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
+				worldIn.updateComparatorOutputLevel(pos, this);
+			}
+
+			super.onReplaced(state, worldIn, pos, newState, isMoving);
+		}
+	}
+
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer,
+			ItemStack stack) {
+		if (stack.hasDisplayName()) {
+			TileEntity tileentity = worldIn.getTileEntity(pos);
+			if (tileentity instanceof ShelfTileEntity) {
+				((ShelfTileEntity) tileentity).setCustomName(stack.getDisplayName());
+			}
+		}
+
 	}
 }

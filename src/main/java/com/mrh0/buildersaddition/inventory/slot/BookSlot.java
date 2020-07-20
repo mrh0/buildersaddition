@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition.inventory.slot;
 
+import com.mrh0.buildersaddition.util.Util;
+
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -16,7 +18,7 @@ public class BookSlot extends SlotItemHandler {
 	
 	@Override
 	public int getItemStackLimit(ItemStack stack) {
-		return isBook(stack) ? 64 : 0;
+		return Util.isBook(stack) ? 64 : 0;
 	}
 	
 	@Override
@@ -26,11 +28,6 @@ public class BookSlot extends SlotItemHandler {
 	
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return isBook(stack);
-	}
-	
-	private boolean isBook(ItemStack stack) {
-		Item i = stack.getItem();
-		return (i instanceof EnchantedBookItem) || (i instanceof KnowledgeBookItem) || i == Items.BOOK || i == Items.WRITABLE_BOOK || i == Items.WRITTEN_BOOK;
+		return Util.isBook(stack);
 	}
 }

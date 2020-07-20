@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/shelf/shelf_jungle", "y":180 },
+        "facing=west": { "model": "buildersaddition:block/shelf/shelf_jungle", "y":90 },
+        "facing=south": { "model": "buildersaddition:block/shelf/shelf_jungle" },
+        "facing=east": { "model": "buildersaddition:block/shelf/shelf_jungle", "y":270 }
+    }
+}

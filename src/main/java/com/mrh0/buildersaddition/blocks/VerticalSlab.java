@@ -1,17 +1,13 @@
 package com.mrh0.buildersaddition.blocks;
 
 import javax.annotation.Nullable;
-
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
-import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
+import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import com.mrh0.buildersaddition.state.VerticalSlabState;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -28,11 +24,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraftforge.common.ToolType;
+import net.minecraftforge.fml.ModList;
 
 public class VerticalSlab extends BaseDerivativeBlock implements IWaterLoggable {
 	public static final EnumProperty<VerticalSlabState> TYPE = EnumProperty.<VerticalSlabState>create("type",
@@ -45,7 +39,13 @@ public class VerticalSlab extends BaseDerivativeBlock implements IWaterLoggable 
 	protected static final VoxelShape SOUTH_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 8D, 16D, 16D, 16D);
 
 	public VerticalSlab(String name, Block source) {
-		super(name + "_vertical_slab", source);
+		super(name + "_vertical_slab", source, new BlockOptions().setItemOptions(new ItemOptions().hide()));
+		this.setDefaultState(
+				this.getDefaultState().with(TYPE, VerticalSlabState.NORTH).with(WATERLOGGED, Boolean.valueOf(false)));
+	}
+	
+	public VerticalSlab(String name, Block source, String mod) {
+		super(name + "_vertical_slab", source, new BlockOptions().setItemOptions(new ItemOptions().hide(ModList.get().isLoaded(mod))));
 		this.setDefaultState(
 				this.getDefaultState().with(TYPE, VerticalSlabState.NORTH).with(WATERLOGGED, Boolean.valueOf(false)));
 	}

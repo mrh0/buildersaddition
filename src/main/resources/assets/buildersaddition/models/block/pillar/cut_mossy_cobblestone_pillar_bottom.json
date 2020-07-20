@@ -1,66 +1,9 @@
 {
-    "textures": {
-        "top": "minecraft:block/mossy_cobblestone",
+  "parent": "buildersaddition:block/pillar/cut_pillar_bottom_base",
+  "textures": {
         "side": "minecraft:block/mossy_cobblestone",
-		 "platform": "minecraft:block/mossy_cobblestone",
-        "particle": "minecraft:block/mossy_cobblestone"
-    },
-    "display": {
-        "gui": {
-            "rotation": [ 30, 45, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 0.625, 0.625, 0.625 ]
-        },
-        "ground": {
-            "rotation": [ 0, 0, 0 ],
-            "translation": [ 0, 3, 0 ],
-            "scale": [ 0.25, 0.25, 0.25 ]
-        },
-        "fixed": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "head": {
-            "rotation": [ 0, 180, 0 ],
-            "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
-        },
-        "firstperson_righthand": {
-            "rotation": [ 0, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.4, 0.4, 0.4 ]
-        },
-        "thirdperson_righthand": {
-            "rotation": [ 75, 315, 0 ],
-            "translation": [ 0, 2.5, 0 ],
-            "scale": [ 0.375, 0.375, 0.375 ]
-        }
-    },
-    "elements": [
-        {
-            "name": "Pillar",
-            "from": [ 2, 2, 2 ], 
-            "to": [ 14, 16, 14 ], 
-            "faces": {
-                "north": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] },
-                "east": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] },
-                "south": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] },
-                "west": { "texture": "#side", "uv": [ 2, 0, 14, 14 ] }
-            }
-        },
-        {
-            "name": "Bottom",
-            "from": [ 1, 0, 1 ], 
-            "to": [ 15, 2, 15 ], 
-            "faces": {
-                "north": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "east": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "south": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "west": { "texture": "#platform", "uv": [ 1, 0, 15, 2 ] },
-                "up": { "texture": "#top", "uv": [ 1, 1, 15, 15 ] },
-                "down": { "texture": "#top", "uv": [ 1, 1, 15, 15 ] }
-            }
-        }
-    ]
+        "particle": "minecraft:block/mossy_cobblestone",
+        "top": "minecraft:block/mossy_cobblestone",
+        "platform": "minecraft:block/mossy_cobblestone"
+    }
 }

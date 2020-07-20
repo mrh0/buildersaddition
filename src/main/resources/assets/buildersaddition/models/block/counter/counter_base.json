@@ -2,6 +2,7 @@
     "textures": {
         "stripped": "minecraft:block/stripped_oak_log",
         "detail": "minecraft:block/polished_andesite",
+        "knob": "minecraft:block/polished_andesite",
         "planks": "minecraft:block/oak_planks",
 		"particle": "minecraft:block/oak_planks"
     },
@@ -55,11 +56,11 @@
             "from": [ 7, 5, 15.5 ], 
             "to": [ 9, 6, 16.5 ], 
             "faces": {
-                "east": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] },
-                "south": { "texture": "#detail", "uv": [ 1, 0, 3, 1 ] },
-                "west": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] },
-                "up": { "texture": "#detail", "uv": [ 0, 0, 2, 1 ] },
-                "down": { "texture": "#detail", "uv": [ 0, 0, 2, 1 ] }
+                "east": { "texture": "#knob", "uv": [ 0, 0, 1, 1 ] },
+                "south": { "texture": "#knob", "uv": [ 1, 0, 3, 1 ] },
+                "west": { "texture": "#knob", "uv": [ 0, 0, 1, 1 ] },
+                "up": { "texture": "#knob", "uv": [ 0, 0, 2, 1 ] },
+                "down": { "texture": "#knob", "uv": [ 0, 0, 2, 1 ] }
             }
         },
         {
@@ -92,11 +93,11 @@
             "from": [ 7, 12, 15.5 ], 
             "to": [ 9, 13, 16.5 ], 
             "faces": {
-                "east": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] },
-                "south": { "texture": "#detail", "uv": [ 0, 0, 2, 1 ] },
-                "west": { "texture": "#detail", "uv": [ 0, 0, 1, 1 ] },
-                "up": { "texture": "#detail", "uv": [ 0, 0, 2, 1 ] },
-                "down": { "texture": "#detail", "uv": [ 0, 0, 2, 1 ] }
+                "east": { "texture": "#knob", "uv": [ 0, 0, 1, 1 ] },
+                "south": { "texture": "#knob", "uv": [ 0, 0, 2, 1 ] },
+                "west": { "texture": "#knob", "uv": [ 0, 0, 1, 1 ] },
+                "up": { "texture": "#knob", "uv": [ 0, 0, 2, 1 ] },
+                "down": { "texture": "#knob", "uv": [ 0, 0, 2, 1 ] }
             }
         },
         {

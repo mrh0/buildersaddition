@@ -20,5 +20,7 @@ public class ClientProxy extends CommonProxy {
         RenderTypeLookup.setRenderLayer(Index.HEDGE_DARK_OAK, cutout);
         RenderTypeLookup.setRenderLayer(Index.HEDGE_JUNGLE, cutout);
         RenderTypeLookup.setRenderLayer(Index.HEDGE_ACACIA, cutout);
+        
+        RenderTypeLookup.setRenderLayer(Index.CROSSRAIL, cutout);
 	}
 }

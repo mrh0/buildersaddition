@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/shelf/shelf_dark_oak", "y":180 },
+        "facing=west": { "model": "buildersaddition:block/shelf/shelf_dark_oak", "y":90 },
+        "facing=south": { "model": "buildersaddition:block/shelf/shelf_dark_oak" },
+        "facing=east": { "model": "buildersaddition:block/shelf/shelf_dark_oak", "y":270 }
+    }
+}
