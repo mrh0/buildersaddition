@@ -4,6 +4,8 @@ import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.Bookshelf;
 import com.mrh0.buildersaddition.container.BookshelfContainer;
 import com.mrh0.buildersaddition.inventory.ModInventory;
+import com.mrh0.buildersaddition.util.IComparetorOverride;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -16,7 +18,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public class BookshelfTileEntity extends LockableLootTileEntity implements INamedContainerProvider {
+public class BookshelfTileEntity extends LockableLootTileEntity implements INamedContainerProvider, IComparetorOverride {
 
 	public ModInventory handler;
 	
@@ -31,9 +33,9 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 	}
 	
 	@Override
-	public void func_230337_a_(BlockState state, CompoundNBT nbt) {
+	public void read(BlockState state, CompoundNBT nbt) {
 		this.handler.deserializeNBT(nbt.getCompound("ItemStackHandler"));
-		super.func_230337_a_(state, nbt);
+		super.read(state, nbt);
 	}
 	
 	@Override
@@ -131,5 +133,10 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 			handler.setStackInSlot(i, itemsIn.get(i));
 		}
 		this.markDirty();
+	}
+	
+	@Override
+	public int getComparetorOverride() {
+		return Container.calcRedstone(this);
 	}
 }

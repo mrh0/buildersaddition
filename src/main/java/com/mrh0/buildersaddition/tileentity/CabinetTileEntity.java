@@ -3,6 +3,8 @@ package com.mrh0.buildersaddition.tileentity;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.Cabinet;
 import com.mrh0.buildersaddition.tileentity.base.BaseChestTileEntity;
+import com.mrh0.buildersaddition.util.IComparetorOverride;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -15,7 +17,7 @@ import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 
-public class CabinetTileEntity extends BaseChestTileEntity {
+public class CabinetTileEntity extends BaseChestTileEntity implements IComparetorOverride {
 
 	public CabinetTileEntity() {
 		super(Index.CABINET_TILE_ENTITY_TYPE);
@@ -44,5 +46,10 @@ public class CabinetTileEntity extends BaseChestTileEntity {
 		double d2 = (double) this.pos.getZ() + 0.5D + (double) vector3i.getZ() / 2.0D;
 		this.world.playSound((PlayerEntity) null, d0, d1, d2, evt, SoundCategory.BLOCKS, 0.5F,
 				this.world.rand.nextFloat() * 0.1F + 0.9F);
+	}
+	
+	@Override
+	public int getComparetorOverride() {
+		return Container.calcRedstone(this);
 	}
 }

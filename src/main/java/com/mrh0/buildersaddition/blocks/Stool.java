@@ -31,7 +31,7 @@ public class Stool extends BaseDerivativeBlock implements ISeat {
 	
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		return SeatEntity.createSeat(worldIn, pos, player) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+		return SeatEntity.createSeat(worldIn, pos, player);
 	}
 	
 	@Override

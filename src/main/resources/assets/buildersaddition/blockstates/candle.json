@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/other/wall_candle", "y":180 },
+        "facing=west": { "model": "buildersaddition:block/other/wall_candle", "y":90 },
+        "facing=south": { "model": "buildersaddition:block/other/wall_candle" },
+        "facing=east": { "model": "buildersaddition:block/other/wall_candle", "y":270 },
+        "facing=down": { "model": "buildersaddition:block/other/floor_candle" }
+    }
+}

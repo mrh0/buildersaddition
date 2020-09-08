@@ -26,24 +26,28 @@ public class EventHandler {
 	@SubscribeEvent
 	public static void registerBlock(Register<Block> evt){
 		IForgeRegistry<Block> reg = evt.getRegistry();
+		Index.blocks();
 		BlockRegistry.instance.initAll(reg);
 	}
 	
 	@SubscribeEvent
 	public static void registerItem(Register<Item> evt){
 		IForgeRegistry<Item> reg = evt.getRegistry();
+		Index.items();
 		ItemRegistry.instance.initAll(reg);
 	}
 	
 	@SubscribeEvent
 	public static void registerTileEntity(Register<TileEntityType<?>> evt){
 		IForgeRegistry<TileEntityType<?>> reg = evt.getRegistry();
+		Index.tileentities();
 		TileEntityRegistry.instance.initAll(reg);
 	}
 	
 	@SubscribeEvent
 	public static void registerContainer(Register<ContainerType<?>> evt){
 		IForgeRegistry<ContainerType<?>> reg = evt.getRegistry();
+		Index.containers();
 		ContainerRegistry.instance.initAll(reg);
 	}
 	
@@ -57,6 +61,8 @@ public class EventHandler {
 	@SubscribeEvent
 	public static void registerPaintings(Register<PaintingType> evt){
 		IForgeRegistry<PaintingType> reg = evt.getRegistry();
+		
+		Index.paintings();
 		
 		reg.register(Index.SUMMER_FIELD_PAINTING);
 		reg.register(Index.SHARD_PAINTING);

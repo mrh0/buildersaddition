@@ -1,0 +1,100 @@
+{
+    "textures": {
+        "wool": "minecraft:block/white_wool",
+        "anvil": "minecraft:block/anvil"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Main",
+            "from": [ 0, 2, 0 ], 
+            "to": [ 16, 9, 16 ], 
+            "faces": {
+                "north": { "texture": "#wool", "uv": [ 0, 7, 16, 14 ] },
+                "east": { "texture": "#wool", "uv": [ 0, 7, 16, 14 ] },
+                "south": { "texture": "#wool", "uv": [ 0, 7, 16, 14 ] },
+                "west": { "texture": "#wool", "uv": [ 0, 7, 16, 14 ] },
+                "up": { "texture": "#wool", "uv": [ 0, 0, 16, 16 ] },
+                "down": { "texture": "#wool", "uv": [ 0, 0, 16, 16 ] }
+            }
+        },
+        {
+            "name": "LegE1",
+            "from": [ 13, 0, 1 ], 
+            "to": [ 15, 2, 3 ], 
+            "faces": {
+                "north": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "east": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "south": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "west": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "LegE2",
+            "from": [ 13, 0, 13 ], 
+            "to": [ 15, 2, 15 ], 
+            "faces": {
+                "north": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "east": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "south": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "west": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] },
+                "down": { "texture": "#anvil", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Back1",
+            "from": [ 0, 9, 0 ], 
+            "to": [ 16, 16, 4 ], 
+            "faces": {
+                "north": { "texture": "#wool", "uv": [ 0, 0, 16, 7 ] },
+                "east": { "texture": "#wool", "uv": [ 0, 0, 4, 7 ] },
+                "south": { "texture": "#wool", "uv": [ 0, 0, 16, 7 ] },
+                "west": { "texture": "#wool", "uv": [ 0, 0, 4, 7 ] },
+                "up": { "texture": "#wool", "uv": [ 0, 0, 16, 4 ] }
+            }
+        },
+        {
+            "name": "ArmrestE",
+            "from": [ 14, 9, 4 ], 
+            "to": [ 16, 14, 16 ], 
+            "faces": {
+                "east": { "texture": "#wool", "uv": [ 0, 0, 12, 5 ] },
+                "south": { "texture": "#wool", "uv": [ 0, 0, 2, 5 ] },
+                "west": { "texture": "#wool", "uv": [ 0, 0, 12, 5 ] },
+                "up": { "texture": "#wool", "uv": [ 14, 4, 16, 16 ] }
+            }
+        }
+    ]
+}

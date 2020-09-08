@@ -1,15 +1,12 @@
 package com.mrh0.buildersaddition.blocks;
 
-import java.util.Random;
 
 import javax.annotation.Nullable;
-
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
-import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
+import com.mrh0.buildersaddition.util.IComparetorOverride;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
@@ -34,7 +31,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 public class Bookshelf extends BaseDerivativeBlock {
@@ -165,5 +161,15 @@ public class Bookshelf extends BaseDerivativeBlock {
 			}
 		}
 
+	}
+	
+	@Override
+	public boolean hasComparatorInputOverride(BlockState state) {
+		return true;
+	}
+	
+	@Override
+	public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+		return IComparetorOverride.getComparetorOverride(worldIn, pos);
 	}
 }

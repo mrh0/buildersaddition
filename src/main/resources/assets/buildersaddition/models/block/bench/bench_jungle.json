@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/bench/bench_base",
+  "textures": {
+        "planks": "minecraft:block/jungle_planks",
+        "particle": "minecraft:block/jungle_planks"
+    }
+}

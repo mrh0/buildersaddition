@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "quark:birch_vertical_slab"
+		},
+		{
+			"item": "quark:birch_vertical_slab"
+		},
+		{
+			"item": "quark:birch_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_birch"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_birch",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

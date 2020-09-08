@@ -1,0 +1,23 @@
+{
+    "variants": {
+        "state=both,facing=north": { "model": "buildersaddition:block/sofa/sofa_both_lime", "y":180 },
+        "state=both,facing=west": { "model": "buildersaddition:block/sofa/sofa_both_lime", "y":90 },
+        "state=both,facing=south": { "model": "buildersaddition:block/sofa/sofa_both_lime" },
+        "state=both,facing=east": { "model": "buildersaddition:block/sofa/sofa_both_lime", "y":270 },
+        
+        "state=left,facing=north": { "model": "buildersaddition:block/sofa/sofa_left_lime", "y":180 },
+        "state=left,facing=west": { "model": "buildersaddition:block/sofa/sofa_left_lime", "y":90 },
+        "state=left,facing=south": { "model": "buildersaddition:block/sofa/sofa_left_lime" },
+        "state=left,facing=east": { "model": "buildersaddition:block/sofa/sofa_left_lime", "y":270 },
+        
+        "state=right,facing=north": { "model": "buildersaddition:block/sofa/sofa_right_lime", "y":180 },
+        "state=right,facing=west": { "model": "buildersaddition:block/sofa/sofa_right_lime", "y":90 },
+        "state=right,facing=south": { "model": "buildersaddition:block/sofa/sofa_right_lime" },
+        "state=right,facing=east": { "model": "buildersaddition:block/sofa/sofa_right_lime", "y":270 },
+        
+        "state=none,facing=north": { "model": "buildersaddition:block/sofa/sofa_none_lime", "y":180 },
+        "state=none,facing=west": { "model": "buildersaddition:block/sofa/sofa_none_lime", "y":90 },
+        "state=none,facing=south": { "model": "buildersaddition:block/sofa/sofa_none_lime" },
+        "state=none,facing=east": { "model": "buildersaddition:block/sofa/sofa_none_lime", "y":270 }
+    }
+}

@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
+import com.mrh0.buildersaddition.util.IComparetorOverride;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -122,7 +123,6 @@ public class Shelf extends BaseDerivativeBlock {
 				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
 				worldIn.updateComparatorOutputLevel(pos, this);
 			}
-
 			super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
 	}
@@ -136,6 +136,15 @@ public class Shelf extends BaseDerivativeBlock {
 				((ShelfTileEntity) tileentity).setCustomName(stack.getDisplayName());
 			}
 		}
-
+	}
+	
+	@Override
+	public boolean hasComparatorInputOverride(BlockState state) {
+		return true;
+	}
+	
+	@Override
+	public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+		return IComparetorOverride.getComparetorOverride(worldIn, pos);
 	}
 }

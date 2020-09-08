@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PSP","PSP","PSP"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:oak_slab"
+		},
+		"P":
+		{
+			"item": "quark:oak_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bookshelf_oak",
+		"count": 2
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

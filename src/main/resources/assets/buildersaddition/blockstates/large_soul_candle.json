@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "": [
+			{ "model": "buildersaddition:block/other/large_candle" },
+			{ "model": "buildersaddition:block/other/large_candle", "y": 90 },
+			{ "model": "buildersaddition:block/other/large_candle", "y": 180 },
+			{ "model": "buildersaddition:block/other/large_candle", "y": 270 }
+        ]
+    }
+}

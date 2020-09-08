@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/bench/bench_base",
+  "textures": {
+        "planks": "minecraft:block/dark_oak_planks",
+        "particle": "minecraft:block/dark_oak_planks"
+    }
+}

@@ -1,5 +1,9 @@
 package com.mrh0.buildersaddition.tileentity.base;
 
+import javax.annotation.Nullable;
+
+import com.mrh0.buildersaddition.util.IComparetorOverride;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,11 +21,11 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
-public abstract class BaseChestTileEntity extends LockableLootTileEntity
-		implements ICapabilityProvider {
+public abstract class BaseChestTileEntity extends LockableLootTileEntity implements IComparetorOverride, ICapabilityProvider {
 	private NonNullList<ItemStack> inv = NonNullList.withSize(getSizeInventory(), ItemStack.EMPTY);
 	private int numPlayersUsing;
 
@@ -56,7 +60,7 @@ public abstract class BaseChestTileEntity extends LockableLootTileEntity
 		if (!(state.getBlock() instanceof ChestBlock)) {
 			return new net.minecraftforge.items.wrapper.InvWrapper(this);
 		}
-		IInventory inv = ChestBlock.func_226916_a_((ChestBlock) state.getBlock(), state, getWorld(), getPos(), true);
+		IInventory inv = ChestBlock.getChestInventory((ChestBlock) state.getBlock(), state, getWorld(), getPos(), true);
 		return new net.minecraftforge.items.wrapper.InvWrapper(inv == null ? this : inv);
 	}
 
@@ -77,8 +81,8 @@ public abstract class BaseChestTileEntity extends LockableLootTileEntity
 	}
 
 	@Override
-	public void func_230337_a_(BlockState state, CompoundNBT nbt) {
-		super.func_230337_a_(state, nbt);
+	public void read(BlockState state, CompoundNBT nbt) {
+		super.read(state, nbt);
 		this.inv = NonNullList.withSize(this.getSizeInventory(), ItemStack.EMPTY);
 		if (!this.checkLootAndRead(nbt)) {
 			ItemStackHelper.loadAllItems(nbt, this.inv);
@@ -154,4 +158,29 @@ public abstract class BaseChestTileEntity extends LockableLootTileEntity
 	}
 
 	protected abstract void playSound(BlockState state, SoundEvent evt);
+	
+	/*public int calcRedstoneFromInventory() {
+	      if (inv == null) {
+	         return 0;
+	      } else {
+	         int i = 0;
+	         float f = 0.0F;
+
+	         for(int j = 0; j < inv.size(); ++j) {
+	            ItemStack itemstack = inv.get(j);
+	            if (!itemstack.isEmpty()) {
+	               f += (float)itemstack.getCount() / (float)Math.min(getInventoryStackLimit(), itemstack.getMaxStackSize());
+	               ++i;
+	            }
+	         }
+
+	         f = f / (float)inv.getSizeInventory();
+	         return MathHelper.floor(f * 14.0F) + (i > 0 ? 1 : 0);
+	      }
+	   }*/
+	
+	@Override
+	public int getComparetorOverride() {
+		return Container.calcRedstoneFromInventory(this);
+	}
 }

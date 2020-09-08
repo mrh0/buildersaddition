@@ -1,0 +1,18 @@
+{
+    "variants": {
+        "facing=north,half=lower": { "model": "buildersaddition:block/cupboard/cupboard_warped_lower", "y":180 },
+        "facing=west,half=lower": { "model": "buildersaddition:block/cupboard/cupboard_warped_lower", "y":90 },
+        "facing=south,half=lower": { "model": "buildersaddition:block/cupboard/cupboard_warped_lower" },
+        "facing=east,half=lower": { "model": "buildersaddition:block/cupboard/cupboard_warped_lower", "y":270 },
+        
+        "facing=north,half=upper,mirror=false": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper", "y":180 },
+        "facing=west,half=upper,mirror=false": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper", "y":90 },
+        "facing=south,half=upper,mirror=false": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper" },
+        "facing=east,half=upper,mirror=false": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper", "y":270 },
+        
+        "facing=north,half=upper,mirror=true": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper_mirror", "y":180 },
+        "facing=west,half=upper,mirror=true": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper_mirror", "y":90 },
+        "facing=south,half=upper,mirror=true": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper_mirror" },
+        "facing=east,half=upper,mirror=true": { "model": "buildersaddition:block/cupboard/cupboard_warped_upper_mirror", "y":270 }
+    }
+}

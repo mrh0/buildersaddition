@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["CP","CP"],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:acacia_vertical_slab"
+		},
+		"C":
+		{
+			"item": "minecraft:chest"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cupboard_acacia",
+		"count": 1
+	}
+}

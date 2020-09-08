@@ -3,6 +3,7 @@ package com.mrh0.buildersaddition.event;
 import java.util.ArrayList;
 import java.util.function.Supplier;
 import com.mrh0.buildersaddition.BuildersAddition;
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.event.opts.TileEntityOptions;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;

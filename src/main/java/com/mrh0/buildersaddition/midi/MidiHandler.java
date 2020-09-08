@@ -33,6 +33,10 @@ public class MidiHandler {
 		}
 	}
 	
+	public boolean hasDevice() {
+		return devices.size() > 0;
+	}
+	
 	/*public MidiHandler(IMidiEvent midiEvent, URL url) {
 		this.midiEvent = midiEvent;
 		Sequence sequence;

@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/sofa/sofa_none_base",
+  "textures": {
+        "wool": "minecraft:block/yellow_wool",
+        "particle": "minecraft:block/yellow_wool"
+    }
+}

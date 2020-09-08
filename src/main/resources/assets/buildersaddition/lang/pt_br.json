@@ -358,7 +358,7 @@
 	"container.buildersaddition.speaker.disconnect": "Desconectar",
 	"container.buildersaddition.speaker.connect": "Conectar",
 	
-	"block.buildersaddition.speaker":"Alto-falante Midi [WIP]",
+	"block.buildersaddition.speaker":"Alto-falante Midi",
 	
 	"note.buildersaddition.bass": "Baixo",
 	"note.buildersaddition.snare": "Caixa",

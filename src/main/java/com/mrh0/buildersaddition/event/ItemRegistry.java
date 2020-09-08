@@ -1,5 +1,6 @@
 package com.mrh0.buildersaddition.event;
 
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;

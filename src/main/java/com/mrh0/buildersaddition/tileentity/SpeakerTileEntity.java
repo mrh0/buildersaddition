@@ -92,9 +92,9 @@ public class SpeakerTileEntity extends BaseInstrument implements INamedContainer
 	
 	//Read
 	@Override
-	public void func_230337_a_(BlockState state, CompoundNBT nbt) {
+	public void read(BlockState state, CompoundNBT nbt) {
 		instruments = nbt.getInt("instruments");
-		super.func_230337_a_(state, nbt);
+		super.read(state, nbt);
 	}
 	
 	@Override
@@ -133,6 +133,6 @@ public class SpeakerTileEntity extends BaseInstrument implements INamedContainer
 	
 	@Override
 	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
-		this.func_230337_a_(state, nbt);
+		this.read(state, nbt);
 	}
 }

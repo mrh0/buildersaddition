@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/bench/bench_legs_base",
+  "textures": {
+        "stripped": "minecraft:block/stripped_spruce_log",
+        "particle": "minecraft:block/spruce_planks"
+    }
+}

@@ -17,7 +17,7 @@ public class Config {
 	public static ForgeConfigSpec.BooleanValue MIDI_ENABLED;
 	public static ForgeConfigSpec.BooleanValue MIDI_INPUT_ENABLED;
 	public static ForgeConfigSpec.BooleanValue MIDI_SOUND_ENABLED;
-	public static ForgeConfigSpec.IntValue MIDI_NOTE_LIMIT_ENABLED;
+	public static ForgeConfigSpec.IntValue MIDI_NOTES_PER_SECOND;
 	
 	static {
 		
@@ -37,8 +37,8 @@ public class Config {
 		MIDI_SOUND_ENABLED = COMMON_BUILDER.comment("Enable MIDI client sound.")
 				.define("midi_sound_enable", true);
 		
-		MIDI_NOTE_LIMIT_ENABLED = COMMON_BUILDER.comment("Max number of enabled notes in speaker.")
-				.defineInRange("midi_note_limit", 5, 0, 16);
+		MIDI_NOTES_PER_SECOND = COMMON_BUILDER.comment("Max number of notes played per 20 ticks.")
+				.defineInRange("midi_note_limit", 75, 0, 200);
 
 		COMMON_BUILDER.pop();
 		

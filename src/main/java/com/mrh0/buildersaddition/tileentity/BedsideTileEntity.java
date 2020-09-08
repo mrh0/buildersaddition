@@ -46,4 +46,9 @@ public class BedsideTileEntity extends BaseChestTileEntity {
 		this.world.playSound((PlayerEntity) null, d0, d1, d2, evt, SoundCategory.BLOCKS, 0.5F,
 				this.world.rand.nextFloat() * 0.1F + 0.9F);
 	}
+	
+	@Override
+	public int getComparetorOverride() {
+		return Container.calcRedstone(this);
+	}
 }

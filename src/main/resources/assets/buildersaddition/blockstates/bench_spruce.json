@@ -1,0 +1,63 @@
+{
+	"multipart": [
+		{
+			"when": {
+				"OR": [
+					{ "state": "north" },
+					{ "state": "south" },
+					{ "state": "none_z" },
+					{ "state": "both_z" }
+				]
+			},
+			"apply": { "model": "buildersaddition:block/bench/bench_spruce", "y":90 }
+		},
+		{
+			"when": {
+				"OR": [
+					{ "state": "east" },
+					{ "state": "west" },
+					{ "state": "none_x" },
+					{ "state": "both_x" }
+				]
+			},
+			"apply": { "model": "buildersaddition:block/bench/bench_spruce" }
+		},
+		
+		{
+			"when": {
+				"OR": [
+					{ "state": "north" },
+					{ "state": "both_z" }
+				]
+			},
+			"apply": { "model": "buildersaddition:block/bench/bench_legs_spruce", "y":270 }
+		},
+		{
+			"when": {
+				"OR": [
+					{ "state": "east" },
+					{ "state": "both_x" }
+				]
+			},
+			"apply": { "model": "buildersaddition:block/bench/bench_legs_spruce" }
+		},
+		{
+			"when": {
+				"OR": [
+					{ "state": "south" },
+					{ "state": "both_z" }
+				]
+			},
+			"apply": { "model": "buildersaddition:block/bench/bench_legs_spruce", "y":90 }
+		},
+		{
+			"when": {
+				"OR": [
+					{ "state": "west" },
+					{ "state": "both_x" }
+				]
+			},
+			"apply": { "model": "buildersaddition:block/bench/bench_legs_spruce", "y":180 }
+		}
+	]
+}

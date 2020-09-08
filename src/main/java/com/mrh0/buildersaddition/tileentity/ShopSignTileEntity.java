@@ -26,6 +26,7 @@ public class ShopSignTileEntity extends TileEntity {
 		if(item == null)
 			item = ItemStack.EMPTY;
 		this.item = item.copy();
+		this.item.setCount(1);
 		world.notifyBlockUpdate(pos, getBlockState(), getBlockState(), 0);
 		this.markDirty();
 		
@@ -36,11 +37,11 @@ public class ShopSignTileEntity extends TileEntity {
 	}
 	
 	@Override
-	public void func_230337_a_(BlockState state, CompoundNBT nbt) {
+	public void read(BlockState state, CompoundNBT nbt) {
 		item = ItemStack.read(nbt.getCompound("item"));
 		if(item == null)
 			item = ItemStack.EMPTY;
-		super.func_230337_a_(state, nbt);
+		super.read(state, nbt);
 	}
 	
 	@Override
@@ -71,6 +72,6 @@ public class ShopSignTileEntity extends TileEntity {
 	
 	@Override
 	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
-		func_230337_a_(state, nbt);
+		read(state, nbt);
 	}
 }

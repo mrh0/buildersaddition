@@ -4,6 +4,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
+import com.mrh0.buildersaddition.util.IComparetorOverride;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -26,7 +27,6 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tileentity.BarrelTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
@@ -194,5 +194,15 @@ public class Counter extends BaseDerivativeBlock implements IWaterLoggable, ITil
 	@Nullable
 	public TileEntity createNewTileEntity(IBlockReader worldIn) {
 		return new CounterTileEntity();
+	}
+	
+	@Override
+	public boolean hasComparatorInputOverride(BlockState state) {
+		return true;
+	}
+	
+	@Override
+	public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+		return IComparetorOverride.getComparetorOverride(worldIn, pos);
 	}
 }

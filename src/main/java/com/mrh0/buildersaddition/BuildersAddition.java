@@ -59,8 +59,6 @@ public class BuildersAddition {
     	new TileEntityRegistry();
     	new ContainerRegistry();
     	
-    	new Index();
-    	
     	Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("buildersaddition-common.toml"));
 	}
 

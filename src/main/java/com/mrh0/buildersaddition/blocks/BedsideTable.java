@@ -4,6 +4,8 @@ import java.util.Random;
 import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;
+import com.mrh0.buildersaddition.util.IComparetorOverride;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -199,5 +201,15 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 	@Nullable
 	public TileEntity createNewTileEntity(IBlockReader worldIn) {
 		return new BedsideTileEntity();
+	}
+	
+	@Override
+	public boolean hasComparatorInputOverride(BlockState state) {
+		return true;
+	}
+	
+	@Override
+	public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+		return IComparetorOverride.getComparetorOverride(worldIn, pos);
 	}
 }

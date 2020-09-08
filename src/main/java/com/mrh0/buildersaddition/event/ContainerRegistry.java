@@ -1,5 +1,6 @@
 package com.mrh0.buildersaddition.event;
 
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.event.opts.ContainerOptions;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.registries.IForgeRegistry;

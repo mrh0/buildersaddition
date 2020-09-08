@@ -28,23 +28,24 @@ public class BookshelfGui extends ContainerScreen<BookshelfContainer> {
 		this.xSize = 176;
 		this.ySize = 148;
 		
-		this.field_238745_s_ = 55;
+		this.playerInventoryTitleY = 55;
 	}
 
 	// Render
-	public void func_230430_a_(MatrixStack stack, int p_230430_2_, int p_230430_3_, float ticks) {
-		this.func_230446_a_(stack);
-		super.func_230430_a_(stack, p_230430_2_, p_230430_3_, ticks);
+	public void render(MatrixStack stack, int p_230430_2_, int p_230430_3_, float ticks) {
+		this.renderBackground(stack);
+		super.render(stack, p_230430_2_, p_230430_3_, ticks);
 		this.func_230459_a_(stack, p_230430_2_, p_230430_3_);
 	}
 	
 	//drawGuiContainerBackgroundLayer (i think)
-	protected void func_230450_a_(MatrixStack stack, float partialTicks, int x, int y) {
+	@Override
+	protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float partialTicks, int x, int y) {
 		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.field_230706_i_.getTextureManager().bindTexture(GUI);
-		int i = (this.field_230708_k_ - this.xSize) / 2;
-		int j = (this.field_230709_l_ - this.ySize) / 2;
-		this.func_238474_b_(stack, i, j, 0, 0, this.xSize, this.ySize);
+		this.minecraft.getTextureManager().bindTexture(GUI);
+		int i = (this.width - this.xSize) / 2;
+		int j = (this.height - this.ySize) / 2;
+		this.blit(stack, i, j, 0, 0, this.xSize, this.ySize);
 	}
 	
 	/*@Override

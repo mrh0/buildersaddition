@@ -1,0 +1,102 @@
+{
+    "textures": {
+        "black_concrete_powder": "minecraft:block/black_concrete_powder",
+        "white_concrete": "minecraft:block/white_concrete",
+        "particle": "minecraft:block/white_concrete"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Main",
+            "from": [ 6.5, 0, 6.5 ], 
+            "to": [ 9.5, 6, 9.5 ], 
+            "faces": {
+                "north": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 6 ] },
+                "east": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 6 ] },
+                "south": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 6 ] },
+                "west": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 6 ] },
+                "up": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 3 ] },
+                "down": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 3 ] }
+            }
+        },
+        {
+            "name": "Weck",
+            "from": [ 7.75, 6, 7.75 ], 
+            "to": [ 8.25, 6.75, 8.25 ], 
+            "faces": {
+                "north": { "texture": "#black_concrete_powder", "uv": [ 0, 0, 0.5, 0.75 ] },
+                "east": { "texture": "#black_concrete_powder", "uv": [ 0, 0, 0.5, 0.75 ] },
+                "south": { "texture": "#black_concrete_powder", "uv": [ 1, 0, 2.5, 0.75 ] },
+                "west": { "texture": "#black_concrete_powder", "uv": [ 0, 0, 1.5, 0.75 ] },
+                "up": { "texture": "#black_concrete_powder", "uv": [ 0, 0, 0.5, 0.5 ] }
+            }
+        },
+        {
+            "name": "North",
+            "from": [ 7, 0, 6 ], 
+            "to": [ 8, 3, 7 ], 
+            "faces": {
+                "north": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 3 ] },
+                "east": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 3 ] },
+                "west": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 3 ] },
+                "up": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 1 ] },
+                "down": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 1 ] }
+            }
+        },
+        {
+            "name": "South",
+            "from": [ 8, 0, 9 ], 
+            "to": [ 9, 2, 10 ], 
+            "faces": {
+                "east": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 2 ] },
+                "south": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 2 ] },
+                "west": { "texture": "#white_concrete", "uv": [ 0, 0, 3, 3 ] },
+                "up": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 1 ] },
+                "down": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 1 ] }
+            }
+        },
+        {
+            "name": "North",
+            "from": [ 9, 0, 7 ], 
+            "to": [ 10, 5, 8 ], 
+            "faces": {
+                "north": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 5 ] },
+                "east": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 5 ] },
+                "south": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 5 ] },
+                "up": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 1 ] },
+                "down": { "texture": "#white_concrete", "uv": [ 0, 0, 1, 1 ] }
+            }
+        }
+    ]
+}

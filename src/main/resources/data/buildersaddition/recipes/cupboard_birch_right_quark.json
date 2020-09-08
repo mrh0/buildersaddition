@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["CP","CP"],
+	"key":
+	{
+		"P":
+		{
+			"item": "quark:birch_vertical_slab"
+		},
+		"C":
+		{
+			"item": "minecraft:chest"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cupboard_birch",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+		    "item": "buildersaddition:large_candle"
+		},
+		{
+		    "item": "minecraft:soul_sand"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:large_soul_candle",
+		"count": 1
+	}
+}

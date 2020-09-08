@@ -2,7 +2,6 @@ package com.mrh0.buildersaddition.event;
 
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import com.mrh0.buildersaddition.items.base.BaseBlockItem;
-
 import net.minecraft.block.Block;
 import net.minecraftforge.registries.IForgeRegistry;
 

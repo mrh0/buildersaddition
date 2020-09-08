@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/sofa/sofa_right_base",
+  "textures": {
+        "wool": "minecraft:block/light_blue_wool",
+        "particle": "minecraft:block/light_blue_wool"
+    }
+}
