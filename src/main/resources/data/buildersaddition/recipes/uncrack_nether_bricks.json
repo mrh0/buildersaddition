@@ -1,9 +1,9 @@
 {
 	"type": "minecraft:smelting",
 	"ingredient": {
-		"item": "minecraft:iron_block"
+		"item": "minecraft:cracked_nether_bricks"
 	},
-	"result": "buildersaddition:rough_iron_block",
+	"result": "minecraft:nether_bricks",
 	"experience": 0,
 	"cookingtime": 200
 }

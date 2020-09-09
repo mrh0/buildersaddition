@@ -1,9 +1,6 @@
 package com.mrh0.buildersaddition.tileentity.base;
 
-import javax.annotation.Nullable;
-
 import com.mrh0.buildersaddition.util.IComparetorOverride;
-
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +18,6 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 
@@ -33,7 +29,7 @@ public abstract class BaseChestTileEntity extends LockableLootTileEntity impleme
 		super(tet);
 	}
 
-	private net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandlerModifiable> invHandler;
+	public net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandlerModifiable> invHandler;
 
 	@Override
 	public void updateContainingBlockInfo() {
@@ -55,7 +51,7 @@ public abstract class BaseChestTileEntity extends LockableLootTileEntity impleme
 		return super.getCapability(cap, side);
 	}
 
-	private net.minecraftforge.items.IItemHandlerModifiable createHandler() {
+	public net.minecraftforge.items.IItemHandlerModifiable createHandler() {
 		BlockState state = this.getBlockState();
 		if (!(state.getBlock() instanceof ChestBlock)) {
 			return new net.minecraftforge.items.wrapper.InvWrapper(this);

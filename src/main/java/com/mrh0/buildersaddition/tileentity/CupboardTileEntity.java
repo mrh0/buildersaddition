@@ -2,14 +2,19 @@ package com.mrh0.buildersaddition.tileentity;
 
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.Counter;
+import com.mrh0.buildersaddition.blocks.Cupboard;
 import com.mrh0.buildersaddition.tileentity.base.BaseChestTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
-
 import net.minecraft.block.BlockState;
+import net.minecraft.block.ChestBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.inventory.container.Container;
+import net.minecraft.state.properties.DoubleBlockHalf;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Direction;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.vector.Vector3i;
@@ -33,6 +38,32 @@ public class CupboardTileEntity extends BaseChestTileEntity implements IComparet
 		double d2 = (double) this.pos.getZ() + 0.5D + (double) vector3i.getZ() / 2.0D;
 		this.world.playSound((PlayerEntity) null, d0, d1, d2, evt, SoundCategory.BLOCKS, 0.5F,
 				this.world.rand.nextFloat() * 0.1F + 0.9F);
+	}
+	
+	@Override
+	public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(
+			net.minecraftforge.common.capabilities.Capability<T> cap, Direction side) {
+		if (!this.removed && cap == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (this.invHandler == null) {
+				if(isLower()) {
+					this.invHandler = net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
+				}
+				else {
+					TileEntity te = world.getTileEntity(pos.down());
+					if(te != null && te instanceof CupboardTileEntity) {
+						CupboardTileEntity cte = (CupboardTileEntity)te;
+						this.invHandler = net.minecraftforge.common.util.LazyOptional.of(cte::createHandler);
+					}
+				}
+			}
+			return this.invHandler.cast();
+		}
+		return super.getCapability(cap, side);
+	}
+	
+	public boolean isLower() {
+		BlockState state = this.world.getBlockState(pos);
+		return state.get(Cupboard.HALF) == DoubleBlockHalf.LOWER;
 	}
 	
 	@Override

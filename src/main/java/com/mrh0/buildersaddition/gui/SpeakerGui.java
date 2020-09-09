@@ -133,6 +133,8 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 		this.func_230459_a_(stack, x, y);
 	}
 	
+	protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int x, int y) {}
+	
 	private boolean hasDevice() {
 		if(BuildersAddition.midi != null)
 			return BuildersAddition.midi.hasDevice();

@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:cobblestone_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:cobblestone_vertical_slab"
+		}
+	],
+	"result":{
+		"item": "minecraft:cobblestone",
+		"count": 1
+	}
+}

@@ -265,7 +265,7 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 	
 	@Override
 	public boolean hasTileEntity(BlockState state) {
-		return state.get(HALF) == DoubleBlockHalf.LOWER;
+		return true;//state.get(HALF) == DoubleBlockHalf.LOWER;
 	}
 	
 	@Override

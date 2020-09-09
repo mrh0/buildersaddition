@@ -4,13 +4,16 @@ package com.mrh0.buildersaddition.event;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.util.Notes;
+import com.mrh0.buildersaddition.util.Util;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.state.properties.SlabType;
 import net.minecraft.util.ActionResultType;
@@ -26,10 +29,10 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class GameEvents {
-	
 	@SubscribeEvent
     public static void interact(PlayerInteractEvent.RightClickBlock evt) {
-        if(evt.getItemStack().getItem() instanceof ShovelItem) {
+		Item item = evt.getItemStack().getItem();
+        if(item instanceof ShovelItem) {
         	BlockState stateClicked = evt.getWorld().getBlockState(evt.getPos());
         	if(stateClicked.isIn(Blocks.GRAVEL)) {
         		BlockState stateAbove = evt.getWorld().getBlockState(evt.getPos().up());
@@ -37,14 +40,28 @@ public class GameEvents {
 	        		if(!evt.getWorld().isRemote()) {
 	        			evt.getWorld().setBlockState(evt.getPos(), Index.GRAVEL_PATH.getDefaultState());
 	        			evt.getItemStack().damageItem(1, evt.getPlayer(), (PlayerEntity e) -> {});
-	        			evt.setCancellationResult(ActionResultType.SUCCESS);
-	                	evt.setCanceled(true);
 	        		}
 	        		else {
 	        			evt.getPlayer().playSound(SoundEvents.BLOCK_GRAVEL_BREAK, 1, 1);
 	        		}
+	        		evt.setCancellationResult(ActionResultType.SUCCESS);
+                	evt.setCanceled(true);
     			}
         	}
+        }
+        else if(item instanceof PickaxeItem) {
+        	BlockState stateClicked = evt.getWorld().getBlockState(evt.getPos());
+        	BlockState next = Util.crackedState(stateClicked);
+    		if(next != null) {
+    			if(!evt.getWorld().isRemote()) {
+        			evt.getWorld().setBlockState(evt.getPos(), next);
+        			evt.getItemStack().damageItem(1, evt.getPlayer(), (PlayerEntity e) -> {});
+                	return;
+    			}
+    			evt.setCancellationResult(ActionResultType.SUCCESS);
+            	evt.setCanceled(true);
+        		evt.getPlayer().playSound(SoundEvents.UI_STONECUTTER_TAKE_RESULT, 1, 1);
+    		}	
         }
     }
 	
