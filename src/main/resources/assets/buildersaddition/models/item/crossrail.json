@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "buildersaddition:block/crossrail"
+        "layer0": "buildersaddition:blocks/crossrail"
     }
 }

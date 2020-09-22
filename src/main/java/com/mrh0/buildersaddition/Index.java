@@ -1,5 +1,6 @@
 package com.mrh0.buildersaddition;
 
+import com.mrh0.buildersaddition.blocks.Arcade;
 import com.mrh0.buildersaddition.blocks.BedsideTable;
 import com.mrh0.buildersaddition.blocks.Bench;
 import com.mrh0.buildersaddition.blocks.Bookshelf;
@@ -17,7 +18,6 @@ import com.mrh0.buildersaddition.blocks.Pillar;
 import com.mrh0.buildersaddition.blocks.Planter;
 import com.mrh0.buildersaddition.blocks.Shelf;
 import com.mrh0.buildersaddition.blocks.ShopSign;
-import com.mrh0.buildersaddition.blocks.SlabTorch;
 import com.mrh0.buildersaddition.blocks.Sofa;
 import com.mrh0.buildersaddition.blocks.Speaker;
 import com.mrh0.buildersaddition.blocks.Stool;
@@ -26,6 +26,7 @@ import com.mrh0.buildersaddition.blocks.VerticalSlab;
 import com.mrh0.buildersaddition.blocks.Candle;
 import com.mrh0.buildersaddition.blocks.base.GenericBlock;
 import com.mrh0.buildersaddition.blocks.base.IConnects;
+import com.mrh0.buildersaddition.container.ArcadeContainer;
 import com.mrh0.buildersaddition.container.BookshelfContainer;
 import com.mrh0.buildersaddition.container.ShelfContainer;
 import com.mrh0.buildersaddition.container.SpeakerContainer;
@@ -37,6 +38,7 @@ import com.mrh0.buildersaddition.event.opts.ContainerOptions;
 import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import com.mrh0.buildersaddition.event.opts.TileEntityOptions;
 import com.mrh0.buildersaddition.items.base.GenericItem;
+import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;
 import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.CabinetTileEntity;
@@ -51,7 +53,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.item.PaintingType;
 import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.Properties;
 import net.minecraft.particles.ParticleTypes;
@@ -242,7 +243,7 @@ public class Index {
 	public static Block LARGE_SOUL_CANDLE;
 	public static Block CANDLE;
 	public static Block SOUL_CANDLE;
-	
+	public static Block ARCADE;
 	
 	public static EntityType<SeatEntity> SEAT_ENTITY_TYPE;
 	
@@ -254,10 +255,12 @@ public class Index {
 	public static TileEntityType<ShopSignTileEntity> SHOP_SIGN_TILE_ENTITY_TYPE;
 	public static TileEntityType<BedsideTileEntity> BEDSIDE_TILE_ENTITY_TYPE;
 	public static TileEntityType<SpeakerTileEntity> SPEAKER_TILE_ENTITY_TYPE;
+	public static TileEntityType<ArcadeTileEntity> ARCADE_TILE_ENTITY_TYPE;
 
 	public static ContainerType<BookshelfContainer> BOOKSHELF_CONTAINER;
 	public static ContainerType<ShelfContainer> SHELF_CONTAINER;
 	public static ContainerType<SpeakerContainer> SPEAKER_CONTAINER;
+	public static ContainerType<ArcadeContainer> ARCADE_CONTAINER;
 
 	public static PaintingType SUMMER_FIELD_PAINTING;
 	public static PaintingType SHARD_PAINTING;
@@ -460,6 +463,7 @@ public class Index {
 		LARGE_SOUL_CANDLE = new LargeCandle("large_soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		CANDLE = new Candle("candle", ParticleTypes.FLAME);
 		SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
+		ARCADE = new Arcade();
 		
 		//SLAB_TORCH = new SlabTorch();
 	}
@@ -490,15 +494,19 @@ public class Index {
 				TileEntityRegistry.instance.<BedsideTileEntity>register(BedsideTileEntity::new, new TileEntityOptions("bedside_table", BEDSIDE_TABLE));
 		SPEAKER_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<SpeakerTileEntity>register(SpeakerTileEntity::new, new TileEntityOptions("speaker", SPEAKER));
+		ARCADE_TILE_ENTITY_TYPE = 
+				TileEntityRegistry.instance.<ArcadeTileEntity>register(ArcadeTileEntity::new, new TileEntityOptions("arcade", ARCADE));
 	}
 	
 	public static void containers() {
-	BOOKSHELF_CONTAINER = (ContainerType<BookshelfContainer>) 
-			ContainerRegistry.instance.register(IForgeContainerType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
-	SHELF_CONTAINER = (ContainerType<ShelfContainer>) 
-			ContainerRegistry.instance.register(IForgeContainerType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
-	SPEAKER_CONTAINER = (ContainerType<SpeakerContainer>) 
-			ContainerRegistry.instance.register(IForgeContainerType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
+		BOOKSHELF_CONTAINER = (ContainerType<BookshelfContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
+		SHELF_CONTAINER = (ContainerType<ShelfContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
+		SPEAKER_CONTAINER = (ContainerType<SpeakerContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
+		ARCADE_CONTAINER = (ContainerType<ArcadeContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(ArcadeContainer::create).setRegistryName("arcade_container"), new ContainerOptions());
 	}
 	
 	/*BOP_CHERRY_VERTICAL_SLAB = new VerticalSlab("bop_cherry", Blocks.OAK_PLANKS, "biomesoplenty");

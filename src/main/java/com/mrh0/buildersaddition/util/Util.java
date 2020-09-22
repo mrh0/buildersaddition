@@ -7,6 +7,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.KnowledgeBookItem;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 
 public class Util {
 	public static boolean isBook(ItemStack stack) {
@@ -28,4 +30,8 @@ public class Util {
 		else
 			return null;
 	}
+	
+	public static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
+      return false;
+   }
 }

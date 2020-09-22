@@ -357,8 +357,10 @@
 	"container.buildersaddition.speaker": "Midi Speaker",
 	"container.buildersaddition.speaker.disconnect": "Disconnect",
 	"container.buildersaddition.speaker.connect": "Connect",
+	"container.buildersaddition.arcade": "Arcade",
 	
 	"block.buildersaddition.speaker":"Midi Speaker",
+	"block.buildersaddition.arcade":"Arcade",
 	
 	"note.buildersaddition.bass": "Bass",
 	"note.buildersaddition.snare": "Snare",

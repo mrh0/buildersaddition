@@ -44,10 +44,6 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 			BuildersAddition.midi.midiEvent = this;
 	}
 
-	protected void func_230451_b_(MatrixStack p_230451_1_, int p_230451_2_, int p_230451_3_) {
-		//this.field_230712_o_.func_238422_b_(p_230451_1_, this.field_230704_d_, (float) this.field_238742_p_,(float) this.field_238743_q_, 4210752);
-	}
-
 	// init
 	@Override
 	public void init(Minecraft p_231158_1_, int p_231158_2_, int p_231158_3_) {
@@ -133,7 +129,7 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 		this.func_230459_a_(stack, x, y);
 	}
 	
-	protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int x, int y) {}
+	
 	
 	private boolean hasDevice() {
 		if(BuildersAddition.midi != null)
@@ -160,6 +156,12 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 	}
 
 	// drawGuiContainerBackgroundLayer
+	
+	@Override
+	protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int x, int y) {
+		//Nothing.
+	}
+	
 	@Override
 	protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float p_230450_2_, int p_230450_3_, int p_230450_4_) {
 		renderBackground(stack);//renderBackground

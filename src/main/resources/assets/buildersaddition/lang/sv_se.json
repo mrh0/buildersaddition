@@ -340,8 +340,10 @@
 	"container.buildersaddition.speaker": "Midi-högtalare",
 	"container.buildersaddition.speaker.disconnect": "Koppla från",
 	"container.buildersaddition.speaker.connect": "Anslut",
+	"container.buildersaddition.arcade": "Arkad",
 	
 	"block.buildersaddition.speaker":"Midi-högtalare",
+	"block.buildersaddition.arcade":"Arkad",
 	
 	"note.buildersaddition.bass": "Bass",
 	"note.buildersaddition.snare": "Snara",
