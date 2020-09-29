@@ -348,6 +348,15 @@
 	"block.buildersaddition.luminus_glass_white":"White Luminus Glass",
 	"block.buildersaddition.luminus_glass_yellow":"Yellow Luminus Glass",
 	
+	"block.buildersaddition.support_bracket_oak":"Oak Support Bracket",
+	"block.buildersaddition.support_bracket_spruce":"Spruce Support Bracket",
+	"block.buildersaddition.support_bracket_birch":"Birch Support Bracket",
+	"block.buildersaddition.support_bracket_acacia":"Acacia Support Bracket",
+	"block.buildersaddition.support_bracket_dark_oak":"Dark Oak Support Bracket",
+	"block.buildersaddition.support_bracket_jungle":"Jungle Support Bracket",
+	"block.buildersaddition.support_bracket_crimson":"Crimson Support Bracket",
+	"block.buildersaddition.support_bracket_warped":"Warped Support Bracket",
+	
 	"container.buildersaddition.counter":"Counter",
 	"container.buildersaddition.cupboard":"Cupboard",
 	"container.buildersaddition.cabinet":"Cabinet",

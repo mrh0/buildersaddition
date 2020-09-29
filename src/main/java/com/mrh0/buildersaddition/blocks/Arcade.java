@@ -5,11 +5,11 @@ import com.mrh0.buildersaddition.blocks.base.BaseBlock;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.util.Util;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -38,8 +38,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class Arcade extends BaseBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-	public static final DirectionProperty FACING = DirectionProperty.create("facing",
-			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
+	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 	
 	private static VoxelShape SHAPE_NORTH_LOWER = Block.makeCuboidShape(0d, 0d, 1d, 16d, 32d, 16d);
 	private static VoxelShape SHAPE_EAST_LOWER = Block.makeCuboidShape(0d, 0d, 0d, 15d, 32d, 16d);

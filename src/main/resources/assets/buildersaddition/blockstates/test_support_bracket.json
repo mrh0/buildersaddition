@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_$MAT", "y":180 },
+        "facing=west,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_$MAT", "y":90 },
+        "facing=south,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_$MAT" },
+        "facing=east,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_$MAT", "y":270 },
+        
+        "facing=north,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_$MAT", "y":180 },
+        "facing=west,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_$MAT", "y":90 },
+        "facing=south,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_$MAT" },
+        "facing=east,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_$MAT", "y":270 }
+    }
+}

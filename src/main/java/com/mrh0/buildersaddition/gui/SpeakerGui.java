@@ -126,7 +126,7 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 			renderTooltip(stack, new StringTextComponent(
 					(hasDevice() ? "Device Discovered" : "No Device Connected") 
 					+ ", Midi Input: " + (Config.MIDI_INPUT_ENABLED.get() ? "Enabled" : "Disabled")), x, y);
-		this.func_230459_a_(stack, x, y);
+		this.renderHoveredTooltip(stack, x, y);
 	}
 	
 	

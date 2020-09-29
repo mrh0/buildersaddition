@@ -64,7 +64,7 @@ public class ArcadeGui extends ContainerScreen<ArcadeContainer> {
 		GlStateManager.disableLighting();
 		GlStateManager.disableBlend();
 		//Screen.fill(stack, p_238467_1_, p_238467_2_, p_238467_3_, p_238467_4_, color);
-		this.func_230459_a_(stack, x, y);
+		this.renderHoveredTooltip(stack, x, y);
 	}
 	
 	public TileEntity getTE() {

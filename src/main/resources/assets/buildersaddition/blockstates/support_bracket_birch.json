@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_birch", "y":180 },
+        "facing=west,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_birch", "y":90 },
+        "facing=south,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_birch" },
+        "facing=east,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_birch", "y":270 },
+        
+        "facing=north,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_birch", "y":180 },
+        "facing=west,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_birch", "y":90 },
+        "facing=south,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_birch" },
+        "facing=east,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_birch", "y":270 }
+    }
+}

@@ -5,6 +5,8 @@ import com.mrh0.buildersaddition.arcade.ArcadeGame;
 import com.mrh0.buildersaddition.arcade.ArcadeScreen;
 import com.mrh0.buildersaddition.arcade.games.ArcadeSnake;
 import com.mrh0.buildersaddition.container.ArcadeContainer;
+import com.mrh0.buildersaddition.qspl.QSPLArcadeGame;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -23,6 +25,7 @@ public class ArcadeTileEntity extends TileEntity implements INamedContainerProvi
 	public ArcadeTileEntity() {
 		super(Index.ARCADE_TILE_ENTITY_TYPE);
 		screen = new ArcadeScreen();
+		//game = new QSPLArcadeGame(screen, this);
 		game = new ArcadeSnake(screen, this);
 	}
 

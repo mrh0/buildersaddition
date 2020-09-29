@@ -7,6 +7,7 @@ import com.mrh0.buildersaddition.tileentity.base.BaseInstrument;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
@@ -28,7 +29,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public class Speaker extends BaseDerivativeBlock {
 	
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(2d, 1d, 2d, 14d, 16d, 14d);
-	public static final DirectionProperty FACING = DirectionProperty.create("facing", p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
+	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
 	public Speaker() {
 		super("speaker", Blocks.OAK_PLANKS);

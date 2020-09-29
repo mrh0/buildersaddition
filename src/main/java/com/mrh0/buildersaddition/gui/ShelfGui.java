@@ -39,7 +39,7 @@ public class ShelfGui extends ContainerScreen<ShelfContainer> {
 	public void render(MatrixStack stack, int p_230430_2_, int p_230430_3_, float ticks) {
 		this.renderBackground(stack);
 		super.render(stack, p_230430_2_, p_230430_3_, ticks);
-		this.func_230459_a_(stack, p_230430_2_, p_230430_3_);
+		this.renderHoveredTooltip(stack, p_230430_2_, p_230430_3_);
 	}
 	
 	//drawGuiContainerBackgroundLayer (i think)

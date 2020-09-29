@@ -45,6 +45,21 @@ public abstract class ArcadeGame {
 		Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BIT, note);
 	}
 	
+	public void playSound(int sound, int note) {
+		switch(sound) {
+			case 0:
+				Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BASS, note);break;
+			//case 1:
+			//	Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_SNARE, note);break;
+			case 2:
+				Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_HAT, note);break;
+			//case 3:
+			//	Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM, note);break;
+			case 12:
+				Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BIT, note);break;
+		}
+	}
+	
 	public int getBestScore() {
 		return 0;
 	}
@@ -91,5 +106,44 @@ public abstract class ArcadeGame {
 	
 	public static boolean isReset(int key) {
 		return key == 269;
+	}
+	
+	public static String getKeyName(int key) {
+		switch(key) {
+			case 32:
+				return "space";
+			case 257:
+				return "return";
+			case 268:
+				return "home";
+			case 256:
+				return "escape";
+			case 290:
+				return "help";
+				
+			case 263:
+				return "left";
+			case 65:
+				return "left";
+				
+			case 262:
+				return "right";
+			case 68:
+				return "right";
+				
+			case 265:
+				return "up";
+			case 87:
+				return "up";
+				
+			case 264:
+				return "down";
+			case 83:
+				return "down";
+				
+			case 269:
+				return "reset";
+		}
+		return "unknown";
 	}
 }

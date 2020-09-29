@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition.util;
 
+import com.mrh0.buildersaddition.config.Config;
+
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.EnchantedBookItem;
@@ -7,8 +9,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.KnowledgeBookItem;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 public class Util {
 	public static boolean isBook(ItemStack stack) {
@@ -32,6 +36,13 @@ public class Util {
 	}
 	
 	public static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
-      return false;
-   }
+		return false;
+	}
+	
+	public static boolean accessCheck(World world, BlockPos pos, Direction facing) {
+		if(!Config.INVENTORY_ACCESS_BLOCK_CHECK.get())
+			return true;
+		BlockState front = world.getBlockState(pos.offset(facing));
+		return !(front.isSolidSide(world, pos.offset(facing), facing.getOpposite()) || front.isSolidSide(world, pos.offset(facing), Direction.UP));
+	}
 }

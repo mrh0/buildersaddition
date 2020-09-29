@@ -84,7 +84,7 @@ public class Notes {
 	}
 	
 	public static void playClientNote(SoundEvent evt, int note) {
-		if(note < 0)
+		if(note < 0 && note >= 48)
 			return;
 		float f = (float)Math.pow(2.0D, (double)(note - 12) / 12.0D);
 		Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(evt, f));

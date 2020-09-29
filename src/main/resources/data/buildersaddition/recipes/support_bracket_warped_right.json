@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SS","WP"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:warped_slab"
+		},
+		"P":
+		{
+			"item": "buildersaddition:warped_vertical_slab"
+		},
+		"W":
+		{
+			"tag": "forge:rods/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:support_bracket_warped",
+		"count": 4
+	}
+}

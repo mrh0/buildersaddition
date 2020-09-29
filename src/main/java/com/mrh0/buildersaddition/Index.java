@@ -21,6 +21,7 @@ import com.mrh0.buildersaddition.blocks.ShopSign;
 import com.mrh0.buildersaddition.blocks.Sofa;
 import com.mrh0.buildersaddition.blocks.Speaker;
 import com.mrh0.buildersaddition.blocks.Stool;
+import com.mrh0.buildersaddition.blocks.SupportBracket;
 import com.mrh0.buildersaddition.blocks.Table;
 import com.mrh0.buildersaddition.blocks.VerticalSlab;
 import com.mrh0.buildersaddition.blocks.Candle;
@@ -224,6 +225,15 @@ public class Index {
 	public static Block BENCH_ACACIA;
 	public static Block BENCH_WARPED;
 	public static Block BENCH_CRIMSON;
+	
+	public static Block SUPPORT_BRACKET_OAK;
+	public static Block SUPPORT_BRACKET_BIRCH;
+	public static Block SUPPORT_BRACKET_SPRUCE;
+	public static Block SUPPORT_BRACKET_DARK_OAK;
+	public static Block SUPPORT_BRACKET_JUNGLE;
+	public static Block SUPPORT_BRACKET_ACACIA;
+	public static Block SUPPORT_BRACKET_WARPED;
+	public static Block SUPPORT_BRACKET_CRIMSON;
 	
 	public static Block SOFA[] = new Sofa[16];
 	
@@ -437,6 +447,15 @@ public class Index {
 		BENCH_ACACIA = new Bench("acacia");
 		BENCH_WARPED = new Bench("warped", Blocks.WARPED_PLANKS);
 		BENCH_CRIMSON = new Bench("crimson", Blocks.CRIMSON_PLANKS);
+		
+		SUPPORT_BRACKET_OAK = new SupportBracket("oak");
+		SUPPORT_BRACKET_BIRCH = new SupportBracket("birch");
+		SUPPORT_BRACKET_SPRUCE = new SupportBracket("spruce");
+		SUPPORT_BRACKET_DARK_OAK = new SupportBracket("dark_oak");
+		SUPPORT_BRACKET_JUNGLE = new SupportBracket("jungle");
+		SUPPORT_BRACKET_ACACIA = new SupportBracket("acacia");
+		SUPPORT_BRACKET_WARPED = new SupportBracket("warped", Blocks.WARPED_PLANKS);
+		SUPPORT_BRACKET_CRIMSON = new SupportBracket("crimson", Blocks.CRIMSON_PLANKS);
 		
 		for(int i = 0; i < colors.length; i++) {
 			SOFA[i] = new Sofa(colors[i]);

@@ -2,6 +2,8 @@ package com.mrh0.buildersaddition.blocks;
 
 import java.util.Random;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
+import com.mrh0.buildersaddition.config.Config;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -32,7 +34,7 @@ public class Candle extends BaseBlock {
 
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	public static final DirectionProperty FACING = DirectionProperty.create("facing",
-			p -> p.getIndex() != 1);
+			p -> p != Direction.UP);
 	protected static final VoxelShape SHAPE_WEST = Block.makeCuboidShape(6d, 3d, 0d, 10d, 13d, 4d);
 	protected static final VoxelShape SHAPE_EAST = Block.makeCuboidShape(6d, 3d, 12d, 10d, 13d, 16d);
 	protected static final VoxelShape SHAPE_SOUTH = Block.makeCuboidShape(0d, 3d, 6d, 4d, 13d, 10d);
@@ -82,7 +84,7 @@ public class Candle extends BaseBlock {
 			Hand handIn, BlockRayTraceResult hit) {
 		ItemStack item = player.getHeldItem(handIn);
 		boolean lit = state.get(LIT);
-		if(player.isCreative()) {
+		if(player.isCreative() || !Config.REQUIRE_FLINT_AND_STEEL.get()) {
 			if(!lit) {
 				worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1, 1, false);
 				if(!worldIn.isRemote())

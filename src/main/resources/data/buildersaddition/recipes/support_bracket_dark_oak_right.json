@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SS","WP"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:dark_oak_slab"
+		},
+		"P":
+		{
+			"item": "buildersaddition:dark_oak_vertical_slab"
+		},
+		"W":
+		{
+			"tag": "forge:rods/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:support_bracket_dark_oak",
+		"count": 4
+	}
+}

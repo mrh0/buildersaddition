@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_oak", "y":180 },
+        "facing=west,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_oak", "y":90 },
+        "facing=south,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_oak" },
+        "facing=east,supporting=up": { "model": "buildersaddition:block/support_bracket/support_bracket_up_oak", "y":270 },
+        
+        "facing=north,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_oak", "y":180 },
+        "facing=west,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_oak", "y":90 },
+        "facing=south,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_oak" },
+        "facing=east,supporting=down": { "model": "buildersaddition:block/support_bracket/support_bracket_down_oak", "y":270 }
+    }
+}
