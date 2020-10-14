@@ -4,6 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextComponent;
 
@@ -13,7 +14,7 @@ public class ArcadeScreen {
 	public final int cellWidth = 8;
 	public final int cellHeight = 8;
 	public final short[] screen;
-	public static int[] fgColors = {
+	public static final int[] fgColors = {
 		0x000000,
 		0x0000AA,
 		0x00AA00,
@@ -35,9 +36,24 @@ public class ArcadeScreen {
 	private int bg = 0;
 	private int fg = 0;
 	
+	private ScreenRender fgRenderer = null;
+	private ScreenRender bgRenderer = null;
+	
+	public interface ScreenRender {
+		void render(MatrixStack stack, int startx, int starty, int width, int height);
+	}
+	
 	public ArcadeScreen() {
 		screen = new short[width * height];
 		clear();
+	}
+	
+	public void setBgRenderer(ScreenRender bgr) {
+		this.bgRenderer = bgr;
+	}
+	
+	public void setFgRenderer(ScreenRender fgr) {
+		this.fgRenderer = fgr;
 	}
 	
 	public void clear() {
@@ -61,7 +77,12 @@ public class ArcadeScreen {
 	}
 	
 	public int getIndex(int x, int y) {
-		return y * width + x;
+		int i = y * width + x;
+		if(i < 0)
+			return 0;
+		if(i >= width*height)
+			return 0;
+		return i;
 	}
 	
 	public int getX(int i) {
@@ -88,8 +109,12 @@ public class ArcadeScreen {
 		return ((s >> 4) & 0xf);
 	}
 	
-	public static int getColor(int i) {
+	public static int getHexColor(int i) {
 		return fgColors[i];
+	}
+	
+	public static int getRenderColor(int i) {
+		return getHexColor(i) + 0xFF000000;
 	}
 	
 	public int print(int pos, String text) {
@@ -102,6 +127,11 @@ public class ArcadeScreen {
 	
 	public int print(int x, int y, String text) {
 		return print(getIndex(x, y), text);
+	}
+	
+	public int print(int x, int y, ITextComponent text) {
+		int i = getIndex(x, y);
+		return print(i, text.getStringTruncated(width*height-i));
 	}
 	
 	public void setBg(int col) {
@@ -145,8 +175,11 @@ public class ArcadeScreen {
 		for(int i = 0; i < screen.length; i++) {
 			int x = startx + getX(i) * cellWidth;
 			int y = starty + getY(i) * cellHeight;
-			Screen.fill(stack, x, y, x + cellWidth, y + cellHeight, getColor(getBg(screen[i])) + 0xFF000000);
+			Screen.fill(stack, x, y, x + cellWidth, y + cellHeight, getRenderColor(getBg(screen[i])));
 		}
+		
+		if(bgRenderer != null)
+			bgRenderer.render(stack, startx, starty, width * cellWidth, height * cellHeight);
 	}
 	
 	public void renderForeground(MatrixStack stack, FontRenderer fr, int swidth, int sheight) {
@@ -156,7 +189,10 @@ public class ArcadeScreen {
 			int x = startx + getX(i) * cellWidth;
 			int y = starty + getY(i) * cellHeight;
 			if(getChar(screen[i]) != '\0')
-				fr.func_243248_b(stack, new StringTextComponent(getChar(screen[i])+""), x+1, y, getColor(getFg(screen[i])));
+				fr.func_243248_b(stack, new StringTextComponent(getChar(screen[i])+""), x+1, y, getHexColor(getFg(screen[i])));
 		}
+		
+		if(fgRenderer != null)
+			fgRenderer.render(stack, startx, starty, width * cellWidth, height * cellHeight);
 	}
 }

@@ -2,15 +2,12 @@ package com.mrh0.buildersaddition.arcade;
 
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.util.Notes;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.util.SoundEvents;
 
 public abstract class ArcadeGame {
 	public ArcadeScreen s;
-	private boolean[] keyboardKeys;
-	private ArcadeTileEntity te;
+	//private boolean[] keyboardKeys;
+	protected ArcadeTileEntity te;
 	
 	public ArcadeGame(ArcadeScreen s, ArcadeTileEntity te) {
 		this.s = s;
@@ -24,6 +21,8 @@ public abstract class ArcadeGame {
 	public void start() {
 		
 	}
+	
+	
 	
 	public void onKeyPressed(int key) {
 		
@@ -44,6 +43,10 @@ public abstract class ArcadeGame {
 	public void playSound(int note) {
 		Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BIT, note);
 	}
+	
+	public static final int NOTE_BASS = 0;
+	public static final int NOTE_HAT = 2;
+	public static final int NOTE_BIT = 12;
 	
 	public void playSound(int sound, int note) {
 		switch(sound) {

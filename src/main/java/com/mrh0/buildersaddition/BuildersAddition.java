@@ -1,5 +1,6 @@
 package com.mrh0.buildersaddition;
 
+import com.mrh0.buildersaddition.arcade.ArcadeManager;
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.ClientEventHandler;
@@ -51,6 +52,8 @@ public class BuildersAddition {
     	FMLJavaModLoadingContext.get().getModEventBus().addListener(this::postInit);
     	MinecraftForge.EVENT_BUS.addListener(this::serverevt);
     	MinecraftForge.EVENT_BUS.register(this);
+    	
+    	ArcadeManager.init();
     	
     	new ModGroup("builders_addition_group");
     	

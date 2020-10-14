@@ -5,7 +5,9 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.arcade.ArcadeGame;
+import com.mrh0.buildersaddition.arcade.ArcadeManager.GameConstructor;
 import com.mrh0.buildersaddition.arcade.ArcadeScreen;
+import com.mrh0.buildersaddition.arcade.games.ArcadeMenu;
 import com.mrh0.buildersaddition.container.ArcadeContainer;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import net.minecraft.client.Minecraft;
@@ -35,7 +37,17 @@ public class ArcadeGui extends ContainerScreen<ArcadeContainer> {
 		this.ySize = 226;
 		
 		screen = te.screen;
+		
+		setGame(ArcadeMenu::new);
+	}
+	
+	public void setGame(GameConstructor g) {
+		screen.setBgRenderer(null);
+		screen.setFgRenderer(null);
+		te.setGame(g);
 		game = te.game;
+		if(game instanceof ArcadeMenu)
+			((ArcadeMenu)game).gui = this;
 		game.start();
 	}
 

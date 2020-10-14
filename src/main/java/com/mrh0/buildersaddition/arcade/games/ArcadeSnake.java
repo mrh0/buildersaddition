@@ -40,11 +40,12 @@ public class ArcadeSnake extends ArcadeGame {
 	@Override
 	public void start() {
 		super.start();
+		s.clear();
 		s.testScreen();
 		s.setColors(0x0, 0xf);
 		s.clear(0, 1, s.width, s.height-2);
 		s.print(1, 1, "Arcade Snake v1.0");
-		s.print(1, 2, "More games to come.");
+		//s.print(1, 2, "More games to come.");
 		String msg = " Press any key to continue. ";
 		s.print(s.width/2 - msg.length()/2, s.height/2, msg);
 		
@@ -198,10 +199,10 @@ public class ArcadeSnake extends ArcadeGame {
 	@Override
 	public void frame(long time) {
 		super.frame(time);
-		if(initScreen) {
+		/*if(initScreen) {
 			s.print(1, s.height-2, time+"");
 			return;
-		}
+		}*/
 		if(time > deadTimer)
 			begin();
 		if(time%tickRate(score) == 0 && !isDead)
