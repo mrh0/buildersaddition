@@ -1,0 +1,78 @@
+{
+    "textures": {
+        "stripped_top": "minecraft:block/stripped_oak_log_top",
+        "stripped": "minecraft:block/stripped_oak_log",
+        "particle": "minecraft:block/stripped_oak_log"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Side",
+            "from": [ 6, 0, 18 ], 
+            "to": [ 10, 12, 20 ], 
+            "faces": {
+                "north": { "texture": "#stripped", "uv": [ 6, 4, 10, 16 ] },
+                "east": { "texture": "#stripped_top", "uv": [ 0, 4, 2, 16 ] },
+                "south": { "texture": "#stripped", "uv": [ 6, 4, 10, 16 ] },
+                "west": { "texture": "#stripped_top", "uv": [ 14, 4, 16, 16 ] },
+                "up": { "texture": "#stripped_top", "uv": [ 6, 14, 10, 16 ] },
+                "down": { "texture": "#stripped_top", "uv": [ 6, 0, 10, 2 ] }
+            }
+        },
+        {
+            "name": "Bottom",
+            "from": [ 6, 0, 6 ], 
+            "to": [ 10, 2, 18 ], 
+            "faces": {
+                "north": { "texture": "#stripped_top", "uv": [ 6, 14, 10, 16 ] },
+                "east": { "texture": "#stripped_top", "uv": [ 4, 14, 16, 16 ] },
+                "west": { "texture": "#stripped_top", "uv": [ 0, 14, 12, 16 ] },
+                "up": { "texture": "#stripped", "uv": [ 6, 4, 10, 16 ] },
+                "down": { "texture": "#stripped", "uv": [ 6, 4, 10, 16 ] }
+            }
+        },
+        {
+            "name": "Backet",
+            "from": [ 7, 1, 14 ], 
+            "to": [ 9, 15, 16 ], 
+            "rotation": { "origin": [ 8, 8, 12 ], "axis": "x", "angle": 45.0 },
+            "faces": {
+                "north": { "texture": "#stripped", "uv": [ 7, 1, 9, 15 ] },
+                "east": { "texture": "#stripped", "uv": [ 7, 1, 9, 15 ] },
+                "south": { "texture": "#stripped", "uv": [ 7, 1, 9, 15 ] },
+                "west": { "texture": "#stripped", "uv": [ 7, 1, 9, 15 ] }
+            }
+        }
+    ]
+}

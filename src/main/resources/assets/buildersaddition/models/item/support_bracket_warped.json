@@ -1,5 +1,5 @@
 {
-  "parent": "buildersaddition:block/support_bracket/support_bracket_up_warped",
+  "parent": "buildersaddition:block/support_bracket/support_bracket_up_full_warped",
   "textures": {
     }
 }
