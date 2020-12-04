@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["RIR"],
+	"key":
+	{
+		"R":
+		{
+			"tag": "forge:rods/iron"
+		},
+		"I":
+		{
+			"item": "minecraft:iron_bars"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:fireplace_guard",
+		"count": 2
+	}
+}

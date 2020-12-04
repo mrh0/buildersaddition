@@ -7,11 +7,16 @@
 	"item.buildersaddition.iron_rod":"Iron Rod",
 	
 	"block.buildersaddition.planter":"Barrel Planter",
+	"block.buildersaddition.shop_sign_wood":"Wooden Shop Sign",
+	
 	"block.buildersaddition.iron_ladder":"Iron Ladder",
 	"block.buildersaddition.iron_fence":"Iron Fence",
-	"block.buildersaddition.iron_fence_rough":"Rough Iron Fence",
-	"block.buildersaddition.shop_sign_wood":"Wooden Shop Sign",
-	"block.buildersaddition.rough_iron_block":"Rough Iron Block",
+	"block.buildersaddition.iron_fence_rough":"Cast Iron Fence",
+	"block.buildersaddition.rough_iron_block":"Cast Iron Block",
+	
+	"block.buildersaddition.fireplace_guard":"Fireplace Guard",
+	"block.buildersaddition.rough_fireplace_guard":"Cast Iron Fireplace Guard",
+	
 	"block.buildersaddition.gravel_path":"Gravel Path",
 	"block.buildersaddition.crossrail":"Crossrail",
 	"block.buildersaddition.large_candle":"Large Candle",
@@ -375,6 +380,7 @@
 	"arcade.buildersaddition.game.tetris":"Tetris",
 	"arcade.buildersaddition.game.breakout":"Breakout",
 	"arcade.buildersaddition.game.minesweaper":"Minesweeper",
+	"arcade.buildersaddition.game.credits":"Credits",
 	
 	"arcade.buildersaddition.menu.select":"Select a game with [UP] and [DOWN]",
 	"arcade.buildersaddition.menu.start":"Start the game with [ENTER] or [SPACE]",

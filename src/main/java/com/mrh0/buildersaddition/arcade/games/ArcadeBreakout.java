@@ -29,6 +29,8 @@ public class ArcadeBreakout extends ArcadeGame {
 		balls.add(new Ball(s.width/2, s.height/2));
 		
 		s.setFgRenderer(this::fgRender);
+		s.setColors(0x0, 0xf);
+		s.print(0, "Work in progress.");
 	}
 	
 	private void fgRender(MatrixStack stack, int x, int y, int width, int height) {

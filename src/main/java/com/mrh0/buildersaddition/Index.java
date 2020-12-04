@@ -10,6 +10,7 @@ import com.mrh0.buildersaddition.blocks.LuminusGlass;
 import com.mrh0.buildersaddition.blocks.Counter;
 import com.mrh0.buildersaddition.blocks.Crossrail;
 import com.mrh0.buildersaddition.blocks.Cupboard;
+import com.mrh0.buildersaddition.blocks.FireplaceGuard;
 import com.mrh0.buildersaddition.blocks.GravelPath;
 import com.mrh0.buildersaddition.blocks.Hedge;
 import com.mrh0.buildersaddition.blocks.IronFence;
@@ -255,6 +256,9 @@ public class Index {
 	public static Block SOUL_CANDLE;
 	public static Block ARCADE;
 	
+	public static Block FIREPLACE_GUARD;
+	public static Block ROUGH_FIREPLACE_GUARD;
+	
 	public static EntityType<SeatEntity> SEAT_ENTITY_TYPE;
 	
 	public static TileEntityType<CounterTileEntity> COUNTER_TILE_ENTITY_TYPE;
@@ -278,6 +282,8 @@ public class Index {
 	public static PaintingType HORIZONS_PAINTING;
 	public static PaintingType PORTRAIT_PAINTING;
 	public static PaintingType PROMO_PAINTING;
+	public static PaintingType HEROBRINE_PAINTING;
+	public static PaintingType ENDERMAN_PAINTING;
 	
 	
 	public static void items() {
@@ -483,8 +489,8 @@ public class Index {
 		CANDLE = new Candle("candle", ParticleTypes.FLAME);
 		SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		ARCADE = new Arcade();
-		
-		//SLAB_TORCH = new SlabTorch();
+		FIREPLACE_GUARD = new FireplaceGuard("fireplace_guard");
+		ROUGH_FIREPLACE_GUARD = new FireplaceGuard("rough_fireplace_guard");;
 	}
 	
 	public static void paintings() {
@@ -494,6 +500,8 @@ public class Index {
 		HORIZONS_PAINTING = RegistryUtil.createPainting("horizons", 1, 1);
 		PORTRAIT_PAINTING = RegistryUtil.createPainting("portrait", 1, 1);
 		PROMO_PAINTING = RegistryUtil.createPainting("promo", 1, 1);
+		HEROBRINE_PAINTING = RegistryUtil.createPainting("herobrine", 1, 1);
+		ENDERMAN_PAINTING = RegistryUtil.createPainting("enderman", 1, 2);
 	}
 	
 	public static void tileentities() {

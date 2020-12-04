@@ -69,8 +69,8 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 		
 		helpBtn = new Button(x + 52 - 12, y + 24 * 4, 20, 20, new StringTextComponent("?"), (b) -> {});
 
-		this.addButton(connectBtn);// addButton
-		this.addButton(helpBtn);// addButton
+		this.addButton(connectBtn); //addButton
+		this.addButton(helpBtn); //addButton
 
 		btns = new Button[SIZE];
 

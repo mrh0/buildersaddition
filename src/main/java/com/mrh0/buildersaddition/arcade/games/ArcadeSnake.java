@@ -49,7 +49,9 @@ public class ArcadeSnake extends ArcadeGame {
 		String msg = " Press any key to continue. ";
 		s.print(s.width/2 - msg.length()/2, s.height/2, msg);
 		
-		initScreen = true;
+		initScreen = false; // skip
+		begin(); // skip
+		
 		dir = -1;
 	}
 	

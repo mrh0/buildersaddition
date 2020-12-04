@@ -22,6 +22,9 @@ public class Config {
 	public static ForgeConfigSpec.BooleanValue INVENTORY_ACCESS_BLOCK_CHECK;
 	public static ForgeConfigSpec.BooleanValue REQUIRE_FLINT_AND_STEEL;
 	
+	public static ForgeConfigSpec.BooleanValue PATHBLOCK_CREATION_ENABLED;
+	public static ForgeConfigSpec.BooleanValue CRACKED_CREATION_ENABLED;
+	
 	static {
 		
 		/*COMMON_BUILDER.comment("General Settings").push(CATAGORY_GENERAL);
@@ -34,8 +37,14 @@ public class Config {
 		INVENTORY_ACCESS_BLOCK_CHECK = COMMON_BUILDER.comment("Enable storage checking for blocked access.")
 				.define("inv_access_block_check", true);
 		
-		REQUIRE_FLINT_AND_STEEL = COMMON_BUILDER.comment("Whether Flint & Steel required to light a candle.")
+		REQUIRE_FLINT_AND_STEEL = COMMON_BUILDER.comment("Whether Flint & Steel is required to light a candle.")
 				.define("require_flint_and_steel", true);
+		
+		PATHBLOCK_CREATION_ENABLED = COMMON_BUILDER.comment("Whether the creation of pathblocks (added by this mod) using a shovel is enabled.")
+				.define("pathblock_creation_enabled", true);
+		
+		CRACKED_CREATION_ENABLED = COMMON_BUILDER.comment("Whether the creation of cracked block variants using a pickaxe is enabled.")
+				.define("cracked_creation_enabled", true);
 
 		COMMON_BUILDER.pop();
 		

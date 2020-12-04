@@ -7,7 +7,6 @@ import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.tileentity.CupboardTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 import com.mrh0.buildersaddition.util.Util;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;

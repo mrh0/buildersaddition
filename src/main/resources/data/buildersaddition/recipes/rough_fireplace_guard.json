@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "buildersaddition:fireplace_guard"
+	},
+	"result": "buildersaddition:rough_fireplace_guard",
+	"experience": 0,
+	"cookingtime": 200
+}

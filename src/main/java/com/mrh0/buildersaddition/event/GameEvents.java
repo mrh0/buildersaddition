@@ -33,6 +33,8 @@ public class GameEvents {
     public static void interact(PlayerInteractEvent.RightClickBlock evt) {
 		Item item = evt.getItemStack().getItem();
         if(item instanceof ShovelItem) {
+        	if(!Config.PATHBLOCK_CREATION_ENABLED.get())
+        		return;
         	BlockState stateClicked = evt.getWorld().getBlockState(evt.getPos());
         	if(stateClicked.isIn(Blocks.GRAVEL)) {
         		BlockState stateAbove = evt.getWorld().getBlockState(evt.getPos().up());
@@ -50,6 +52,8 @@ public class GameEvents {
         	}
         }
         else if(item instanceof PickaxeItem) {
+        	if(!Config.CRACKED_CREATION_ENABLED.get())
+        		return;
         	BlockState stateClicked = evt.getWorld().getBlockState(evt.getPos());
         	BlockState next = Util.crackedState(stateClicked);
     		if(next != null) {
@@ -63,6 +67,8 @@ public class GameEvents {
         		evt.getPlayer().playSound(SoundEvents.UI_STONECUTTER_TAKE_RESULT, 1, 1);
     		}	
         }
+        
+        //add event: When r-clicking a piston face with slime turn into a sticky-piston
     }
 	
 	@SubscribeEvent

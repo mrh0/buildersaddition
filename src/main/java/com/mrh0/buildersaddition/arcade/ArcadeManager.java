@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mrh0.buildersaddition.arcade.games.ArcadeBreakout;
+import com.mrh0.buildersaddition.arcade.games.ArcadeCredits;
 import com.mrh0.buildersaddition.arcade.games.ArcadeSnake;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 
@@ -47,5 +48,6 @@ public class ArcadeManager {
 		new ArcadeManager();
 		instance.add(ArcadeSnake::new, "snake");
 		instance.add(ArcadeBreakout::new, "breakout");
+		instance.add(ArcadeCredits::new, "credits");
 	}
 }
