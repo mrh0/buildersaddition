@@ -1,0 +1,8 @@
+{
+  "parent": "buildersaddition:block/stool/stool_base",
+  "textures": {
+        "wool": "minecraft:block/magenta_wool",
+        "planks": "minecraft:block/birch_planks",
+        "particle": "minecraft:block/birch_planks"
+    }
+}

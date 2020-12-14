@@ -4,6 +4,8 @@ import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.blocks.base.ISeat;
 import com.mrh0.buildersaddition.entity.SeatEntity;
 import com.mrh0.buildersaddition.state.BenchState;
+import com.mrh0.buildersaddition.state.SofaState;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,6 +16,7 @@ import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.Direction.Axis;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -106,6 +109,9 @@ public class Bench extends BaseDerivativeBlock implements ISeat {
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext c) {
+		if(c.hasSecondaryUseForPlayer()) {
+			return getDefaultState().with(STATE, c.getPlacementHorizontalFacing().rotateY().getAxis() == Axis.X ? BenchState.Both_X : BenchState.Both_Z);
+		}
 		return getState(c.getPlacementHorizontalFacing().rotateY().getAxis(), c.getWorld(), c.getPos());
 	}
 
@@ -117,6 +123,6 @@ public class Bench extends BaseDerivativeBlock implements ISeat {
 	
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		return SeatEntity.createSeat(worldIn, pos, player);
+		return SeatEntity.createSeat(worldIn, pos, player, SoundEvents.BLOCK_WOOD_HIT);
 	}
 }

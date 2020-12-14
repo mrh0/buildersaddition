@@ -3,12 +3,13 @@
 	
 	"pattern":
 	[
-		"PP",
-		"FF"
+		"SSS",
+		"F F",
+		"F F"
 	],
 	"key":
 	{
-		"P":
+		"S":
 		{
 			"item": "minecraft:warped_slab"
 		},
@@ -19,6 +20,6 @@
 	},
 	"result":{
 		"item": "buildersaddition:table_warped",
-		"count": 2
+		"count": 3
 	}
 }

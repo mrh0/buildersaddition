@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:birch_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:birch_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_birch",
+		"count": 2
+	}
+}

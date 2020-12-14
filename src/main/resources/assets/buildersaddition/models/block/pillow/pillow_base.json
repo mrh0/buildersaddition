@@ -1,0 +1,53 @@
+{
+	"textures": {
+		"wool": "block/white_wool",
+		"particle": "block/white_wool"
+	},
+	"display": {
+        "gui": {
+            "rotation": [ 30, 135, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 225, 0 ],
+            "translation": [ 0, 0.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 225, 0 ],
+            "translation": [ 0, 0.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+	"elements": [
+		{
+			"from": [3, 0, 3],
+			"to": [13, 2, 13],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11, 8, 11]},
+			"faces": {
+				"north": {"uv": [3, 1, 13, 3], "texture": "#wool"},
+				"east": {"uv": [3, 13, 13, 15], "texture": "#wool"},
+				"south": {"uv": [3, 13, 13, 15], "texture": "#wool"},
+				"west": {"uv": [3, 1, 13, 3], "texture": "#wool"},
+				"up": {"uv": [3, 3, 13, 13], "texture": "#wool"},
+				"down": {"uv": [3, 3, 13, 13], "texture": "#wool"}
+			}
+		}
+	]
+}

@@ -16,6 +16,7 @@ import com.mrh0.buildersaddition.blocks.Hedge;
 import com.mrh0.buildersaddition.blocks.IronFence;
 import com.mrh0.buildersaddition.blocks.IronLadder;
 import com.mrh0.buildersaddition.blocks.Pillar;
+import com.mrh0.buildersaddition.blocks.Pillow;
 import com.mrh0.buildersaddition.blocks.Planter;
 import com.mrh0.buildersaddition.blocks.Shelf;
 import com.mrh0.buildersaddition.blocks.ShopSign;
@@ -66,8 +67,8 @@ public class Index {
 	
 	public static String[] woods = {"oak", "spruce", "birch", "acacia", "dark_oak", "jungle", "crimson", "warped"};
 	public static Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS};
-	public static String[] colors = {"black", "blue", "brown", "cyan", "gray", "green", "light_blue", 
-			"light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow"};
+	public static String[] colors = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", 
+			"gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 	
 	public static Item IRON_ROD;
 	
@@ -105,6 +106,11 @@ public class Index {
 	public static Block RED_NETHER_BRICKS_VERTICAL_SLAB;
 	public static Block POLISHED_ANDESITE_VERTICAL_SLAB;
 	public static Block DIORITE_VERTICAL_SLAB;
+	public static Block CRIMSON_VERTICAL_SLAB;
+	public static Block WARPED_VERTICAL_SLAB;
+	public static Block BLACKSTONE_VERTICAL_SLAB;
+	public static Block POLISHED_BLACKSTONE_VERTICAL_SLAB;
+	public static Block POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB;
 	
 	public static Block BOP_CHERRY_VERTICAL_SLAB;
 	public static Block BOP_CUT_WHITE_SANDSTONE_VERTICAL_SLAB;
@@ -121,12 +127,6 @@ public class Index {
 	public static Block BOP_UMBRAN_VERTICAL_SLAB;
 	public static Block BOP_WHITE_SANDSTONE_VERTICAL_SLAB;
 	public static Block BOP_WILLOW_VERTICAL_SLAB;
-	
-	public static Block CRIMSON_VERTICAL_SLAB;
-	public static Block WARPED_VERTICAL_SLAB;
-	public static Block BLACKSTONE_VERTICAL_SLAB;
-	public static Block POLISHED_BLACKSTONE_VERTICAL_SLAB;
-	public static Block POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB;
 	
 	public static Block CUT_STONE_PILLAR;
 	public static Block CUT_SMOOTH_STONE_PILLAR;
@@ -158,14 +158,23 @@ public class Index {
 	public static Block TABLE_CRIMSON;
 	public static Block TABLE_WARPED;
 	
-	public static Block[] STOOL_OAK = new Block[16];
+	/*public static Block[] STOOL_OAK = new Block[16];
 	public static Block[] STOOL_SPRUCE = new Block[16];
 	public static Block[] STOOL_BIRCH = new Block[16];
 	public static Block[] STOOL_DARK_OAK = new Block[16];
 	public static Block[] STOOL_JUNGLE = new Block[16];
 	public static Block[] STOOL_ACACIA = new Block[16];
 	public static Block[] STOOL_CRIMSON = new Block[16];
-	public static Block[] STOOL_WARPED = new Block[16];
+	public static Block[] STOOL_WARPED = new Block[16];*/
+	
+	public static Block STOOL_OAK;
+	public static Block STOOL_SPRUCE;
+	public static Block STOOL_BIRCH;
+	public static Block STOOL_DARK_OAK;
+	public static Block STOOL_JUNGLE;
+	public static Block STOOL_ACACIA;
+	public static Block STOOL_CRIMSON;
+	public static Block STOOL_WARPED;
 	
 	public static Block PLANTER;
 	
@@ -238,7 +247,9 @@ public class Index {
 	
 	public static Block SOFA[] = new Sofa[16];
 	
-	public static Block LUMINUS_GLASS[] = new LuminusGlass[16];
+	//public static Block LUMINUS_GLASS[] = new LuminusGlass[16];
+	
+	public static Block PILLOW[] = new Pillow[16];
 	
 	public static Block[] BEDSIDE_TABLE = new BedsideTable[8];
 	
@@ -343,7 +354,6 @@ public class Index {
 		RED_NETHER_BRICKS_VERTICAL_SLAB = new VerticalSlab("red_nether_bricks", Blocks.RED_NETHER_BRICKS);
 		POLISHED_ANDESITE_VERTICAL_SLAB = new VerticalSlab("polished_andesite", Blocks.POLISHED_ANDESITE);
 		DIORITE_VERTICAL_SLAB = new VerticalSlab("diorite", Blocks.DIORITE);
-			
 		CRIMSON_VERTICAL_SLAB = new VerticalSlab("crimson", Blocks.CRIMSON_PLANKS);
 		WARPED_VERTICAL_SLAB = new VerticalSlab("warped", Blocks.WARPED_PLANKS);
 		BLACKSTONE_VERTICAL_SLAB = new VerticalSlab("blackstone", Blocks.BLACKSTONE);
@@ -380,7 +390,7 @@ public class Index {
 		TABLE_CRIMSON = new Table("crimson", Blocks.CRIMSON_PLANKS);
 		TABLE_WARPED = new Table("warped", Blocks.WARPED_PLANKS);
 		
-		for(int i = 0; i < colors.length; i++) {
+		/*for(int i = 0; i < colors.length; i++) {
 			STOOL_OAK[i] = new Stool("stool_oak_" + colors[i], Blocks.OAK_PLANKS);
 			STOOL_SPRUCE[i] = new Stool("stool_spruce_" + colors[i], Blocks.SPRUCE_PLANKS);
 			STOOL_BIRCH[i] = new Stool("stool_birch_" + colors[i], Blocks.BIRCH_PLANKS);
@@ -389,7 +399,20 @@ public class Index {
 			STOOL_ACACIA[i] = new Stool("stool_acacia_" + colors[i], Blocks.ACACIA_PLANKS);
 			STOOL_CRIMSON[i] = new Stool("stool_crimson_" + colors[i], Blocks.CRIMSON_PLANKS);
 			STOOL_WARPED[i] = new Stool("stool_warped_" + colors[i], Blocks.WARPED_PLANKS);
+		}*/
+		
+		for(int i = 0; i < colors.length; i++) {
+			PILLOW[i] = new Pillow("pillow_" + colors[i]);
 		}
+		
+		STOOL_OAK = new Stool("stool_oak", Blocks.OAK_PLANKS);
+		STOOL_SPRUCE = new Stool("stool_spruce", Blocks.SPRUCE_PLANKS);
+		STOOL_BIRCH = new Stool("stool_birch", Blocks.BIRCH_PLANKS);
+		STOOL_DARK_OAK = new Stool("stool_dark_oak", Blocks.DARK_OAK_PLANKS);
+		STOOL_JUNGLE = new Stool("stool_jungle", Blocks.JUNGLE_PLANKS);
+		STOOL_ACACIA = new Stool("stool_acacia", Blocks.ACACIA_PLANKS);
+		STOOL_CRIMSON = new Stool("stool_crimson", Blocks.CRIMSON_PLANKS);
+		STOOL_WARPED = new Stool("stool_warped", Blocks.WARPED_PLANKS);
 		
 		HEDGE_OAK = new Hedge("oak", Blocks.OAK_LEAVES);
 		HEDGE_SPRUCE = new Hedge("spruce", Blocks.SPRUCE_LEAVES);

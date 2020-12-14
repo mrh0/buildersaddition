@@ -18,6 +18,7 @@ import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -140,7 +141,7 @@ public class Sofa extends BaseDerivativeBlock implements ISeat {
 	
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		return SeatEntity.createSeat(worldIn, pos, player);
+		return SeatEntity.createSeat(worldIn, pos, player, SoundEvents.BLOCK_WOOL_HIT);
 	}
 	
 	

@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+	"buildersaddition:acacia_vertical_slab",
+	"buildersaddition:birch_vertical_slab",
+	"buildersaddition:dark_oak_vertical_slab",
+	"buildersaddition:oak_vertical_slab",
+	"buildersaddition:spruce_vertical_slab",
+	"buildersaddition:jungle_vertical_slab",
+	"buildersaddition:crimson_vertical_slab",
+	"buildersaddition:warped_vertical_slab"
+  ]
+}

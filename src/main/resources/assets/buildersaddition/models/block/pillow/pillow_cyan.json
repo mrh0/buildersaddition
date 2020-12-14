@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/pillow/pillow_base",
+  "textures": {
+        "wool": "minecraft:block/cyan_wool",
+        "particle": "minecraft:block/cyan_wool"
+    }
+}

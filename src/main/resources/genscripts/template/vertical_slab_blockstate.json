@@ -1,0 +1,17 @@
+{
+    "variants": {
+    	"type=north,waterlogged=false": { "model": "%modid%:block/slab/%name%_north"},
+    	"type=east,waterlogged=false": { "model": "%modid%:block/slab/%name%_east"},
+    	"type=south,waterlogged=false": { "model": "%modid%:block/slab/%name%_south"},
+    	"type=west,waterlogged=false": { "model": "%modid%:block/slab/%name%_west"},
+    	"type=double_x,waterlogged=false": { "model": "%modid%:block/slab/%name%_double_x"},
+		"type=double_z,waterlogged=false": { "model": "%modid%:block/slab/%name%_double_z"},
+    	
+    	"type=north,waterlogged=true": { "model": "%modid%:block/slab/%name%_north"},
+    	"type=east,waterlogged=true": { "model": "%modid%:block/slab/%name%_east"},
+    	"type=south,waterlogged=true": { "model": "%modid%:block/slab/%name%_south"},
+    	"type=west,waterlogged=true": { "model": "%modid%:block/slab/%name%_west"},
+    	"type=double_x,waterlogged=true": { "model": "%modid%:block/slab/%name%_double_x"},
+		"type=double_z,waterlogged=true": { "model": "%modid%:block/slab/%name%_double_z"}
+    }
+}

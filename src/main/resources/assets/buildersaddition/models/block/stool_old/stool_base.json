@@ -1,0 +1,114 @@
+{
+    "textures": {
+        "wool": "minecraft:block/white_wool",
+        "planks": "minecraft:block/oak_planks",
+        "particle": "minecraft:block/oak_planks"
+    },
+    "display": {
+        "gui": {
+            "rotation": [ 30, 45, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 0.625, 0.625, 0.625 ]
+        },
+        "ground": {
+            "rotation": [ 0, 0, 0 ],
+            "translation": [ 0, 3, 0 ],
+            "scale": [ 0.25, 0.25, 0.25 ]
+        },
+        "fixed": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "head": {
+            "rotation": [ 0, 180, 0 ],
+            "translation": [ 0, 0, 0 ],
+            "scale": [ 1, 1, 1 ]
+        },
+        "firstperson_righthand": {
+            "rotation": [ 0, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.4, 0.4, 0.4 ]
+        },
+        "thirdperson_righthand": {
+            "rotation": [ 75, 315, 0 ],
+            "translation": [ 0, 2.5, 0 ],
+            "scale": [ 0.375, 0.375, 0.375 ]
+        }
+    },
+    "elements": [
+        {
+            "name": "Leg",
+            "from": [ 3, 0, 3 ], 
+            "to": [ 5, 6, 5 ], 
+            "faces": {
+                "north": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#planks", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Seat",
+            "from": [ 2, 6, 2 ], 
+            "to": [ 14, 8, 14 ], 
+            "faces": {
+                "north": { "texture": "#planks", "uv": [ 0, 0, 12, 2 ] },
+                "east": { "texture": "#planks", "uv": [ 0, 0, 12, 2 ] },
+                "south": { "texture": "#planks", "uv": [ 0, 0, 12, 2 ] },
+                "west": { "texture": "#planks", "uv": [ 0, 0, 12, 2 ] },
+                "up": { "texture": "#planks", "uv": [ 2, 2, 14, 14 ] },
+                "down": { "texture": "#planks", "uv": [ 2, 2, 14, 14 ] }
+            }
+        },
+        {
+            "name": "Padding",
+            "from": [ 3, 8, 3 ], 
+            "to": [ 13, 9, 13 ], 
+            "faces": {
+                "north": { "texture": "#wool", "uv": [ 0, 0, 10, 1 ] },
+                "east": { "texture": "#wool", "uv": [ 0, 0, 10, 1 ] },
+                "south": { "texture": "#wool", "uv": [ 0, 0, 9, 1 ] },
+                "west": { "texture": "#wool", "uv": [ 0, 0, 10, 1 ] },
+                "up": { "texture": "#wool", "uv": [ 0, 0, 10, 10 ] }
+            }
+        },
+        {
+            "name": "Leg",
+            "from": [ 11, 0, 3 ], 
+            "to": [ 13, 6, 5 ], 
+            "faces": {
+                "north": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#planks", "uv": [ 0, 0, 2, 1 ] }
+            }
+        },
+        {
+            "name": "Leg",
+            "from": [ 11, 0, 11 ], 
+            "to": [ 13, 6, 13 ], 
+            "faces": {
+                "north": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#planks", "uv": [ 0, 0, 3, 6 ] },
+                "south": { "texture": "#planks", "uv": [ 0, 0, 3, 6 ] },
+                "west": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#planks", "uv": [ 0, 0, 2, 2 ] }
+            }
+        },
+        {
+            "name": "Leg",
+            "from": [ 3, 0, 11 ], 
+            "to": [ 5, 6, 13 ], 
+            "faces": {
+                "north": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "east": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "south": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "west": { "texture": "#planks", "uv": [ 0, 0, 2, 6 ] },
+                "down": { "texture": "#planks", "uv": [ 0, 0, 2, 2 ] }
+            }
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:crimson_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:crimson_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_crimson",
+		"count": 2
+	}
+}

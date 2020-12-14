@@ -16,6 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
@@ -34,12 +35,10 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
 @Mod(BuildersAddition.MODID)
 public class BuildersAddition {
 	public static final String MODID = "buildersaddition";
-	
 	public static CommonProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
-	
 	private static final String PROTOCOL = "1";
-	
 	public static MidiHandler midi = null;
+	public static boolean BOP_ACTIVE = false;
 	
 	public static final SimpleChannel Network = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MODID, "main"))
             .clientAcceptedVersions(PROTOCOL::equals)
@@ -61,6 +60,8 @@ public class BuildersAddition {
     	new ItemRegistry();
     	new TileEntityRegistry();
     	new ContainerRegistry();
+    	
+    	BOP_ACTIVE = ModList.get().isLoaded("biomesoplenty");
     	
     	Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("buildersaddition-common.toml"));
 	}

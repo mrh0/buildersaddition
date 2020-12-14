@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/pillow/pillow_base",
+  "textures": {
+        "wool": "minecraft:block/magenta_wool",
+        "particle": "minecraft:block/magenta_wool"
+    }
+}

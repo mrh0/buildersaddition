@@ -1,0 +1,8 @@
+acacia,acacia_planks,acacia_log
+birch,birch_planks,birch_log
+crimson,crimson_planks,crimson_stem
+dark_oak,dark_oak_planks,dark_oak_log
+jungle,jungle_planks,jungle_log
+oak,oak_planks,oak_log
+spruce,spruce_planks,spruce_log
+warped,warped_planks,warped_stem
