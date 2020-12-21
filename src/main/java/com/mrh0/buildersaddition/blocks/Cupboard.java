@@ -84,18 +84,16 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 			return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite())
 					.with(HALF, DoubleBlockHalf.LOWER).with(MIRROR, context.hasSecondaryUseForPlayer())
 					.with(WATERLOGGED, Boolean.valueOf(context.getWorld().getFluidState(context.getPos()).getFluid() == Fluids.WATER));
-		} else {
-			return null;
-		}
+		} 
+		return null;
 	}
 
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		worldIn.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER), 3);
+		worldIn.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, Boolean.valueOf(worldIn.getFluidState(pos.up()).getFluid() == Fluids.WATER)), 3);
 		if (stack.hasDisplayName()) {
 			TileEntity tileentity = worldIn.getTileEntity(pos);
-			if (tileentity instanceof CounterTileEntity) {
+			if (tileentity instanceof CounterTileEntity)
 				((CounterTileEntity) tileentity).setCustomName(stack.getDisplayName());
-			}
 		}
 	}
 	
@@ -200,7 +198,9 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 			CupboardTileEntity tileentity = getTE(state, worldIn, pos);
 			
 			if(state.get(HALF) == DoubleBlockHalf.LOWER) {
-				worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
+				BlockState upper = worldIn.getBlockState(pos.up());
+				if(upper.getBlock() == this)
+					worldIn.setBlockState(pos.up(), getFluidState(upper).getFluid() == Fluids.WATER ? getFluidState(upper).getBlockState() : Blocks.AIR.getDefaultState(), 35);
 				if (tileentity != null) {
 					InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
 					worldIn.updateComparatorOutputLevel(pos, this);
@@ -208,7 +208,9 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 				}
 			}
 			else {
-				worldIn.setBlockState(pos.down(), Blocks.AIR.getDefaultState());
+				BlockState lower = worldIn.getBlockState(pos.down());
+				if(lower.getBlock() == this)
+					worldIn.setBlockState(pos.down(), getFluidState(lower).getFluid() == Fluids.WATER ? getFluidState(lower).getBlockState() : Blocks.AIR.getDefaultState(), 35);
 				if (tileentity != null) {
 					InventoryHelper.dropInventoryItems(worldIn, pos.down(), (IInventory) tileentity);
 					worldIn.updateComparatorOutputLevel(pos, this);

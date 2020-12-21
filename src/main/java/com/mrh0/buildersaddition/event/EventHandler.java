@@ -71,6 +71,7 @@ public class EventHandler {
 		reg.register(Index.PORTRAIT_PAINTING);
 		reg.register(Index.HEROBRINE_PAINTING);
 		reg.register(Index.ENDERMAN_PAINTING);
+		reg.register(Index.WINTER_PAINTING);
 		//reg.register(Index.PROMO_PAINTING);
 	}
 }

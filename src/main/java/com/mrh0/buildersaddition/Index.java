@@ -255,6 +255,7 @@ public class Index {
 	
 	public static Block SHOP_SIGN_WOOD;
 	public static Block IRON_LADDER;
+	public static Block IRON_LADDER_ROUGH;
 	public static Block IRON_FENCE;
 	public static Block IRON_FENCE_ROUGH;
 	public static Block ROUGH_IRON_BLOCK;
@@ -295,6 +296,7 @@ public class Index {
 	public static PaintingType PROMO_PAINTING;
 	public static PaintingType HEROBRINE_PAINTING;
 	public static PaintingType ENDERMAN_PAINTING;
+	public static PaintingType WINTER_PAINTING;
 	
 	
 	public static void items() {
@@ -499,7 +501,8 @@ public class Index {
 		}
 		
 		SHOP_SIGN_WOOD = new ShopSign("wood");
-		IRON_LADDER = new IronLadder();
+		IRON_LADDER = new IronLadder("iron_ladder");
+		IRON_LADDER_ROUGH = new IronLadder("iron_ladder_rough");
 		IRON_FENCE = new IronFence("iron_fence");
 		IRON_FENCE_ROUGH = new IronFence("iron_fence_rough");
 		ROUGH_IRON_BLOCK = new GenericBlock("rough_iron_block", Block.Properties.from(Blocks.IRON_BLOCK), new BlockOptions());
@@ -525,6 +528,7 @@ public class Index {
 		PROMO_PAINTING = RegistryUtil.createPainting("promo", 1, 1);
 		HEROBRINE_PAINTING = RegistryUtil.createPainting("herobrine", 1, 1);
 		ENDERMAN_PAINTING = RegistryUtil.createPainting("enderman", 1, 2);
+		WINTER_PAINTING = RegistryUtil.createPainting("winter", 2, 2);
 	}
 	
 	public static void tileentities() {

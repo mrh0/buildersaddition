@@ -1,0 +1,9 @@
+{
+	"type": "minecraft:smelting",
+	"ingredient": {
+		"item": "buildersaddition:iron_ladder"
+	},
+	"result": "buildersaddition:iron_ladder_rough",
+	"experience": 0,
+	"cookingtime": 200
+}
