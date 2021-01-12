@@ -2,7 +2,7 @@
 	"type": "minecraft:crafting_shaped",
 	
 	"pattern":
-	[" W ","PWP","S S"],
+	[" W ","WWW","S S"],
 	"key":
 	{
 		"S":
@@ -12,10 +12,6 @@
 		"W":
 		{
 			"item": "minecraft:light_blue_wool"
-		},
-		"P":
-		{
-			"item": "buildersaddition:pillow_light_blue"
 		}
 	},
 	"result":{

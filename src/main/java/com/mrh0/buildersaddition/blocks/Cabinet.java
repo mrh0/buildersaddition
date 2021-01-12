@@ -10,7 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.entity.LivingEntity;
@@ -47,7 +46,8 @@ import net.minecraft.world.server.ServerWorld;
 public class Cabinet  extends BaseDerivativeBlock implements IWaterLoggable, ITileEntityProvider {
 
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = DirectionProperty.create("facing",
+			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
 
 	protected static final VoxelShape NORTH_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 8D, 16D, 16D, 16D);
 	protected static final VoxelShape EAST_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 8.0D, 16.0D, 16.0D);

@@ -4,17 +4,13 @@ import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
-import com.mrh0.buildersaddition.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.material.PushReaction;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemStack;
@@ -34,11 +30,11 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
 
 public class Arcade extends BaseBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = DirectionProperty.create("facing",
+			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
 	
 	private static VoxelShape SHAPE_NORTH_LOWER = Block.makeCuboidShape(0d, 0d, 1d, 16d, 32d, 16d);
 	private static VoxelShape SHAPE_EAST_LOWER = Block.makeCuboidShape(0d, 0d, 0d, 15d, 32d, 16d);
@@ -52,9 +48,7 @@ public class Arcade extends BaseBlock {
 
 
 	public Arcade() {
-		super("arcade", Properties.from(Blocks.IRON_BLOCK)
-				.notSolid().setAllowsSpawn((BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) -> false)
-				.setOpaque(Util::isntSolid).setSuffocates(Util::isntSolid).setBlocksVision(Util::isntSolid));
+		super("arcade", Properties.from(Blocks.IRON_BLOCK));
 		this.setDefaultState(this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER).with(FACING, Direction.NORTH));
 	}
 	
@@ -97,6 +91,7 @@ public class Arcade extends BaseBlock {
 		builder.add(FACING, HALF);
 	}
 
+
 	private VoxelShape getShapeForDirection(Direction d, boolean b) {
 		switch (d) {
 			case NORTH:
@@ -121,18 +116,12 @@ public class Arcade extends BaseBlock {
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 			Hand handIn, BlockRayTraceResult hit) {
-		if (player.isSpectator()) {
-            return ActionResultType.PASS;
-        }
-    	if (worldIn.isRemote) {
-            return ActionResultType.SUCCESS;
-        }
-    	
-    	ArcadeTileEntity mte = getTE(state, worldIn, pos);
-		NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) mte, extraData -> {
-            extraData.writeBlockPos(mte.getPos());
-        });
-    	return ActionResultType.SUCCESS;
+		if (worldIn.isRemote) {
+			return ActionResultType.SUCCESS;
+		} else {
+			
+			return ActionResultType.CONSUME;
+		}
 	}
 
 	@Override
@@ -181,10 +170,5 @@ public class Arcade extends BaseBlock {
 	@Override
 	public boolean hasTileEntity(BlockState state) {
 		return state.get(HALF) == DoubleBlockHalf.LOWER;
-	}
-	
-	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new ArcadeTileEntity();
 	}
 }

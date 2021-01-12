@@ -18,7 +18,6 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.SlabType;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
@@ -77,9 +76,7 @@ public class VerticalSlab extends BaseDerivativeBlock implements IWaterLoggable 
 		}
 	}
 
-	public boolean isTransparent(BlockState state) {
-	      return !state.get(TYPE).isDouble();
-	   }
+	
 
 	private VerticalSlabState getDoubleState(VerticalSlabState s) {
 		if (s == VerticalSlabState.EAST || s == VerticalSlabState.WEST) {
@@ -189,6 +186,4 @@ public class VerticalSlab extends BaseDerivativeBlock implements IWaterLoggable 
 			return false;
 		}
 	}
-	
-	
 }

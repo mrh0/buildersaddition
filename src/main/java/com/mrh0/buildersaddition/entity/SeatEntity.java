@@ -5,13 +5,9 @@ import com.mrh0.buildersaddition.blocks.base.ISeat;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.util.ActionResultType;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -88,24 +84,18 @@ public class SeatEntity extends Entity{
 	
 	@Override
 	public double getMountedYOffset() {
-		return -.1d;
+		return 0d;
 	}
 
-	public static ActionResultType createSeat(World world, BlockPos pos, LivingEntity e, double y, SoundEvent sound) {
-		if(e instanceof PlayerEntity)
-		world.playSound((PlayerEntity)e, pos, sound, SoundCategory.BLOCKS, 1f, 1f);
+	public static ActionResultType createSeat(World world, BlockPos pos, LivingEntity e) {
 		if(world.isRemote)
 			return ActionResultType.SUCCESS;
 		if(world.getEntitiesWithinAABB(SeatEntity.class, new AxisAlignedBB(pos.getX(), pos.getY(), pos.getZ(), pos.getX() + 1, pos.getY() + 1, pos.getZ() + 1)).isEmpty()) {
-			SeatEntity seat = new SeatEntity(world, pos, y);//.35d
+			SeatEntity seat = new SeatEntity(world, pos, .35d);
 			world.addEntity(seat);
 			e.startRiding(seat);
 			return ActionResultType.CONSUME;
 		}
 		return ActionResultType.FAIL;
-	}
-	
-	public static ActionResultType createSeat(World world, BlockPos pos, LivingEntity e, SoundEvent sound) {
-		return createSeat(world, pos, e, .45d, sound);
 	}
 }

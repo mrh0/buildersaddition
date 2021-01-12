@@ -5,12 +5,10 @@ import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
-import com.mrh0.buildersaddition.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.entity.LivingEntity;
@@ -47,7 +45,8 @@ import net.minecraft.world.server.ServerWorld;
 public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable, ITileEntityProvider {
 
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = DirectionProperty.create("facing",
+			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
 
 	protected static final VoxelShape SHAPE_BASE = Block.makeCuboidShape(0d, 14d, 0d, 16d, 16d, 16d);
 	protected static final VoxelShape SHAPE_NW = Block.makeCuboidShape(1d, 0d, 1d, 3d, 14d, 3d);
@@ -132,9 +131,8 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 		if (worldIn.isRemote) {
 			return ActionResultType.SUCCESS;
 		} else {
-			//BlockState front = worldIn.getBlockState(pos.offset(state.get(FACING).getOpposite()));
-			//if(front.isSolid())
-			if(!Util.accessCheck(worldIn, pos, state.get(FACING).getOpposite()))
+			BlockState front = worldIn.getBlockState(pos.offset(state.get(FACING).getOpposite()));
+			if(front.isSolid())
 				return ActionResultType.CONSUME;
 			TileEntity tileentity = worldIn.getTileEntity(pos);
 			if (tileentity instanceof BedsideTileEntity) {

@@ -54,20 +54,11 @@ public class CupboardTileEntity extends BaseChestTileEntity implements IComparet
 						CupboardTileEntity cte = (CupboardTileEntity)te;
 						this.invHandler = net.minecraftforge.common.util.LazyOptional.of(cte::createHandler);
 					}
-					else {
-						return net.minecraftforge.common.util.LazyOptional.empty();
-					}
 				}
 			}
-			//if(this.invHandler != null)
-			//	return this.invHandler.cast();
+			return this.invHandler.cast();
 		}
 		return super.getCapability(cap, side);
-	}
-	
-	@Override
-	public net.minecraftforge.items.IItemHandlerModifiable createHandler() {
-		return new net.minecraftforge.items.wrapper.InvWrapper(this);
 	}
 	
 	public boolean isLower() {

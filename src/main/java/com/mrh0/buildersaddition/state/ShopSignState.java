@@ -42,6 +42,11 @@ public enum ShopSignState implements IStringSerializable {
 		this.name = name;
 	}
 	
+	/*@Override
+	public String getName() {
+		return this.name;
+	}*/
+
 	@Override
 	public String getString() {
 		return this.name;

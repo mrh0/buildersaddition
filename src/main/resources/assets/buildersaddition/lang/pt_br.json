@@ -348,15 +348,6 @@
 	"block.buildersaddition.luminus_glass_white":"Vidro Luminoso Branco",
 	"block.buildersaddition.luminus_glass_yellow":"Vidro Luminoso Amarelo",
 	
-	"block.buildersaddition.support_bracket_oak":"Suporte de Carvalho",
-	"block.buildersaddition.support_bracket_spruce":"Suporte de Pinheiro",
-	"block.buildersaddition.support_bracket_birch":"Suporte de Bétula",
-	"block.buildersaddition.support_bracket_acacia":"Suporte de Acácia",
-	"block.buildersaddition.support_bracket_dark_oak":"Suporte de Carvalho Escuro",
-	"block.buildersaddition.support_bracket_jungle":"Suporte de Madeira da Selva",
-	"block.buildersaddition.support_bracket_crimson":"Suporte Carmesim",
-	"block.buildersaddition.support_bracket_warped":"Suporte Distorcido",
-	
 	"container.buildersaddition.counter":"Balcão",
 	"container.buildersaddition.cupboard":"Guarda-Louça",
 	"container.buildersaddition.cabinet":"Armário",
@@ -366,18 +357,8 @@
 	"container.buildersaddition.speaker": "Alto-falante Midi",
 	"container.buildersaddition.speaker.disconnect": "Desconectar",
 	"container.buildersaddition.speaker.connect": "Conectar",
-	"container.buildersaddition.arcade": "Fliperama",
 	
 	"block.buildersaddition.speaker":"Alto-falante Midi",
-	"block.buildersaddition.arcade":"Fliperama",
-	
-	"arcade.buildersaddition.game.snake":"Snake",
-	"arcade.buildersaddition.game.tetris":"Tetris",
-	"arcade.buildersaddition.game.breakout":"Breakout",
-	"arcade.buildersaddition.game.minesweaper":"Minesweeper",
-	
-	"arcade.buildersaddition.menu.select":"Selecione um jogo com [PARA CIMA] e [PARA BAIXO]",
-	"arcade.buildersaddition.menu.start":"Comece o jogo com [ENTER] ou [ESPAÇO]",
 	
 	"note.buildersaddition.bass": "Baixo",
 	"note.buildersaddition.snare": "Caixa",

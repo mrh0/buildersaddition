@@ -2,7 +2,6 @@ package com.mrh0.buildersaddition.blocks;
 
 import java.util.Random;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
-import com.mrh0.buildersaddition.config.Config;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -58,7 +57,7 @@ public class LargeCandle extends BaseBlock {
 			Hand handIn, BlockRayTraceResult hit) {
 		ItemStack item = player.getHeldItem(handIn);
 		boolean lit = state.get(LIT);
-		if(player.isCreative() || !Config.REQUIRE_FLINT_AND_STEEL.get()) {
+		if(player.isCreative()) {
 			if(!lit) {
 				worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1, 1, false);
 				if(!worldIn.isRemote())

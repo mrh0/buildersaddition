@@ -5,7 +5,6 @@ import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.client.render.tileentity.ShelfRenderer;
 import com.mrh0.buildersaddition.client.render.tileentity.ShopSignRenderer;
 import com.mrh0.buildersaddition.config.Config;
-import com.mrh0.buildersaddition.gui.ArcadeGui;
 import com.mrh0.buildersaddition.gui.BookshelfGui;
 import com.mrh0.buildersaddition.gui.ShelfGui;
 import com.mrh0.buildersaddition.gui.SpeakerGui;
@@ -52,8 +51,6 @@ public class ClientEventHandler {
     	ScreenManager.registerFactory(Index.BOOKSHELF_CONTAINER, BookshelfGui::new);
     	ScreenManager.registerFactory(Index.SHELF_CONTAINER, ShelfGui::new);
     	ScreenManager.registerFactory(Index.SPEAKER_CONTAINER, SpeakerGui::new);
-    	ScreenManager.registerFactory(Index.ARCADE_CONTAINER, ArcadeGui::new);
-    	
     	ClientRegistry.bindTileEntityRenderer(Index.SHOP_SIGN_TILE_ENTITY_TYPE, ShopSignRenderer::new);
     	ClientRegistry.bindTileEntityRenderer(Index.SHELF_TILE_ENTITY_TYPE, ShelfRenderer::new);
     	

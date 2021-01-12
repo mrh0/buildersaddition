@@ -6,12 +6,10 @@ import com.mrh0.buildersaddition.blocks.base.BaseBlock;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.tileentity.CupboardTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
-import com.mrh0.buildersaddition.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.block.material.PushReaction;
@@ -53,7 +51,8 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 	public static final BooleanProperty MIRROR = BooleanProperty.create("mirror");
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = DirectionProperty.create("facing",
+			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
 
 	private static VoxelShape SHAPE_NORTH_LOWER = Block.makeCuboidShape(0d, 0d, 1d, 16d, 32d, 16d);
 	private static VoxelShape SHAPE_EAST_LOWER = Block.makeCuboidShape(0d, 0d, 0d, 15d, 32d, 16d);
@@ -82,18 +81,20 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 			World world = context.getWorld();
 			boolean flag = world.isBlockPowered(blockpos) || world.isBlockPowered(blockpos.up());
 			return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite())
-					.with(HALF, DoubleBlockHalf.LOWER).with(MIRROR, context.hasSecondaryUseForPlayer())
+					.with(HALF, DoubleBlockHalf.LOWER).with(MIRROR, context.func_225518_g_())
 					.with(WATERLOGGED, Boolean.valueOf(context.getWorld().getFluidState(context.getPos()).getFluid() == Fluids.WATER));
-		} 
-		return null;
+		} else {
+			return null;
+		}
 	}
 
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		worldIn.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, Boolean.valueOf(worldIn.getFluidState(pos.up()).getFluid() == Fluids.WATER)), 3);
+		worldIn.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER), 3);
 		if (stack.hasDisplayName()) {
 			TileEntity tileentity = worldIn.getTileEntity(pos);
-			if (tileentity instanceof CounterTileEntity)
+			if (tileentity instanceof CounterTileEntity) {
 				((CounterTileEntity) tileentity).setCustomName(stack.getDisplayName());
+			}
 		}
 	}
 	
@@ -165,10 +166,9 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 			return ActionResultType.SUCCESS;
 		} else {
 			if(state.get(HALF) == DoubleBlockHalf.LOWER) {
-				//BlockState front1 = worldIn.getBlockState(pos.offset(state.get(FACING)));
-				//BlockState front2 = worldIn.getBlockState(pos.up().offset(state.get(FACING)));
-				//if(front1.isSolid() || front2.isSolid())
-				if(!Util.accessCheck(worldIn, pos, state.get(FACING)) || !Util.accessCheck(worldIn, pos.up(), state.get(FACING)))
+				BlockState front1 = worldIn.getBlockState(pos.offset(state.get(FACING)));
+				BlockState front2 = worldIn.getBlockState(pos.up().offset(state.get(FACING)));
+				if(front1.isSolid() || front2.isSolid())
 					return ActionResultType.CONSUME;
 				TileEntity tileentity = worldIn.getTileEntity(pos);
 				if (tileentity instanceof CupboardTileEntity) {
@@ -177,10 +177,9 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 				}
 			}
 			else {
-				//BlockState front1 = worldIn.getBlockState(pos.offset(state.get(FACING)));
-				//BlockState front2 = worldIn.getBlockState(pos.down().offset(state.get(FACING)));
-				//if(front1.isSolid() || front2.isSolid())
-				if(!Util.accessCheck(worldIn, pos, state.get(FACING)) || !Util.accessCheck(worldIn, pos.down(), state.get(FACING)))
+				BlockState front1 = worldIn.getBlockState(pos.offset(state.get(FACING)));
+				BlockState front2 = worldIn.getBlockState(pos.down().offset(state.get(FACING)));
+				if(front1.isSolid() || front2.isSolid())
 					return ActionResultType.CONSUME;
 				TileEntity tileentity = worldIn.getTileEntity(pos.down());
 				if (tileentity instanceof CupboardTileEntity) {
@@ -198,9 +197,7 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 			CupboardTileEntity tileentity = getTE(state, worldIn, pos);
 			
 			if(state.get(HALF) == DoubleBlockHalf.LOWER) {
-				BlockState upper = worldIn.getBlockState(pos.up());
-				if(upper.getBlock() == this)
-					worldIn.setBlockState(pos.up(), getFluidState(upper).getFluid() == Fluids.WATER ? getFluidState(upper).getBlockState() : Blocks.AIR.getDefaultState(), 35);
+				worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
 				if (tileentity != null) {
 					InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
 					worldIn.updateComparatorOutputLevel(pos, this);
@@ -208,9 +205,7 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 				}
 			}
 			else {
-				BlockState lower = worldIn.getBlockState(pos.down());
-				if(lower.getBlock() == this)
-					worldIn.setBlockState(pos.down(), getFluidState(lower).getFluid() == Fluids.WATER ? getFluidState(lower).getBlockState() : Blocks.AIR.getDefaultState(), 35);
+				worldIn.setBlockState(pos.down(), Blocks.AIR.getDefaultState());
 				if (tileentity != null) {
 					InventoryHelper.dropInventoryItems(worldIn, pos.down(), (IInventory) tileentity);
 					worldIn.updateComparatorOutputLevel(pos, this);
