@@ -5,7 +5,7 @@ Minecraft Forge Mod by MRH0
 
 # Download
 
-Latest Version: 20201220b for Minecraft 1.16.X
+Latest Version: 20200112c for Minecraft 1.16.4
 
 At: https://www.curseforge.com/minecraft/mc-mods/buildersaddition
 
