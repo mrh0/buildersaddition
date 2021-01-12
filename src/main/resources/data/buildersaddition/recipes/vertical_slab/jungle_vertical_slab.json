@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"S",
+		"S",
+		"S"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:jungle_planks"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:jungle_vertical_slab",
+		"count": 6
+	}
+}

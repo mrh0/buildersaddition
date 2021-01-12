@@ -10,22 +10,29 @@ import com.mrh0.buildersaddition.blocks.LuminusGlass;
 import com.mrh0.buildersaddition.blocks.Counter;
 import com.mrh0.buildersaddition.blocks.Crossrail;
 import com.mrh0.buildersaddition.blocks.Cupboard;
+import com.mrh0.buildersaddition.blocks.EntityDetector;
+import com.mrh0.buildersaddition.blocks.FireplaceGuard;
 import com.mrh0.buildersaddition.blocks.GravelPath;
 import com.mrh0.buildersaddition.blocks.Hedge;
 import com.mrh0.buildersaddition.blocks.IronFence;
 import com.mrh0.buildersaddition.blocks.IronLadder;
 import com.mrh0.buildersaddition.blocks.Pillar;
+import com.mrh0.buildersaddition.blocks.Pillow;
 import com.mrh0.buildersaddition.blocks.Planter;
 import com.mrh0.buildersaddition.blocks.Shelf;
 import com.mrh0.buildersaddition.blocks.ShopSign;
 import com.mrh0.buildersaddition.blocks.Sofa;
 import com.mrh0.buildersaddition.blocks.Speaker;
 import com.mrh0.buildersaddition.blocks.Stool;
+import com.mrh0.buildersaddition.blocks.SupportBracket;
 import com.mrh0.buildersaddition.blocks.Table;
+import com.mrh0.buildersaddition.blocks.VerticalComparatorBlock;
+import com.mrh0.buildersaddition.blocks.VerticalRepeaterBlock;
 import com.mrh0.buildersaddition.blocks.VerticalSlab;
 import com.mrh0.buildersaddition.blocks.Candle;
 import com.mrh0.buildersaddition.blocks.base.GenericBlock;
 import com.mrh0.buildersaddition.blocks.base.IConnects;
+import com.mrh0.buildersaddition.container.ArcadeContainer;
 import com.mrh0.buildersaddition.container.BookshelfContainer;
 import com.mrh0.buildersaddition.container.ShelfContainer;
 import com.mrh0.buildersaddition.container.SpeakerContainer;
@@ -43,6 +50,7 @@ import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.CabinetTileEntity;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.tileentity.CupboardTileEntity;
+import com.mrh0.buildersaddition.tileentity.EntityDetectorTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShopSignTileEntity;
 import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
@@ -63,8 +71,8 @@ public class Index {
 	
 	public static String[] woods = {"oak", "spruce", "birch", "acacia", "dark_oak", "jungle", "crimson", "warped"};
 	public static Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS};
-	public static String[] colors = {"black", "blue", "brown", "cyan", "gray", "green", "light_blue", 
-			"light_gray", "lime", "magenta", "orange", "pink", "purple", "red", "white", "yellow"};
+	public static String[] colors = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", 
+			"gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 	
 	public static Item IRON_ROD;
 	
@@ -102,6 +110,11 @@ public class Index {
 	public static Block RED_NETHER_BRICKS_VERTICAL_SLAB;
 	public static Block POLISHED_ANDESITE_VERTICAL_SLAB;
 	public static Block DIORITE_VERTICAL_SLAB;
+	public static Block CRIMSON_VERTICAL_SLAB;
+	public static Block WARPED_VERTICAL_SLAB;
+	public static Block BLACKSTONE_VERTICAL_SLAB;
+	public static Block POLISHED_BLACKSTONE_VERTICAL_SLAB;
+	public static Block POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB;
 	
 	public static Block BOP_CHERRY_VERTICAL_SLAB;
 	public static Block BOP_CUT_WHITE_SANDSTONE_VERTICAL_SLAB;
@@ -118,12 +131,6 @@ public class Index {
 	public static Block BOP_UMBRAN_VERTICAL_SLAB;
 	public static Block BOP_WHITE_SANDSTONE_VERTICAL_SLAB;
 	public static Block BOP_WILLOW_VERTICAL_SLAB;
-	
-	public static Block CRIMSON_VERTICAL_SLAB;
-	public static Block WARPED_VERTICAL_SLAB;
-	public static Block BLACKSTONE_VERTICAL_SLAB;
-	public static Block POLISHED_BLACKSTONE_VERTICAL_SLAB;
-	public static Block POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB;
 	
 	public static Block CUT_STONE_PILLAR;
 	public static Block CUT_SMOOTH_STONE_PILLAR;
@@ -155,14 +162,23 @@ public class Index {
 	public static Block TABLE_CRIMSON;
 	public static Block TABLE_WARPED;
 	
-	public static Block[] STOOL_OAK = new Block[16];
+	/*public static Block[] STOOL_OAK = new Block[16];
 	public static Block[] STOOL_SPRUCE = new Block[16];
 	public static Block[] STOOL_BIRCH = new Block[16];
 	public static Block[] STOOL_DARK_OAK = new Block[16];
 	public static Block[] STOOL_JUNGLE = new Block[16];
 	public static Block[] STOOL_ACACIA = new Block[16];
 	public static Block[] STOOL_CRIMSON = new Block[16];
-	public static Block[] STOOL_WARPED = new Block[16];
+	public static Block[] STOOL_WARPED = new Block[16];*/
+	
+	public static Block STOOL_OAK;
+	public static Block STOOL_SPRUCE;
+	public static Block STOOL_BIRCH;
+	public static Block STOOL_DARK_OAK;
+	public static Block STOOL_JUNGLE;
+	public static Block STOOL_ACACIA;
+	public static Block STOOL_CRIMSON;
+	public static Block STOOL_WARPED;
 	
 	public static Block PLANTER;
 	
@@ -224,14 +240,26 @@ public class Index {
 	public static Block BENCH_WARPED;
 	public static Block BENCH_CRIMSON;
 	
+	public static Block SUPPORT_BRACKET_OAK;
+	public static Block SUPPORT_BRACKET_BIRCH;
+	public static Block SUPPORT_BRACKET_SPRUCE;
+	public static Block SUPPORT_BRACKET_DARK_OAK;
+	public static Block SUPPORT_BRACKET_JUNGLE;
+	public static Block SUPPORT_BRACKET_ACACIA;
+	public static Block SUPPORT_BRACKET_WARPED;
+	public static Block SUPPORT_BRACKET_CRIMSON;
+	
 	public static Block SOFA[] = new Sofa[16];
 	
-	public static Block LUMINUS_GLASS[] = new LuminusGlass[16];
+	//public static Block LUMINUS_GLASS[] = new LuminusGlass[16];
+	
+	public static Block PILLOW[] = new Pillow[16];
 	
 	public static Block[] BEDSIDE_TABLE = new BedsideTable[8];
 	
 	public static Block SHOP_SIGN_WOOD;
 	public static Block IRON_LADDER;
+	public static Block IRON_LADDER_ROUGH;
 	public static Block IRON_FENCE;
 	public static Block IRON_FENCE_ROUGH;
 	public static Block ROUGH_IRON_BLOCK;
@@ -244,6 +272,14 @@ public class Index {
 	public static Block SOUL_CANDLE;
 	public static Block ARCADE;
 	
+	public static Block FIREPLACE_GUARD;
+	public static Block ROUGH_FIREPLACE_GUARD;
+	
+	public static Block VERTICAL_REPEATER;
+	public static Block VERTICAL_COMPARATOR;
+	
+	public static Block ENTITY_DETECTOR;
+	
 	public static EntityType<SeatEntity> SEAT_ENTITY_TYPE;
 	
 	public static TileEntityType<CounterTileEntity> COUNTER_TILE_ENTITY_TYPE;
@@ -255,10 +291,12 @@ public class Index {
 	public static TileEntityType<BedsideTileEntity> BEDSIDE_TILE_ENTITY_TYPE;
 	public static TileEntityType<SpeakerTileEntity> SPEAKER_TILE_ENTITY_TYPE;
 	public static TileEntityType<ArcadeTileEntity> ARCADE_TILE_ENTITY_TYPE;
+	public static TileEntityType<EntityDetectorTileEntity> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
 
 	public static ContainerType<BookshelfContainer> BOOKSHELF_CONTAINER;
 	public static ContainerType<ShelfContainer> SHELF_CONTAINER;
 	public static ContainerType<SpeakerContainer> SPEAKER_CONTAINER;
+	public static ContainerType<ArcadeContainer> ARCADE_CONTAINER;
 
 	public static PaintingType SUMMER_FIELD_PAINTING;
 	public static PaintingType SHARD_PAINTING;
@@ -266,6 +304,9 @@ public class Index {
 	public static PaintingType HORIZONS_PAINTING;
 	public static PaintingType PORTRAIT_PAINTING;
 	public static PaintingType PROMO_PAINTING;
+	public static PaintingType HEROBRINE_PAINTING;
+	public static PaintingType ENDERMAN_PAINTING;
+	public static PaintingType WINTER_PAINTING;
 	
 	
 	public static void items() {
@@ -325,7 +366,6 @@ public class Index {
 		RED_NETHER_BRICKS_VERTICAL_SLAB = new VerticalSlab("red_nether_bricks", Blocks.RED_NETHER_BRICKS);
 		POLISHED_ANDESITE_VERTICAL_SLAB = new VerticalSlab("polished_andesite", Blocks.POLISHED_ANDESITE);
 		DIORITE_VERTICAL_SLAB = new VerticalSlab("diorite", Blocks.DIORITE);
-			
 		CRIMSON_VERTICAL_SLAB = new VerticalSlab("crimson", Blocks.CRIMSON_PLANKS);
 		WARPED_VERTICAL_SLAB = new VerticalSlab("warped", Blocks.WARPED_PLANKS);
 		BLACKSTONE_VERTICAL_SLAB = new VerticalSlab("blackstone", Blocks.BLACKSTONE);
@@ -362,7 +402,7 @@ public class Index {
 		TABLE_CRIMSON = new Table("crimson", Blocks.CRIMSON_PLANKS);
 		TABLE_WARPED = new Table("warped", Blocks.WARPED_PLANKS);
 		
-		for(int i = 0; i < colors.length; i++) {
+		/*for(int i = 0; i < colors.length; i++) {
 			STOOL_OAK[i] = new Stool("stool_oak_" + colors[i], Blocks.OAK_PLANKS);
 			STOOL_SPRUCE[i] = new Stool("stool_spruce_" + colors[i], Blocks.SPRUCE_PLANKS);
 			STOOL_BIRCH[i] = new Stool("stool_birch_" + colors[i], Blocks.BIRCH_PLANKS);
@@ -371,7 +411,20 @@ public class Index {
 			STOOL_ACACIA[i] = new Stool("stool_acacia_" + colors[i], Blocks.ACACIA_PLANKS);
 			STOOL_CRIMSON[i] = new Stool("stool_crimson_" + colors[i], Blocks.CRIMSON_PLANKS);
 			STOOL_WARPED[i] = new Stool("stool_warped_" + colors[i], Blocks.WARPED_PLANKS);
+		}*/
+		
+		for(int i = 0; i < colors.length; i++) {
+			PILLOW[i] = new Pillow("pillow_" + colors[i]);
 		}
+		
+		STOOL_OAK = new Stool("stool_oak", Blocks.OAK_PLANKS);
+		STOOL_SPRUCE = new Stool("stool_spruce", Blocks.SPRUCE_PLANKS);
+		STOOL_BIRCH = new Stool("stool_birch", Blocks.BIRCH_PLANKS);
+		STOOL_DARK_OAK = new Stool("stool_dark_oak", Blocks.DARK_OAK_PLANKS);
+		STOOL_JUNGLE = new Stool("stool_jungle", Blocks.JUNGLE_PLANKS);
+		STOOL_ACACIA = new Stool("stool_acacia", Blocks.ACACIA_PLANKS);
+		STOOL_CRIMSON = new Stool("stool_crimson", Blocks.CRIMSON_PLANKS);
+		STOOL_WARPED = new Stool("stool_warped", Blocks.WARPED_PLANKS);
 		
 		HEDGE_OAK = new Hedge("oak", Blocks.OAK_LEAVES);
 		HEDGE_SPRUCE = new Hedge("spruce", Blocks.SPRUCE_LEAVES);
@@ -436,6 +489,15 @@ public class Index {
 		BENCH_WARPED = new Bench("warped", Blocks.WARPED_PLANKS);
 		BENCH_CRIMSON = new Bench("crimson", Blocks.CRIMSON_PLANKS);
 		
+		SUPPORT_BRACKET_OAK = new SupportBracket("oak");
+		SUPPORT_BRACKET_BIRCH = new SupportBracket("birch");
+		SUPPORT_BRACKET_SPRUCE = new SupportBracket("spruce");
+		SUPPORT_BRACKET_DARK_OAK = new SupportBracket("dark_oak");
+		SUPPORT_BRACKET_JUNGLE = new SupportBracket("jungle");
+		SUPPORT_BRACKET_ACACIA = new SupportBracket("acacia");
+		SUPPORT_BRACKET_WARPED = new SupportBracket("warped", Blocks.WARPED_PLANKS);
+		SUPPORT_BRACKET_CRIMSON = new SupportBracket("crimson", Blocks.CRIMSON_PLANKS);
+		
 		for(int i = 0; i < colors.length; i++) {
 			SOFA[i] = new Sofa(colors[i]);
 		}
@@ -449,7 +511,8 @@ public class Index {
 		}
 		
 		SHOP_SIGN_WOOD = new ShopSign("wood");
-		IRON_LADDER = new IronLadder();
+		IRON_LADDER = new IronLadder("iron_ladder");
+		IRON_LADDER_ROUGH = new IronLadder("iron_ladder_rough");
 		IRON_FENCE = new IronFence("iron_fence");
 		IRON_FENCE_ROUGH = new IronFence("iron_fence_rough");
 		ROUGH_IRON_BLOCK = new GenericBlock("rough_iron_block", Block.Properties.from(Blocks.IRON_BLOCK), new BlockOptions());
@@ -462,8 +525,13 @@ public class Index {
 		CANDLE = new Candle("candle", ParticleTypes.FLAME);
 		SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		ARCADE = new Arcade();
+		FIREPLACE_GUARD = new FireplaceGuard("fireplace_guard");
+		ROUGH_FIREPLACE_GUARD = new FireplaceGuard("rough_fireplace_guard");
 		
-		//SLAB_TORCH = new SlabTorch();
+		VERTICAL_REPEATER = new VerticalRepeaterBlock();
+		VERTICAL_COMPARATOR = new VerticalComparatorBlock();
+		
+		ENTITY_DETECTOR = new EntityDetector();
 	}
 	
 	public static void paintings() {
@@ -473,6 +541,9 @@ public class Index {
 		HORIZONS_PAINTING = RegistryUtil.createPainting("horizons", 1, 1);
 		PORTRAIT_PAINTING = RegistryUtil.createPainting("portrait", 1, 1);
 		PROMO_PAINTING = RegistryUtil.createPainting("promo", 1, 1);
+		HEROBRINE_PAINTING = RegistryUtil.createPainting("herobrine", 1, 1);
+		ENDERMAN_PAINTING = RegistryUtil.createPainting("enderman", 1, 2);
+		WINTER_PAINTING = RegistryUtil.createPainting("winter", 2, 2);
 	}
 	
 	public static void tileentities() {
@@ -494,15 +565,19 @@ public class Index {
 				TileEntityRegistry.instance.<SpeakerTileEntity>register(SpeakerTileEntity::new, new TileEntityOptions("speaker", SPEAKER));
 		ARCADE_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<ArcadeTileEntity>register(ArcadeTileEntity::new, new TileEntityOptions("arcade", ARCADE));
+		ENTITY_DETECTOR_TILE_ENTITY_TYPE = 
+				TileEntityRegistry.instance.<EntityDetectorTileEntity>register(EntityDetectorTileEntity::new, new TileEntityOptions("entity_detector", ENTITY_DETECTOR));
 	}
 	
 	public static void containers() {
-	BOOKSHELF_CONTAINER = (ContainerType<BookshelfContainer>) 
-			ContainerRegistry.instance.register(IForgeContainerType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
-	SHELF_CONTAINER = (ContainerType<ShelfContainer>) 
-			ContainerRegistry.instance.register(IForgeContainerType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
-	SPEAKER_CONTAINER = (ContainerType<SpeakerContainer>) 
-			ContainerRegistry.instance.register(IForgeContainerType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
+		BOOKSHELF_CONTAINER = (ContainerType<BookshelfContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
+		SHELF_CONTAINER = (ContainerType<ShelfContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
+		SPEAKER_CONTAINER = (ContainerType<SpeakerContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
+		ARCADE_CONTAINER = (ContainerType<ArcadeContainer>) 
+				ContainerRegistry.instance.register(IForgeContainerType.create(ArcadeContainer::create).setRegistryName("arcade_container"), new ContainerOptions());
 	}
 	
 	/*BOP_CHERRY_VERTICAL_SLAB = new VerticalSlab("bop_cherry", Blocks.OAK_PLANKS, "biomesoplenty");

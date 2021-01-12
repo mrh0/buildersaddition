@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SSS",
+		"P P",
+		"PPP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "minecraft:jungle_planks"
+		},
+		"S":
+		{
+			"item": "minecraft:polished_blackstone_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:counter_jungle_blackstone",
+		"count": 1
+	}
+}

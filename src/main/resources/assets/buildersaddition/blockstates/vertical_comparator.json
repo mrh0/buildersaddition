@@ -1,0 +1,135 @@
+{
+  "variants": {
+  	"vertical_facing=up,facing=east,mode=compare,powered=false": {
+      "y": 270, "x": 90,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=up,facing=east,mode=compare,powered=true": {
+      "y": 270, "x": 90,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=up,facing=east,mode=subtract,powered=false": {
+      "y": 270, "x": 90,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=up,facing=east,mode=subtract,powered=true": {
+      "y": 270, "x": 90,
+      "model": "minecraft:block/comparator_on_subtract"
+    },
+    "vertical_facing=up,facing=north,mode=compare,powered=false": {
+      "y": 180, "x": 90,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=up,facing=north,mode=compare,powered=true": {
+      "y": 180, "x": 90,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=up,facing=north,mode=subtract,powered=false": {
+      "y": 180, "x": 90,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=up,facing=north,mode=subtract,powered=true": {
+      "y": 180, "x": 90,
+      "model": "minecraft:block/comparator_on_subtract"
+    },
+    "vertical_facing=up,facing=south,mode=compare,powered=false": {
+      "x": 90,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=up,facing=south,mode=compare,powered=true": {
+      "x": 90,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=up,facing=south,mode=subtract,powered=false": {
+      "x": 90,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=up,facing=south,mode=subtract,powered=true": {
+      "x": 90,
+      "model": "minecraft:block/comparator_on_subtract"
+    },
+    "vertical_facing=up,facing=west,mode=compare,powered=false": {
+      "y": 90, "x": 90,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=up,facing=west,mode=compare,powered=true": {
+      "y": 90, "x": 90,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=up,facing=west,mode=subtract,powered=false": {
+      "y": 90, "x": 90,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=up,facing=west,mode=subtract,powered=true": {
+      "y": 90, "x": 90,
+      "model": "minecraft:block/comparator_on_subtract"
+    },
+    
+    
+    
+    "vertical_facing=down,facing=east,mode=compare,powered=false": {
+      "y": 90, "x": 270,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=down,facing=east,mode=compare,powered=true": {
+      "y": 90, "x": 270,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=down,facing=east,mode=subtract,powered=false": {
+      "y": 90, "x": 270,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=down,facing=east,mode=subtract,powered=true": {
+      "y": 90, "x": 270,
+      "model": "minecraft:block/comparator_on_subtract"
+    },
+    "vertical_facing=down,facing=north,mode=compare,powered=false": {
+      "y": 0, "x": 270,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=down,facing=north,mode=compare,powered=true": {
+      "y": 0, "x": 270,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=down,facing=north,mode=subtract,powered=false": {
+      "y": 0, "x": 270,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=down,facing=north,mode=subtract,powered=true": {
+      "y": 0, "x": 270,
+      "model": "minecraft:block/comparator_on_subtract"
+    },
+    "vertical_facing=down,facing=south,mode=compare,powered=false": {
+      "y": 180, "x": 270,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=down,facing=south,mode=compare,powered=true": {
+      "y": 180, "x": 270,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=down,facing=south,mode=subtract,powered=false": {
+      "y": 180, "x": 270,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=down,facing=south,mode=subtract,powered=true": {
+      "y": 180, "x": 270,
+      "model": "minecraft:block/comparator_on_subtract"
+    },
+    "vertical_facing=down,facing=west,mode=compare,powered=false": {
+      "y": 270, "x": 270,
+      "model": "minecraft:block/comparator"
+    },
+    "vertical_facing=down,facing=west,mode=compare,powered=true": {
+      "y": 270, "x": 270,
+      "model": "minecraft:block/comparator_on"
+    },
+    "vertical_facing=down,facing=west,mode=subtract,powered=false": {
+      "y": 270, "x": 270,
+      "model": "minecraft:block/comparator_subtract"
+    },
+    "vertical_facing=down,facing=west,mode=subtract,powered=true": {
+      "y": 270, "x": 270,
+      "model": "minecraft:block/comparator_on_subtract"
+    }
+  }
+}

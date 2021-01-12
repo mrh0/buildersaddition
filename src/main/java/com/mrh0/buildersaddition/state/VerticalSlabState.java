@@ -42,6 +42,10 @@ public enum VerticalSlabState implements IStringSerializable {
 
         return META_LOOKUP[meta];
     }
+    
+    public boolean isDouble() {
+    	return this == VerticalSlabState.DOUBLEX || this == VerticalSlabState.DOUBLEZ;
+    }
 
     public static VerticalSlabState forFacings(Direction clickedSide, Direction entityFacing) {
         if(clickedSide == Direction.UP || clickedSide == Direction.DOWN) {

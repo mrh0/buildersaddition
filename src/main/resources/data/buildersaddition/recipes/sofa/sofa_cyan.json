@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[" W ","PWP","S S"],
+	"key":
+	{
+		"S":
+		{
+			"tag": "forge:rods/iron"
+		},
+		"W":
+		{
+			"item": "minecraft:cyan_wool"
+		},
+		"P":
+		{
+			"item": "buildersaddition:pillow_cyan"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:sofa_cyan",
+		"count": 1
+	}
+}

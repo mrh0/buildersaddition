@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+		    "item": "minecraft:acacia_leaves"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:hedge_acacia",
+		"count": 2
+	}
+}

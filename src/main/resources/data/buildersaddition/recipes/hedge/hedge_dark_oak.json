@@ -1,0 +1,12 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+		    "item": "minecraft:dark_oak_leaves"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:hedge_dark_oak",
+		"count": 2
+	}
+}

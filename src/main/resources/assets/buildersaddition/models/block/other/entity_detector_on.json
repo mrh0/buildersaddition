@@ -1,0 +1,6 @@
+{
+    "parent": "buildersaddition:block/other/entity_detector",
+    "textures": {
+        "bottom": "block/observer_back_on"
+    }
+}

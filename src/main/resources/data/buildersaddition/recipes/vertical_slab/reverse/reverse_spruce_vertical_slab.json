@@ -1,0 +1,15 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:spruce_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:spruce_vertical_slab"
+		}
+	],
+	"result":{
+		"item": "minecraft:spruce_planks",
+		"count": 1
+	}
+}

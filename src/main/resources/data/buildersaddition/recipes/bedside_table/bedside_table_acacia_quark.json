@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "quark:acacia_vertical_slab"
+		},
+		{
+			"item": "quark:acacia_vertical_slab"
+		},
+		{
+			"item": "quark:acacia_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_acacia"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_acacia",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

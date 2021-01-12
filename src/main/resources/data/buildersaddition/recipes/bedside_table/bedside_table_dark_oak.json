@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:dark_oak_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:dark_oak_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:dark_oak_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_dark_oak"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_dark_oak",
+		"count": 1
+	}
+}

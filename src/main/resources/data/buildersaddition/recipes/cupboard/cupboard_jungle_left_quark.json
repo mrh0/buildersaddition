@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PC","PC"],
+	"key":
+	{
+		"P":
+		{
+			"item": "quark:jungle_vertical_slab"
+		},
+		"C":
+		{
+			"tag": "forge:chests/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cupboard_jungle",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

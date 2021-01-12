@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:warped_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:warped_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:warped_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_warped"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_warped",
+		"count": 1
+	}
+}

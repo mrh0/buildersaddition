@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SSS",
+		"F F",
+		"F F"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:dark_oak_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:dark_oak_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:table_dark_oak",
+		"count": 3
+	}
+}

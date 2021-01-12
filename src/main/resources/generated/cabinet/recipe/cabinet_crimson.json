@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PSP","P P","PSP"],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:crimson_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:crimson_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cabinet_crimson",
+		"count": 1
+	}
+}

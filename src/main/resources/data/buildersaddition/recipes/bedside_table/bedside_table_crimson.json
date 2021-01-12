@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:crimson_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:crimson_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:crimson_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_crimson"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_crimson",
+		"count": 1
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SSS","SSS","SSS"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:jungle_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:shelf_jungle",
+		"count": 2
+	}
+}

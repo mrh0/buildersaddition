@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SSS",
+		"F F",
+		"F F"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:crimson_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:crimson_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:table_crimson",
+		"count": 3
+	}
+}

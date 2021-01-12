@@ -1,10 +1,8 @@
 package com.mrh0.buildersaddition.network;
 
 import java.util.function.Supplier;
-
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.tileentity.base.BaseInstrument;
-
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;

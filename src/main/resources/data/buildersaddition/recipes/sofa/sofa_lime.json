@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[" W ","PWP","S S"],
+	"key":
+	{
+		"S":
+		{
+			"tag": "forge:rods/iron"
+		},
+		"W":
+		{
+			"item": "minecraft:lime_wool"
+		},
+		"P":
+		{
+			"item": "buildersaddition:pillow_lime"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:sofa_lime",
+		"count": 1
+	}
+}

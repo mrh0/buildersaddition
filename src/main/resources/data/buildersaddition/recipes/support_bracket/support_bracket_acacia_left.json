@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SS","PW"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:acacia_slab"
+		},
+		"P":
+		{
+			"item": "buildersaddition:acacia_vertical_slab"
+		},
+		"W":
+		{
+			"tag": "forge:rods/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:support_bracket_acacia",
+		"count": 4
+	}
+}

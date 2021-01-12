@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SSS",
+		"F F",
+		"F F"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:oak_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:oak_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:table_oak",
+		"count": 3
+	}
+}

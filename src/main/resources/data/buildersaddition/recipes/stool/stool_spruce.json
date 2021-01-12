@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:spruce_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:spruce_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_spruce",
+		"count": 2
+	}
+}

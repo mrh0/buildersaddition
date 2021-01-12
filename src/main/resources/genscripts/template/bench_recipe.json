@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SSS","FTF"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:%wood%_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:%wood%_fence"
+		},
+		"T":
+		{
+			"item": "minecraft:stick"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bench_%wood%",
+		"count": 3
+	}
+}

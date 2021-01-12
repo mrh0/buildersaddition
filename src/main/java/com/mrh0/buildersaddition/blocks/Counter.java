@@ -5,9 +5,12 @@ import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
+import com.mrh0.buildersaddition.util.Util;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.entity.LivingEntity;
@@ -44,8 +47,7 @@ import net.minecraft.world.server.ServerWorld;
 public class Counter extends BaseDerivativeBlock implements IWaterLoggable, ITileEntityProvider {
 
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-	public static final DirectionProperty FACING = DirectionProperty.create("facing",
-			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
+	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
 	private static VoxelShape SHAPE_COUNTERTOP = Block.makeCuboidShape(0d, 15d, 0d, 16d, 16d, 16d);
 	private static VoxelShape SHAPE_NORTH = Block.makeCuboidShape(0d, 0d, 1d, 16d, 16d, 16d);
@@ -124,8 +126,9 @@ public class Counter extends BaseDerivativeBlock implements IWaterLoggable, ITil
 		if (worldIn.isRemote) {
 			return ActionResultType.SUCCESS;
 		} else {
-			BlockState front = worldIn.getBlockState(pos.offset(state.get(FACING)));
-			if(front.isSolid())
+			//BlockState front = worldIn.getBlockState(pos.offset(state.get(FACING)));
+			//if(front.isSolid())
+			if(!Util.accessCheck(worldIn, pos, state.get(FACING)))
 				return ActionResultType.CONSUME;
 			TileEntity tileentity = worldIn.getTileEntity(pos);
 			if (tileentity instanceof CounterTileEntity) {
@@ -145,7 +148,6 @@ public class Counter extends BaseDerivativeBlock implements IWaterLoggable, ITil
 				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
 				worldIn.updateComparatorOutputLevel(pos, this);
 			}
-
 			super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
 	}

@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"CCC", 
+		"RRE", 
+		"CCC"
+	],
+	"key":
+	{
+		"C":
+		{
+			"item": "minecraft:cobblestone"
+		},
+		"E":
+		{
+			"item": "minecraft:emerald"
+		},
+		"R":
+		{
+			"item": "minecraft:redstone"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:entity_detector",
+		"count": 1
+	}
+}

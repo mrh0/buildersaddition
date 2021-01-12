@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SS","PW"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:%wood%_slab"
+		},
+		"P":
+		{
+			"item": "%mod%:%wood%_vertical_slab"
+		},
+		"W":
+		{
+			"tag": "forge:rods/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:support_bracket_%wood%",
+		"count": 4
+	}
+}

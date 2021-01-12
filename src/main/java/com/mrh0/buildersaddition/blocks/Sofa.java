@@ -7,6 +7,7 @@ import com.mrh0.buildersaddition.state.SofaState;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.HorizontalBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,6 +18,7 @@ import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -30,8 +32,7 @@ import net.minecraft.world.World;
 public class Sofa extends BaseDerivativeBlock implements ISeat {
 
 	public static final EnumProperty<SofaState> STATE = EnumProperty.<SofaState>create("state", SofaState.class);
-	public static final DirectionProperty FACING = DirectionProperty.create("facing",
-			p -> p.getIndex() > 1 && p.getIndex() < Direction.values().length);
+	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 
 	protected static final VoxelShape SHAPE_BASE = Block.makeCuboidShape(0d, 2d, 0d, 16d, 9d, 16d);
 	
@@ -126,7 +127,7 @@ public class Sofa extends BaseDerivativeBlock implements ISeat {
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		if(c.func_225518_g_()) {
+		if(c.hasSecondaryUseForPlayer()) {
 			return getDefaultState().with(FACING, c.getPlacementHorizontalFacing().getOpposite()).with(STATE, SofaState.Both);
 		}
 		return getState(c.getPlacementHorizontalFacing().getOpposite(), c.getWorld(), c.getPos(), true);
@@ -140,7 +141,7 @@ public class Sofa extends BaseDerivativeBlock implements ISeat {
 	
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		return SeatEntity.createSeat(worldIn, pos, player);
+		return SeatEntity.createSeat(worldIn, pos, player, SoundEvents.BLOCK_WOOL_HIT);
 	}
 	
 	

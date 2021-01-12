@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SSS","SSS","SSS"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:oak_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:shelf_oak",
+		"count": 2
+	}
+}

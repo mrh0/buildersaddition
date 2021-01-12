@@ -1,19 +1,14 @@
 package com.mrh0.buildersaddition.blocks;
 
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
-import com.mrh0.buildersaddition.tileentity.CabinetTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.IWaterLoggable;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.piglin.PiglinTasks;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
@@ -21,18 +16,14 @@ import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
+import net.minecraft.util.Direction.Axis;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
 
 public class IronLadder extends BaseDerivativeBlock  implements IWaterLoggable {
 
@@ -45,8 +36,8 @@ public class IronLadder extends BaseDerivativeBlock  implements IWaterLoggable {
 	protected static final VoxelShape SOUTH_SHAPE = Block.makeCuboidShape(1D, 0D, 0D, 15D, 16D, 2D);
 	protected static final VoxelShape WEST_SHAPE = Block.makeCuboidShape(14D, 0D, 1D, 16D, 16D, 15D);
 
-	public IronLadder() {
-		super("iron_ladder", Blocks.IRON_BLOCK);
+	public IronLadder(String name) {
+		super(name, Blocks.IRON_BLOCK);
 	}
 
 	@Override
@@ -61,7 +52,10 @@ public class IronLadder extends BaseDerivativeBlock  implements IWaterLoggable {
 
 	@Override
 	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		return this.getDefaultState().with(FACING, c.getPlacementHorizontalFacing().getOpposite()).with(WATERLOGGED,
+		if(c.getFace().getAxis() == Axis.Y)
+			return this.getDefaultState().with(FACING, c.getPlacementHorizontalFacing().getOpposite()).with(WATERLOGGED,
+				Boolean.valueOf(c.getWorld().getFluidState(c.getPos()).getFluid() == Fluids.WATER));
+		return this.getDefaultState().with(FACING, c.getFace()).with(WATERLOGGED,
 				Boolean.valueOf(c.getWorld().getFluidState(c.getPos()).getFluid() == Fluids.WATER));
 	}
 

@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["CP","CP"],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:oak_vertical_slab"
+		},
+		"C":
+		{
+			"tag": "forge:chests/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cupboard_oak",
+		"count": 1
+	}
+}

@@ -1,12 +1,10 @@
 {
     "textures": {
-        "red_concrete": "minecraft:block/red_concrete",
         "oak_log": "minecraft:block/oak_log",
         "particle": "minecraft:block/oak_log",
         "oak_planks": "minecraft:block/oak_planks",
         "black_wool": "minecraft:block/black_wool",
-        "anvil": "minecraft:block/anvil",
-        "black_concrete": "minecraft:block/black_concrete"
+        "anvil": "minecraft:block/anvil"
     },
     "display": {
         "gui": {
@@ -20,9 +18,9 @@
             "scale": [ 0.25, 0.25, 0.25 ]
         },
         "fixed": {
-            "rotation": [ 0, 180, 0 ],
+            "rotation": [ 0, 0, 0 ],
             "translation": [ 0, 0, 0 ],
-            "scale": [ 1, 1, 1 ]
+            "scale": [ 0.5, 0.5, 0.5 ]
         },
         "head": {
             "rotation": [ 0, 180, 0 ],
@@ -46,7 +44,7 @@
             "from": [ 3, 2, 3 ], 
             "to": [ 13, 15, 13 ], 
             "faces": {
-                "north": { "texture": "#black_concrete", "uv": [ 3, 1, 13, 14 ] },
+                "north": { "texture": "#black_wool", "uv": [ 3, 1, 13, 14 ] },
                 "south": { "texture": "#oak_planks", "uv": [ 0, 0, 10, 13 ] }
             }
         },
@@ -168,30 +166,6 @@
                 "west": { "texture": "#black_wool", "uv": [ 0, 0, 1, 4 ] },
                 "up": { "texture": "#black_wool", "uv": [ 0, 0, 4, 1 ] },
                 "down": { "texture": "#black_wool", "uv": [ 0, 0, 4, 1 ] }
-            }
-        },
-        {
-            "name": "Terminal1",
-            "from": [ 6, 5, 12.5 ], 
-            "to": [ 7, 6, 13.5 ], 
-            "faces": {
-                "east": { "texture": "#red_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "south": { "texture": "#red_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "west": { "texture": "#red_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "up": { "texture": "#red_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "down": { "texture": "#red_concrete", "uv": [ 0, 0, 1, 1 ] }
-            }
-        },
-        {
-            "name": "Terminal2",
-            "from": [ 9, 5, 12.5 ], 
-            "to": [ 10, 6, 13.5 ], 
-            "faces": {
-                "east": { "texture": "#black_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "south": { "texture": "#black_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "west": { "texture": "#black_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "up": { "texture": "#black_concrete", "uv": [ 0, 0, 1, 1 ] },
-                "down": { "texture": "#black_concrete", "uv": [ 0, 0, 1, 1 ] }
             }
         }
     ]

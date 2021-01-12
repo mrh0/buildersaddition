@@ -3,8 +3,8 @@ package com.mrh0.buildersaddition.util;
 import com.mrh0.buildersaddition.config.Config;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.SimpleSound;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
@@ -68,17 +68,11 @@ public class Notes {
 		}
 	}
 	
-	public static int latestNotes = 0;
-	
-	public static void playNote(World world, BlockPos pos, SoundEvent evt, int note) {
-		if(note < 0)// || note > 24)
+	public static void playClientNote(SoundEvent evt, int note) {
+		if(note < 0 && note >= 48)
 			return;
 		float f = (float)Math.pow(2.0D, (double)(note - 12) / 12.0D);
-		if(latestNotes < Config.MIDI_NOTES_PER_SECOND.get()) {
-			world.playSound((PlayerEntity)null, pos, evt, SoundCategory.RECORDS, 3.0F, f);
-			latestNotes++;
-		}
-		//world.addParticle(ParticleTypes.NOTE, (double)pos.getX() + 0.5D, (double)pos.getY() + 1.2D, (double)pos.getZ() + 0.5D, (double)note / 24.0D, 0.0D, 0.0D);
+		Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(evt, f));
 	}
 	
 	public static final String[] instrumentNames = {"bass", "snare", "hat", "basedrum", "bell", "flute", "chime", "guitar", 

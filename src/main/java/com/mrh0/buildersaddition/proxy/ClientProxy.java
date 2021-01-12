@@ -13,7 +13,9 @@ public class ClientProxy extends CommonProxy {
 	public void init(final FMLCommonSetupEvent evt) {
 		RenderingRegistry.registerEntityRenderingHandler(Index.SEAT_ENTITY_TYPE, new SeatRenderFactory());
 		
-		RenderType cutout = RenderType.getCutoutMipped();        
+		RenderType transl = RenderType.getTranslucent();
+		RenderType cutout = RenderType.getCutoutMipped();       
+		
         RenderTypeLookup.setRenderLayer(Index.HEDGE_OAK, cutout);
         RenderTypeLookup.setRenderLayer(Index.HEDGE_BIRCH, cutout);
         RenderTypeLookup.setRenderLayer(Index.HEDGE_SPRUCE, cutout);
@@ -22,5 +24,8 @@ public class ClientProxy extends CommonProxy {
         RenderTypeLookup.setRenderLayer(Index.HEDGE_ACACIA, cutout);
         
         RenderTypeLookup.setRenderLayer(Index.CROSSRAIL, cutout);
+        
+        RenderTypeLookup.setRenderLayer(Index.VERTICAL_REPEATER, cutout);
+        RenderTypeLookup.setRenderLayer(Index.VERTICAL_COMPARATOR, cutout);
 	}
 }

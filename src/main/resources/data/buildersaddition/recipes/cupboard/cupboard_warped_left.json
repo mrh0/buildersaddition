@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PC","PC"],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:warped_vertical_slab"
+		},
+		"C":
+		{
+			"tag": "forge:chests/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cupboard_warped",
+		"count": 1
+	}
+}

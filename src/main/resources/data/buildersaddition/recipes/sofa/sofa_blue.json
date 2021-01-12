@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[" W ","PWP","S S"],
+	"key":
+	{
+		"S":
+		{
+			"tag": "forge:rods/iron"
+		},
+		"W":
+		{
+			"item": "minecraft:blue_wool"
+		},
+		"P":
+		{
+			"item": "buildersaddition:pillow_blue"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:sofa_blue",
+		"count": 1
+	}
+}

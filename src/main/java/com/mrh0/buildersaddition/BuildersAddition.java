@@ -1,5 +1,6 @@
 package com.mrh0.buildersaddition;
 
+import com.mrh0.buildersaddition.arcade.ArcadeManager;
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.ClientEventHandler;
@@ -15,6 +16,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
@@ -33,12 +35,10 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
 @Mod(BuildersAddition.MODID)
 public class BuildersAddition {
 	public static final String MODID = "buildersaddition";
-	
 	public static CommonProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
-	
 	private static final String PROTOCOL = "1";
-	
 	public static MidiHandler midi = null;
+	public static boolean BOP_ACTIVE = false;
 	
 	public static final SimpleChannel Network = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MODID, "main"))
             .clientAcceptedVersions(PROTOCOL::equals)
@@ -52,12 +52,16 @@ public class BuildersAddition {
     	MinecraftForge.EVENT_BUS.addListener(this::serverevt);
     	MinecraftForge.EVENT_BUS.register(this);
     	
+    	ArcadeManager.init();
+    	
     	new ModGroup("builders_addition_group");
     	
     	new BlockRegistry();
     	new ItemRegistry();
     	new TileEntityRegistry();
     	new ContainerRegistry();
+    	
+    	BOP_ACTIVE = ModList.get().isLoaded("biomesoplenty");
     	
     	Config.loadConfig(Config.COMMON_CONFIG, FMLPaths.CONFIGDIR.get().resolve("buildersaddition-common.toml"));
 	}

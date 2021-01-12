@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:jungle_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:jungle_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:stool_jungle",
+		"count": 2
+	}
+}

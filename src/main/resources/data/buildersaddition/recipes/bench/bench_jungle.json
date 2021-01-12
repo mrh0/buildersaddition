@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SSS","FTF"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:jungle_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:jungle_fence"
+		},
+		"T":
+		{
+			"item": "minecraft:stick"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bench_jungle",
+		"count": 3
+	}
+}

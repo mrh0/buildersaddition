@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["WS","SW"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:string"
+		},
+		"W":
+		{
+			"item": "minecraft:magenta_wool"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:pillow_magenta",
+		"count": 4
+	}
+}

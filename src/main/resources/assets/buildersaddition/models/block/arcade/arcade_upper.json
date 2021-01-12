@@ -1,11 +1,12 @@
 {
     "textures": {
-        "screen_side": "minecraft:block/gray_concrete",
-        "sign": "minecraft:block/pink_concrete",
-        "screen": "minecraft:block/black_concrete",
-        "sides": "minecraft:block/red_concrete",
-        "body": "minecraft:block/purple_concrete",
-        "particle": "minecraft:block/black_concrete"
+        "ball": "minecraft:block/red_concrete",
+        "sign": "buildersaddition:blocks/arcade_sign",
+        "screen": "buildersaddition:blocks/arcade_screen",
+        "sides": "minecraft:block/purple_concrete",
+        "stick": "minecraft:block/black_concrete_powder",
+        "body": "buildersaddition:blocks/arcade_panel",
+        "particle": "buildersaddition:blocks/arcade_panel"
     },
     "display": {
         "gui": {
@@ -46,25 +47,18 @@
             "to": [ 15, 14, 12 ], 
             "rotation": { "origin": [ 8, 13, 8 ], "axis": "x", "angle": -22.5 },
             "faces": {
-                "north": { "texture": "#body", "uv": [ 0, 0, 14, 4 ] },
-                "east": { "texture": "#body", "uv": [ 0, 0, 10, 4 ] },
-                "south": { "texture": "#sign", "uv": [ 0, 0, 14, 4 ] },
-                "west": { "texture": "#body", "uv": [ 0, 0, 10, 4 ] },
-                "up": { "texture": "#body", "uv": [ 0, 0, 14, 10 ] },
-                "down": { "texture": "#body", "uv": [ 0, 0, 14, 10 ] }
+                "south": { "texture": "#sign", "uv": [ 1, 0, 15, 4 ] },
+                "up": { "texture": "#body", "uv": [ 1, 0, 15, 10 ] },
+                "down": { "texture": "#body", "uv": [ 1, 0, 15, 10 ] }
             }
         },
         {
             "name": "Screen",
-            "from": [ 3, 1, 4 ], 
-            "to": [ 13, 9, 9 ], 
+            "from": [ 1, 0, 4 ], 
+            "to": [ 15, 11, 9 ], 
             "rotation": { "origin": [ 8, 3, 10 ], "axis": "x", "angle": -22.5 },
             "faces": {
-                "east": { "texture": "#screen_side", "uv": [ 0, 0, 5, 8 ] },
-                "south": { "texture": "#screen", "uv": [ 3, 4, 13, 12 ] },
-                "west": { "texture": "#screen_side", "uv": [ 0, 0, 5, 8 ] },
-                "up": { "texture": "#screen_side", "uv": [ 0, 0, 10, 5 ] },
-                "down": { "texture": "#screen_side", "uv": [ 0, 0, 10, 5 ] }
+                "south": { "texture": "#screen", "uv": [ 1, 0, 15, 11 ] }
             }
         },
         {
@@ -72,9 +66,8 @@
             "from": [ 1, 0, 1 ], 
             "to": [ 15, 13, 6 ], 
             "faces": {
-                "north": { "texture": "#body", "uv": [ 0, 0, 14, 13 ] },
-                "south": { "texture": "#body", "uv": [ 0, 0, 14, 13 ] },
-                "up": { "texture": "#body", "uv": [ 0, 0, 14, 5 ] }
+                "north": { "texture": "#body", "uv": [ 1, 3, 15, 16 ] },
+                "up": { "texture": "#body", "uv": [ 1, 4, 15, 9 ] }
             }
         },
         {
@@ -99,6 +92,31 @@
                 "south": { "texture": "#sides", "uv": [ 0, 0, 1, 16 ] },
                 "west": { "texture": "#sides", "uv": [ 0, 0, 13, 16 ] },
                 "up": { "texture": "#sides", "uv": [ 0, 0, 1, 13 ] }
+            }
+        },
+        {
+            "name": "Stick",
+            "from": [ 3, 0, 12 ], 
+            "to": [ 4, 2, 13 ], 
+            "faces": {
+                "north": { "texture": "#stick", "uv": [ 0, 0, 1, 2 ] },
+                "east": { "texture": "#stick", "uv": [ 0, 0, 1, 2 ] },
+                "south": { "texture": "#stick", "uv": [ 0, 0, 1, 2 ] },
+                "west": { "texture": "#stick", "uv": [ 0, 0, 1, 2 ] },
+                "down": { "texture": "#stick", "uv": [ 0, 0, 2, 1 ] }
+            }
+        },
+        {
+            "name": "Ball",
+            "from": [ 2.75, 1.5, 11.75 ], 
+            "to": [ 4.25, 3, 13.25 ], 
+            "faces": {
+                "north": { "texture": "#ball", "uv": [ 0, 0, 1.5, 1.5 ] },
+                "east": { "texture": "#ball", "uv": [ 0, 0, 1.5, 1.5 ] },
+                "south": { "texture": "#ball", "uv": [ 0, 0, 1.5, 1.5 ] },
+                "west": { "texture": "#ball", "uv": [ 0, 0, 1.5, 1.5 ] },
+                "up": { "texture": "#ball", "uv": [ 0, 0, 1.5, 1.5 ] },
+                "down": { "texture": "#ball", "uv": [ 0, 0, 1.5, 1.5 ] }
             }
         }
     ]

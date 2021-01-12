@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SSS","FTF"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:acacia_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:acacia_fence"
+		},
+		"T":
+		{
+			"item": "minecraft:stick"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bench_acacia",
+		"count": 3
+	}
+}

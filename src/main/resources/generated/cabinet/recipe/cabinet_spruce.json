@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PSP","P P","PSP"],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:spruce_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:spruce_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cabinet_spruce",
+		"count": 1
+	}
+}

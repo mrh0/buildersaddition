@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:oak_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:oak_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:oak_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_oak"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_oak",
+		"count": 1
+	}
+}
