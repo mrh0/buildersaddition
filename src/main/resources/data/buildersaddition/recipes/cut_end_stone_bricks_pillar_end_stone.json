@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:end_stone"
-	},
-	"result": "buildersaddition:cut_end_stone_bricks_pillar",
-	"count": 1
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "minecraft:spruce_planks"
-  },
-  "result": "buildersaddition:spruce_vertical_slab",
-  "count": 2
-}

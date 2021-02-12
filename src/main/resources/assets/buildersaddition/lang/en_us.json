@@ -260,6 +260,9 @@
 	"block.buildersaddition.support_bracket_crimson":"Crimson Support Bracket",
 	"block.buildersaddition.support_bracket_warped":"Warped Support Bracket",
 	
+	"block.buildersaddition.vertical_repeater":"Vertical Repeater",
+	"block.buildersaddition.vertical_comparator":"Vertical Comparator",
+	
 	"container.buildersaddition.counter":"Counter",
 	"container.buildersaddition.cupboard":"Cupboard",
 	"container.buildersaddition.cabinet":"Cabinet",

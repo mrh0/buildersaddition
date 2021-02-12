@@ -17,5 +17,9 @@
 	"result":{
 		"item": "buildersaddition:cabinet_warped",
 		"count": 1
-	}
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "buildersaddition:block/support_bracket/support_bracket_down_base",
-  "textures": {
-        "stripped_top": "minecraft:block/stripped_crimson_stem_top",
-        "stripped": "minecraft:block/stripped_crimson_stem",
-        "particle": "minecraft:block/stripped_crimson_stem"
-    }
-}
