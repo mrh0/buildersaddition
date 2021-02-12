@@ -5,7 +5,7 @@ Minecraft Forge Mod by MRH0
 
 # Download
 
-Latest Version: 20210112c for Minecraft 1.16.4
+Latest Version: 20210124a for Minecraft 1.16.5
 
 At: https://www.curseforge.com/minecraft/mc-mods/buildersaddition
 
@@ -19,7 +19,7 @@ Available under MIT the license more info at: https://tldrlegal.com/license/mit-
 
 MIT License
 
-Copyright 2020 MRH0 (aka MRH/mrhminer/hminer)
+Copyright 2021 MRH0 (aka MRH/mrhminer/hminer)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
