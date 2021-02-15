@@ -260,6 +260,9 @@
 	"block.buildersaddition.support_bracket_crimson":"Suporte Carmesim",
 	"block.buildersaddition.support_bracket_warped":"Suporte Distorcido",
 	
+	"block.buildersaddition.vertical_repeater":"Repetidor Vertical",
+	"block.buildersaddition.vertical_comparator":"Comparador Vertical",
+	
 	"container.buildersaddition.counter":"Balcão",
 	"container.buildersaddition.cupboard":"Guarda-Louça",
 	"container.buildersaddition.cabinet":"Armário",
