@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_warped", "y":180 },
+        "facing=west,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_warped", "y":90 },
+        "facing=south,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_warped" },
+        "facing=east,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_warped", "y":270 },
+        
+        "facing=north,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_warped", "y":180 },
+        "facing=west,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_warped", "y":90 },
+        "facing=south,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_warped" },
+        "facing=east,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_warped", "y":270 }
+    }
+}

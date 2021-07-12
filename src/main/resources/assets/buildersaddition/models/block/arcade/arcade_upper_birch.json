@@ -1,0 +1,12 @@
+{
+  "parent": "buildersaddition:block/arcade/arcade_upper",
+  "textures": {
+        "ball": "minecraft:block/red_concrete_powder",
+        "pad": "buildersaddition:blocks/arcade_pad",
+        "sign": "buildersaddition:blocks/arcade_sign",
+        "sides": "minecraft:block/stripped_birch_log",
+        "screen": "buildersaddition:blocks/arcade_screen",
+        "stick": "minecraft:block/black_concrete_powder",
+        "body": "buildersaddition:blocks/arcade_panel"
+    }
+}

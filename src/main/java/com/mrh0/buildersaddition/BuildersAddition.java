@@ -12,6 +12,8 @@ import com.mrh0.buildersaddition.midi.MidiHandler;
 import com.mrh0.buildersaddition.network.PlayNotePacket;
 import com.mrh0.buildersaddition.network.UpdateDataPacket;
 import com.mrh0.buildersaddition.proxy.*;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;

@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.qspl;
-
+/*
 import com.mrh0.buildersaddition.arcade.ArcadeGame;
 import com.mrh0.buildersaddition.arcade.ArcadeScreen;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
@@ -97,4 +97,4 @@ public class QSPLArcadeGame extends ArcadeGame {
 	public ArcadeScreen getScreen() {
 		return s;
 	}
-}
+}*/

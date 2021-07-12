@@ -1,13 +1,15 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "buildersaddition:bricks_vertical_slab"
-		},
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PP" ],
+	"key":
+	{
+		"P":
 		{
 			"item": "buildersaddition:bricks_vertical_slab"
 		}
-	],
+	},
 	"result":{
 		"item": "minecraft:bricks",
 		"count": 1

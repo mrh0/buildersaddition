@@ -8,12 +8,18 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+repositories {
+	maven {
+		url "https://www.cursemaven.com"
+	}
+}
+
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.16.4-20210112d'
+version = '1.16.5-20210517a'
 group = 'com.mrh0.buildersaddition' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'buildersaddition'
 
@@ -89,7 +95,7 @@ dependencies {
     // Specify the version of Minecraft to use, If this is any group other then 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.16.4-35.1.36'
+    minecraft 'net.minecraftforge:forge:1.16.5-36.1.0'
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
     // compile "some.group:artifact:version:classifier"
@@ -107,6 +113,16 @@ dependencies {
 	
 	// implementation files('libs/json-20180813.jar', 'libs/cspl_4.3.2.jar')
 	implementation files('libs/cspl_4.3.2.jar')
+	
+	
+	//runtimeOnly fg.deobf("curse.maven:patchouli-3037298:3126931")
+	//runtimeOnly fg.deobf("curse.maven:curios-3168991:3168960")
+	//runtimeOnly fg.deobf("curse.maven:geckolib-3135868:3120121")
+	//runtimeOnly fg.deobf("curse.maven:ars-nouveau-401955:3157929")
+	
+	runtimeOnly fg.deobf("curse.maven:jei-238222:3157864")
+	
+	
 
     // For more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html

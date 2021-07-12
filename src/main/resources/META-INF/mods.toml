@@ -1,6 +1,6 @@
 modLoader="javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion="[33,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion="[36,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
 license="MIT"
 # A URL to refer people to when problems occur with this mod
@@ -27,6 +27,7 @@ authors="MRH0" #optional
 description='''
 Additional building blocks for Minecraft Forge.
 Building, Storage, Furnature & Decoration.
+Join the Discord: https://discord.gg/mRbNnyKTEu
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.buildersaddition]] #optional
@@ -44,7 +45,7 @@ Building, Storage, Furnature & Decoration.
 [[dependencies.buildersaddition]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.2, 1.17)"
+    versionRange="[1.16.4, 1.17)"
     ordering="NONE"
     side="BOTH"
 

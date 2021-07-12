@@ -21,5 +21,9 @@
 	"result":{
 		"item": "buildersaddition:support_bracket_jungle",
 		"count": 4
-	}
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
 }

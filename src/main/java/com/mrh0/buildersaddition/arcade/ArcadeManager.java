@@ -47,7 +47,7 @@ public class ArcadeManager {
 	public static void init() {
 		new ArcadeManager();
 		instance.add(ArcadeSnake::new, "snake");
-		instance.add(ArcadeBreakout::new, "breakout");
+		//instance.add(ArcadeBreakout::new, "breakout");
 		instance.add(ArcadeCredits::new, "credits");
 	}
 }

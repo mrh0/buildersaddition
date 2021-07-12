@@ -10,7 +10,7 @@ import net.minecraft.item.ItemGroup;
 public class BaseBlockItem extends BlockItem {
 
 	public BaseBlockItem(Block block, ItemOptions opts) {
-		super(block,  new Properties().group(ModGroup.MAIN));
+		super(block,  new Properties().group(opts.group));//
 		this.setRegistryName(block.getRegistryName());
 	}
 	

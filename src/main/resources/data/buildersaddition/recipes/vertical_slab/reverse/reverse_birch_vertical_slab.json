@@ -1,13 +1,15 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "buildersaddition:birch_vertical_slab"
-		},
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PP" ],
+	"key":
+	{
+		"P":
 		{
 			"item": "buildersaddition:birch_vertical_slab"
 		}
-	],
+	},
 	"result":{
 		"item": "minecraft:birch_planks",
 		"count": 1

@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 public class EntityDetectorTileEntity extends TileEntity implements ITickableTileEntity{
 
 	private static int dis = 4;
-	public static int cycle = 0;
+	public int cycle = 0;
 	
 	public EntityDetectorTileEntity() {
 		super(Index.ENTITY_DETECTOR_TILE_ENTITY_TYPE);
@@ -20,6 +20,9 @@ public class EntityDetectorTileEntity extends TileEntity implements ITickableTil
 
 	@Override
 	public void tick() {
+		cycle++;
+		if(cycle >= 20)
+			cycle = 0;
 		if(cycle % 4 != 0)
 			return;
 		BlockState state = this.getBlockState();

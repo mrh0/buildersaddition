@@ -79,7 +79,7 @@ public class ShelfContainer extends BaseContainer {
 					return ItemStack.EMPTY;
 			} else {
 				// From the player's inventory to the container inventory
-				if (!this.mergeItemStack(current, 0, 5, false))
+				if (!this.mergeItemStack(current, 0, 6, false))
 					return ItemStack.EMPTY;
 			}
 

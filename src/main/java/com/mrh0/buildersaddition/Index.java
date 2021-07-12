@@ -270,7 +270,17 @@ public class Index {
 	public static Block LARGE_SOUL_CANDLE;
 	public static Block CANDLE;
 	public static Block SOUL_CANDLE;
+	
 	public static Block ARCADE;
+	
+	public static Block ARCADE_OAK;
+	public static Block ARCADE_BIRCH;
+	public static Block ARCADE_SPRUCE;
+	public static Block ARCADE_DARK_OAK;
+	public static Block ARCADE_JUNGLE;
+	public static Block ARCADE_ACACIA;
+	public static Block ARCADE_WARPED;
+	public static Block ARCADE_CRIMSON;
 	
 	public static Block FIREPLACE_GUARD;
 	public static Block ROUGH_FIREPLACE_GUARD;
@@ -524,7 +534,17 @@ public class Index {
 		LARGE_SOUL_CANDLE = new LargeCandle("large_soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		CANDLE = new Candle("candle", ParticleTypes.FLAME);
 		SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
+		
 		ARCADE = new Arcade();
+		ARCADE_OAK = new Arcade("oak");
+		ARCADE_BIRCH = new Arcade("birch");
+		ARCADE_SPRUCE = new Arcade("spruce");
+		ARCADE_DARK_OAK = new Arcade("dark_oak");
+		ARCADE_JUNGLE = new Arcade("jungle");
+		ARCADE_ACACIA = new Arcade("acacia");
+		ARCADE_WARPED = new Arcade("warped");
+		ARCADE_CRIMSON = new Arcade("crimson");
+		
 		FIREPLACE_GUARD = new FireplaceGuard("fireplace_guard");
 		ROUGH_FIREPLACE_GUARD = new FireplaceGuard("rough_fireplace_guard");
 		
@@ -564,7 +584,7 @@ public class Index {
 		SPEAKER_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<SpeakerTileEntity>register(SpeakerTileEntity::new, new TileEntityOptions("speaker", SPEAKER));
 		ARCADE_TILE_ENTITY_TYPE = 
-				TileEntityRegistry.instance.<ArcadeTileEntity>register(ArcadeTileEntity::new, new TileEntityOptions("arcade", ARCADE));
+				TileEntityRegistry.instance.<ArcadeTileEntity>register(ArcadeTileEntity::new, new TileEntityOptions("arcade", ARCADE, ARCADE_OAK, ARCADE_BIRCH, ARCADE_SPRUCE, ARCADE_DARK_OAK, ARCADE_JUNGLE, ARCADE_ACACIA, ARCADE_WARPED, ARCADE_CRIMSON));
 		ENTITY_DETECTOR_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<EntityDetectorTileEntity>register(EntityDetectorTileEntity::new, new TileEntityOptions("entity_detector", ENTITY_DETECTOR));
 	}

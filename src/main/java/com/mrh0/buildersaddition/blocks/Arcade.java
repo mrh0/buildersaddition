@@ -2,6 +2,8 @@ package com.mrh0.buildersaddition.blocks;
 
 import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
+import com.mrh0.buildersaddition.event.opts.BlockOptions;
+import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.util.Util;
@@ -50,9 +52,15 @@ public class Arcade extends BaseBlock {
 	private static VoxelShape SHAPE_SOUTH_UPPER = Block.makeCuboidShape(0d, -16d, 0d, 16d, 16d, 15d);
 	private static VoxelShape SHAPE_WEST_UPPER = Block.makeCuboidShape(1d, -16d, 0d, 16d, 16d, 16d);
 
-
 	public Arcade() {
 		super("arcade", Properties.from(Blocks.IRON_BLOCK)
+				.notSolid().setAllowsSpawn((BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) -> false)
+				.setOpaque(Util::isntSolid).setSuffocates(Util::isntSolid).setBlocksVision(Util::isntSolid), new BlockOptions().setItemOptions(new ItemOptions().group(null)));
+		this.setDefaultState(this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER).with(FACING, Direction.NORTH));
+	}
+
+	public Arcade(String name) {
+		super("arcade_" + name, Properties.from(Blocks.OAK_PLANKS)
 				.notSolid().setAllowsSpawn((BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) -> false)
 				.setOpaque(Util::isntSolid).setSuffocates(Util::isntSolid).setBlocksVision(Util::isntSolid));
 		this.setDefaultState(this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER).with(FACING, Direction.NORTH));
@@ -78,12 +86,6 @@ public class Arcade extends BaseBlock {
 
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 		worldIn.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER), 3);
-		if (stack.hasDisplayName()) {
-			TileEntity tileentity = worldIn.getTileEntity(pos);
-			if (tileentity instanceof CounterTileEntity) {
-				((CounterTileEntity) tileentity).setCustomName(stack.getDisplayName());
-			}
-		}
 	}
 	
 	public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {

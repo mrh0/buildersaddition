@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "WGW",
+        "WQW",
+        "WCW"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:stripped_crimson_stem"
+        },
+        "G": {
+            "item": "minecraft:glass_pane"
+        },
+        "Q": {
+            "item": "minecraft:quartz"
+        },
+        "C": {
+            "item": "minecraft:comparator"
+        }
+    },
+    "result": {
+        "item": "buildersaddition:arcade_crimson",
+        "count": 1
+    }
+}

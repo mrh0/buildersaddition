@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_acacia", "y":180 },
+        "facing=west,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_acacia", "y":90 },
+        "facing=south,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_acacia" },
+        "facing=east,half=lower": { "model": "buildersaddition:block/arcade/arcade_lower_acacia", "y":270 },
+        
+        "facing=north,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_acacia", "y":180 },
+        "facing=west,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_acacia", "y":90 },
+        "facing=south,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_acacia" },
+        "facing=east,half=upper": { "model": "buildersaddition:block/arcade/arcade_upper_acacia", "y":270 }
+    }
+}

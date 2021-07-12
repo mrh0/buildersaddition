@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "WGW",
+        "WQW",
+        "WCW"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:stripped_spruce_log"
+        },
+        "G": {
+            "item": "minecraft:glass_pane"
+        },
+        "Q": {
+            "item": "minecraft:quartz"
+        },
+        "C": {
+            "item": "minecraft:comparator"
+        }
+    },
+    "result": {
+        "item": "buildersaddition:arcade_spruce",
+        "count": 1
+    }
+}

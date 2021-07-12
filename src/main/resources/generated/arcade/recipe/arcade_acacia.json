@@ -1,0 +1,26 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "WGW",
+        "WQW",
+        "WCW"
+    ],
+    "key": {
+        "W": {
+            "item": "minecraft:stripped_acacia_log"
+        },
+        "G": {
+            "item": "minecraft:glass_pane"
+        },
+        "Q": {
+            "item": "minecraft:quartz"
+        },
+        "C": {
+            "item": "minecraft:comparator"
+        }
+    },
+    "result": {
+        "item": "buildersaddition:arcade_acacia",
+        "count": 1
+    }
+}

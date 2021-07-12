@@ -23,10 +23,12 @@ import net.minecraft.item.ShovelItem;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Direction.Axis;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event.Result;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -34,7 +36,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class GameEvents {
 	@SuppressWarnings("deprecation")
-	@SubscribeEvent
+	@SubscribeEvent//(priority = EventPriority.LOWEST)
     public static void interact(PlayerInteractEvent.RightClickBlock evt) {
 		
 		Item item = evt.getItemStack().getItem();
@@ -74,10 +76,26 @@ public class GameEvents {
     		}	
         }
         else if(item == Items.REPEATER) {
+        	//"ars_nouveau:glyph_press"
         	if(evt.getFace().getAxis() != Axis.Y) {
+        		/*ResourceLocation blockRes = evt.getWorld().getBlockState(evt.getPos()).getBlock().getRegistryName();
+        		if(blockRes.getNamespace().equals("ars_nouveau") && blockRes.getPath().equals("glyph_press"))
+        			return;*/
+        		//System.out.println(evt.getUseBlock());
+        		//if(evt.getUseBlock() != Result.DEFAULT)
+        		//	return;
         		BlockPos pos = evt.getPos().offset(evt.getFace());
         		if(evt.getWorld().isAirBlock(pos)) {
         			
+        			// Ugly Work-around
+        			if(!evt.getPlayer().isSneaking()) {
+	        			if(evt.getWorld().getBlockState(evt.getPos()).onBlockActivated(evt.getWorld(), evt.getPlayer(), evt.getHand(), evt.getHitVec()) != ActionResultType.PASS) {
+	        				evt.setCancellationResult(ActionResultType.SUCCESS);
+	                    	evt.setCanceled(true);
+	                    	return;
+	        			}
+        			}
+        				
         			boolean flag = evt.getHitVec().getHitVec().y - (double) evt.getPos().getY() - .5d < 0;
         			BlockState state = Index.VERTICAL_REPEATER.getDefaultState().with(VerticalRepeaterBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).with(VerticalRepeaterBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
         			
@@ -89,6 +107,8 @@ public class GameEvents {
         			
         			evt.getWorld().setBlockState(pos, state);
         			Index.VERTICAL_REPEATER.onBlockPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
+        			if(!evt.getPlayer().isCreative())
+        				evt.getItemStack().shrink(1);
         			
         			evt.setCancellationResult(ActionResultType.SUCCESS);
                 	evt.setCanceled(true);
@@ -102,6 +122,15 @@ public class GameEvents {
         		BlockPos pos = evt.getPos().offset(evt.getFace());
         		if(evt.getWorld().isAirBlock(pos)) {
         			
+        			// Ugly Work-around
+        			if(!evt.getPlayer().isSneaking()) {
+	        			if(evt.getWorld().getBlockState(evt.getPos()).onBlockActivated(evt.getWorld(), evt.getPlayer(), evt.getHand(), evt.getHitVec()) != ActionResultType.PASS) {
+	        				evt.setCancellationResult(ActionResultType.SUCCESS);
+	                    	evt.setCanceled(true);
+	                    	return;
+	        			}
+        			}
+        			
         			boolean flag = evt.getHitVec().getHitVec().y - (double) evt.getPos().getY() - .5d < 0;
         			BlockState state = Index.VERTICAL_COMPARATOR.getDefaultState().with(VerticalComparatorBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).with(VerticalComparatorBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
         			
@@ -113,6 +142,8 @@ public class GameEvents {
         			
         			evt.getWorld().setBlockState(pos, state);
         			Index.VERTICAL_COMPARATOR.onBlockPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
+        			if(!evt.getPlayer().isCreative())
+        				evt.getItemStack().shrink(1);
         			
         			evt.setCancellationResult(ActionResultType.SUCCESS);
                 	evt.setCanceled(true);
@@ -126,10 +157,6 @@ public class GameEvents {
 	
 	@SubscribeEvent
 	public static void tickEvent(TickEvent.ServerTickEvent evt) {
-		EntityDetectorTileEntity.cycle++;
-		if(EntityDetectorTileEntity.cycle >= 20)
-			EntityDetectorTileEntity.cycle = 0;
-		
 		SpeakerTileEntity.latestNotes -= Config.MIDI_NOTES_PER_SECOND.get()/20;
 		if(SpeakerTileEntity.latestNotes < 0)
 			SpeakerTileEntity.latestNotes = 0;

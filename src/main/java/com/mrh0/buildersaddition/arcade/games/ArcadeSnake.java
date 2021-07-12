@@ -145,7 +145,7 @@ public class ArcadeSnake extends ArcadeGame {
 					break;
 			}
 			if(s.getBackground(px, py) == snakeColor) {
-				deadTimer = time + 30;
+				deadTimer = time + 60;
 				isDead = true;
 				s.setColors(0x4, 0xf);
 				s.print(px, py,"x");

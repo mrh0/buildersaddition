@@ -76,7 +76,7 @@ public class BookshelfContainer extends BaseContainer {
 					return ItemStack.EMPTY;
 			} else {
 				// From the player's inventory to the container inventory
-				if (!this.mergeItemStack(current, 0, 4, false))
+				if (!this.mergeItemStack(current, 0, 18, false))
 					return ItemStack.EMPTY;
 			}
 

@@ -1,0 +1,130 @@
+ General:
+- All blocks are vanilla resource pack compatible (all blocks use vanilla textures).
+
+Panels (vertical slabs):
+- Every vanilla 1.16 slab has a corresponding panel variant.
+- Can be crafted in the stonecutter (like slabs).
+- Can be crafted in the crafting table as a three-block vertical line (slab pattern put vertical).
+- Can be water-logged.
+
+Pillars:
+- Variants: Stone, Sandstone, Cobblestone, Bricks, Stone Bricks, Quartz, Red Sandstone, Purpur, Prismarine, Mossy Stone Bricks, Mossy Cobblestone Smooth Stone, Smooth Sandstone, Smooth Red Sandstone, End Stone Bricks, Basalt, Polished Blackstone Bricks & Quartz Bricks.
+- Are crafted in the stonecutter.
+- Has connected models, pillars of the same type connect (cobblestone, sandstone, bricks, quartz, nether bricks).
+- Can be water-logged.
+
+Tables:
+- Variants: Oak, Spruce, Birch, Acacia, Jungle, Dark Oak, Crimson & Warped.
+- Has connected models.
+- Crafted with 2x Slab and 2x Fences in the wood of choice (must be all the same wood type, see 'Images' tab).
+
+Stool:
+- Variants: All woods combined with all wools (128 variants).
+- Right-click to sit in (shift to exit).
+- Crafted with  2x Slab, 2x Fences and 2x Wool in the wood and wool of choice (must be all the same wood/wool type, see 'Images' tab).
+
+Bench:
+- Variants: Oak, Spruce, Birch, Acacia, Jungle, Dark Oak, Crimson & Warped.
+- Right-click to sit in (shift to exit).
+- Has connected models.
+- Crafted with 3x Slab, 2x Fences and 1x Stick [SSS, FStF].
+
+Sofa:
+- Variants: All wool colours.
+- Right-click to sit in (shift to exit).
+- Has connected models.
+- Crafted with 4x Wool and 2x Iron Rod  [ W , WWW, I I].
+
+Hedge:
+- Variants: Oak, Spruce, Birch, Acacia, Jungle & Dark Oak.
+- Craft with one of the desired leaves block, receive two hedge blocks.
+- Has connected models.
+- Acts like a fence.
+- Can be water-logged.
+
+Barrel Planter:
+- Trees won't grow in them.
+- Right-click with a hoe to turn the dirt into farmland.
+- Farmland doesn't require water and can't be trampled.
+- Crafted with dirt & a barrel.
+
+Counter:
+- Variants: All planks combined with Andesite, Diorite, Granite & Blackstone (32 variants).
+- Crafted with 5x planks & 3x slabs (must be all same the wood & stone type, see 'Images' tab).
+- Has a 27 slot inventory.
+- Cannot be opened when a solid block is in front of the counter.
+- Can be water-logged.
+
+Cabinet:
+- Variants: All planks.
+- Crafted with 6x panels & 2x slabs (must be all the same wood).
+- Has an 18 slot inventory.
+- Can be water-logged.
+
+Bedside Table:
+- Variants: All planks.
+- Crafted with 3x panels & one table in a shapeless recipe (must be all the same wood).
+- Has a 9 slot inventory.
+- Can be water-logged.
+
+Bookshelf:
+- Variants: All planks (8 variants).
+- Crafted with 6x panels & 3x slabs (must be all same wood, see 'Images' tab).
+- Has 18 slots for books (regular, written & enchanted).
+- Provides 1 enchant-ability per 3 slots populated with books for the maximum total effect of 6 vanilla bookshelves.
+
+Shelf:
+- Variants: All planks (8 variants).
+- Crafted with 9x slabs (must be all same wood).
+- Has a 6 slot inventory.
+- Displays the 6 stacks on the shelf.
+
+Shop Sign:
+- Can be placed in 8 orientations (North, East, South, West, Up X/Z, Down X/Z).
+- Attaches to solid surfaces, pillars, walls & fences.
+- Crafted with 4x panels & 2x iron nuggets (can be any wood type).
+- Displays an item on both sides.
+- Right-click with the item to place, Shift + Right-click to remove it.
+
+Iron Ladder:
+- Self-supporting
+- Can be water-logged.
+- Crafted like regular ladders but using Iron Rod instead of sticks. (Iron Rod is crafted like sticks but with two iron ingots)
+- Craft Rough Iron Fence by smelting Iron Fences.
+
+Iron Fence:
+- In two variants.
+- Has all the properties of vanilla fences.
+
+Midi Speaker:
+- Play note block sounds using a real or virtual midi device. (Suggest: LoopMIDI)
+- Select the sounds to use in the GUI.
+- Midi devices are discovered when launching the game, make sure your device is connected before starting the game.
+- Enable or disable individual features of this block in the configs, midi input is disabled by default.
+- Crafted with 4x Logs, 2x Note blocks, 2x Iron Ingot & 1x Planks [LNL, LNL, IPI].
+
+Misc:
+- 5 new paintings.
+- Rough Iron Block (Smelt Iron Block).
+- Gravel Path (Right-click Gravel with a shovel).
+- Crossrail (4-way rail intersection, 4x Iron Ingot & 5x Sticks [ISI, SSS, ISI]).
+- Candle (Light with Flint & Steel, put out with an empty hand, mounts on walls and floor, shapeless crafting: 1x Gold Ingot, 1x Large Candle).
+- Large Candle (Light with Flint & Steel, put out with an empty hand, shapeless crafting: 3x Honeycombs, 1x String).
+
+Config:
+- Located at: '<minecraft install>/config/buildersaddition-common.toml'.
+- MIDI_ENABLE: main midi enable (default: true).
+- MIDI_INPUT_ENABLE: enable midi input from client device, need to be set true when using a midi device (default: false).
+- MIDI_SOUND_ENABLE: enable client audio from midi speaker (default: true).
+- MIDI_NOTE_LIMIT: Max number of played notes per second (default: 75).
+
+History:
+- Formally part of Vanilla Crafts & Expansion (https://www.curseforge.com/minecraft/mc-mods/vanilla-crafts-expansion)
+
+Note:
+- Feel free to leave suggestions for new features in the comments, if I see your suggestion fit the vision and scope of the mod I will consider adding it. Also, make sure to report any issues you discover while playing under the 'Issues' tab.
+- Highly recommend playing with JEI/NEI or equivalent mod if you are unsure of any recipes.
+- Crafting notation: [Row 1, Row 2, Row 3].
+
+Modpacks:
+- Yes, distributed with credits to the source (https://github.com/mrh0/buildersaddition) and in accordance with the MIT license.
