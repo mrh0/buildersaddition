@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.blocks.base;
-
+/*
 import com.mrh0.buildersaddition.entity.SeatEntity;
 
 import net.minecraft.block.Block;
@@ -7,7 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -15,7 +15,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
 
 public class BaseStool extends BaseDerivativeBlock implements ISeat {
 
@@ -29,7 +28,7 @@ public class BaseStool extends BaseDerivativeBlock implements ISeat {
 	
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		return SeatEntity.createSeat(worldIn, pos, player) ? ActionResultType.SUCCESS : ActionResultType.FAIL;
+		return SeatEntity.createSeat(worldIn, pos, player, SoundEvents.BLOCK_WOOL_HIT);
 	}
 	
 	@Override
@@ -37,3 +36,4 @@ public class BaseStool extends BaseDerivativeBlock implements ISeat {
 		return VoxelShapes.or(SHAPE, SHAPE_TWO);
 	}
 }
+*/

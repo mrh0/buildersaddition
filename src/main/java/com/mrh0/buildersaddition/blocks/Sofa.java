@@ -66,6 +66,8 @@ public class Sofa extends BaseDerivativeBlock implements ISeat {
 				return SHAPE_ARM_SOUTH;
 			case WEST:
 				return SHAPE_ARM_WEST;
+		default:
+			break;
 		}
 		return VoxelShapes.empty();
 	}
