@@ -70,7 +70,7 @@ Bedside Table:
 Bookshelf:
 - Variants: All planks (8 variants).
 - Crafted with 6x panels & 3x slabs (must be all same wood, see 'Images' tab).
-- Has 18 slots for books (regular, written & enchanted).
+- Has 18 slots for books (regular, written, enchanted & those tagged with 'forge:books').
 - Provides 1 enchant-ability per 3 slots populated with books for the maximum total effect of 6 vanilla bookshelves.
 
 Shelf:
