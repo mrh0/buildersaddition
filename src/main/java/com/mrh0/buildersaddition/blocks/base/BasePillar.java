@@ -3,9 +3,11 @@ package com.mrh0.buildersaddition.blocks.base;
 import com.mrh0.buildersaddition.state.PillarState;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,8 +15,10 @@ import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -89,15 +93,15 @@ public class BasePillar extends BaseDerivativeBlock implements SimpleWaterlogged
 		boolean bottom = !connects(bsbottom, this);
 		
 		if(top && bottom) {
-			return state.with(STATE, PillarState.Both);
+			return state.setValue(STATE, PillarState.Both);
 		}
 		else if(top) {
-			return state.with(STATE, PillarState.Top);
+			return state.setValue(STATE, PillarState.Top);
 		}
 		else if(bottom) {
-			return state.with(STATE, PillarState.Bottom);
+			return state.setValue(STATE, PillarState.Bottom);
 		}
-		return state.with(STATE, PillarState.None);
+		return state.setValue(STATE, PillarState.None);
 	}
 	
 	@Override
@@ -120,7 +124,14 @@ public class BasePillar extends BaseDerivativeBlock implements SimpleWaterlogged
 		return iconnect.connect(state, b);
 	}
 	
-	
+	@Override
+	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn,
+			BlockPos currentPos, BlockPos facingPos) {
+		if(stateIn.getValue(WATERLOGGED)) {
+			worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
+		}
+		return getState(stateIn, worldIn, currentPos);
+	}
 	
 	@Override
 	public FluidState getFluidState(BlockState state) {
@@ -128,31 +139,22 @@ public class BasePillar extends BaseDerivativeBlock implements SimpleWaterlogged
 	}
 
 	@Override
-	public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
-		return SimpleWaterloggedBlock.super.receiveFluid(worldIn, pos, state, fluidStateIn);
+	public boolean placeLiquid(LevelAccessor world, BlockPos pos, BlockState state, FluidState fluidStateIn) {
+		return SimpleWaterloggedBlock.super.placeLiquid(world, pos, state, fluidStateIn);
 	}
 
 	@Override
-	public boolean canContainFluid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
-		return SimpleWaterloggedBlock.super.canContainFluid(worldIn, pos, state, fluidIn);
+	public boolean canPlaceLiquid(BlockGetter world, BlockPos pos, BlockState state, Fluid fluidIn) {
+		return SimpleWaterloggedBlock.super.canPlaceLiquid(world, pos, state, fluidIn);
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
-			BlockPos currentPos, BlockPos facingPos) {
-		if(stateIn.get(WATERLOGGED)) {
-			worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
-		}
-		return getState(stateIn, worldIn, currentPos);
-	}
-	
-	@Override
-	public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+	public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
 		switch (type) {
 		case LAND:
 			return false;
 		case WATER:
-			return worldIn.getFluidState(pos).isTagged(FluidTags.WATER);
+			return world.getFluidState(pos).is(FluidTags.WATER);
 		case AIR:
 			return false;
 		default:

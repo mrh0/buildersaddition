@@ -7,13 +7,13 @@ import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
@@ -23,20 +23,20 @@ public class ShelfContainer extends BaseContainer {
 	private ItemStackHandler handler;
 	public static final int SLOTS = 6;
 	
-	protected ShelfContainer(ContainerType<?> type, int id) {
+	protected ShelfContainer(MenuType<?> type, int id) {
 		super(type, id);
 	}
 
-	public static ShelfContainer create(int windowId, PlayerInventory playerInventory, BlockPos pos, ItemStackHandler inv) {
+	public static ShelfContainer create(int windowId, Inventory playerInventory, BlockPos pos, ItemStackHandler inv) {
 		return new ShelfContainer(playerInventory, pos, windowId, inv);
 	}
 
-	public static ShelfContainer create(int windowId, PlayerInventory playerInventory, PacketBuffer buf) {
+	public static ShelfContainer create(int windowId, Inventory playerInventory, FriendlyByteBuf buf) {
 		BlockPos pos = buf.readBlockPos();
-		return new ShelfContainer(playerInventory, pos, windowId, ((ShelfTileEntity) Minecraft.getInstance().world.getTileEntity(pos)).handler);
+		return new ShelfContainer(playerInventory, pos, windowId, ((ShelfTileEntity) Minecraft.getInstance().level.getBlockEntity(pos)).handler);
 	}
 
-	public ShelfContainer(PlayerInventory playerInv, BlockPos pos, int window, ItemStackHandler inv){
+	public ShelfContainer(Inventory playerInv, BlockPos pos, int window, ItemStackHandler inv){
 		super(Index.SHELF_CONTAINER, window);
 		//this.te = (ShelfTileEntity) te.getWorld().getTileEntity(pos);
 		this.handler = inv;
@@ -65,32 +65,32 @@ public class ShelfContainer extends BaseContainer {
 	}
 	
 	@Override
-	public ItemStack transferStackInSlot(PlayerEntity playerIn, int fromSlot) {
+	public ItemStack quickMoveStack(Player player, int fromSlot) {
 		ItemStack previous = ItemStack.EMPTY;
-		Slot slot = (Slot) this.inventorySlots.get(fromSlot);
+		Slot slot = (Slot) this.slots.get(fromSlot);
 
-		if (slot != null && slot.getHasStack()) {
-			ItemStack current = slot.getStack();
+		if (slot != null && slot.hasItem()) {
+			ItemStack current = slot.getItem();
 			previous = current.copy();
 
 			if (fromSlot < this.handler.getSlots()) {
 				// From the container inventory to the player's inventory
-				if (!this.mergeItemStack(current, this.handler.getSlots(), this.handler.getSlots() + 36, true))
+				if (!this.moveItemStackTo(current, this.handler.getSlots(), this.handler.getSlots() + 36, true))
 					return ItemStack.EMPTY;
 			} else {
 				// From the player's inventory to the container inventory
-				if (!this.mergeItemStack(current, 0, 6, false))
+				if (!this.moveItemStackTo(current, 0, 6, false))
 					return ItemStack.EMPTY;
 			}
 
 			if (current.getCount() == 0)
-				slot.putStack(ItemStack.EMPTY);
+				slot.set(ItemStack.EMPTY);
 			else
-				slot.onSlotChanged();
+				slot.setChanged();
 
 			if (current.getCount() == previous.getCount())
 				return ItemStack.EMPTY;
-			slot.onTake(playerIn, current);
+			slot.onTake(player, current);
 		}
 		return previous;
 	}

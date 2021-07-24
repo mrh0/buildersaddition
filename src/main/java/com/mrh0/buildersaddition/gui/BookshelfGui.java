@@ -1,17 +1,17 @@
 package com.mrh0.buildersaddition.gui;
 
 import java.util.ArrayList;
-import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.container.BookshelfContainer;
-import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
 
-public class BookshelfGui extends ContainerScreen<BookshelfContainer> {
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
+
+public class BookshelfGui extends AbstractContainerScreen<BookshelfContainer> {
 
 	private static final ResourceLocation GUI = new ResourceLocation(BuildersAddition.MODID,
 			"textures/gui/container/bookshelf.png");
@@ -20,32 +20,31 @@ public class BookshelfGui extends ContainerScreen<BookshelfContainer> {
 
 	private ArrayList<String> captext = new ArrayList<String>();
 
-	public BookshelfGui(BookshelfContainer screenContainer, PlayerInventory inv, ITextComponent titleIn) {
+	public BookshelfGui(BookshelfContainer screenContainer, Inventory inv, Component titleIn) {
 		super(screenContainer, inv, titleIn);
 		//this.te = screenContainer.te;
 		//this.screenContainer = screenContainer;
 
-		this.xSize = 176;
-		this.ySize = 148;
+		this.width = 176;
+		this.height = 148;
 		
-		this.playerInventoryTitleY = 55;
+		this.inventoryLabelX = 55;
 	}
 
 	// Render
-	public void render(MatrixStack stack, int p_230430_2_, int p_230430_3_, float ticks) {
+	public void render(PoseStack stack, int p_230430_2_, int p_230430_3_, float ticks) {
 		this.renderBackground(stack);
 		super.render(stack, p_230430_2_, p_230430_3_, ticks);
-		this.renderHoveredTooltip(stack, p_230430_2_, p_230430_3_);
+		this.renderTooltip(stack, p_230430_2_, p_230430_3_);
 	}
-	
-	//drawGuiContainerBackgroundLayer (i think)
+
 	@Override
-	protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float partialTicks, int x, int y) {
-		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-		this.minecraft.getTextureManager().bindTexture(GUI);
-		int i = (this.width - this.xSize) / 2;
-		int j = (this.height - this.ySize) / 2;
-		this.blit(stack, i, j, 0, 0, this.xSize, this.ySize);
+	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		this.minecraft.getTextureManager().bindForSetup(GUI);
+		int i = (this.width - this.width) / 2;
+		int j = (this.height - this.height) / 2;
+		this.blit(stack, i, j, 0, 0, this.width, this.height);
 	}
 	
 	/*@Override

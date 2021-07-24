@@ -3,7 +3,6 @@ package com.mrh0.buildersaddition.tileentity;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.Counter;
 import com.mrh0.buildersaddition.tileentity.base.BaseChestTileEntity;
-import com.mrh0.buildersaddition.tileentity.base.ITextComponent;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 
 import net.minecraft.core.BlockPos;
@@ -21,14 +20,9 @@ public class CounterTileEntity extends BaseChestTileEntity implements ICompareto
 	public CounterTileEntity(BlockPos pos, BlockState state) {
 		super(Index.COUNTER_TILE_ENTITY_TYPE, pos, state);
 	}
-
-	@Override
-	public Component getDisplayName() {
-		return new TranslatableComponent("container.buildersaddition.counter");
-	}
 	
 	protected void playSound(BlockState state, SoundEvent evt) {
-		Vec3i vector3i = state.get(Counter.FACING).getDirectionVec();
+		Vec3i vector3i = state.getValue(Counter.FACING).getDirectionVec();
 		double d0 = (double) this.getBlockPos().getX() + 0.5D + (double) vector3i.getX() / 2.0D;
 		double d1 = (double) this.getBlockPos().getY() + 0.5D + (double) vector3i.getY() / 2.0D;
 		double d2 = (double) this.getBlockPos().getZ() + 0.5D + (double) vector3i.getZ() / 2.0D;
@@ -47,7 +41,12 @@ public class CounterTileEntity extends BaseChestTileEntity implements ICompareto
 	}
 
 	@Override
-	protected AbstractContainerMenu createMenu(int p_58627_, Inventory p_58628_) {
+	protected AbstractContainerMenu createMenu(int id, Inventory inv) {
 		return null;
+	}
+
+	@Override
+	protected Component getDefaultName() {
+		return new TranslatableComponent("container.buildersaddition.counter");
 	}
 }

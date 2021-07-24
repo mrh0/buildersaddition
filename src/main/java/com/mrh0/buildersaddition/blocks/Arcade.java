@@ -1,6 +1,8 @@
 package com.mrh0.buildersaddition.blocks;
 
 import javax.annotation.Nullable;
+
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import com.mrh0.buildersaddition.event.opts.ItemOptions;
@@ -20,11 +22,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -38,7 +44,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.fmllegacy.network.NetworkHooks;
 
-public class Arcade extends BaseBlock {
+public class Arcade extends BaseBlock implements EntityBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	
@@ -64,6 +70,10 @@ public class Arcade extends BaseBlock {
 				.noCollission().isValidSpawn(Util::isntSolid).isSuffocating(Util::isntSolid).isViewBlocking(Util::isntSolid));
 		this.registerDefaultState(this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH));
 	}
+	
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+	      return world.isClientSide() ? Util.createTickerHelper(type, Index.ARCADE_TILE_ENTITY_TYPE, ArcadeTileEntity::tick) : null;
+	   }
 	
 	@Override
 	public PushReaction getPistonPushReaction(BlockState p_60584_) {
@@ -173,16 +183,9 @@ public class Arcade extends BaseBlock {
 		BlockEntity tileentity = world.getBlockEntity(pos);
 		return tileentity == null ? false : tileentity.triggerEvent(id, param);
 	}
-	
-	
-	
+
 	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return state.get(HALF) == DoubleBlockHalf.LOWER;
-	}
-	
-	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new ArcadeTileEntity();
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new ArcadeTileEntity(pos, state);
 	}
 }

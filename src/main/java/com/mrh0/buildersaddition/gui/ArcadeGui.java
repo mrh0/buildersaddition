@@ -16,6 +16,7 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.ContainerScreen;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.wrapper.PlayerInvWrapper;
 
@@ -29,7 +30,7 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	private static final ResourceLocation GUI = new ResourceLocation(BuildersAddition.MODID,
 			"textures/gui/container/arcade_gui.png");
 
-	public ArcadeGui(ArcadeContainer screenContainer, PlayerInvWrapper inv, TextComponent tc) {
+	public ArcadeGui(ArcadeContainer screenContainer, Inventory inv, TextComponent tc) {
 		super(screenContainer, inv, tc);
 		this.screenContainer = screenContainer;
 		this.te = (ArcadeTileEntity) Minecraft.getInstance().level.getBlockEntity(screenContainer.pos);
@@ -101,7 +102,7 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	@Override
 	protected void renderBg(PoseStack stack, float p_97788_, int p_97789_, int p_97790_) {
 		renderBackground(stack);
-		RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		this.minecraft.getTextureManager().bindForSetup(GUI);
 		int i = (this.width - this.width) / 2;
 		int j = (this.height - this.height) / 2;

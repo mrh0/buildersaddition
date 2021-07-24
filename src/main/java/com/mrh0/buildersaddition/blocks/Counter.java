@@ -42,6 +42,9 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.server.ServerWorld;
 
 public class Counter extends BaseDerivativeBlock implements IWaterLoggable, ITileEntityProvider {
@@ -72,26 +75,26 @@ public class Counter extends BaseDerivativeBlock implements IWaterLoggable, ITil
 
 	@Override
 	public FluidState getFluidState(BlockState state) {
-		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
 	@Override
-	public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
-		return IWaterLoggable.super.receiveFluid(worldIn, pos, state, fluidStateIn);
+	public boolean placeLiquid(LevelAccessor world, BlockPos pos, BlockState state, FluidState fluidStateIn) {
+		return SimpleWaterloggedBlock.super.placeLiquid(world, pos, state, fluidStateIn);
 	}
 
 	@Override
-	public boolean canContainFluid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
-		return IWaterLoggable.super.canContainFluid(worldIn, pos, state, fluidIn);
+	public boolean canPlaceLiquid(BlockGetter world, BlockPos pos, BlockState state, Fluid fluidIn) {
+		return SimpleWaterloggedBlock.super.canPlaceLiquid(world, pos, state, fluidIn);
 	}
 
 	@Override
-	public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+	public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
 		switch (type) {
 		case LAND:
 			return false;
 		case WATER:
-			return worldIn.getFluidState(pos).isTagged(FluidTags.WATER);
+			return world.getFluidState(pos).is(FluidTags.WATER);
 		case AIR:
 			return false;
 		default:

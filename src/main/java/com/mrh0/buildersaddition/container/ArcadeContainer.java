@@ -3,13 +3,11 @@ package com.mrh0.buildersaddition.container;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.container.base.BaseContainer;
 
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Inventory;
 
-import BlockPos;
-
-public class ArcadeContainer  extends BaseContainer {
+public class ArcadeContainer extends BaseContainer {
 	
 	public final BlockPos pos;
 	
@@ -18,11 +16,11 @@ public class ArcadeContainer  extends BaseContainer {
 		this.pos = pos;
 	}
 	
-	public static ArcadeContainer create(int windowId, PlayerInventory playerInventory, BlockPos pos) {
+	public static ArcadeContainer create(int windowId, Inventory playerInventory, BlockPos pos) {
 		return new ArcadeContainer(windowId, pos);
 	}
 
-	public static ArcadeContainer create(int windowId, PlayerInventory playerInventory, PacketBuffer buf) {
+	public static ArcadeContainer create(int windowId, Inventory playerInventory, FriendlyByteBuf buf) {
 		return new ArcadeContainer(windowId, buf.readBlockPos());
 	}
 }

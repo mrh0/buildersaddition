@@ -1,7 +1,8 @@
 package com.mrh0.buildersaddition.gui;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.container.SpeakerContainer;
@@ -11,16 +12,16 @@ import com.mrh0.buildersaddition.network.UpdateDataPacket;
 import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
 import com.mrh0.buildersaddition.util.Notes;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.inventory.ContainerScreen;
-import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.client.gui.widget.button.Button.IPressable;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Button.OnPress;
+import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
-public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMidiEvent {
+public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implements IMidiEvent {
 
 	private final SpeakerContainer screenContainer;
 	private final SpeakerTileEntity te;
@@ -32,52 +33,52 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 
 	private Button[] btns;
 
-	public SpeakerGui(SpeakerContainer screenContainer, PlayerInventory inv, ITextComponent tc) {
+	public SpeakerGui(SpeakerContainer screenContainer, Inventory inv, Component tc) {
 		super(screenContainer, inv, tc);
 		this.screenContainer = screenContainer;
-		this.te = (SpeakerTileEntity) Minecraft.getInstance().world.getTileEntity(screenContainer.pos);
+		this.te = (SpeakerTileEntity) Minecraft.getInstance().level.getBlockEntity(screenContainer.pos);
 
-		this.xSize = 384;
-		this.ySize = 192;
+		this.width = 384;
+		this.height = 192;
 
 		if (BuildersAddition.midi != null)
 			BuildersAddition.midi.midiEvent = this;
 	}
-
-	// init
+	
 	@Override
-	public void init(Minecraft p_231158_1_, int p_231158_2_, int p_231158_3_) {
-		super.init(p_231158_1_, p_231158_2_, p_231158_3_);
+	public void resize(Minecraft mc, int w, int h) {
+		super.resize(mc, w, h);
 		int x = this.width / 2;// width
 		int y = this.height / 2;// height
 
-		IPressable p = (b) -> {
+		OnPress p = (b) -> {
+			
 		};
 
 		connectBtn = new Button(x - 48 - 12, y + 24 * 4, 96, 20,
-				new TranslationTextComponent(BuildersAddition.midi == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"), (b) -> {
+				new TranslatableComponent(BuildersAddition.midi == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"), (b) -> {
 					if (BuildersAddition.midi != null) {
 						if (BuildersAddition.midi.midiEvent == null)
 							BuildersAddition.midi.midiEvent = this;
 						else
 							BuildersAddition.midi.midiEvent = null;
 
-						connectBtn.setMessage(new TranslationTextComponent(
+						connectBtn.setMessage(new TranslatableComponent(
 								BuildersAddition.midi.midiEvent == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"));// SetMessage
 					}
 				});
 		
-		helpBtn = new Button(x + 52 - 12, y + 24 * 4, 20, 20, new StringTextComponent("?"), (b) -> {});
+		helpBtn = new Button(x + 52 - 12, y + 24 * 4, 20, 20, new TextComponent("?"), (b) -> {});
 
-		this.addButton(connectBtn); //addButton
-		this.addButton(helpBtn); //addButton
+		this.addWidget(connectBtn); //addButton
+		this.addWidget(helpBtn); //addButton
 
 		btns = new Button[SIZE];
 
 		for (int i = 0; i < SIZE; i++) {
 			btns[i] = new Button(x + (i > 7 ? -100 : 4), y + (i % 8 * 24) - 4 * 24, 96, 20,
-					new TranslationTextComponent("note.buildersaddition." + Notes.instrumentNames[i]), p);
-			this.addButton(btns[i]);// addButton
+					new TranslatableComponent("note.buildersaddition." + Notes.instrumentNames[i]), p);
+			this.addWidget(btns[i]);// addButton
 			btns[i].active = te.isInstrumentActive(i);// active
 		}
 	}
@@ -108,25 +109,25 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 
 	private void sendInstrumentUpdate(int data) {
 		if (getTE() != null)
-			BuildersAddition.Network.sendToServer(new UpdateDataPacket(this.getTE().getPos(), data));
+			BuildersAddition.Network.sendToServer(new UpdateDataPacket(this.getTE().getBlockPos(), data));
 	}
 
 	// render
 	@Override
-	public void render(MatrixStack stack, int x, int y, float p_230430_4_) {
-		super.render(stack, x, y, p_230430_4_);
-		GlStateManager.disableLighting();
-		GlStateManager.disableBlend();
+	public void render(PoseStack stack, int x, int y, float partialTicks) {
+		super.render(stack, x, y, partialTicks);
+		//GlStateManager._disableLighting();
+		GlStateManager._disableBlend();
 
 		for (int i = 0; i < SIZE; i++) {
 			if (btns[i].isHovered())// isHovered
-				renderTooltip(stack, new StringTextComponent("F#" + Notes.octaveNames[i]), x, y);
+				renderTooltip(stack, new TextComponent("F#" + Notes.octaveNames[i]), x, y);
 		}
 		if(helpBtn.isHovered())
-			renderTooltip(stack, new StringTextComponent(
+			renderTooltip(stack, new TextComponent(
 					(hasDevice() ? "Device Discovered" : "No Device Connected") 
 					+ ", Midi Input: " + (Config.MIDI_INPUT_ENABLED.get() ? "Enabled" : "Disabled")), x, y);
-		this.renderHoveredTooltip(stack, x, y);
+		this.renderTooltip(stack, x, y);
 	}
 	
 	
@@ -137,13 +138,13 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 		return false;
 	}
 
-	public TileEntity getTE() {
+	public BlockEntity getTE() {
 		return te;
 	}
 
 	private void sendNote(int note) {
 		if (getTE() != null)
-			BuildersAddition.Network.sendToServer(new PlayNotePacket(this.getTE().getPos(), note));
+			BuildersAddition.Network.sendToServer(new PlayNotePacket(this.getTE().getBlockPos(), note));
 	}
 
 	@Override
@@ -155,17 +156,9 @@ public class SpeakerGui extends ContainerScreen<SpeakerContainer> implements IMi
 			sendNote(note);
 	}
 
-	// drawGuiContainerBackgroundLayer
-	
 	@Override
-	protected void drawGuiContainerForegroundLayer(MatrixStack matrixStack, int x, int y) {
-		//Nothing.
-	}
-	
-	@Override
-	protected void drawGuiContainerBackgroundLayer(MatrixStack stack, float p_230450_2_, int p_230450_3_, int p_230450_4_) {
+	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
 		renderBackground(stack);//renderBackground
-
-		GlStateManager.color4f(1.0f, 1.0f, 1.0f, 1.0f);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 	}
 }

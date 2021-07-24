@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.blocks;
-
+/*
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import net.minecraft.block.StainedGlassBlock;
@@ -15,3 +15,4 @@ public class LuminusGlass extends StainedGlassBlock {
 		BlockRegistry.instance.register(this, new BlockOptions());
 	}
 }
+*/

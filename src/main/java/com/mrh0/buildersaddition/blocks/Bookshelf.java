@@ -6,37 +6,36 @@ import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.fmllegacy.network.NetworkHooks;
 
-import BooleanProperty;
-
-public class Bookshelf extends BaseDerivativeBlock {
+public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
 
 	public static final BooleanProperty BOOK0 = BooleanProperty.create("book0");
 	public static final BooleanProperty BOOK1 = BooleanProperty.create("book1");
@@ -47,43 +46,38 @@ public class Bookshelf extends BaseDerivativeBlock {
 	public static final BooleanProperty BOOK6 = BooleanProperty.create("book6");
 	public static final BooleanProperty BOOK7 = BooleanProperty.create("book7");
 	
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	
-	protected static final VoxelShape NORTH_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 8D, 16D, 16D, 16D);
-	protected static final VoxelShape EAST_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 8.0D, 16.0D, 16.0D);
-	protected static final VoxelShape SOUTH_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16D, 16D, 8D);
-	protected static final VoxelShape WEST_SHAPE = Block.makeCuboidShape(8D, 0.0D, 0.0D, 16D, 16.0D, 16.0D);
+	protected static final VoxelShape NORTH_SHAPE = Block.box(0.0D, 0.0D, 8D, 16D, 16D, 16D);
+	protected static final VoxelShape EAST_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 8.0D, 16.0D, 16.0D);
+	protected static final VoxelShape SOUTH_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16D, 16D, 8D);
+	protected static final VoxelShape WEST_SHAPE = Block.box(8D, 0.0D, 0.0D, 16D, 16.0D, 16.0D);
 	
 	public Bookshelf(String name) {
 		super("bookshelf_" + name, Blocks.OAK_PLANKS);
-		setDefaultState(getDefaultState().with(FACING, Direction.NORTH)
-			.with(BOOK0, false).with(BOOK1, false).with(BOOK2, false).with(BOOK3, false)
-			.with(BOOK4, false).with(BOOK5, false).with(BOOK6, false).with(BOOK7, false));
+		registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH)
+			.setValue(BOOK0, false).setValue(BOOK1, false).setValue(BOOK2, false).setValue(BOOK3, false)
+			.setValue(BOOK4, false).setValue(BOOK5, false).setValue(BOOK6, false).setValue(BOOK7, false));
 	}
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(FACING, BOOK0, BOOK1, BOOK2, BOOK3, BOOK4, BOOK5, BOOK6, BOOK7);
 	}
 	
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		return this.getDefaultState().with(FACING, c.getPlacementHorizontalFacing().getOpposite());
-	}
-
-	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;
+	public BlockState getStateForPlacement(BlockPlaceContext c) {
+		return this.defaultBlockState().setValue(FACING, c.getHorizontalDirection().getOpposite());
 	}
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new BookshelfTileEntity();
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return  new BookshelfTileEntity(pos, state);
 	}
 	
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		switch (state.get(FACING)) {
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+		switch (state.getValue(FACING)) {
 		case NORTH:
 			return NORTH_SHAPE;
 		case EAST:
@@ -98,34 +92,35 @@ public class Bookshelf extends BaseDerivativeBlock {
 	}
 	
 	@Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
+			InteractionHand hand, BlockHitResult hit) {
 		if (player.isSpectator()) {
-            return ActionResultType.PASS;
+            return InteractionResult.PASS;
         }
-    	if (worldIn.isRemote) {
-            return ActionResultType.SUCCESS;
+    	if (world.isClientSide()) {
+            return InteractionResult.SUCCESS;
         }
     	
-    	BookshelfTileEntity mte = (BookshelfTileEntity) worldIn.getTileEntity(pos);
-		NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) mte, extraData -> {
-            extraData.writeBlockPos(mte.getPos());
+    	BookshelfTileEntity mte = (BookshelfTileEntity) world.getBlockEntity(pos);
+		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+            extraData.writeBlockPos(pos);
         });
-    	return ActionResultType.CONSUME;
-    }
+    	return InteractionResult.CONSUME;
+	}
 	
 	@Override
-	public float getEnchantPowerBonus(BlockState state, IWorldReader world, BlockPos pos) {
+	public float getEnchantPowerBonus(BlockState state, LevelReader world, BlockPos pos) {
 		return Math.min((float)getBookSum(state, world, pos)/3f, 6);
 	}
 	
 	public static BlockState getState(BlockState state, boolean b1, boolean b2, boolean b3, boolean b4, boolean b5, boolean b6, boolean b7, boolean b8) {
 		return state
-				.with(BOOK0, b1).with(BOOK1, b2).with(BOOK2, b3).with(BOOK3, b4)
-				.with(BOOK4, b5).with(BOOK5, b6).with(BOOK6, b7).with(BOOK7, b8);
+				.setValue(BOOK0, b1).setValue(BOOK1, b2).setValue(BOOK2, b3).setValue(BOOK3, b4)
+				.setValue(BOOK4, b5).setValue(BOOK5, b6).setValue(BOOK6, b7).setValue(BOOK7, b8);
 	}
 	
-	public int getBookSum(BlockState state, IWorldReader world, BlockPos pos) {
-		TileEntity te = world.getTileEntity(pos);
+	public int getBookSum(BlockState state, LevelReader world, BlockPos pos) {
+		BlockEntity te = world.getBlockEntity(pos);
 		if(te != null) {
 			if(te instanceof BookshelfTileEntity) {
 				BookshelfTileEntity bte = (BookshelfTileEntity)te;
@@ -141,37 +136,35 @@ public class Bookshelf extends BaseDerivativeBlock {
 	}
 	
 	@Override
-	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		if (!state.isIn(newState.getBlock())) {
-			TileEntity tileentity = worldIn.getTileEntity(pos);
-			if (tileentity instanceof IInventory) {
-				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
-				worldIn.updateComparatorOutputLevel(pos, this);
+	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState,
+			boolean isMoving) {
+		if (!state.is(newState.getBlock())) {
+			BlockEntity tileentity = world.getBlockEntity(pos);
+			if (tileentity instanceof Container) {
+				Containers.dropContents(world, pos, (Container) tileentity);
+				world.updateNeighborsAt(pos, this);
 			}
-
-			super.onReplaced(state, worldIn, pos, newState, isMoving);
 		}
+		super.onRemove(state, world, pos, newState, isMoving);
 	}
-
+	
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer,
-			ItemStack stack) {
-		if (stack.hasDisplayName()) {
-			TileEntity tileentity = worldIn.getTileEntity(pos);
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent, ItemStack stack) {
+		if (stack.hasCustomHoverName()) {
+			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof BookshelfTileEntity) {
 				((BookshelfTileEntity) tileentity).setCustomName(stack.getDisplayName());
 			}
 		}
-
 	}
 	
 	@Override
-	public boolean hasComparatorInputOverride(BlockState state) {
+	public int getAnalogOutputSignal(BlockState sate, Level world, BlockPos pos) {
+		return IComparetorOverride.getComparetorOverride(world, pos);
+	}
+	
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState p_60457_) {
 		return true;
-	}
-	
-	@Override
-	public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
-		return IComparetorOverride.getComparetorOverride(worldIn, pos);
 	}
 }

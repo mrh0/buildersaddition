@@ -2,28 +2,26 @@ package com.mrh0.buildersaddition.blocks;
 
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.state.PlanterState;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.HoeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
-
-import EnumProperty;
 
 public class Planter extends BaseDerivativeBlock {
 
@@ -31,33 +29,35 @@ public class Planter extends BaseDerivativeBlock {
 	
 	public Planter() {
 		super("planter", Blocks.BARREL);
-		setDefaultState(getDefaultState().with(STATE, PlanterState.Dirt));
+		registerDefaultState(defaultBlockState().setValue(STATE, PlanterState.Dirt));
 	}
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(STATE);
 	}
 	
 	@Override
-	public boolean canSustainPlant(BlockState state, IBlockReader world, BlockPos pos, Direction facing, IPlantable plantable) {
-		if(state.get(STATE) == PlanterState.Farmland)
+	public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing,
+			IPlantable plantable) {
+		if(state.getValue(STATE) == PlanterState.Farmland)
 			return plantable.getPlantType(world, pos) == PlantType.CROP || super.canSustainPlant(state, world, pos, facing, plantable);
 		else 
 			return plantable.getPlantType(world, pos) != PlantType.CROP && !super.canSustainPlant(state, world, pos, facing, plantable);
 	}
 	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		if(state.get(STATE) == PlanterState.Farmland)
-			return ActionResultType.PASS;
-		ItemStack i = player.getHeldItem(handIn);
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
+			InteractionHand hand, BlockHitResult hit) {
+		if(state.getValue(STATE) == PlanterState.Farmland)
+			return InteractionResult.PASS;
+		ItemStack i = player.getItemInHand(hand);
 		if (i.getItem() instanceof HoeItem) {
-			i.damageItem(1, player, (PlayerEntity e) -> {});
-			worldIn.setBlockState(pos, getDefaultState().with(STATE, PlanterState.Farmland));
-			worldIn.playSound(player, pos, SoundEvents.BLOCK_GRAVEL_PLACE, SoundCategory.BLOCKS, 1f, 1f);
-			return ActionResultType.SUCCESS;
+			i.damageItem(1, player, (Player e) -> {});
+			world.setBlockAndUpdate(pos, defaultBlockState().setValue(STATE, PlanterState.Farmland));
+			world.playSound(player, pos, SoundEvents.GRAVEL_PLACE, SoundSource.BLOCKS, 1f, 1f);
+			return InteractionResult.SUCCESS;
 		}
-		return ActionResultType.PASS;
+		return InteractionResult.PASS;
 	}
 }

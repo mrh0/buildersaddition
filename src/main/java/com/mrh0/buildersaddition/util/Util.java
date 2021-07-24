@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition.util;
 
+import javax.annotation.Nullable;
+
 import com.mrh0.buildersaddition.config.Config;
 
 import net.minecraft.core.BlockPos;
@@ -17,6 +19,9 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class Util {
@@ -59,4 +64,9 @@ public class Util {
 		BlockState front = world.getBlockState(pos.relative(facing));
 		return !(front.isFaceSturdy(world, pos.relative(facing), facing.getOpposite()) || front.isFaceSturdy(world, pos.relative(facing), Direction.UP));
 	}
+	
+	@Nullable
+   public static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> createTickerHelper(BlockEntityType<A> p_152133_, BlockEntityType<E> p_152134_, BlockEntityTicker<? super E> p_152135_) {
+		return p_152134_ == p_152133_ ? (BlockEntityTicker<A>)p_152135_ : null;
+   }
 }

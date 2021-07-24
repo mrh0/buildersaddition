@@ -1,13 +1,6 @@
 package com.mrh0.buildersaddition.items;
-
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.IItemTier;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
+/*
+import net.minecraft.world.item.PickaxeItem;
 
 public class Hammer extends  PickaxeItem {
 
@@ -39,3 +32,4 @@ public class Hammer extends  PickaxeItem {
 		return super.onItemUse(c);
 	}
 }
+*/

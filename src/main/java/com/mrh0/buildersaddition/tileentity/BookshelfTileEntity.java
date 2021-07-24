@@ -6,49 +6,45 @@ import com.mrh0.buildersaddition.container.BookshelfContainer;
 import com.mrh0.buildersaddition.inventory.ModInventory;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.LockableLootTileEntity;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
-public class BookshelfTileEntity extends LockableLootTileEntity implements INamedContainerProvider, IComparetorOverride {
+public class BookshelfTileEntity extends RandomizableContainerBlockEntity implements MenuProvider, IComparetorOverride {
 
 	public ModInventory handler;
 	
-	public BookshelfTileEntity() {
-		super(Index.BOOKSHELF_TILE_ENTITY_TYPE);
+	public BookshelfTileEntity(BlockPos pos, BlockState state) {
+		super(Index.BOOKSHELF_TILE_ENTITY_TYPE, pos, state);
 		handler = new ModInventory(18, this::changed);
 	}
 	
 	@Override
-	public Container createMenu(int windowId, PlayerInventory inv, PlayerEntity player) {
-		return BookshelfContainer.create(windowId, inv, this.getPos(), this.handler);
-	}
-	
-	@Override
-	public void read(BlockState state, CompoundNBT nbt) {
-		this.handler.deserializeNBT(nbt.getCompound("ItemStackHandler"));
-		super.read(state, nbt);
-	}
-	
-	@Override
-	public CompoundNBT write(CompoundNBT nbt) {
+	public CompoundTag save(CompoundTag nbt) {
 		nbt.put("ItemStackHandler", this.handler.serializeNBT());
-		return super.write(nbt);
+		return super.save(nbt);
+	}
+	
+	@Override
+	public void load(CompoundTag nbt) {
+		this.handler.deserializeNBT(nbt.getCompound("ItemStackHandler"));
+		super.load(nbt);
 	}
 	
 	public void changed(int slot) {
-		BlockState bs = world.getBlockState(pos);
+		BlockState bs = level.getBlockState(this.getBlockPos());
 		if(bs.getBlock() instanceof Bookshelf)
-			world.setBlockState(pos, Bookshelf.getState(bs, hasIn(0), hasIn(1), hasIn(2), hasIn(3), hasIn(4), hasIn(5), hasIn(6), hasIn(7)));
+			level.setBlockAndUpdate(this.getBlockPos(), Bookshelf.getState(bs, hasIn(0), hasIn(1), hasIn(2), hasIn(3), hasIn(4), hasIn(5), hasIn(6), hasIn(7)));
 	}
 	
 	private boolean hasIn(int i) {
@@ -60,7 +56,7 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 	}
 
 	@Override
-	public int getSizeInventory() {
+	public int getContainerSize() {
 		return handler.getSlots();
 	}
 
@@ -73,7 +69,9 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 		return true;
 	}
 
-	@Override
+	
+	
+	/*@Override
 	public ItemStack getStackInSlot(int index) {
 		return handler.getStackInSlot(index);
 	}
@@ -94,10 +92,10 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 	public void setInventorySlotContents(int index, ItemStack stack) {
 		handler.setStackInSlot(index, stack);
 		this.markDirty();
-	}
+	}*/
 
-	@Override
-	public boolean isUsableByPlayer(PlayerEntity player) {
+	/*@Override
+	public boolean isUsableByPlayer(Player player) {
 		return !player.isSpectator();
 	}
 
@@ -112,17 +110,18 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 	@Override
 	protected ITextComponent getDefaultName() {
 		return new TranslationTextComponent("container.buildersaddition.bookshelf");
-	}
+	}*/
 
-	@Override
-	protected Container createMenu(int id, PlayerInventory player) {
+
+	/*@Override
+	protected Container createMenu(int id, Inventory player) {
 		return createMenu(id, player, player.player);
-	}
+	}*/
 
 	@Override
 	protected NonNullList<ItemStack> getItems() {
-		NonNullList<ItemStack> items = NonNullList.withSize(getSizeInventory(), ItemStack.EMPTY);
-		for(int i = 0; i < getSizeInventory(); i++) {
+		NonNullList<ItemStack> items = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
+		for(int i = 0; i < getContainerSize(); i++) {
 			items.set(i, handler.getStackInSlot(i));
 		}
 		return items;
@@ -130,14 +129,24 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 
 	@Override
 	protected void setItems(NonNullList<ItemStack> itemsIn) {
-		for(int i = 0; i < getSizeInventory(); i++) {
+		for(int i = 0; i < getContainerSize(); i++) {
 			handler.setStackInSlot(i, itemsIn.get(i));
 		}
-		this.markDirty();
+		this.setChanged();
 	}
 	
 	@Override
 	public int getComparetorOverride() {
 		return AbstractContainerMenu.getRedstoneSignalFromContainer(this);
+	}
+
+	@Override
+	protected Component getDefaultName() {
+		return new TranslatableComponent("container.buildersaddition.bookshelf");
+	}
+
+	@Override
+	protected AbstractContainerMenu createMenu(int windowId, Inventory inv) {
+		return BookshelfContainer.create(windowId, inv, this.getBlockPos(), this.handler);
 	}
 }

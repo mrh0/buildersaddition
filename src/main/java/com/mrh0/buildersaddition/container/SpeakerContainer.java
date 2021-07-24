@@ -2,14 +2,9 @@ package com.mrh0.buildersaddition.container;
 
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.container.base.BaseContainer;
-import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.math.BlockPos;
-
-import BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.entity.player.Inventory;
 
 public class SpeakerContainer extends BaseContainer {
 	
@@ -20,11 +15,11 @@ public class SpeakerContainer extends BaseContainer {
 		this.pos = pos;
 	}
 	
-	public static SpeakerContainer create(int windowId, PlayerInventory playerInventory, BlockPos pos) {
+	public static SpeakerContainer create(int windowId, Inventory playerInventory, BlockPos pos) {
 		return new SpeakerContainer(windowId, pos);
 	}
 
-	public static SpeakerContainer create(int windowId, PlayerInventory playerInventory, PacketBuffer buf) {
+	public static SpeakerContainer create(int windowId, Inventory playerInventory, FriendlyByteBuf buf) {
 		return new SpeakerContainer(windowId, buf.readBlockPos());
 	}
 }
