@@ -58,7 +58,9 @@ import com.mrh0.buildersaddition.util.RegistryUtil;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.Motive;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -303,10 +305,10 @@ public class Index {
 	public static BlockEntityType<ArcadeTileEntity> ARCADE_TILE_ENTITY_TYPE;
 	public static BlockEntityType<EntityDetectorTileEntity> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
 
-	public static ContainerType<BookshelfContainer> BOOKSHELF_CONTAINER;
-	public static ContainerType<ShelfContainer> SHELF_CONTAINER;
-	public static ContainerType<SpeakerContainer> SPEAKER_CONTAINER;
-	public static ContainerType<ArcadeContainer> ARCADE_CONTAINER;
+	public static MenuType<BookshelfContainer> BOOKSHELF_CONTAINER;
+	public static MenuType<ShelfContainer> SHELF_CONTAINER;
+	public static MenuType<SpeakerContainer> SPEAKER_CONTAINER;
+	public static MenuType<ArcadeContainer> ARCADE_CONTAINER;
 
 	public static Motive SUMMER_FIELD_PAINTING;
 	public static Motive SHARD_PAINTING;

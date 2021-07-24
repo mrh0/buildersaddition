@@ -2,12 +2,13 @@ package com.mrh0.buildersaddition.arcade.games;
 
 import java.util.ArrayList;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrh0.buildersaddition.arcade.ArcadeGame;
 import com.mrh0.buildersaddition.arcade.ArcadeScreen;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 
-import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.Gui;
+
 
 public class ArcadeBreakout extends ArcadeGame {
 
@@ -33,7 +34,7 @@ public class ArcadeBreakout extends ArcadeGame {
 		s.print(0, "Work in progress.");
 	}
 	
-	private void fgRender(MatrixStack stack, int x, int y, int width, int height) {
+	private void fgRender(PoseStack stack, int x, int y, int width, int height) {
 		for(Ball b : balls) {
 			b.render(stack, x, y, width, height);
 		}
@@ -80,8 +81,8 @@ public class ArcadeBreakout extends ArcadeGame {
 			//s.print(getX(), getY(), " ");
 		}
 		
-		public void render(MatrixStack stack, int sx, int sy, int swidth, int sheight) {
-			Screen.fill(stack, sx + (int)(x*s.cellWidth), sy + (int)(y*s.cellHeight), sx + s.cellWidth + (int)(x*s.cellWidth), sy + s.cellHeight + (int)(y*s.cellHeight), ArcadeScreen.getRenderColor(0xa));
+		public void render(PoseStack stack, int sx, int sy, int swidth, int sheight) {
+			Gui.fill(stack, sx + (int)(x*s.cellWidth), sy + (int)(y*s.cellHeight), sx + s.cellWidth + (int)(x*s.cellWidth), sy + s.cellHeight + (int)(y*s.cellHeight), ArcadeScreen.getRenderColor(0xa));
 		}
 		
 		public int getX() {

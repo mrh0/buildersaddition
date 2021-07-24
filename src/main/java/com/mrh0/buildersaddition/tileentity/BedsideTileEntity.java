@@ -15,7 +15,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
-
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import ITextComponent;
 
 public class BedsideTileEntity extends BaseChestTileEntity {
@@ -51,6 +51,6 @@ public class BedsideTileEntity extends BaseChestTileEntity {
 	
 	@Override
 	public int getComparetorOverride() {
-		return Container.calcRedstone(this);
+		return AbstractContainerMenu.getRedstoneSignalFromContainer(this);
 	}
 }

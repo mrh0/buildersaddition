@@ -1,9 +1,6 @@
 package com.mrh0.buildersaddition.blocks;
 
-import javax.annotation.Nullable;
-
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
-import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 
@@ -14,9 +11,9 @@ import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -59,11 +56,6 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 	}
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new ShelfTileEntity();
-	}
-	
-	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext c) {
 		switch (state.getValue(FACING)) {
 		case NORTH:
@@ -90,14 +82,14 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
     	
     	ShelfTileEntity mte = (ShelfTileEntity) world.getBlockEntity(pos);
 		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
-            extraData.writeBlockPos(mte.getPos());
+            extraData.writeBlockPos(mte.getBlockPos());
         });
     	return InteractionResult.CONSUME;
 	}
 
 	
 	public int getBookSum(BlockState state, LevelReader world, BlockPos pos) {
-		´BlockEntity te = world.getBlockEntity(pos);
+		BlockEntity te = world.getBlockEntity(pos);
 		if(te != null) {
 			if(te instanceof ShelfTileEntity) {
 				ShelfTileEntity bte = (ShelfTileEntity)te;
@@ -125,10 +117,9 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 	}
 
 	@Override
-	public void onBlockPlacedBy(Level worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer,
-			ItemStack stack) {
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent, ItemStack stack) {
 		if (stack.hasCustomHoverName()) {
-			BlockEntity tileentity = worldIn.getBlockEntity(pos);
+			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof ShelfTileEntity) {
 				((ShelfTileEntity) tileentity).setCustomName(stack.getDisplayName());
 			}
@@ -145,7 +136,7 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 	}
 
 	@Override
-	public BlockEntity newBlockEntity(BlockPos p_153215_, BlockState p_153216_) {
-		return null;
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new ShelfTileEntity(pos, state);
 	}
 }

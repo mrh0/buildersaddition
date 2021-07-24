@@ -2,7 +2,8 @@ package com.mrh0.buildersaddition.arcade;
 
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.util.Notes;
-import net.minecraft.util.SoundEvents;
+
+import net.minecraft.sounds.SoundEvents;
 
 public abstract class ArcadeGame {
 	public ArcadeScreen s;
@@ -41,7 +42,7 @@ public abstract class ArcadeGame {
 	}
 	
 	public void playSound(int note) {
-		Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BIT, note);
+		Notes.playClientNote(SoundEvents.NOTE_BLOCK_BIT, note);
 	}
 	
 	public static final int NOTE_BASS = 0;
@@ -51,15 +52,15 @@ public abstract class ArcadeGame {
 	public void playSound(int sound, int note) {
 		switch(sound) {
 			case 0:
-				Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BASS, note);break;
+				Notes.playClientNote(SoundEvents.NOTE_BLOCK_BASS, note);break;
 			//case 1:
 			//	Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_SNARE, note);break;
 			case 2:
-				Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_HAT, note);break;
+				Notes.playClientNote(SoundEvents.NOTE_BLOCK_HAT, note);break;
 			//case 3:
 			//	Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BASEDRUM, note);break;
 			case 12:
-				Notes.playClientNote(SoundEvents.BLOCK_NOTE_BLOCK_BIT, note);break;
+				Notes.playClientNote(SoundEvents.NOTE_BLOCK_BIT, note);break;
 		}
 	}
 	

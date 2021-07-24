@@ -7,97 +7,94 @@ import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 import com.mrh0.buildersaddition.util.Util;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.IWaterLoggable;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.monster.piglin.PiglinTasks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.InventoryHelper;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.pathfinding.PathType;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.piglin.PiglinAi;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable, ITileEntityProvider {
+public class BedsideTable extends BaseDerivativeBlock implements SimpleWaterloggedBlock, EntityBlock {
 
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-	protected static final VoxelShape SHAPE_BASE = Block.makeCuboidShape(0d, 14d, 0d, 16d, 16d, 16d);
-	protected static final VoxelShape SHAPE_NW = Block.makeCuboidShape(1d, 0d, 1d, 3d, 14d, 3d);
-	protected static final VoxelShape SHAPE_NE = Block.makeCuboidShape(13d, 0d, 1d, 15d, 14d, 3d);
-	protected static final VoxelShape SHAPE_SW = Block.makeCuboidShape(1d, 0d, 13d, 3d, 14d, 15d);
-	protected static final VoxelShape SHAPE_SE = Block.makeCuboidShape(13d, 0d, 13d, 15d, 14d, 15d);
+	protected static final VoxelShape SHAPE_BASE = Block.box(0d, 14d, 0d, 16d, 16d, 16d);
+	protected static final VoxelShape SHAPE_NW = Block.box(1d, 0d, 1d, 3d, 14d, 3d);
+	protected static final VoxelShape SHAPE_NE = Block.box(13d, 0d, 1d, 15d, 14d, 3d);
+	protected static final VoxelShape SHAPE_SW = Block.box(1d, 0d, 13d, 3d, 14d, 15d);
+	protected static final VoxelShape SHAPE_SE = Block.box(13d, 0d, 13d, 15d, 14d, 15d);
 	
-	protected static final VoxelShape SHAPE_BOX_X = Block.makeCuboidShape(1d, 8d, 3d, 15d, 16d, 13d);
-	protected static final VoxelShape SHAPE_BOX_Z = Block.makeCuboidShape(3d, 8d, 1d, 13d, 16d, 15d);
+	protected static final VoxelShape SHAPE_BOX_X = Block.box(1d, 8d, 3d, 15d, 16d, 13d);
+	protected static final VoxelShape SHAPE_BOX_Z = Block.box(3d, 8d, 1d, 13d, 16d, 15d);
 	
-	protected static final VoxelShape SHAPE_X = VoxelShapes.or(SHAPE_BASE, SHAPE_NW, SHAPE_NE, SHAPE_SW, SHAPE_SE, SHAPE_BOX_X);
-	protected static final VoxelShape SHAPE_Z = VoxelShapes.or(SHAPE_BASE, SHAPE_NW, SHAPE_NE, SHAPE_SW, SHAPE_SE, SHAPE_BOX_Z);
+	protected static final VoxelShape SHAPE_X = Shapes.or(SHAPE_BASE, SHAPE_NW, SHAPE_NE, SHAPE_SW, SHAPE_SE, SHAPE_BOX_X);
+	protected static final VoxelShape SHAPE_Z = Shapes.or(SHAPE_BASE, SHAPE_NW, SHAPE_NE, SHAPE_SW, SHAPE_SE, SHAPE_BOX_Z);
 
 	public BedsideTable(String name, Block source) {
 		super("bedside_table_" + name, source);
 	}
-
+	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(FACING, WATERLOGGED);
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		return this.getDefaultState().with(FACING, c.getPlacementHorizontalFacing()).with(WATERLOGGED,
-				Boolean.valueOf(c.getWorld().getFluidState(c.getPos()).getFluid() == Fluids.WATER));
+	public BlockState getStateForPlacement(BlockPlaceContext c) {
+		return this.defaultBlockState().setValue(FACING, c.getHorizontalDirection()).setValue(WATERLOGGED,
+				Boolean.valueOf(c.getLevel().getFluidState(c.getClickedPos()).getType() == Fluids.WATER));
 	}
 
 	@Override
 	public FluidState getFluidState(BlockState state) {
-		return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
+		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}
 
 	@Override
 	public boolean receiveFluid(IWorld worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
-		return IWaterLoggable.super.receiveFluid(worldIn, pos, state, fluidStateIn);
+		return SimpleWaterloggedBlock.super.receiveFluid(worldIn, pos, state, fluidStateIn);
 	}
 
 	@Override
 	public boolean canContainFluid(IBlockReader worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
-		return IWaterLoggable.super.canContainFluid(worldIn, pos, state, fluidIn);
+		return SimpleWaterloggedBlock.super.canContainFluid(worldIn, pos, state, fluidIn);
 	}
 
 	@Override
-	public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+	public boolean allowsMovement(BlockState state, BlockGetter worldIn, BlockPos pos, PathType type) {
 		switch (type) {
 		case LAND:
 			return false;
 		case WATER:
-			return worldIn.getFluidState(pos).isTagged(FluidTags.WATER);
+			return worldIn.getFluidState(pos).is(FluidTags.WATER);
 		case AIR:
 			return false;
 		default:
@@ -122,46 +119,45 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return getShapeForDirection(state.get(FACING));
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+		return getShapeForDirection(state.getValue(FACING));
 	}
-
+	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
-		if (worldIn.isRemote) {
-			return ActionResultType.SUCCESS;
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		if (world.isClientSide()) {
+			return InteractionResult.SUCCESS;
 		} else {
 			//BlockState front = worldIn.getBlockState(pos.offset(state.get(FACING).getOpposite()));
 			//if(front.isSolid())
-			if(!Util.accessCheck(worldIn, pos, state.get(FACING).getOpposite()))
-				return ActionResultType.CONSUME;
-			TileEntity tileentity = worldIn.getTileEntity(pos);
+			if(!Util.accessCheck(world, pos, state.getValue(FACING).getOpposite()))
+				return InteractionResult.CONSUME;
+			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof BedsideTileEntity) {
-				player.openContainer((BedsideTileEntity) tileentity);
-				PiglinTasks.func_234478_a_(player, true);
+				player.openMenu((BedsideTileEntity) tileentity);
+				PiglinAi.angerNearbyPiglins(player, true);
 			}
 
-			return ActionResultType.CONSUME;
+			return InteractionResult.CONSUME;
+		}
+	}
+	
+	@Override
+	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (!state.is(newState.getBlock())) {
+			BlockEntity tileentity = world.getBlockEntity(pos);
+			if (tileentity instanceof Container) {
+				Containers.dropContents(world, pos, (Container) tileentity);
+				world.updateNeighborsAt(pos, this);
+			}
+
+			super.onRemove(state, world, pos, newState, isMoving);
 		}
 	}
 
 	@Override
-	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		if (!state.isIn(newState.getBlock())) {
-			TileEntity tileentity = worldIn.getTileEntity(pos);
-			if (tileentity instanceof IInventory) {
-				InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
-				worldIn.updateComparatorOutputLevel(pos, this);
-			}
-
-			super.onReplaced(state, worldIn, pos, newState, isMoving);
-		}
-	}
-
-	@Override
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-		TileEntity tileentity = worldIn.getTileEntity(pos);
+	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+		BlockEntity tileentity = worldIn.getBlockEntity(pos);
 		if (tileentity instanceof BedsideTileEntity) {
 			((BedsideTileEntity) tileentity).invTick();
 		}
@@ -169,49 +165,45 @@ public class BedsideTable extends BaseDerivativeBlock implements IWaterLoggable,
 	}
 
 	@Override
-	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.MODEL;
+	public RenderShape getRenderShape(BlockState state) {
+		return RenderShape.MODEL;
 	}
 
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer,
-			ItemStack stack) {
-		if (stack.hasDisplayName()) {
-			TileEntity tileentity = worldIn.getTileEntity(pos);
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent, ItemStack stack) {
+		if (stack.hasCustomHoverName()) {
+			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof BedsideTileEntity) {
 				((BedsideTileEntity) tileentity).setCustomName(stack.getDisplayName());
 			}
 		}
-
 	}
 
 	@Override
-	public boolean eventReceived(BlockState state, World worldIn, BlockPos pos, int id, int param) {
-		super.eventReceived(state, worldIn, pos, id, param);
-		TileEntity tileentity = worldIn.getTileEntity(pos);
-		return tileentity == null ? false : tileentity.receiveClientEvent(id, param);
-	}
-
-	@Override
-	@Nullable
-	public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
-		TileEntity tileentity = worldIn.getTileEntity(pos);
-		return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider) tileentity : null;
+	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int id, int param) {
+		super.triggerEvent(state, world, pos, id, param);
+		BlockEntity tileentity = world.getBlockEntity(pos);
+		return tileentity == null ? false : tileentity.triggerEvent(id, param);
 	}
 	
 	@Override
-	@Nullable
-	public TileEntity createNewTileEntity(IBlockReader worldIn) {
-		return new BedsideTileEntity();
+	public MenuProvider getMenuProvider(BlockState state, Level world, BlockPos pos) {
+		BlockEntity tileentity = world.getBlockEntity(pos);
+		return tileentity instanceof MenuProvider ? (MenuProvider) tileentity : null;
 	}
 	
 	@Override
-	public boolean hasComparatorInputOverride(BlockState state) {
+	public boolean hasAnalogOutputSignal(BlockState state) {
 		return true;
 	}
 	
 	@Override
-	public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
-		return IComparetorOverride.getComparetorOverride(worldIn, pos);
+	public int getAnalogOutputSignal(BlockState state, Level world, BlockPos pos) {
+		return IComparetorOverride.getComparetorOverride(world, pos);
+	}
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos p_153215_, BlockState p_153216_) {
+		return new BedsideTileEntity();
 	}
 }

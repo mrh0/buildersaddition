@@ -3,40 +3,51 @@ package com.mrh0.buildersaddition.tileentity;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.Counter;
 import com.mrh0.buildersaddition.tileentity.base.BaseChestTileEntity;
+import com.mrh0.buildersaddition.tileentity.base.ITextComponent;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.vector.Vector3i;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-
-import ITextComponent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class CounterTileEntity extends BaseChestTileEntity implements IComparetorOverride {
-	public CounterTileEntity() {
-		super(Index.COUNTER_TILE_ENTITY_TYPE);
+	public CounterTileEntity(BlockPos pos, BlockState state) {
+		super(Index.COUNTER_TILE_ENTITY_TYPE, pos, state);
 	}
 
 	@Override
-	protected ITextComponent getDefaultName() {
-		return new TranslationTextComponent("container.buildersaddition.counter");
+	public Component getDisplayName() {
+		return new TranslatableComponent("container.buildersaddition.counter");
 	}
 	
 	protected void playSound(BlockState state, SoundEvent evt) {
-		Vector3i vector3i = state.get(Counter.FACING).getDirectionVec();
-		double d0 = (double) this.pos.getX() + 0.5D + (double) vector3i.getX() / 2.0D;
-		double d1 = (double) this.pos.getY() + 0.5D + (double) vector3i.getY() / 2.0D;
-		double d2 = (double) this.pos.getZ() + 0.5D + (double) vector3i.getZ() / 2.0D;
-		this.world.playSound((PlayerEntity) null, d0, d1, d2, evt, SoundCategory.BLOCKS, 0.5F,
-				this.world.rand.nextFloat() * 0.1F + 0.9F);
+		Vec3i vector3i = state.get(Counter.FACING).getDirectionVec();
+		double d0 = (double) this.getBlockPos().getX() + 0.5D + (double) vector3i.getX() / 2.0D;
+		double d1 = (double) this.getBlockPos().getY() + 0.5D + (double) vector3i.getY() / 2.0D;
+		double d2 = (double) this.getBlockPos().getZ() + 0.5D + (double) vector3i.getZ() / 2.0D;
+		this.level.playSound((Player) null, d0, d1, d2, evt, SoundSource.BLOCKS, 0.5F,
+				this.level.random.nextFloat() * 0.1F + 0.9F);
 	}
 	
 	@Override
 	public int getComparetorOverride() {
-		return Container.calcRedstone(this);
+		return AbstractContainerMenu.getRedstoneSignalFromContainer(this);
+	}
+
+	@Override
+	public int getContainerSize() {
+		return 0;
+	}
+
+	@Override
+	protected AbstractContainerMenu createMenu(int p_58627_, Inventory p_58628_) {
+		return null;
 	}
 }

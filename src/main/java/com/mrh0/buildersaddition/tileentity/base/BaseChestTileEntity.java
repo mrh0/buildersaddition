@@ -7,8 +7,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -96,7 +100,7 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 	}
 	
 	@Override
-	public int getSizeInventory() {
+	public int getContainerSize() {
 		return 27;
 	}
 
@@ -109,17 +113,14 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 	protected void setItems(NonNullList<ItemStack> itemsIn) {
 		this.inv = itemsIn;
 	}
-
+	
 	@Override
-	protected abstract ITextComponent getDefaultName();
-
-	@Override
-	protected Container createMenu(int id, PlayerInventory player) {
-		return ChestContainer.createGeneric9X3(id, player, this);
+	public AbstractContainerMenu createMenu(int id, Inventory inv, Player player) {
+		return ChestMenu.sixRows(id, inv, this);
 	}
 
 	@Override
-	public void openInventory(PlayerEntity player) {
+	public void openInventory(Player player) {
 		if (!player.isSpectator()) {
 			if (this.numPlayersUsing < 0) {
 				this.numPlayersUsing = 0;
@@ -155,9 +156,11 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		}
 
 	}
+	
+	
 
 	@Override
-	public void closeInventory(PlayerEntity player) {
+	public void closeInventory(Player player) {
 		if (!player.isSpectator()) {
 			--this.numPlayersUsing;
 		}

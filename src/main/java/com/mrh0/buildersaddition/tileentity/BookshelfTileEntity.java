@@ -17,6 +17,7 @@ import net.minecraft.tileentity.LockableLootTileEntity;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 
 public class BookshelfTileEntity extends LockableLootTileEntity implements INamedContainerProvider, IComparetorOverride {
 
@@ -137,6 +138,6 @@ public class BookshelfTileEntity extends LockableLootTileEntity implements IName
 	
 	@Override
 	public int getComparetorOverride() {
-		return Container.calcRedstone(this);
+		return AbstractContainerMenu.getRedstoneSignalFromContainer(this);
 	}
 }

@@ -13,10 +13,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -81,11 +83,13 @@ public class Arcade extends BaseBlock {
 		}
 	}
 
-	public void onBlockPlacedBy(Level worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		worldIn.setBlockState(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER), 3);
+	@Override
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent,
+			ItemStack p_49851_) {
+		world.setBlock(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER), 3);
 	}
 	
-	public boolean isValidPosition(BlockState state, LeverReader worldIn, BlockPos pos) {
+	public boolean isValidPosition(BlockState state, BlockGetter worldIn, BlockPos pos) {
 		BlockPos blockpos = pos.below();
 		BlockState blockstate = worldIn.getBlockState(blockpos);
 		return state.getValue(HALF) == DoubleBlockHalf.LOWER ? true : blockstate.is(this);
@@ -113,7 +117,7 @@ public class Arcade extends BaseBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, CollisionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 		return getShapeForDirection(state.getValue(FACING), state.getValue(HALF) == DoubleBlockHalf.UPPER);
 	}
 	
@@ -128,8 +132,8 @@ public class Arcade extends BaseBlock {
         }
     	
     	ArcadeTileEntity mte = getTE(state, world, pos);
-		NetworkHooks.openGui((ServerPlayer) player, (INamedContainerProvider) mte, extraData -> {
-            extraData.writeBlockPos(mte.getPos());
+		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+            extraData.writeBlockPos(pos); //mte.pos
         });
     	return InteractionResult.SUCCESS;
 	}

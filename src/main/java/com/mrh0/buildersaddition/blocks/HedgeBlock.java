@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.blocks;
-
+/*
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.state.HedgeState;
 import net.minecraft.block.Block;
@@ -201,4 +201,4 @@ public class HedgeBlock extends BaseDerivativeBlock implements IWaterLoggable, I
 			return false;
 		}
 	}
-}
+}*/

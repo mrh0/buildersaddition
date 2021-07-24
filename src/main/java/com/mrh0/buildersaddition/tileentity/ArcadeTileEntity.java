@@ -7,40 +7,45 @@ import com.mrh0.buildersaddition.arcade.ArcadeScreen;
 import com.mrh0.buildersaddition.arcade.games.ArcadeMenu;
 import com.mrh0.buildersaddition.arcade.games.ArcadeSnake;
 import com.mrh0.buildersaddition.container.ArcadeContainer;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.tileentity.ITickableTileEntity;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
 
-public class ArcadeTileEntity extends TileEntity implements INamedContainerProvider, ITickableTileEntity {
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.Container;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.TickingBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;;
+
+public class ArcadeTileEntity extends BlockEntity implements MenuProvider, TickingBlockEntity {
 
 	public ArcadeScreen screen = null;
 	public ArcadeGame game = null;
 	public long time = 0;
 	
-	public ArcadeTileEntity() {
-		super(Index.ARCADE_TILE_ENTITY_TYPE);
+	public ArcadeTileEntity(BlockPos pos, BlockState state) {
+		super(Index.ARCADE_TILE_ENTITY_TYPE, pos, state);
 		screen = new ArcadeScreen();
 		//game = new QSPLArcadeGame(screen, this);
 	}
 
 	@Override
-	public Container createMenu(int windowId, PlayerInventory inv, PlayerEntity player) {
-		return ArcadeContainer.create(windowId, inv, pos);
+	public AbstractContainerMenu createMenu(int windowId, Inventory inv, Player player) {
+		return ArcadeContainer.create(windowId, inv, getBlockPos());
 	}
 
 	@Override
-	public ITextComponent getDisplayName() {
-		return new TranslationTextComponent("container.buildersaddition.arcade");
+	public Component getDisplayName() {
+		return new TranslatableComponent("container.buildersaddition.arcade");
 	}
 
 	@Override
 	public void tick() {
-		if(world.isRemote() && game != null)
+		if(level.isClientSide() && game != null)
 			game.frame(time++);
 	}
 	

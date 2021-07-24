@@ -3,13 +3,12 @@ package com.mrh0.buildersaddition.arcade;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mrh0.buildersaddition.arcade.games.ArcadeBreakout;
 import com.mrh0.buildersaddition.arcade.games.ArcadeCredits;
 import com.mrh0.buildersaddition.arcade.games.ArcadeSnake;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 
 public class ArcadeManager {
 	public interface GameConstructor {
@@ -18,18 +17,18 @@ public class ArcadeManager {
 	
 	public static ArcadeManager instance = null;
 	private final ArrayList<GameConstructor> games;
-	private final ArrayList<ITextComponent> names;
+	private final ArrayList<Component> names;
 	
 	public ArcadeManager() {
 		if(instance == null)
 			instance = this;
 		games = new ArrayList<GameConstructor>();
-		names = new ArrayList<ITextComponent>();
+		names = new ArrayList<Component>();
 	}
 	
 	public void add(GameConstructor game, String key) {
 		games.add(game);
-		names.add(new TranslationTextComponent("arcade.buildersaddition.game." + key));
+		names.add(new TranslatableComponent("arcade.buildersaddition.game." + key));
 	}
 	
 	public List<GameConstructor> getGames() {

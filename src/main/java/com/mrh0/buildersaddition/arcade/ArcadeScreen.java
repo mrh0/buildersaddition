@@ -1,12 +1,11 @@
 package com.mrh0.buildersaddition.arcade;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.vertex.PoseStack;
 
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TextComponent;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 
 public class ArcadeScreen {
 	public final int width = 40;
@@ -40,7 +39,7 @@ public class ArcadeScreen {
 	private ScreenRender bgRenderer = null;
 	
 	public interface ScreenRender {
-		void render(MatrixStack stack, int startx, int starty, int width, int height);
+		void render(PoseStack stack, int startx, int starty, int width, int height);
 	}
 	
 	public ArcadeScreen() {
@@ -129,9 +128,9 @@ public class ArcadeScreen {
 		return print(getIndex(x, y), text);
 	}
 	
-	public int print(int x, int y, ITextComponent text) {
+	public int print(int x, int y, Component text) {
 		int i = getIndex(x, y);
-		return print(i, text.getStringTruncated(width*height-i));
+		return print(i, text.getString(width*height-i));
 	}
 	
 	public void setBg(int col) {
@@ -169,27 +168,27 @@ public class ArcadeScreen {
 		System.out.println(getChar(e) + ":" + getBg(e) + ":" + getFg(e));
 	}
 	
-	public void renderBackground(MatrixStack stack, int swidth, int sheight) {
+	public void renderBackground(PoseStack stack, int swidth, int sheight) {
 		int startx = swidth/2 - width*cellWidth/2;
 		int starty = sheight/2 - height*cellHeight/2;
 		for(int i = 0; i < screen.length; i++) {
 			int x = startx + getX(i) * cellWidth;
 			int y = starty + getY(i) * cellHeight;
-			Screen.fill(stack, x, y, x + cellWidth, y + cellHeight, getRenderColor(getBg(screen[i])));
+			Gui.fill(stack, x, y, x + cellWidth, y + cellHeight, getRenderColor(getBg(screen[i])));
 		}
 		
 		if(bgRenderer != null)
 			bgRenderer.render(stack, startx, starty, width * cellWidth, height * cellHeight);
 	}
 	
-	public void renderForeground(MatrixStack stack, FontRenderer fr, int swidth, int sheight) {
+	public void renderForeground(PoseStack stack, Font fr, int swidth, int sheight) {
 		int startx = swidth/2 - width*cellWidth/2;
 		int starty = sheight/2 - height*cellHeight/2;
 		for(int i = 0; i < screen.length; i++) {
 			int x = startx + getX(i) * cellWidth;
 			int y = starty + getY(i) * cellHeight;
 			if(getChar(screen[i]) != '\0')
-				fr.func_243248_b(stack, new StringTextComponent(getChar(screen[i])+""), x+1, y, getHexColor(getFg(screen[i])));
+				fr.draw(stack, new TextComponent(getChar(screen[i])+""), x+1, y, getHexColor(getFg(screen[i])));
 		}
 		
 		if(fgRenderer != null)
