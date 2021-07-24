@@ -3,18 +3,15 @@ package com.mrh0.buildersaddition.event;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.entity.SeatEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.item.PaintingType;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.tileentity.TileEntityType;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
+
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.decoration.Motive;
+import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,29 +35,29 @@ public class EventHandler {
 	}
 	
 	@SubscribeEvent
-	public static void registerTileEntity(Register<TileEntityType<?>> evt){
-		IForgeRegistry<TileEntityType<?>> reg = evt.getRegistry();
+	public static void registerTileEntity(Register<BlockEntityType<?>> evt){
+		IForgeRegistry<BlockEntityType<?>> reg = evt.getRegistry();
 		Index.tileentities();
 		TileEntityRegistry.instance.initAll(reg);
 	}
 	
 	@SubscribeEvent
-	public static void registerContainer(Register<ContainerType<?>> evt){
-		IForgeRegistry<ContainerType<?>> reg = evt.getRegistry();
+	public static void registerContainer(Register<MenuType<?>> evt){
+		IForgeRegistry<MenuType<?>> reg = evt.getRegistry();
 		Index.containers();
 		ContainerRegistry.instance.initAll(reg);
 	}
 	
 	@SubscribeEvent
     public static void registerEntityType(Register<EntityType<?>> evt) {
-    	Index.SEAT_ENTITY_TYPE = EntityType.Builder.<SeatEntity>create(SeatEntity::new, EntityClassification.MISC).setCustomClientFactory((packet, world) -> new SeatEntity(Index.SEAT_ENTITY_TYPE, world)).build(BuildersAddition.MODID+":seat");
+    	Index.SEAT_ENTITY_TYPE = EntityType.Builder.<SeatEntity>of(SeatEntity::new, MobCategory.MISC).setCustomClientFactory((packet, world) -> new SeatEntity(Index.SEAT_ENTITY_TYPE, world)).build(BuildersAddition.MODID+":seat");
     	Index.SEAT_ENTITY_TYPE.setRegistryName(new ResourceLocation(BuildersAddition.MODID, "seat"));
     	evt.getRegistry().register(Index.SEAT_ENTITY_TYPE);
     }
 	
 	@SubscribeEvent
-	public static void registerPaintings(Register<PaintingType> evt){
-		IForgeRegistry<PaintingType> reg = evt.getRegistry();
+	public static void registerPaintings(Register<Motive> evt){
+		IForgeRegistry<Motive> reg = evt.getRegistry();
 		
 		Index.paintings();
 		

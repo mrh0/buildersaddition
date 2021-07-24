@@ -15,6 +15,8 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
+import BooleanProperty;
+
 public class Table extends BaseDerivativeBlock {
 
 	public static final BooleanProperty NW = BooleanProperty.create("nw");

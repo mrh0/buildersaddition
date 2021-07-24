@@ -2,7 +2,8 @@ package com.mrh0.buildersaddition.event;
 
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import com.mrh0.buildersaddition.items.base.BaseBlockItem;
-import net.minecraft.block.Block;
+
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.registries.IForgeRegistry;
 
 public class BlockRegistry extends GenericRegistry<Block, BlockOptions>{

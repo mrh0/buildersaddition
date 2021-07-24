@@ -14,6 +14,8 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
+import VoxelShape;
+
 public class FireplaceGuard extends BaseDerivativeBlock {
 
 	protected static final VoxelShape NORTH_SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 14D, 16D, 9D, 16D);

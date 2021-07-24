@@ -1,8 +1,8 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum StoolState implements IStringSerializable {
+public enum StoolState implements StringRepresentable {
 	None("none"),
 	White("white"),
 	Orange("orange"),
@@ -45,13 +45,13 @@ public enum StoolState implements IStringSerializable {
 	private StoolState(String name) {
 		this.name = name;
 	}
-
-	@Override
-	public String getString() {
-		return this.name;
-	}
 	
 	public static StoolState fromIndex(int i) {
 		return list[i];
+	}
+
+	@Override
+	public String getSerializedName() {
+		return this.name;
 	}
 }

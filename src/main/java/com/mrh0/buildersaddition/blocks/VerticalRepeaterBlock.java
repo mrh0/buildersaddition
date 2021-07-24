@@ -24,6 +24,8 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 
+import BooleanProperty;
+
 public class VerticalRepeaterBlock extends VerticalRedstoneDiodeBlock {
 	public static final BooleanProperty LOCKED = BlockStateProperties.LOCKED;
 	public static final IntegerProperty DELAY = BlockStateProperties.DELAY_1_4;

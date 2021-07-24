@@ -19,6 +19,8 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import VoxelShape;
+
 public class Pillow extends BaseBlock implements ISeat {
 
 	private static VoxelShape SHAPE_PILLOW = Block.makeCuboidShape(3d, 0d, 3d, 13d, 2d, 13d);

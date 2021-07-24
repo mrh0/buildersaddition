@@ -2,23 +2,25 @@ package com.mrh0.buildersaddition.util;
 
 import com.mrh0.buildersaddition.config.Config;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.item.EnchantedBookItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.item.KnowledgeBookItem;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.ITag;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import net.minecraft.tags.Tag;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.KnowledgeBookItem;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class Util {
-	private static final ITag<Item> FORGE_BOOKS_TAG = ItemTags.makeWrapperTag(new ResourceLocation("forge", "books").toString());
+	private static final Tag<Item> FORGE_BOOKS_TAG = ItemTags.bind(new ResourceLocation("forge", "books").toString());
 
 	public static boolean isBook(ItemStack stack) {
 		Item i = stack.getItem();
@@ -28,28 +30,33 @@ public class Util {
 				|| n.endsWith("book") || n.endsWith("manual") || n.endsWith("journal") || n.endsWith("tome")  || n.startsWith("tome") || n.endsWith("lexicon")  || n.endsWith("codex")
 				|| n.endsWith("guide") || n.startsWith("guide") || n.startsWith("handbook") || n.endsWith("chronicle") || n.endsWith("companion") || n.endsWith("binder") || n.endsWith("nomicon")
 				|| n.endsWith("dictionary") || n.startsWith("dictionary") || n.endsWith("materials_and_you") || n.endsWith("binder") || n.startsWith("binder")
-				|| i.isIn(FORGE_BOOKS_TAG);
+				|| FORGE_BOOKS_TAG.contains(i);
+		
 	}
 	
 	public static BlockState crackedState(BlockState cur) {
-		if(cur.isIn(Blocks.STONE_BRICKS))
-			return Blocks.CRACKED_STONE_BRICKS.getDefaultState();
-		else if(cur.isIn(Blocks.NETHER_BRICKS))
-			return Blocks.CRACKED_NETHER_BRICKS.getDefaultState();
-		else if(cur.isIn(Blocks.POLISHED_BLACKSTONE_BRICKS))
-			return Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS.getDefaultState();
+		if(cur.is(Blocks.STONE_BRICKS))
+			return Blocks.CRACKED_STONE_BRICKS.defaultBlockState();
+		else if(cur.is(Blocks.NETHER_BRICKS))
+			return Blocks.CRACKED_NETHER_BRICKS.defaultBlockState();
+		else if(cur.is(Blocks.POLISHED_BLACKSTONE_BRICKS))
+			return Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS.defaultBlockState();
 		else
 			return null;
 	}
 	
-	public static boolean isntSolid(BlockState state, IBlockReader reader, BlockPos pos) {
+	public static boolean isntSolid(BlockState state, BlockGetter reader, BlockPos pos) {
 		return false;
 	}
 	
-	public static boolean accessCheck(World world, BlockPos pos, Direction facing) {
+	public static boolean isntSolid(BlockState state, BlockGetter reader, BlockPos pos, EntityType<?> ent) {
+		return false;
+	}
+	
+	public static boolean accessCheck(Level world, BlockPos pos, Direction facing) {
 		if(!Config.INVENTORY_ACCESS_BLOCK_CHECK.get())
 			return true;
-		BlockState front = world.getBlockState(pos.offset(facing));
-		return !(front.isSolidSide(world, pos.offset(facing), facing.getOpposite()) || front.isSolidSide(world, pos.offset(facing), Direction.UP));
+		BlockState front = world.getBlockState(pos.relative(facing));
+		return !(front.isFaceSturdy(world, pos.relative(facing), facing.getOpposite()) || front.isFaceSturdy(world, pos.relative(facing), Direction.UP));
 	}
 }

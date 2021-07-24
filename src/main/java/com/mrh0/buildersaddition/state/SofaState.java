@@ -1,8 +1,8 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum SofaState implements IStringSerializable {
+public enum SofaState implements StringRepresentable {
 	None("none"),
 	Left("left"),
 	Right("right"),
@@ -15,7 +15,7 @@ public enum SofaState implements IStringSerializable {
 	}
 
 	@Override
-	public String getString() {
+	public String getSerializedName() {
 		return this.name;
 	}
 }

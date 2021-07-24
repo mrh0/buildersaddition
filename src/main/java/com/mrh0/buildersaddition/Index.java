@@ -55,16 +55,16 @@ import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShopSignTileEntity;
 import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
 import com.mrh0.buildersaddition.util.RegistryUtil;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.item.PaintingType;
-import net.minecraft.inventory.container.ContainerType;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.Properties;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.tileentity.TileEntityType;
+
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.decoration.Motive;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
+
+import ContainerType;
 
 @SuppressWarnings("unchecked")
 public class Index {
@@ -292,31 +292,31 @@ public class Index {
 	
 	public static EntityType<SeatEntity> SEAT_ENTITY_TYPE;
 	
-	public static TileEntityType<CounterTileEntity> COUNTER_TILE_ENTITY_TYPE;
-	public static TileEntityType<CupboardTileEntity> CUPBOARD_TILE_ENTITY_TYPE;
-	public static TileEntityType<CabinetTileEntity> CABINET_TILE_ENTITY_TYPE;
-	public static TileEntityType<BookshelfTileEntity> BOOKSHELF_TILE_ENTITY_TYPE;
-	public static TileEntityType<ShelfTileEntity> SHELF_TILE_ENTITY_TYPE;
-	public static TileEntityType<ShopSignTileEntity> SHOP_SIGN_TILE_ENTITY_TYPE;
-	public static TileEntityType<BedsideTileEntity> BEDSIDE_TILE_ENTITY_TYPE;
-	public static TileEntityType<SpeakerTileEntity> SPEAKER_TILE_ENTITY_TYPE;
-	public static TileEntityType<ArcadeTileEntity> ARCADE_TILE_ENTITY_TYPE;
-	public static TileEntityType<EntityDetectorTileEntity> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
+	public static BlockEntityType<CounterTileEntity> COUNTER_TILE_ENTITY_TYPE;
+	public static BlockEntityType<CupboardTileEntity> CUPBOARD_TILE_ENTITY_TYPE;
+	public static BlockEntityType<CabinetTileEntity> CABINET_TILE_ENTITY_TYPE;
+	public static BlockEntityType<BookshelfTileEntity> BOOKSHELF_TILE_ENTITY_TYPE;
+	public static BlockEntityType<ShelfTileEntity> SHELF_TILE_ENTITY_TYPE;
+	public static BlockEntityType<ShopSignTileEntity> SHOP_SIGN_TILE_ENTITY_TYPE;
+	public static BlockEntityType<BedsideTileEntity> BEDSIDE_TILE_ENTITY_TYPE;
+	public static BlockEntityType<SpeakerTileEntity> SPEAKER_TILE_ENTITY_TYPE;
+	public static BlockEntityType<ArcadeTileEntity> ARCADE_TILE_ENTITY_TYPE;
+	public static BlockEntityType<EntityDetectorTileEntity> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
 
 	public static ContainerType<BookshelfContainer> BOOKSHELF_CONTAINER;
 	public static ContainerType<ShelfContainer> SHELF_CONTAINER;
 	public static ContainerType<SpeakerContainer> SPEAKER_CONTAINER;
 	public static ContainerType<ArcadeContainer> ARCADE_CONTAINER;
 
-	public static PaintingType SUMMER_FIELD_PAINTING;
-	public static PaintingType SHARD_PAINTING;
-	public static PaintingType SKARGARD_PAINTING;
-	public static PaintingType HORIZONS_PAINTING;
-	public static PaintingType PORTRAIT_PAINTING;
-	public static PaintingType PROMO_PAINTING;
-	public static PaintingType HEROBRINE_PAINTING;
-	public static PaintingType ENDERMAN_PAINTING;
-	public static PaintingType WINTER_PAINTING;
+	public static Motive SUMMER_FIELD_PAINTING;
+	public static Motive SHARD_PAINTING;
+	public static Motive SKARGARD_PAINTING;
+	public static Motive HORIZONS_PAINTING;
+	public static Motive PORTRAIT_PAINTING;
+	public static Motive PROMO_PAINTING;
+	public static Motive HEROBRINE_PAINTING;
+	public static Motive ENDERMAN_PAINTING;
+	public static Motive WINTER_PAINTING;
 	
 	
 	public static void items() {

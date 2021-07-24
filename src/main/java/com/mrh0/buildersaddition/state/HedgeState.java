@@ -1,8 +1,8 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum HedgeState implements IStringSerializable {
+public enum HedgeState implements StringRepresentable {
 	None("none"),
 	Straight_X("straight_x"),
 	Straight_Z("straight_z"),
@@ -28,7 +28,7 @@ public enum HedgeState implements IStringSerializable {
 	}*/
 
 	@Override
-	public String getString() {
+	public String getSerializedName() {
 		return this.name;
 	}
 }

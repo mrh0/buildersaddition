@@ -2,10 +2,10 @@ package com.mrh0.buildersaddition.event;
 
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.event.opts.ContainerOptions;
-import net.minecraft.inventory.container.ContainerType;
+import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ContainerRegistry extends GenericRegistry<ContainerType<?>, ContainerOptions>{
+public class ContainerRegistry extends GenericRegistry<MenuType<?>, ContainerOptions>{
 	
 	public static ContainerRegistry instance;
 	
@@ -14,7 +14,7 @@ public class ContainerRegistry extends GenericRegistry<ContainerType<?>, Contain
 		instance = this;
 	}
 
-	protected void init(IForgeRegistry<ContainerType<?>> reg, ContainerType<?> obj) {
+	protected void init(IForgeRegistry<MenuType<?>> reg, MenuType<?> obj) {
 		reg.register(obj);
 	}
 }

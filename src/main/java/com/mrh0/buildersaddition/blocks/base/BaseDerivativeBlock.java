@@ -2,30 +2,26 @@ package com.mrh0.buildersaddition.blocks.base;
 
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.Explosion;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolType;
+
 
 public class BaseDerivativeBlock extends BaseBlock {
 
 	private final Block source;
 	
 	public BaseDerivativeBlock(String name, Block source) {
-		super(name, Properties.from(source));
+		super(name, Properties.copy(source));
 		this.source = source;
 	}
 	
 	public BaseDerivativeBlock(String name, Block source, BlockOptions opts) {
-		super(name, Properties.from(source), opts);
+		super(name, Properties.copy(source), opts);
 		this.source = source;
 	}
 	
@@ -34,27 +30,27 @@ public class BaseDerivativeBlock extends BaseBlock {
 	}
 	
 	@Override
-	public boolean isFlammable(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.isFlammable(source.getDefaultState(), world, pos, face);
+	public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+		return source.isFlammable(source.defaultBlockState(), world, pos, face);
 	}
 	
 	@Override
-	public int getFlammability(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.getFlammability(source.getDefaultState(), world, pos, face);
+	public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+		return source.getFlammability(source.defaultBlockState(), world, pos, face);
 	}
 	
 	@Override
-	public int getFireSpreadSpeed(BlockState state, IBlockReader world, BlockPos pos, Direction face) {
-		return source.getFireSpreadSpeed(source.getDefaultState(), world, pos, face);
+	public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction face) {
+		return source.getFireSpreadSpeed(source.defaultBlockState(), world, pos, face);
 	}
 	
 	@Override
 	public ToolType getHarvestTool(BlockState state) {
-		return source.getHarvestTool(source.getDefaultState());
+		return source.getHarvestTool(source.defaultBlockState());
 	}
 	
 	@Override
 	public int getHarvestLevel(BlockState state) {
-		return source.getHarvestLevel(source.getDefaultState());
+		return source.getHarvestLevel(source.defaultBlockState());
 	}
 }

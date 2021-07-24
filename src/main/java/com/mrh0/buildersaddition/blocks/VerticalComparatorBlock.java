@@ -36,6 +36,8 @@ import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
+import EnumProperty;
+
 public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock {
 	public static final EnumProperty<ComparatorMode> MODE = BlockStateProperties.COMPARATOR_MODE;
 

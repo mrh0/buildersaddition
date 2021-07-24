@@ -22,6 +22,8 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import VoxelShape;
+
 public class Stool extends BaseDerivativeBlock implements ISeat {
 	private static VoxelShape SHAPE_PILLOW = Block.makeCuboidShape(3d, 0d, 3d, 13d, 9d, 13d);
 	private static VoxelShape SHAPE_NO_PILLOW = Block.makeCuboidShape(3d, 0d, 3d, 13d, 8d, 13d);

@@ -7,6 +7,8 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 
+import BlockPos;
+
 public class ArcadeContainer  extends BaseContainer {
 	
 	public final BlockPos pos;

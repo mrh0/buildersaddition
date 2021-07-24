@@ -20,6 +20,8 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.server.ServerWorld;
 
+import VoxelShape;
+
 public class GravelPath extends BaseDerivativeBlock {
 
 	private final static VoxelShape SHAPE = Block.makeCuboidShape(0, 0, 0, 16, 15, 16);

@@ -7,95 +7,92 @@ import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.util.Util;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.block.material.PushReaction;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.DoubleBlockHalf;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.fmllegacy.network.NetworkHooks;
 
 public class Arcade extends BaseBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	
-	private static VoxelShape SHAPE_NORTH_LOWER = Block.makeCuboidShape(0d, 0d, 1d, 16d, 32d, 16d);
-	private static VoxelShape SHAPE_EAST_LOWER = Block.makeCuboidShape(0d, 0d, 0d, 15d, 32d, 16d);
-	private static VoxelShape SHAPE_SOUTH_LOWER = Block.makeCuboidShape(0d, 0d, 0d, 16d, 32d, 15d);
-	private static VoxelShape SHAPE_WEST_LOWER = Block.makeCuboidShape(1d, 0d, 0d, 16d, 32d, 16d);
+	private static VoxelShape SHAPE_NORTH_LOWER = Block.box(0d, 0d, 1d, 16d, 32d, 16d);
+	private static VoxelShape SHAPE_EAST_LOWER = Block.box(0d, 0d, 0d, 15d, 32d, 16d);
+	private static VoxelShape SHAPE_SOUTH_LOWER = Block.box(0d, 0d, 0d, 16d, 32d, 15d);
+	private static VoxelShape SHAPE_WEST_LOWER = Block.box(1d, 0d, 0d, 16d, 32d, 16d);
 	
-	private static VoxelShape SHAPE_NORTH_UPPER = Block.makeCuboidShape(0d, -16d, 1d, 16d, 16d, 16d);
-	private static VoxelShape SHAPE_EAST_UPPER = Block.makeCuboidShape(0d, -16d, 0d, 15d, 16d, 16d);
-	private static VoxelShape SHAPE_SOUTH_UPPER = Block.makeCuboidShape(0d, -16d, 0d, 16d, 16d, 15d);
-	private static VoxelShape SHAPE_WEST_UPPER = Block.makeCuboidShape(1d, -16d, 0d, 16d, 16d, 16d);
+	private static VoxelShape SHAPE_NORTH_UPPER = Block.box(0d, -16d, 1d, 16d, 16d, 16d);
+	private static VoxelShape SHAPE_EAST_UPPER = Block.box(0d, -16d, 0d, 15d, 16d, 16d);
+	private static VoxelShape SHAPE_SOUTH_UPPER = Block.box(0d, -16d, 0d, 16d, 16d, 15d);
+	private static VoxelShape SHAPE_WEST_UPPER = Block.box(1d, -16d, 0d, 16d, 16d, 16d);
 
 	public Arcade() {
-		super("arcade", Properties.from(Blocks.IRON_BLOCK)
-				.notSolid().setAllowsSpawn((BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) -> false)
-				.setOpaque(Util::isntSolid).setSuffocates(Util::isntSolid).setBlocksVision(Util::isntSolid), new BlockOptions().setItemOptions(new ItemOptions().group(null)));
-		this.setDefaultState(this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER).with(FACING, Direction.NORTH));
+		super("arcade", Properties.copy(Blocks.IRON_BLOCK)
+				.noCollission().isSuffocating(Util::isntSolid).isValidSpawn(Util::isntSolid).isViewBlocking(Util::isntSolid), new BlockOptions().setItemOptions(new ItemOptions().group(null)));
+		
+		this.registerDefaultState(this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH));
 	}
 
 	public Arcade(String name) {
-		super("arcade_" + name, Properties.from(Blocks.OAK_PLANKS)
-				.notSolid().setAllowsSpawn((BlockState state, IBlockReader reader, BlockPos pos, EntityType<?> entity) -> false)
-				.setOpaque(Util::isntSolid).setSuffocates(Util::isntSolid).setBlocksVision(Util::isntSolid));
-		this.setDefaultState(this.getDefaultState().with(HALF, DoubleBlockHalf.LOWER).with(FACING, Direction.NORTH));
+		super("arcade_" + name, Properties.copy(Blocks.OAK_PLANKS)
+				.noCollission().isValidSpawn(Util::isntSolid).isSuffocating(Util::isntSolid).isViewBlocking(Util::isntSolid));
+		this.registerDefaultState(this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH));
 	}
 	
 	@Override
-	public PushReaction getPushReaction(BlockState state) {
+	public PushReaction getPistonPushReaction(BlockState p_60584_) {
 		return PushReaction.BLOCK;
 	}
 	
 	@Nullable
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		BlockPos blockpos = context.getPos();
-		if (blockpos.getY() < 255 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context)) {
-			World world = context.getWorld();
-			boolean flag = world.isBlockPowered(blockpos) || world.isBlockPowered(blockpos.up());
-			return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite())
-					.with(HALF, DoubleBlockHalf.LOWER);
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockPos blockpos = context.getClickedPos();
+		if (blockpos.getY() < 255 && context.getLevel().getBlockState(blockpos.above()).canBeReplaced(context)) {
+			Level world = context.getLevel();
+			boolean flag = world.hasNeighborSignal(blockpos) || world.hasNeighborSignal(blockpos.above());
+			return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite())
+					.setValue(HALF, DoubleBlockHalf.LOWER);
 		} else {
 			return null;
 		}
 	}
 
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		worldIn.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER), 3);
+	public void onBlockPlacedBy(Level worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+		worldIn.setBlockState(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER), 3);
 	}
 	
-	public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-		BlockPos blockpos = pos.down();
+	public boolean isValidPosition(BlockState state, LeverReader worldIn, BlockPos pos) {
+		BlockPos blockpos = pos.below();
 		BlockState blockstate = worldIn.getBlockState(blockpos);
-		return state.get(HALF) == DoubleBlockHalf.LOWER ? true : blockstate.isIn(this);
+		return state.getValue(HALF) == DoubleBlockHalf.LOWER ? true : blockstate.is(this);
 	}
 
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(FACING, HALF);
 	}
 
@@ -116,69 +113,64 @@ public class Arcade extends BaseBlock {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return getShapeForDirection(state.get(FACING), state.get(HALF) == DoubleBlockHalf.UPPER);
+	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, CollisionContext context) {
+		return getShapeForDirection(state.getValue(FACING), state.getValue(HALF) == DoubleBlockHalf.UPPER);
 	}
-
+	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
+			InteractionHand hand, BlockHitResult hit) {
 		if (player.isSpectator()) {
-            return ActionResultType.PASS;
+            return InteractionResult.PASS;
         }
-    	if (worldIn.isRemote) {
-            return ActionResultType.SUCCESS;
+    	if (world.isClientSide()) {
+            return InteractionResult.SUCCESS;
         }
     	
-    	ArcadeTileEntity mte = getTE(state, worldIn, pos);
-		NetworkHooks.openGui((ServerPlayerEntity) player, (INamedContainerProvider) mte, extraData -> {
+    	ArcadeTileEntity mte = getTE(state, world, pos);
+		NetworkHooks.openGui((ServerPlayer) player, (INamedContainerProvider) mte, extraData -> {
             extraData.writeBlockPos(mte.getPos());
         });
-    	return ActionResultType.SUCCESS;
+    	return InteractionResult.SUCCESS;
 	}
 
 	@Override
-	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		if (!state.isIn(newState.getBlock())) {
+	public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (!state.is(newState.getBlock())) {
 			ArcadeTileEntity tileentity = getTE(state, worldIn, pos);
 			
-			if(state.get(HALF) == DoubleBlockHalf.LOWER)
-				worldIn.setBlockState(pos.up(), Blocks.AIR.getDefaultState());
+			if(state.getValue(HALF) == DoubleBlockHalf.LOWER)
+				worldIn.setBlockAndUpdate(pos.above(), Blocks.AIR.defaultBlockState());
 			else
-				worldIn.setBlockState(pos.down(), Blocks.AIR.getDefaultState());
-			super.onReplaced(state, worldIn, pos, newState, isMoving);
+				worldIn.setBlockAndUpdate(pos.below(), Blocks.AIR.defaultBlockState());
+			super.onRemove(state, worldIn, pos, newState, isMoving);
 		}
 	}
 	
-	private ArcadeTileEntity getTE(BlockState state, World worldIn, BlockPos pos) {
-		TileEntity tileentity;
-		if(state.get(HALF) == DoubleBlockHalf.LOWER)
-			tileentity = worldIn.getTileEntity(pos);
+	
+	private ArcadeTileEntity getTE(BlockState state, Level worldIn, BlockPos pos) {
+		BlockEntity tileentity;
+		if(state.getValue(HALF) == DoubleBlockHalf.LOWER)
+			tileentity = worldIn.getBlockEntity(pos);
 		else
-			tileentity = worldIn.getTileEntity(pos.down());
+			tileentity = worldIn.getBlockEntity(pos.below());
 		if (tileentity != null && tileentity instanceof ArcadeTileEntity)
 			return (ArcadeTileEntity) tileentity;
 		return null;
 	}
 
 	@Override
-	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.MODEL;
+	public RenderShape getRenderShape(BlockState p_60550_) {
+		return RenderShape.MODEL;
 	}
 	
 	@Override
-	public boolean eventReceived(BlockState state, World worldIn, BlockPos pos, int id, int param) {
-		super.eventReceived(state, worldIn, pos, id, param);
-		TileEntity tileentity = worldIn.getTileEntity(pos);
-		return tileentity == null ? false : tileentity.receiveClientEvent(id, param);
+	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int id, int param) {
+		BlockEntity tileentity = world.getBlockEntity(pos);
+		return tileentity == null ? false : tileentity.triggerEvent(id, param);
 	}
-
-	/*@Override
-	@Nullable
-	public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
-		TileEntity tileentity = worldIn.getTileEntity(pos);
-		return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider) tileentity : null;
-	}*/
+	
+	
 	
 	@Override
 	public boolean hasTileEntity(BlockState state) {

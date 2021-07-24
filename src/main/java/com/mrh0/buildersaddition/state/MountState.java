@@ -2,15 +2,15 @@ package com.mrh0.buildersaddition.state;
 
 import com.mrh0.buildersaddition.blocks.Pillar;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.WallBlock;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.WallBlock;
 
-public enum MountState implements IStringSerializable {
+public enum MountState implements StringRepresentable {
 	FullBlock("full"),
 	Pillar("pillar"),
 	Wall("wall"),
@@ -23,13 +23,8 @@ public enum MountState implements IStringSerializable {
 		this.name = name;
 	}
 	
-	@Override
-	public String getString() {
-		return this.name;
-	}
-	
-	public static MountState getFor(Direction face, BlockPos pos, World world) {
-		Block b = world.getBlockState(pos.offset(face.getOpposite())).getBlock();
+	public static MountState getFor(Direction face, BlockPos pos, Level world) {
+		Block b = world.getBlockState(pos.relative(face.getOpposite())).getBlock();
 		if(b instanceof Pillar) {
 			return Pillar;
 		}
@@ -40,5 +35,10 @@ public enum MountState implements IStringSerializable {
 			return Fence;
 		}
 		return FullBlock;
+	}
+
+	@Override
+	public String getSerializedName() {
+		return this.name;
 	}
 }

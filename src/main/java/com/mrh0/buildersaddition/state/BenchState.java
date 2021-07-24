@@ -1,9 +1,9 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.Direction.Axis;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.util.StringRepresentable;
 
-public enum BenchState implements IStringSerializable {
+public enum BenchState implements StringRepresentable {
 	North("north"),
 	West("west"),
 	South("south"),
@@ -20,7 +20,7 @@ public enum BenchState implements IStringSerializable {
 	}
 
 	@Override
-	public String getString() {
+	public String getSerializedName() {
 		return this.name;
 	}
 	

@@ -26,6 +26,8 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import EnumProperty;
+
 public class ShopSign extends BaseDerivativeBlock {
 
 	public static final EnumProperty<ShopSignState> STATE = EnumProperty.<ShopSignState>create("state", ShopSignState.class);

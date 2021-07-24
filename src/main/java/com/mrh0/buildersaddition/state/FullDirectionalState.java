@@ -1,10 +1,10 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.Direction;
-import net.minecraft.util.Direction.Axis;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.util.StringRepresentable;
 
-public enum FullDirectionalState implements IStringSerializable {
+public enum FullDirectionalState implements StringRepresentable {
 	Up_X("up_x"),
 	Up_Z("up_z"),
 	Down_X("down_x"),
@@ -18,16 +18,6 @@ public enum FullDirectionalState implements IStringSerializable {
 	
 	private FullDirectionalState(String name) {
 		this.name = name;
-	}
-	
-	/*@Override
-	public String getName() {
-		return this.name;
-	}*/
-
-	@Override
-	public String getString() {
-		return this.name;
 	}
 	
 	public static FullDirectionalState getFor(Direction face, Direction facing) {
@@ -78,5 +68,10 @@ public enum FullDirectionalState implements IStringSerializable {
 	
 	public boolean isHorizontal() {
 		return this == North || this == East || this == South || this == West;
+	}
+
+	@Override
+	public String getSerializedName() {
+		return this.name;
 	}
 }

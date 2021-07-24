@@ -2,7 +2,8 @@ package com.mrh0.buildersaddition.event.opts;
 
 import java.util.HashSet;
 import java.util.Set;
-import net.minecraft.block.Block;
+
+import net.minecraft.world.level.block.Block;
 
 public class TileEntityOptions extends RegOptions<TileEntityOptions> {
 	public Set<Block> isUsedByBlocks;

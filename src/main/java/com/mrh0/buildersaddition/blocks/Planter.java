@@ -23,6 +23,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.PlantType;
 
+import EnumProperty;
+
 public class Planter extends BaseDerivativeBlock {
 
 	public static final EnumProperty<PlanterState> STATE = EnumProperty.<PlanterState>create("type", PlanterState.class);

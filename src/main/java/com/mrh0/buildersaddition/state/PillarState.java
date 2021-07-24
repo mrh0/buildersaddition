@@ -1,8 +1,8 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum PillarState implements IStringSerializable {
+public enum PillarState implements StringRepresentable {
 	None("none"),
 	Bottom("bottom"),
 	Top("top"),
@@ -13,14 +13,9 @@ public enum PillarState implements IStringSerializable {
 	private PillarState(String name) {
 		this.name = name;
 	}
-	
-	/*@Override
-	public String getName() {
-		return this.name;
-	}*/
 
 	@Override
-	public String getString() {
+	public String getSerializedName() {
 		return this.name;
 	}
 }

@@ -1,8 +1,8 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.StringRepresentable;
 
-public enum PlanterState implements IStringSerializable {
+public enum PlanterState implements StringRepresentable {
 	Dirt("dirt"),
 	Farmland("farmland");
 
@@ -11,14 +11,9 @@ public enum PlanterState implements IStringSerializable {
 	private PlanterState(String name) {
 		this.name = name;
 	}
-	
-	/*@Override
-	public String getName() {
-		return this.name;
-	}*/
 
 	@Override
-	public String getString() {
+	public String getSerializedName() {
 		return this.name;
 	}
 }

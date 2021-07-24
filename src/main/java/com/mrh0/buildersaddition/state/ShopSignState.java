@@ -1,17 +1,17 @@
 package com.mrh0.buildersaddition.state;
 
 import com.mrh0.buildersaddition.blocks.Pillar;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.FenceBlock;
-import net.minecraft.block.WallBlock;
-import net.minecraft.util.Direction;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.util.Direction.Axis;
 
-public enum ShopSignState implements IStringSerializable {
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.FenceBlock;
+import net.minecraft.world.level.block.WallBlock;
+
+public enum ShopSignState implements StringRepresentable {
 	Up_X("up_x"),
 	Up_Z("up_z"),
 	Down_X("down_x"),
@@ -42,13 +42,8 @@ public enum ShopSignState implements IStringSerializable {
 		this.name = name;
 	}
 	
-	@Override
-	public String getString() {
-		return this.name;
-	}
-	
-	public static ShopSignState getFor(Direction face, Direction facing, BlockPos pos, World world) {
-		Block b = world.getBlockState(pos.offset(face.getOpposite())).getBlock();
+	public static ShopSignState getFor(Direction face, Direction facing, BlockPos pos, Level world) {
+		Block b = world.getBlockState(pos.relative(face.getOpposite())).getBlock();
 		switch(face) {
 			case NORTH:
 				return getForBlock(face, b);
@@ -201,5 +196,10 @@ public enum ShopSignState implements IStringSerializable {
 	
 	public boolean isHorizontal() {
 		return this != Up_X && this != Up_Z && this != Down_X && this != Down_Z;
+	}
+
+	@Override
+	public String getSerializedName() {
+		return this.name;
 	}
 }

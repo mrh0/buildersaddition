@@ -1,9 +1,9 @@
 package com.mrh0.buildersaddition.state;
 
-import net.minecraft.util.Direction;
-import net.minecraft.util.IStringSerializable;
+import net.minecraft.core.Direction;
+import net.minecraft.util.StringRepresentable;
 
-public enum VerticalSlabState implements IStringSerializable {
+public enum VerticalSlabState implements StringRepresentable {
     NORTH(0, "north", Direction.NORTH),
     WEST(1, "west", Direction.WEST),
     EAST(2, "east", Direction.EAST),
@@ -73,10 +73,6 @@ public enum VerticalSlabState implements IStringSerializable {
         return VerticalSlabState.NORTH;
     }
 
-    /*public String getName() {
-        return this.name;
-    }*/
-
     static {
         for (VerticalSlabState d : values()) {
             META_LOOKUP[d.getMetadata()] = d;
@@ -84,7 +80,7 @@ public enum VerticalSlabState implements IStringSerializable {
     }
 
 	@Override
-	public String getString() {
+	public String getSerializedName() {
 		return this.name;
 	}
 }

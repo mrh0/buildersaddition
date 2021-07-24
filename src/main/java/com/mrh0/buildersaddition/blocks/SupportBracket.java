@@ -16,6 +16,8 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 
+import DirectionProperty;
+
 public class SupportBracket extends BaseDerivativeBlock {
 
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;

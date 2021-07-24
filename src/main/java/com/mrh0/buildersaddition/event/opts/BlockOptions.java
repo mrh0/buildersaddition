@@ -1,11 +1,11 @@
 package com.mrh0.buildersaddition.event.opts;
 
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class BlockOptions extends RegOptions<BlockOptions>{
 	public boolean makeItem = true;
-	public VoxelShape shape = VoxelShapes.fullCube();
+	public VoxelShape shape = Shapes.block();
 	public ItemOptions itemOpts = new ItemOptions();
 	public BlockOptions hasItem(boolean b) {
 		makeItem = b;

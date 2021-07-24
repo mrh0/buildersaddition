@@ -34,6 +34,8 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
+import BooleanProperty;
+
 public class Bookshelf extends BaseDerivativeBlock {
 
 	public static final BooleanProperty BOOK0 = BooleanProperty.create("book0");

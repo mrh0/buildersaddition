@@ -29,6 +29,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
+import EnumProperty;
+
 public class Sofa extends BaseDerivativeBlock implements ISeat {
 
 	public static final EnumProperty<SofaState> STATE = EnumProperty.<SofaState>create("state", SofaState.class);

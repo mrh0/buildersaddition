@@ -3,12 +3,8 @@ package com.mrh0.buildersaddition.util;
 import com.mrh0.buildersaddition.config.Config;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SimpleSound;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.client.resources.sounds.SoundInstance;
+import net.minecraft.sounds.SoundEvent;
 
 public class Notes {
 	public static int getNoteFromKey(int key) {
@@ -68,12 +64,12 @@ public class Notes {
 		}
 	}
 	
-	public static void playClientNote(SoundEvent evt, int note) {
+	/*public static void playClientNote(SoundEvent evt, int note) {
 		if(note < 0 && note >= 48)
 			return;
 		float f = (float)Math.pow(2.0D, (double)(note - 12) / 12.0D);
-		Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(evt, f));
-	}
+		Minecraft.getInstance().getSoundManager().play(SimpleSound.master(evt, f));
+	}*/
 	
 	public static final String[] instrumentNames = {"bass", "snare", "hat", "basedrum", "bell", "flute", "chime", "guitar", 
 			"xylophone", "iron_xylophone", "cow_bell", "didgeridoo", "bit", "banjo", "pling", "harp"};

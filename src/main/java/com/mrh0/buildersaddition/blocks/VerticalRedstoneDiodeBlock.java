@@ -28,6 +28,8 @@ import net.minecraft.world.TickPriority;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
+import DirectionProperty;
+
 public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	public static final DirectionProperty VERTICAL_FACING = DirectionProperty.create("vertical_facing", d -> d.getAxis() == Axis.Y);
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;

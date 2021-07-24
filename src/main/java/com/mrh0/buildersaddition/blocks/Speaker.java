@@ -26,6 +26,8 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
+import VoxelShape;
+
 public class Speaker extends BaseDerivativeBlock {
 	
 	protected static final VoxelShape SHAPE = Block.makeCuboidShape(2d, 1d, 2d, 14d, 16d, 14d);

@@ -18,6 +18,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
+import IntegerProperty;
+
 public class EntityDetector extends BaseBlock {
 	public static final IntegerProperty POWER = IntegerProperty.create("power", 0, 15);
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
