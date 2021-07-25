@@ -1,53 +1,80 @@
 package com.mrh0.buildersaddition.blocks;
 
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
+import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.EntityDetectorTileEntity;
+import com.mrh0.buildersaddition.util.Util;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-public class EntityDetector extends BaseBlock {
+public class EntityDetector extends BaseBlock implements EntityBlock {
 	public static final IntegerProperty POWER = IntegerProperty.create("power", 0, 15);
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 	
 	public EntityDetector() {
-		super("entity_detector", Properties.from(Blocks.OBSERVER));
-		this.setDefaultState(this.defaultBlockState().with(FACING, Direction.NORTH).with(POWER, 0));
+		super("entity_detector", Properties.copy(Blocks.OBSERVER));
+		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POWER, 0));
+	}
+
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+		return !world.isClientSide() ? Util.createTickerHelper(type, Index.ENTITY_DETECTOR_TILE_ENTITY_TYPE, EntityDetectorTileEntity::tick) : null;
 	}
 	
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		return;
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+		builder.add(FACING, POWER);
 	}
 	
 	@Override
-	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return new EntityDetectorTileEntity();
+	public BlockState getStateForPlacement(BlockPlaceContext c) {
+		return this.defaultBlockState().setValue(FACING, c.getNearestLookingDirection().getOpposite().getOpposite());
 	}
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
-		builder.add(FACING);
-		builder.add(POWER);
+	public boolean isSignalSource(BlockState p_60571_) {
+		return true;
 	}
 	
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		return this.getDefaultState().with(FACING, c.getNearestLookingDirection().getOpposite().getOpposite());
+	public int getDirectSignal(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+		if(side == world.getBlockState(pos).getValue(FACING))
+			return state.getValue(POWER);
+		return 0;
 	}
 	
 	@Override
-	public boolean canConnectRedstone(BlockState state, IBlockReader world, BlockPos pos, Direction side) {
-		return side == state.get(FACING);
+	public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+		if(side == world.getBlockState(pos).getValue(FACING)){
+			return state.getValue(POWER);
+		}
+		return 0;
+	}
+	
+	/*@Override
+	public boolean canConnectRedstone(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
+		return side == state.getValue(FACING);
 	}
 	
 	@Override
 	public int getWeakPower(BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
 		if(side == blockAccess.getBlockState(pos).get(FACING)){
-			return state.get(POWER);
+			return state.getValue(POWER);
 		}
 		return 0;
 	}
@@ -55,12 +82,17 @@ public class EntityDetector extends BaseBlock {
 	@Override
 	public int getStrongPower(BlockState state, IBlockReader blockAccess, BlockPos pos, Direction side) {
 		if(side == blockAccess.getBlockState(pos).get(FACING))
-			return state.get(POWER);
+			return state.getValue(POWER);
 		return 0;
 	}
 	
 	@Override
 	public boolean canProvidePower(BlockState state) {
 		return true;
+	}*/
+
+	@Override
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new EntityDetectorTileEntity(pos, state);
 	}
 }

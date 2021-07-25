@@ -4,56 +4,53 @@ import java.util.Random;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
 import com.mrh0.buildersaddition.config.Config;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import net.minecraftforge.api.distmarker.Dist;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.OnlyIn;
-
-import BooleanProperty;
 
 public class Candle extends BaseBlock {
 
 	public static final BooleanProperty LIT = BooleanProperty.create("lit");
 	public static final DirectionProperty FACING = DirectionProperty.create("facing",
 			p -> p != Direction.UP);
-	protected static final VoxelShape SHAPE_WEST = Block.makeCuboidShape(6d, 3d, 0d, 10d, 13d, 4d);
-	protected static final VoxelShape SHAPE_EAST = Block.makeCuboidShape(6d, 3d, 12d, 10d, 13d, 16d);
-	protected static final VoxelShape SHAPE_SOUTH = Block.makeCuboidShape(0d, 3d, 6d, 4d, 13d, 10d);
-	protected static final VoxelShape SHAPE_NORTH = Block.makeCuboidShape(12d, 3d, 6d, 16d, 13d, 10d);
-	protected static final VoxelShape SHAPE_DOWN = Block.makeCuboidShape(6d, 0d, 6d, 10d, 9d, 10d);
+	protected static final VoxelShape SHAPE_WEST = Block.box(6d, 3d, 0d, 10d, 13d, 4d);
+	protected static final VoxelShape SHAPE_EAST = Block.box(6d, 3d, 12d, 10d, 13d, 16d);
+	protected static final VoxelShape SHAPE_SOUTH = Block.box(0d, 3d, 6d, 4d, 13d, 10d);
+	protected static final VoxelShape SHAPE_NORTH = Block.box(12d, 3d, 6d, 16d, 13d, 10d);
+	protected static final VoxelShape SHAPE_DOWN = Block.box(6d, 0d, 6d, 10d, 9d, 10d);
 	
-	private IParticleData parts;
+	private ParticleOptions parts;
 	
-	public Candle(String name, IParticleData parts) {
-		super(name, Properties.from(Blocks.TORCH).setLightLevel((s) -> s.get(LIT).booleanValue() ? 15 : 0));
-		setDefaultState(getDefaultState().with(LIT, true).with(FACING, Direction.NORTH));
+	public Candle(String name, ParticleOptions parts) {
+		super(name, Properties.copy(Blocks.TORCH).lightLevel((s) -> s.getValue(LIT).booleanValue() ? 15 : 0));
+		registerDefaultState(defaultBlockState().setValue(LIT, true).setValue(FACING, Direction.NORTH));
 		this.parts = parts;
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		switch(state.get(FACING)) {
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+		switch(state.getValue(FACING)) {
 			case NORTH:
 				return SHAPE_NORTH;
 			case EAST:
@@ -70,70 +67,69 @@ public class Candle extends BaseBlock {
 	}
 	
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		if(c.getFace() == Direction.DOWN || c.getFace() == Direction.UP) {
+	public BlockState getStateForPlacement(BlockPlaceContext c) {
+		if(c.getClickedFace() == Direction.DOWN || c.getClickedFace() == Direction.UP) {
 			if(c.getPlayer().isCreative())
-				return getDefaultState().with(LIT, true).with(FACING, Direction.DOWN);
-			return getDefaultState().with(LIT, false).with(FACING, Direction.DOWN);
+				return defaultBlockState().setValue(LIT, true).setValue(FACING, Direction.DOWN);
+			return defaultBlockState().setValue(LIT, false).setValue(FACING, Direction.DOWN);
 		}
 		if(c.getPlayer().isCreative())
-			return getDefaultState().with(LIT, true).with(FACING, c.getFace().rotateY());
-		return getDefaultState().with(LIT, false).with(FACING, c.getFace().rotateY());
+			return defaultBlockState().setValue(LIT, true).setValue(FACING, c.getClickedFace().getClockWise());
+		return defaultBlockState().setValue(LIT, false).setValue(FACING, c.getClickedFace().getClockWise());
 	}
 	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
-		ItemStack item = player.getHeldItem(handIn);
-		boolean lit = state.get(LIT);
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
+			InteractionHand hand, BlockHitResult hit) {
+		ItemStack item = player.getItemInHand(hand);
+		boolean lit = state.getValue(LIT);
 		if(player.isCreative() || !Config.REQUIRE_FLINT_AND_STEEL.get()) {
 			if(!lit) {
-				worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1, 1, false);
-				if(!worldIn.isRemote())
-					worldIn.setBlockState(pos, getDefaultState().with(LIT, true).with(FACING, state.get(FACING)));
+				world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1, 1, false);
+				if(!world.isClientSide())
+					world.setBlockAndUpdate(pos, defaultBlockState().setValue(LIT, true).setValue(FACING, state.getValue(FACING)));
 			}
 			else {
-				worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 1, 1, false);
-				if(!worldIn.isRemote())
-					worldIn.setBlockState(pos, getDefaultState().with(LIT, false).with(FACING, state.get(FACING)));
+				world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.REDSTONE_TORCH_BURNOUT, SoundSource.BLOCKS, 1, 1, false);
+				if(!world.isClientSide())
+					world.setBlockAndUpdate(pos, defaultBlockState().setValue(LIT, false).setValue(FACING, state.getValue(FACING)));
 			}
 		}
 		else if(item.isEmpty()) {
 			if(lit) {
-				worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.BLOCKS, 1, 1, false);
-				if(!worldIn.isRemote())
-					worldIn.setBlockState(pos, getDefaultState().with(LIT, false).with(FACING, state.get(FACING)));
+				world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.REDSTONE_TORCH_BURNOUT, SoundSource.BLOCKS, 1, 1, false);
+				if(!world.isClientSide())
+					world.setBlockAndUpdate(pos, defaultBlockState().setValue(LIT, false).setValue(FACING, state.getValue(FACING)));
 			}
 		}
 		else if(item.getItem() == Items.FLINT_AND_STEEL) {
 			if(!lit) {
-				worldIn.playSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1, 1, false);
-				if(!worldIn.isRemote()) {
-					worldIn.setBlockState(pos, getDefaultState().with(LIT, true).with(FACING, state.get(FACING)));
-					item.damageItem(1, player, (e) -> {});
+				world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1, 1, false);
+				if(!world.isClientSide()) {
+					world.setBlockAndUpdate(pos, defaultBlockState().setValue(LIT, true).setValue(FACING, state.getValue(FACING)));
+					item.hurtAndBreak(1, player, (e) -> {});
 				}
 			}
 		}
 		
 		
-		if(worldIn.isRemote())
-			return ActionResultType.SUCCESS;
-		return ActionResultType.CONSUME;
+		if(world.isClientSide())
+			return InteractionResult.SUCCESS;
+		return InteractionResult.CONSUME;
 	}
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(LIT, FACING);
 	}
 	
 	@Override
-	@OnlyIn(Dist.CLIENT)
-	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+	public void animateTick(BlockState state, Level world, BlockPos pos, Random rand) {
 		double x = .5d;
 		double y = 13d/16d;
 		double z = .5d;
 		double o = 3d/16d;
-		switch(stateIn.get(FACING)) {
+		switch(state.getValue(FACING)) {
 			case EAST:
 				z = 1 - o;
 				break;
@@ -152,12 +148,12 @@ public class Candle extends BaseBlock {
 			default:
 				break;
 		}
-		if(!stateIn.get(LIT).booleanValue())
+		if(!state.getValue(LIT).booleanValue())
 			return;
 		double d0 = (double)pos.getX() + x;
 		double d1 = (double)pos.getY() + y;
 		double d2 = (double)pos.getZ() + z;
-		worldIn.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
-		worldIn.addParticle(parts, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.addParticle(ParticleTypes.SMOKE, d0, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.addParticle(parts, d0, d1, d2, 0.0D, 0.0D, 0.0D);
 	}
 }

@@ -5,29 +5,29 @@ import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.blocks.base.ISeat;
 import com.mrh0.buildersaddition.entity.SeatEntity;
 import com.mrh0.buildersaddition.state.StoolState;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
-import VoxelShape;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class Stool extends BaseDerivativeBlock implements ISeat {
-	private static VoxelShape SHAPE_PILLOW = Block.makeCuboidShape(3d, 0d, 3d, 13d, 9d, 13d);
-	private static VoxelShape SHAPE_NO_PILLOW = Block.makeCuboidShape(3d, 0d, 3d, 13d, 8d, 13d);
-	private static VoxelShape SHAPE_BASE = Block.makeCuboidShape(2d, 6d, 2d, 14d, 8d, 14d);
+	private static VoxelShape SHAPE_PILLOW = Block.box(3d, 0d, 3d, 13d, 9d, 13d);
+	private static VoxelShape SHAPE_NO_PILLOW = Block.box(3d, 0d, 3d, 13d, 8d, 13d);
+	private static VoxelShape SHAPE_BASE = Block.box(2d, 6d, 2d, 14d, 8d, 14d);
 	
 	public static final EnumProperty<StoolState> PILLOW = EnumProperty.<StoolState>create("pillow", StoolState.class);
 	
@@ -36,32 +36,33 @@ public class Stool extends BaseDerivativeBlock implements ISeat {
 	}
 	
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(PILLOW);
 	}
 	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		boolean type = state.get(PILLOW) == StoolState.None;
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
+			InteractionHand hand, BlockHitResult hit) {
+		boolean type = state.getValue(PILLOW) == StoolState.None;
 		if(type) {
-			Item item = player.getHeldItem(handIn).getItem();
+			Item item = player.getItemInHand(hand).getItem();
 			for(int i = 0; i < Index.PILLOW.length; i++) {
 				if(item == Index.PILLOW[i].asItem()) {
 					if(!player.isCreative())
-						player.getHeldItem(handIn).shrink(1);
-					worldIn.setBlockState(pos, state.with(PILLOW, StoolState.fromIndex(i)));
-					worldIn.playSound(player, pos, SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.BLOCKS, 1f, 1f);
-					return ActionResultType.CONSUME;
+						player.getItemInHand(hand).shrink(1);
+					world.setBlockAndUpdate(pos, state.setValue(PILLOW, StoolState.fromIndex(i)));
+					world.playSound(player, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS, 1f, 1f);
+					return InteractionResult.CONSUME;
 				}
 			}
 		}
-		return SeatEntity.createSeat(worldIn, pos, player, type ? .45 - 1d/16d : .45d, type ? SoundEvents.BLOCK_WOOD_HIT : SoundEvents.BLOCK_WOOL_HIT);
+		return SeatEntity.createSeat(world, pos, player, type ? .45 - 1d/16d : .45d, type ? SoundEvents.WOOD_HIT : SoundEvents.WOOL_HIT);
 	}
 	
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		if(state.get(PILLOW) == StoolState.None)
-			return VoxelShapes.or(SHAPE_NO_PILLOW, SHAPE_BASE);
-		return VoxelShapes.or(SHAPE_PILLOW, SHAPE_BASE);
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+		if(state.getValue(PILLOW) == StoolState.None)
+			return Shapes.or(SHAPE_NO_PILLOW, SHAPE_BASE);
+		return Shapes.or(SHAPE_PILLOW, SHAPE_BASE);
 	}
 }

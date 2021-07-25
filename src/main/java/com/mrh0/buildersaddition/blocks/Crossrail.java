@@ -2,54 +2,56 @@ package com.mrh0.buildersaddition.blocks;
 
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
-import net.minecraft.block.AbstractRailBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.Property;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.state.properties.RailShape;
-import net.minecraft.util.Direction.Axis;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
 
-public class Crossrail extends AbstractRailBlock {
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.world.entity.vehicle.AbstractMinecart;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.BaseRailBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.RailShape;
+
+public class Crossrail extends BaseRailBlock {
 
 	public static final EnumProperty<RailShape> SHAPE = BlockStateProperties.RAIL_SHAPE_STRAIGHT;
 
 	public Crossrail() {
-		super(true, Properties.from(Blocks.RAIL));
-		this.setDefaultState(this.stateContainer.getBaseState().with(SHAPE, RailShape.NORTH_SOUTH));
+		super(true, Properties.copy(Blocks.RAIL));
+		this.registerDefaultState(this.defaultBlockState().setValue(SHAPE, RailShape.NORTH_SOUTH));
 		this.setRegistryName("crossrail");
 		BlockRegistry.instance.register(this, new BlockOptions());
 	}
 
-	protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+	@Override
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(SHAPE);
 	}
 	
 	@Override
-	public RailShape getRailDirection(BlockState state, IBlockReader world, BlockPos pos, AbstractMinecartEntity cart) {
+	public RailShape getRailDirection(BlockState state, BlockGetter world, BlockPos pos, AbstractMinecart cart) {
 		if (cart == null)
 			return RailShape.EAST_WEST;
 		//double x = Math.abs();
 		//double z = Math.abs(cart.getForward().z);
-		if (cart.getHorizontalFacing().getAxis() == Axis.X) {
+		if (cart.getMotionDirection().getAxis() == Axis.X) {
 			return RailShape.NORTH_SOUTH;
 		}
 		return RailShape.EAST_WEST;
 	}
-
+	
 	@Override
-	public boolean isFlexibleRail(BlockState state, IBlockReader world, BlockPos pos) {
+	public boolean canMakeSlopes(BlockState state, BlockGetter world, BlockPos pos) {
 		return false;
 	}
-
+	
 	@Override
-	public boolean canMakeSlopes(BlockState state, IBlockReader world, BlockPos pos) {
+	public boolean isFlexibleRail(BlockState state, BlockGetter world, BlockPos pos) {
 		return false;
 	}
 

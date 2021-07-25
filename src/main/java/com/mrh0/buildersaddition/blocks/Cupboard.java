@@ -7,63 +7,100 @@ import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.tileentity.CupboardTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
 import com.mrh0.buildersaddition.util.Util;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.pathfinder.PathComputationType;
 
-public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityProvider {
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.piglin.PiglinAi;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.pathfinder.PathComputationType;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+
+public class Cupboard extends BaseBlock implements SimpleWaterloggedBlock, EntityBlock {
 
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 	public static final BooleanProperty MIRROR = BooleanProperty.create("mirror");
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-	private static VoxelShape SHAPE_NORTH_LOWER = Block.makeCuboidShape(0d, 0d, 1d, 16d, 32d, 16d);
-	private static VoxelShape SHAPE_EAST_LOWER = Block.makeCuboidShape(0d, 0d, 0d, 15d, 32d, 16d);
-	private static VoxelShape SHAPE_SOUTH_LOWER = Block.makeCuboidShape(0d, 0d, 0d, 16d, 32d, 15d);
-	private static VoxelShape SHAPE_WEST_LOWER = Block.makeCuboidShape(1d, 0d, 0d, 16d, 32d, 16d);
+	private static VoxelShape SHAPE_NORTH_LOWER = Block.box(0d, 0d, 1d, 16d, 32d, 16d);
+	private static VoxelShape SHAPE_EAST_LOWER = Block.box(0d, 0d, 0d, 15d, 32d, 16d);
+	private static VoxelShape SHAPE_SOUTH_LOWER = Block.box(0d, 0d, 0d, 16d, 32d, 15d);
+	private static VoxelShape SHAPE_WEST_LOWER = Block.box(1d, 0d, 0d, 16d, 32d, 16d);
 	
-	private static VoxelShape SHAPE_NORTH_UPPER = Block.makeCuboidShape(0d, -16d, 1d, 16d, 16d, 16d);
-	private static VoxelShape SHAPE_EAST_UPPER = Block.makeCuboidShape(0d, -16d, 0d, 15d, 16d, 16d);
-	private static VoxelShape SHAPE_SOUTH_UPPER = Block.makeCuboidShape(0d, -16d, 0d, 16d, 16d, 15d);
-	private static VoxelShape SHAPE_WEST_UPPER = Block.makeCuboidShape(1d, -16d, 0d, 16d, 16d, 16d);
+	private static VoxelShape SHAPE_NORTH_UPPER = Block.box(0d, -16d, 1d, 16d, 16d, 16d);
+	private static VoxelShape SHAPE_EAST_UPPER = Block.box(0d, -16d, 0d, 15d, 16d, 16d);
+	private static VoxelShape SHAPE_SOUTH_UPPER = Block.box(0d, -16d, 0d, 16d, 16d, 15d);
+	private static VoxelShape SHAPE_WEST_UPPER = Block.box(1d, -16d, 0d, 16d, 16d, 16d);
 
 	public Cupboard(String name, Block source) {
-		super("cupboard_" + name, Properties.from(source));
-		this.setDefaultState(this.getDefaultState().with(WATERLOGGED, false).with(HALF, DoubleBlockHalf.LOWER).with(FACING, Direction.NORTH));
+		super("cupboard_" + name, Properties.copy(source));
+		this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false).setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH));
 	}
 	
 	@Override
-	public PushReaction getPushReaction(BlockState state) {
+	public PushReaction getPistonPushReaction(BlockState p_60584_) {
 		return PushReaction.BLOCK;
 	}
 	
 	@Nullable
-	public BlockState getStateForPlacement(BlockItemUseContext context) {
-		BlockPos blockpos = context.getPos();
-		if (blockpos.getY() < 255 && context.getWorld().getBlockState(blockpos.up()).isReplaceable(context)) {
-			World world = context.getWorld();
-			boolean flag = world.isBlockPowered(blockpos) || world.isBlockPowered(blockpos.up());
-			return this.getDefaultState().with(FACING, context.getPlacementHorizontalFacing().getOpposite())
-					.with(HALF, DoubleBlockHalf.LOWER).with(MIRROR, context.hasSecondaryUseForPlayer())
-					.with(WATERLOGGED, Boolean.valueOf(context.getWorld().getFluidState(context.getPos()).getFluid() == Fluids.WATER));
+	public BlockState getStateForPlacement(BlockPlaceContext context) {
+		BlockPos blockpos = context.getClickedPos();
+		if (blockpos.getY() < 255 && context.getLevel().getBlockState(blockpos.above()).canBeReplaced(context)) {
+			Level world = context.getLevel();
+			boolean flag = world.hasNeighborSignal(blockpos) || world.hasNeighborSignal(blockpos.above());
+			return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite())
+					.setValue(HALF, DoubleBlockHalf.LOWER).setValue(MIRROR, context.isSecondaryUseActive())
+					.setValue(WATERLOGGED, Boolean.valueOf(context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER));
 		} 
 		return null;
 	}
 
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
-		worldIn.setBlockState(pos.up(), state.with(HALF, DoubleBlockHalf.UPPER).with(WATERLOGGED, Boolean.valueOf(worldIn.getFluidState(pos.up()).getFluid() == Fluids.WATER)), 3);
+	@Override
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity end,
+			ItemStack stack) {
+		world.setBlock(pos.above(), state.setValue(HALF, DoubleBlockHalf.UPPER).setValue(WATERLOGGED, Boolean.valueOf(world.getFluidState(pos.above()).getType() == Fluids.WATER)), 3);
 	}
 	
-	public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-		BlockPos blockpos = pos.down();
+	public boolean isValidPosition(BlockState state, BlockGetter worldIn, BlockPos pos) {
+		BlockPos blockpos = pos.below();
 		BlockState blockstate = worldIn.getBlockState(blockpos);
-		return state.get(HALF) == DoubleBlockHalf.LOWER ? true : blockstate.isIn(this);
+		return state.getValue(HALF) == DoubleBlockHalf.LOWER ? true : blockstate.is(this);
 	}
 
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(FACING, WATERLOGGED, HALF, MIRROR);
 	}
 
@@ -113,76 +150,70 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return getShapeForDirection(state.get(FACING), state.get(HALF) == DoubleBlockHalf.UPPER);
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
+		return getShapeForDirection(state.getValue(FACING), state.getValue(HALF) == DoubleBlockHalf.UPPER);
 	}
 
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
-		if (worldIn.isRemote) {
-			return ActionResultType.SUCCESS;
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
+			InteractionHand hand, BlockHitResult hit) {
+		if (world.isClientSide()) {
+			return InteractionResult.SUCCESS;
 		} else {
-			if(state.get(HALF) == DoubleBlockHalf.LOWER) {
-				//BlockState front1 = worldIn.getBlockState(pos.offset(state.get(FACING)));
-				//BlockState front2 = worldIn.getBlockState(pos.up().offset(state.get(FACING)));
-				//if(front1.isSolid() || front2.isSolid())
-				if(!Util.accessCheck(worldIn, pos, state.get(FACING)) || !Util.accessCheck(worldIn, pos.up(), state.get(FACING)))
-					return ActionResultType.CONSUME;
-				TileEntity tileentity = worldIn.getTileEntity(pos);
+			if(state.getValue(HALF) == DoubleBlockHalf.LOWER) {
+				if(!Util.accessCheck(world, pos, state.getValue(FACING)) || !Util.accessCheck(world, pos.above(), state.getValue(FACING)))
+					return InteractionResult.CONSUME;
+				BlockEntity tileentity = world.getBlockEntity(pos);
 				if (tileentity instanceof CupboardTileEntity) {
-					player.openContainer((CupboardTileEntity) tileentity);
-					PiglinTasks.func_234478_a_(player, true);
+					player.openMenu((CupboardTileEntity) tileentity);
+					PiglinAi.angerNearbyPiglins(player, true);
 				}
 			}
 			else {
-				//BlockState front1 = worldIn.getBlockState(pos.offset(state.get(FACING)));
-				//BlockState front2 = worldIn.getBlockState(pos.down().offset(state.get(FACING)));
-				//if(front1.isSolid() || front2.isSolid())
-				if(!Util.accessCheck(worldIn, pos, state.get(FACING)) || !Util.accessCheck(worldIn, pos.down(), state.get(FACING)))
-					return ActionResultType.CONSUME;
-				TileEntity tileentity = worldIn.getTileEntity(pos.down());
+				if(!Util.accessCheck(world, pos, state.getValue(FACING)) || !Util.accessCheck(world, pos.below(), state.getValue(FACING)))
+					return InteractionResult.CONSUME;
+				BlockEntity tileentity = world.getBlockEntity(pos.below());
 				if (tileentity instanceof CupboardTileEntity) {
-					player.openContainer((CupboardTileEntity) tileentity);
-					PiglinTasks.func_234478_a_(player, true);
+					player.openMenu((CupboardTileEntity) tileentity);
+					PiglinAi.angerNearbyPiglins(player, true);
 				}
 			}
-			return ActionResultType.CONSUME;
+			return InteractionResult.CONSUME;
 		}
 	}
 
 	@Override
-	public void onReplaced(BlockState state, World worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		if (!state.isIn(newState.getBlock())) {
-			CupboardTileEntity tileentity = getTE(state, worldIn, pos);
+	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+		if (!state.is(newState.getBlock())) {
+			CupboardTileEntity tileentity = getTE(state, world, pos);
 			
-			if(state.get(HALF) == DoubleBlockHalf.LOWER) {
-				BlockState upper = worldIn.getBlockState(pos.up());
+			if(state.getValue(HALF) == DoubleBlockHalf.LOWER) {
+				BlockState upper = world.getBlockState(pos.above());
 				if(upper.getBlock() == this)
-					worldIn.setBlockState(pos.up(), getFluidState(upper).getFluid() == Fluids.WATER ? getFluidState(upper).getBlockState() : Blocks.AIR.getDefaultState(), 35);
+					world.setBlock(pos.above(), getFluidState(upper).getType() == Fluids.WATER ? getFluidState(upper).createLegacyBlock() : Blocks.AIR.defaultBlockState(), 35);
 				if (tileentity != null) {
-					InventoryHelper.dropInventoryItems(worldIn, pos, (IInventory) tileentity);
-					worldIn.updateComparatorOutputLevel(pos, this);
-					worldIn.updateComparatorOutputLevel(pos.up(), this);
+					Containers.dropContents(world, pos, (Container) tileentity);
+					world.updateNeighbourForOutputSignal(pos, this);
+					world.updateNeighbourForOutputSignal(pos.above(), this);
 				}
 			}
 			else {
-				BlockState lower = worldIn.getBlockState(pos.down());
+				BlockState lower = world.getBlockState(pos.below());
 				if(lower.getBlock() == this)
-					worldIn.setBlockState(pos.down(), getFluidState(lower).getFluid() == Fluids.WATER ? getFluidState(lower).getBlockState() : Blocks.AIR.getDefaultState(), 35);
+					world.setBlock(pos.below(), getFluidState(lower).getType() == Fluids.WATER ? getFluidState(lower).createLegacyBlock() : Blocks.AIR.defaultBlockState(), 35);
 				if (tileentity != null) {
-					InventoryHelper.dropInventoryItems(worldIn, pos.down(), (IInventory) tileentity);
-					worldIn.updateComparatorOutputLevel(pos, this);
-					worldIn.updateComparatorOutputLevel(pos.down(), this);
+					Containers.dropContents(world, pos.below(), (Container) tileentity);
+					world.updateNeighbourForOutputSignal(pos, this);
+					world.updateNeighbourForOutputSignal(pos.below(), this);
 				}
 			}
-			super.onReplaced(state, worldIn, pos, newState, isMoving);
+			super.onRemove(state, world, pos, newState, isMoving);
 		}
 	}
 
 	@Override
-	public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
-		if(state.get(HALF) == DoubleBlockHalf.UPPER)
+	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+		if(state.getValue(HALF) == DoubleBlockHalf.UPPER)
 			return;
 		CupboardTileEntity tileentity = getTE(state, worldIn, pos);
 		if (tileentity != null) {
@@ -191,58 +222,53 @@ public class Cupboard extends BaseBlock implements IWaterLoggable, ITileEntityPr
 
 	}
 	
-	private CupboardTileEntity getTE(BlockState state, World worldIn, BlockPos pos) {
-		TileEntity tileentity;
-		if(state.get(HALF) == DoubleBlockHalf.LOWER)
-			tileentity = worldIn.getTileEntity(pos);
+	private CupboardTileEntity getTE(BlockState state, Level world, BlockPos pos) {
+		BlockEntity tileentity;
+		if(state.getValue(HALF) == DoubleBlockHalf.LOWER)
+			tileentity = world.getBlockEntity(pos);
 		else
-			tileentity = worldIn.getTileEntity(pos.down());
+			tileentity = world.getBlockEntity(pos.below());
 		if (tileentity != null && tileentity instanceof CupboardTileEntity)
 			return (CupboardTileEntity) tileentity;
 		return null;
 	}
 
 	@Override
-	public BlockRenderType getRenderType(BlockState state) {
-		return BlockRenderType.MODEL;
+	public RenderShape getRenderShape(BlockState p_60550_) {
+		return RenderShape.MODEL;
 	}
 	
 	@Override
-	public boolean eventReceived(BlockState state, World worldIn, BlockPos pos, int id, int param) {
-		super.eventReceived(state, worldIn, pos, id, param);
-		TileEntity tileentity = worldIn.getTileEntity(pos);
-		return tileentity == null ? false : tileentity.receiveClientEvent(id, param);
+	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int id, int param) {
+		super.triggerEvent(state, world, pos, id, param);
+		BlockEntity tileentity = world.getBlockEntity(pos);
+		return tileentity == null ? false : tileentity.triggerEvent(id, param);
 	}
 
-	@Override
+	/*@Override
 	@Nullable
 	public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
 		TileEntity tileentity = worldIn.getTileEntity(pos);
 		return tileentity instanceof INamedContainerProvider ? (INamedContainerProvider) tileentity : null;
+	}*/
+	
+	
+	@Override
+	public int getAnalogOutputSignal(BlockState state, Level world, BlockPos pos) {
+		if(state.getValue(HALF) == DoubleBlockHalf.LOWER)
+			return IComparetorOverride.getComparetorOverride(world, pos);
+		else
+			return IComparetorOverride.getComparetorOverride(world, pos.below());
 	}
 	
 	@Override
-	public boolean hasTileEntity(BlockState state) {
-		return true;//state.get(HALF) == DoubleBlockHalf.LOWER;
-	}
-	
-	@Override
-	@Nullable
-	public TileEntity createNewTileEntity(IBlockReader worldIn) {
-		return new CupboardTileEntity();
-	}
-	
-	@Override
-	public boolean hasComparatorInputOverride(BlockState state) {
+	public boolean hasAnalogOutputSignal(BlockState p_60457_) {
 		return true;
 	}
-	
+
 	@Override
-	public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
-		if(blockState.get(HALF) == DoubleBlockHalf.LOWER)
-			return IComparetorOverride.getComparetorOverride(worldIn, pos);
-		else
-			return IComparetorOverride.getComparetorOverride(worldIn, pos.down());
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new CupboardTileEntity(pos, state);
 	}
 }
 

@@ -246,6 +246,7 @@ public class Hedge extends BaseDerivativeBlock implements SimpleWaterloggedBlock
 			return false;
 		}
 	}
+	
 	@Override
 	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn,
 			BlockPos currentPos, BlockPos facingPos) {

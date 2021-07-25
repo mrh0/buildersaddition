@@ -38,7 +38,7 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 	
 	@Override
 	protected AbstractContainerMenu createMenu(int windowId, Inventory inv) {
-		return ShelfContainer.create(windowId, inv, this.getBlockPos(), this.handler);;
+		return ShelfContainer.create(windowId, inv, this.getBlockPos(), this.handler);
 	}
 	
 	@Override

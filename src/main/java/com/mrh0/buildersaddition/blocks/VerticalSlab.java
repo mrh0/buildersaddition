@@ -12,6 +12,7 @@ import net.minecraft.tags.FluidTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -152,41 +154,39 @@ public class VerticalSlab extends BaseDerivativeBlock implements SimpleWaterlogg
 	}
 
 	@Override
-	public boolean receiveFluid(BlockGetter worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
+	public boolean placeLiquid(LevelAccessor worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
 		return (state.getValue(TYPE) != VerticalSlabState.DOUBLEX && state.getValue(TYPE) != VerticalSlabState.DOUBLEZ)
-				? SimpleWaterloggedBlock.super.receiveFluid(worldIn, pos, state, fluidStateIn)
+				? SimpleWaterloggedBlock.super.placeLiquid(worldIn, pos, state, fluidStateIn)
 				: false;
 	}
 
 	@Override
-	public boolean canContainFluid(BlockGetter worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
+	public boolean canPlaceLiquid(BlockGetter worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
 		return (state.getValue(TYPE) != VerticalSlabState.DOUBLEX && state.getValue(TYPE) != VerticalSlabState.DOUBLEZ)
-				? SimpleWaterloggedBlock.super.canContainFluid(worldIn, pos, state, fluidIn)
+				? SimpleWaterloggedBlock.super.canPlaceLiquid(worldIn, pos, state, fluidIn)
 				: false;
 	}
 
 	@Override
-	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
+	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn,
 			BlockPos currentPos, BlockPos facingPos) {
 		if (stateIn.getValue(WATERLOGGED)) {
-			worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
+			worldIn.getLiquidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(worldIn));
 		}
 		return stateIn;
 	}
 
 	@Override
-	public boolean allowsMovement(BlockState state, BlockGetter worldIn, BlockPos pos, PathType type) {
+	public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
 		switch (type) {
 		case LAND:
 			return false;
 		case WATER:
-			return worldIn.getFluidState(pos).is(FluidTags.WATER);
+			return world.getFluidState(pos).is(FluidTags.WATER);
 		case AIR:
 			return false;
 		default:
 			return false;
 		}
 	}
-	
-	
 }

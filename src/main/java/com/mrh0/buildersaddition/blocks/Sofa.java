@@ -1,60 +1,60 @@
 package com.mrh0.buildersaddition.blocks;
 
+import com.mojang.math.Vector3d;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.blocks.base.ISeat;
 import com.mrh0.buildersaddition.entity.SeatEntity;
 import com.mrh0.buildersaddition.state.SofaState;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.HorizontalBlock;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.state.DirectionProperty;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer.Builder;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
 
-import EnumProperty;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition.Builder;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
+import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class Sofa extends BaseDerivativeBlock implements ISeat {
 
 	public static final EnumProperty<SofaState> STATE = EnumProperty.<SofaState>create("state", SofaState.class);
-	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
+	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
-	protected static final VoxelShape SHAPE_BASE = Block.makeCuboidShape(0d, 2d, 0d, 16d, 9d, 16d);
+	protected static final VoxelShape SHAPE_BASE = Block.box(0d, 2d, 0d, 16d, 9d, 16d);
 	
-	protected static final VoxelShape SHAPE_BACK_NORTH = Block.makeCuboidShape(0d, 9d, 12d, 16d, 16d, 16d);
-	protected static final VoxelShape SHAPE_BACK_EAST = Block.makeCuboidShape(0d, 9d, 0d, 4d, 16d, 16d);
-	protected static final VoxelShape SHAPE_BACK_SOUTH = Block.makeCuboidShape(0d, 9d, 0d, 16d, 16d, 4d);
-	protected static final VoxelShape SHAPE_BACK_WEST = Block.makeCuboidShape(12d, 9d, 0d, 16d, 16d, 16d);
+	protected static final VoxelShape SHAPE_BACK_NORTH = Block.box(0d, 9d, 12d, 16d, 16d, 16d);
+	protected static final VoxelShape SHAPE_BACK_EAST = Block.box(0d, 9d, 0d, 4d, 16d, 16d);
+	protected static final VoxelShape SHAPE_BACK_SOUTH = Block.box(0d, 9d, 0d, 16d, 16d, 4d);
+	protected static final VoxelShape SHAPE_BACK_WEST = Block.box(12d, 9d, 0d, 16d, 16d, 16d);
 	
-	protected static final VoxelShape SHAPE_ARM_NORTH = Block.makeCuboidShape(0d, 9d, 0d, 16d, 14d, 2d);
-	protected static final VoxelShape SHAPE_ARM_EAST = Block.makeCuboidShape(14d, 9d, 0d, 16d, 14d, 16d);
-	protected static final VoxelShape SHAPE_ARM_SOUTH = Block.makeCuboidShape(0d, 9d, 14d, 16d, 14d, 16d);
-	protected static final VoxelShape SHAPE_ARM_WEST = Block.makeCuboidShape(0d, 9d, 0d, 2d, 14d, 16d);
+	protected static final VoxelShape SHAPE_ARM_NORTH = Block.box(0d, 9d, 0d, 16d, 14d, 2d);
+	protected static final VoxelShape SHAPE_ARM_EAST = Block.box(14d, 9d, 0d, 16d, 14d, 16d);
+	protected static final VoxelShape SHAPE_ARM_SOUTH = Block.box(0d, 9d, 14d, 16d, 14d, 16d);
+	protected static final VoxelShape SHAPE_ARM_WEST = Block.box(0d, 9d, 0d, 2d, 14d, 16d);
 	
 	public Sofa(String name) {
 		super("sofa_" + name, Blocks.WHITE_WOOL);
-		this.setDefaultState(this.getDefaultState().with(STATE, SofaState.Both).with(FACING, Direction.NORTH));
+		this.registerDefaultState(this.defaultBlockState().setValue(STATE, SofaState.Both).setValue(FACING, Direction.NORTH));
 	}
 
 	@Override
-	protected void fillStateContainer(Builder<Block, BlockState> builder) {
+	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(STATE, FACING);
 	}
 	
@@ -71,101 +71,100 @@ public class Sofa extends BaseDerivativeBlock implements ISeat {
 		default:
 			break;
 		}
-		return VoxelShapes.empty();
+		return Shapes.empty();
 	}
 
 	public VoxelShape getShape(BlockState state) {
-		VoxelShape shape = VoxelShapes.empty();
-		SofaState s = state.get(STATE);
-		Direction d = state.get(FACING);
+		VoxelShape shape = Shapes.empty();
+		SofaState s = state.getValue(STATE);
+		Direction d = state.getValue(FACING);
 		if(s == SofaState.Left)
-			shape = getArm(d.rotateY().rotateY().rotateY());
+			shape = getArm(d.getCounterClockWise());
 		if(s == SofaState.Right)
-			shape = getArm(d.rotateY());
+			shape = getArm(d.getClockWise());
 		if(s == SofaState.Both)
-			shape = VoxelShapes.or(getArm(d.rotateY()), getArm(d.rotateY().rotateY().rotateY()));
+			shape = Shapes.or(getArm(d.getClockWise()), getArm(d.getCounterClockWise()));
 		switch(d) {
 			case EAST:
-				return VoxelShapes.or(SHAPE_BASE, SHAPE_BACK_EAST, shape);
+				return Shapes.or(SHAPE_BASE, SHAPE_BACK_EAST, shape);
 			case NORTH:
-				return VoxelShapes.or(SHAPE_BASE, SHAPE_BACK_NORTH, shape);
+				return Shapes.or(SHAPE_BASE, SHAPE_BACK_NORTH, shape);
 			case SOUTH:
-				return VoxelShapes.or(SHAPE_BASE, SHAPE_BACK_SOUTH, shape);
+				return Shapes.or(SHAPE_BASE, SHAPE_BACK_SOUTH, shape);
 			case WEST:
-				return VoxelShapes.or(SHAPE_BASE, SHAPE_BACK_WEST, shape);
+				return Shapes.or(SHAPE_BASE, SHAPE_BACK_WEST, shape);
 			default:
 				return SHAPE_BASE;
 		}
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 		return getShape(state);
 	}
 	
-	public boolean connects(Direction current, IWorld worldIn, BlockPos pos, Direction dir, boolean disCheck) {
-		BlockState adj = worldIn.getBlockState(pos.offset(dir));
+	public boolean connects(Direction current, LevelAccessor worldIn, BlockPos pos, Direction dir, boolean disCheck) {
+		BlockState adj = worldIn.getBlockState(pos.relative(dir));
 		if(adj.getBlock() instanceof Sofa) {
-			SofaState s = adj.get(STATE);
-			Direction sd = adj.get(FACING);
+			SofaState s = adj.getValue(STATE);
+			Direction sd = adj.getValue(FACING);
 			if((s == SofaState.Both || 
-				(current == sd && dir == current.rotateY() && s == SofaState.Left) ||
-				(current == sd && dir == current.rotateYCCW() && s == SofaState.Right)) && !disCheck)
+				(current == sd && dir == current.getClockWise() && s == SofaState.Left) ||
+				(current == sd && dir == current.getCounterClockWise() && s == SofaState.Right)) && !disCheck)
 				return false;
-			return current == adj.get(FACING);
+			return current == adj.getValue(FACING);
 		}
 		return false;
 	}
 	
-	public BlockState getState(Direction dir, IWorld worldIn, BlockPos pos, boolean disCheck) {
-		boolean l = connects(dir, worldIn, pos, dir.rotateY(), disCheck);
-		boolean r = connects(dir, worldIn, pos, dir.rotateYCCW(), disCheck);
+	public BlockState getState(Direction dir, LevelAccessor worldIn, BlockPos pos, boolean disCheck) {
+		boolean l = connects(dir, worldIn, pos, dir.getClockWise(), disCheck);
+		boolean r = connects(dir, worldIn, pos, dir.getCounterClockWise(), disCheck);
 		if(l && !r)
-			return getDefaultState().with(STATE, SofaState.Left).with(FACING, dir);
+			return defaultBlockState().setValue(STATE, SofaState.Left).setValue(FACING, dir);
 		if(!l && r)
-			return getDefaultState().with(STATE, SofaState.Right).with(FACING, dir);
+			return defaultBlockState().setValue(STATE, SofaState.Right).setValue(FACING, dir);
 		if(l && r)
-			return getDefaultState().with(STATE, SofaState.None).with(FACING, dir);
-		return getDefaultState().with(STATE, SofaState.Both).with(FACING, dir);
+			return defaultBlockState().setValue(STATE, SofaState.None).setValue(FACING, dir);
+		return defaultBlockState().setValue(STATE, SofaState.Both).setValue(FACING, dir);
 	}
 
 	@Override
-	public BlockState getStateForPlacement(BlockItemUseContext c) {
-		if(c.hasSecondaryUseForPlayer()) {
-			return getDefaultState().with(FACING, c.getPlacementHorizontalFacing().getOpposite()).with(STATE, SofaState.Both);
+	public BlockState getStateForPlacement(BlockPlaceContext c) {
+		if(c.isSecondaryUseActive()) {
+			return defaultBlockState().setValue(FACING, c.getHorizontalDirection().getOpposite()).setValue(STATE, SofaState.Both);
 		}
-		return getState(c.getPlacementHorizontalFacing().getOpposite(), c.getWorld(), c.getPos(), true);
+		return getState(c.getHorizontalDirection().getOpposite(), c.getLevel(), c.getClickedPos(), true);
 	}
-
+	
 	@Override
-	public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn,
+	public BlockState updateShape(BlockState state, Direction dir, BlockState otherState, LevelAccessor world,
 			BlockPos pos, BlockPos otherPos) {
-		return getState(stateIn.get(FACING), worldIn, pos, false);
+		return getState(state.getValue(FACING), world, pos, false);
 	}
 	
 	@Override
-	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-		return SeatEntity.createSeat(worldIn, pos, player, SoundEvents.BLOCK_WOOL_HIT);
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		return SeatEntity.createSeat(world, pos, player, SoundEvents.WOOL_HIT);
 	}
 	
-	
-	//Bed Bounce
-	public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-		super.onFallenUpon(worldIn, pos, entityIn, fallDistance * 0.5F);
+	@Override
+	public void fallOn(Level world, BlockState state, BlockPos pos, Entity ent, float dis) {
+		super.fallOn(world, state, pos, ent, dis * 0.5F);
 	}
 	
-	public void onLanded(IBlockReader worldIn, Entity entityIn) {
+	public void updateEntityAfterFallOn(BlockGetter world, Entity entityIn) {
 		if (entityIn.isSuppressingBounce())
-			super.onLanded(worldIn, entityIn);
+			super.updateEntityAfterFallOn(world, entityIn);
 		else
-			this.func_226860_a_(entityIn);
+			this.bounceUp(entityIn);
 	}
 
-	private void func_226860_a_(Entity entity) {
-		Vector3d vector3d = entity.getMotion();
+	private void bounceUp(Entity entity) {
+		Vec3 vector3d = entity.getDeltaMovement();
 		if (vector3d.y < 0.0D) {
 			double d0 = entity instanceof LivingEntity ? 1.0D : 0.8D;
-			entity.setMotion(vector3d.x, -vector3d.y * (double)0.66F * d0, vector3d.z);
+			entity.setDeltaMovement(vector3d.x, -vector3d.y * (double)0.66F * d0, vector3d.z);
 		}
 	}
 }

@@ -206,7 +206,7 @@ public class BedsideTable extends BaseDerivativeBlock implements SimpleWaterlogg
 	}
 
 	@Override
-	public BlockEntity newBlockEntity(BlockPos p_153215_, BlockState p_153216_) {
-		return new BedsideTileEntity();
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new BedsideTileEntity(pos, state);
 	}
 }

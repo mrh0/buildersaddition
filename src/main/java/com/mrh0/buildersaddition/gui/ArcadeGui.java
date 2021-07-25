@@ -14,6 +14,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.ContainerScreen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -30,7 +31,7 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	private static final ResourceLocation GUI = new ResourceLocation(BuildersAddition.MODID,
 			"textures/gui/container/arcade_gui.png");
 
-	public ArcadeGui(ArcadeContainer screenContainer, Inventory inv, TextComponent tc) {
+	public ArcadeGui(ArcadeContainer screenContainer, Inventory inv, Component tc) {
 		super(screenContainer, inv, tc);
 		this.screenContainer = screenContainer;
 		this.te = (ArcadeTileEntity) Minecraft.getInstance().level.getBlockEntity(screenContainer.pos);

@@ -22,7 +22,7 @@ public class CounterTileEntity extends BaseChestTileEntity implements ICompareto
 	}
 	
 	protected void playSound(BlockState state, SoundEvent evt) {
-		Vec3i vector3i = state.getValue(Counter.FACING).getDirectionVec();
+		Vec3i vector3i = state.getValue(Counter.FACING).getNormal();
 		double d0 = (double) this.getBlockPos().getX() + 0.5D + (double) vector3i.getX() / 2.0D;
 		double d1 = (double) this.getBlockPos().getY() + 0.5D + (double) vector3i.getY() / 2.0D;
 		double d2 = (double) this.getBlockPos().getZ() + 0.5D + (double) vector3i.getZ() / 2.0D;

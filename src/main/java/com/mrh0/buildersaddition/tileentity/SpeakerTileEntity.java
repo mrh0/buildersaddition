@@ -5,28 +5,17 @@ import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.container.SpeakerContainer;
 import com.mrh0.buildersaddition.network.IIntData;
 import com.mrh0.buildersaddition.tileentity.base.BaseInstrument;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
 
-public class SpeakerTileEntity extends BaseInstrument implements INamedContainerProvider, IIntData {
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, IIntData {
 
 	private int instruments;
 	
-	public SpeakerTileEntity() {
-		super(Index.SPEAKER_TILE_ENTITY_TYPE);
+	public SpeakerTileEntity(BlockPos pos, BlockState state) {
+		super(Index.SPEAKER_TILE_ENTITY_TYPE, pos, state);
 	}
 	
 	@Override

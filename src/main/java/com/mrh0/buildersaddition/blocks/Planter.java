@@ -53,7 +53,7 @@ public class Planter extends BaseDerivativeBlock {
 			return InteractionResult.PASS;
 		ItemStack i = player.getItemInHand(hand);
 		if (i.getItem() instanceof HoeItem) {
-			i.damageItem(1, player, (Player e) -> {});
+			i.hurtAndBreak(1, player, (Player e) -> {});
 			world.setBlockAndUpdate(pos, defaultBlockState().setValue(STATE, PlanterState.Farmland));
 			world.playSound(player, pos, SoundEvents.GRAVEL_PLACE, SoundSource.BLOCKS, 1f, 1f);
 			return InteractionResult.SUCCESS;

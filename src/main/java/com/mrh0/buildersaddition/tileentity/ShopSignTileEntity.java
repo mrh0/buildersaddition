@@ -1,20 +1,22 @@
 package com.mrh0.buildersaddition.tileentity;
 
 import com.mrh0.buildersaddition.Index;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
-import net.minecraft.tileentity.TileEntity;
 
-public class ShopSignTileEntity extends TileEntity {
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class ShopSignTileEntity extends BlockEntity {
 
 	private ItemStack item;
 	
-	public ShopSignTileEntity() {
-		super(Index.SHOP_SIGN_TILE_ENTITY_TYPE);
+	public ShopSignTileEntity(BlockPos pos, BlockState state) {
+		super(Index.SHOP_SIGN_TILE_ENTITY_TYPE, pos, state);
 		item = ItemStack.EMPTY;
 	}
 	
@@ -27,8 +29,8 @@ public class ShopSignTileEntity extends TileEntity {
 			item = ItemStack.EMPTY;
 		this.item = item.copy();
 		this.item.setCount(1);
-		world.notifyBlockUpdate(pos, getBlockState(), getBlockState(), 0);
-		this.markDirty();
+		level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 0);
+		this.setChanged();
 		
 	}
 	
@@ -37,41 +39,43 @@ public class ShopSignTileEntity extends TileEntity {
 	}
 	
 	@Override
-	public void read(BlockState state, CompoundNBT nbt) {
-		item = ItemStack.read(nbt.getCompound("item"));
+	public CompoundTag save(CompoundTag nbt) {
+		nbt.put("item", item.save(new CompoundTag()));
+		return super.save(nbt);
+	}
+	
+	@Override
+	public void load(CompoundTag nbt) {
+		item = ItemStack.of(nbt.getCompound("item"));
 		if(item == null)
 			item = ItemStack.EMPTY;
-		super.read(state, nbt);
+		super.load(nbt);
 	}
 	
-	@Override
-	public CompoundNBT write(CompoundNBT nbt) {
-		nbt.put("item", item.write(new CompoundNBT()));
-		return super.write(nbt);
-	}
+	
 	
 	@Override
-	public SUpdateTileEntityPacket getUpdatePacket() {
-		CompoundNBT update = getUpdateTag();
+	public ClientboundBlockEntityDataPacket getUpdatePacket() {
+		CompoundTag update = getUpdateTag();
         int data = 0;
-        return new SUpdateTileEntityPacket(this.pos, data, update);
+        return new ClientboundBlockEntityDataPacket(this.getBlockPos(), data, update);
 	}
 	
 	@Override
-	public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
-		CompoundNBT update = pkt.getNbtCompound();
-        handleUpdateTag(this.getBlockState(), update);
+	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+		CompoundTag update = pkt.getTag();
+        handleUpdateTag(update);
 	}
 	
 	@Override
-	public CompoundNBT getUpdateTag() {
-		CompoundNBT nbt = new CompoundNBT();
-		write(nbt);
+	public CompoundTag getUpdateTag() {
+		CompoundTag nbt = new CompoundTag();
+		save(nbt);
         return nbt;
 	}
 	
 	@Override
-	public void handleUpdateTag(BlockState state, CompoundNBT nbt) {
-		read(state, nbt);
+	public void handleUpdateTag(CompoundTag nbt) {
+		load(nbt);
 	}
 }
