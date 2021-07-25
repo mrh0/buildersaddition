@@ -219,18 +219,18 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	
 	@Override
 	public void onPlace(BlockState state, Level world, BlockPos pos, BlockState newState, boolean flag) {
-		this.notifyNeighbors(world, pos, state);
+		this.updateNeighborsInFront(world, pos, state);
 	}
 
 	@Override
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (!isMoving && !state.is(newState.getBlock())) {
 			super.onRemove(state, world, pos, newState, isMoving);
-			this.notifyNeighbors(world, pos, state);
+			this.updateNeighborsInFront(world, pos, state);
 		}
 	}
 
-	protected void notifyNeighbors(Level world, BlockPos pos, BlockState state) {
+	protected void updateNeighborsInFront(Level world, BlockPos pos, BlockState state) {
 		Direction direction = state.getValue(VERTICAL_FACING);
 		BlockPos blockpos = pos.relative(direction.getOpposite());
 		if (net.minecraftforge.event.ForgeEventFactory.onNeighborNotify(world, pos, world.getBlockState(pos),

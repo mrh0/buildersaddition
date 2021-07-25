@@ -46,7 +46,7 @@ public class CabinetTileEntity extends BaseChestTileEntity implements ICompareto
 
 	@Override
 	protected AbstractContainerMenu createMenu(int id, Inventory inv) {
-		return new ChestMenu(MenuType.GENERIC_9x2, id, inv, this, 2);
+		return  new ChestMenu(MenuType.GENERIC_9x2, id, inv, this, 2); // ChestMenu.twoRows(id, inv);
 	}
 
 	@Override

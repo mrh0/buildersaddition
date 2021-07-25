@@ -25,10 +25,10 @@ public class BookshelfGui extends AbstractContainerScreen<BookshelfContainer> {
 		//this.te = screenContainer.te;
 		//this.screenContainer = screenContainer;
 
-		this.width = 176;
-		this.height = 148;
+		this.imageWidth = 176;
+		this.imageHeight = 148;
 		
-		this.inventoryLabelX = 55;
+		this.inventoryLabelY = 55;
 	}
 
 	// Render
@@ -41,10 +41,10 @@ public class BookshelfGui extends AbstractContainerScreen<BookshelfContainer> {
 	@Override
 	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-		this.minecraft.getTextureManager().bindForSetup(GUI);
-		int i = (this.width - this.width) / 2;
-		int j = (this.height - this.height) / 2;
-		this.blit(stack, i, j, 0, 0, this.width, this.height);
+		RenderSystem.setShaderTexture(0, GUI);//this.minecraft.getTextureManager().bindForSetup(GUI);
+		int i = (this.width - this.imageWidth) / 2;
+		int j = (this.height - this.imageHeight) / 2;
+		this.blit(stack, i, j, 0, 0, this.imageWidth, this.imageHeight);
 	}
 	
 	/*@Override

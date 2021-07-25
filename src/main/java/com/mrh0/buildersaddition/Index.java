@@ -6,7 +6,6 @@ import com.mrh0.buildersaddition.blocks.Bench;
 import com.mrh0.buildersaddition.blocks.Bookshelf;
 import com.mrh0.buildersaddition.blocks.Cabinet;
 import com.mrh0.buildersaddition.blocks.LargeCandle;
-import com.mrh0.buildersaddition.blocks.LuminusGlass;
 import com.mrh0.buildersaddition.blocks.Counter;
 import com.mrh0.buildersaddition.blocks.Crossrail;
 import com.mrh0.buildersaddition.blocks.Cupboard;
@@ -56,6 +55,7 @@ import com.mrh0.buildersaddition.tileentity.ShopSignTileEntity;
 import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
 import com.mrh0.buildersaddition.util.RegistryUtil;
 
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.Motive;
 import net.minecraft.world.inventory.MenuType;
@@ -65,8 +65,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
-
-import ContainerType;
 
 @SuppressWarnings("unchecked")
 public class Index {
@@ -527,7 +525,7 @@ public class Index {
 		IRON_LADDER_ROUGH = new IronLadder("iron_ladder_rough");
 		IRON_FENCE = new IronFence("iron_fence");
 		IRON_FENCE_ROUGH = new IronFence("iron_fence_rough");
-		ROUGH_IRON_BLOCK = new GenericBlock("rough_iron_block", Block.Properties.from(Blocks.IRON_BLOCK), new BlockOptions());
+		ROUGH_IRON_BLOCK = new GenericBlock("rough_iron_block", Block.Properties.copy(Blocks.IRON_BLOCK), new BlockOptions());
 		GRAVEL_PATH = new GravelPath();
 		CROSSRAIL = new Crossrail();
 		SPEAKER = new Speaker();
@@ -592,13 +590,13 @@ public class Index {
 	}
 	
 	public static void containers() {
-		BOOKSHELF_CONTAINER = (ContainerType<BookshelfContainer>) 
+		BOOKSHELF_CONTAINER = (MenuType<BookshelfContainer>) 
 				ContainerRegistry.instance.register(IForgeContainerType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
-		SHELF_CONTAINER = (ContainerType<ShelfContainer>) 
+		SHELF_CONTAINER = (MenuType<ShelfContainer>) 
 				ContainerRegistry.instance.register(IForgeContainerType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
-		SPEAKER_CONTAINER = (ContainerType<SpeakerContainer>) 
+		SPEAKER_CONTAINER = (MenuType<SpeakerContainer>) 
 				ContainerRegistry.instance.register(IForgeContainerType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
-		ARCADE_CONTAINER = (ContainerType<ArcadeContainer>) 
+		ARCADE_CONTAINER = (MenuType<ArcadeContainer>) 
 				ContainerRegistry.instance.register(IForgeContainerType.create(ArcadeContainer::create).setRegistryName("arcade_container"), new ContainerOptions());
 	}
 	

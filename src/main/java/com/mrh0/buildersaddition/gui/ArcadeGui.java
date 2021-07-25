@@ -35,9 +35,9 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 		super(screenContainer, inv, tc);
 		this.screenContainer = screenContainer;
 		this.te = (ArcadeTileEntity) Minecraft.getInstance().level.getBlockEntity(screenContainer.pos);
-
-		this.width = 336;
-		this.height = 226;
+		
+		this.imageWidth = 336;
+		this.imageHeight = 226;
 		
 		screen = te.screen;
 		
@@ -75,8 +75,8 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	public void render(PoseStack stack, int x, int y, float p_230430_4_) {
 		super.render(stack, x, y, p_230430_4_);
 		
-		//screen.renderBackground(stack, this.width, this.height);
-		//screen.renderForeground(stack, this.font, this.width, this.height);
+		screen.renderBackground(stack, this.width, this.height);
+		screen.renderForeground(stack, this.font, this.width, this.height);
 		
 		//GlStateManager._disableLighting();
 		GlStateManager._disableBlend();
@@ -104,10 +104,11 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	protected void renderBg(PoseStack stack, float p_97788_, int p_97789_, int p_97790_) {
 		renderBackground(stack);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-		this.minecraft.getTextureManager().bindForSetup(GUI);
-		int i = (this.width - this.width) / 2;
-		int j = (this.height - this.height) / 2;
-		GuiComponent.blit(stack, i, j - 5, 0, 0, this.width, this.height, 512, 256);
+		RenderSystem.setShaderTexture(0, GUI);
+		//this.minecraft.getTextureManager().bindForSetup(GUI);
+		int i = (this.width - this.imageWidth) / 2;
+		int j = (this.height - this.imageHeight) / 2;
+		GuiComponent.blit(stack, i, j - 5, 0, 0, this.imageWidth, this.imageHeight, 512, 256);
 	}
 	
 	@Override

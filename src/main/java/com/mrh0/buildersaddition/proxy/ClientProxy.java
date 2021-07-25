@@ -5,13 +5,14 @@ import com.mrh0.buildersaddition.client.render.entity.SeatRenderFactory;
 
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fmlclient.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(final FMLCommonSetupEvent evt) {
-		RenderingRegistry.registerEntityRenderingHandler(Index.SEAT_ENTITY_TYPE, new SeatRenderFactory());
+		//RenderingRegistry.registerEntityRenderingHandler(Index.SEAT_ENTITY_TYPE, new SeatRenderFactory());
+		EntityRenderers.register(Index.SEAT_ENTITY_TYPE, new SeatRenderFactory());
 		
 		//RenderType transl = RenderType.translucent();
 		RenderType cutout = RenderType.cutoutMipped();       

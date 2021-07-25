@@ -106,10 +106,10 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		return p_59112_;
 	}
 	
-	@Override
+	/*@Override
 	public int getContainerSize() {
 		return 27;
-	}
+	}*/
 
 	@Override
 	protected NonNullList<ItemStack> getItems() {
@@ -121,10 +121,10 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		this.inv = itemsIn;
 	}
 	
-	@Override
+	/*@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inv, Player player) {
 		return ChestMenu.sixRows(id, inv, this);
-	}
+	}*/
 
 	@Override
 	public void startOpen(Player player) {

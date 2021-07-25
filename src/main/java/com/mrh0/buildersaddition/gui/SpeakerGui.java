@@ -38,19 +38,20 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 		this.screenContainer = screenContainer;
 		this.te = (SpeakerTileEntity) Minecraft.getInstance().level.getBlockEntity(screenContainer.pos);
 
-		this.width = 384;
-		this.height = 192;
+		this.imageWidth = 384;
+		this.imageHeight = 192;
 
 		if (BuildersAddition.midi != null)
 			BuildersAddition.midi.midiEvent = this;
 	}
 	
 	@Override
-	public void resize(Minecraft mc, int w, int h) {
-		super.resize(mc, w, h);
+	protected void init() {
+		super.init();
+		
 		int x = this.width / 2;// width
 		int y = this.height / 2;// height
-
+		
 		OnPress p = (b) -> {
 			
 		};
@@ -81,6 +82,11 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 			this.addWidget(btns[i]);// addButton
 			btns[i].active = te.isInstrumentActive(i);// active
 		}
+	}
+	
+	@Override
+	public void resize(Minecraft mc, int w, int h) {
+		super.resize(mc, w, h);
 	}
 
 	// mouseClicked

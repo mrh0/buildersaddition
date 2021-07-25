@@ -16,7 +16,9 @@ import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -52,9 +54,12 @@ public class ClientEventHandler {
 		MenuScreens.register(Index.SHELF_CONTAINER, ShelfGui::new);
 		MenuScreens.register(Index.SPEAKER_CONTAINER, SpeakerGui::new);
 		MenuScreens.register(Index.ARCADE_CONTAINER, ArcadeGui::new);
-    	
-    	ClientRegistry.bindTileEntityRenderer(Index.SHOP_SIGN_TILE_ENTITY_TYPE, ShopSignRenderer::new);
-    	ClientRegistry.bindTileEntityRenderer(Index.SHELF_TILE_ENTITY_TYPE, ShelfRenderer::new);
+		
+		// TODO FIX!
+    	//ClientRegistry.bindTileEntityRenderer(Index.SHOP_SIGN_TILE_ENTITY_TYPE, ShopSignRenderer::new);
+    	//ClientRegistry.bindTileEntityRenderer(Index.SHELF_TILE_ENTITY_TYPE, ShelfRenderer::new);
+		BlockEntityRenderers.register(Index.SHOP_SIGN_TILE_ENTITY_TYPE, c -> new ShopSignRenderer(c.getBlockEntityRenderDispatcher()));
+		BlockEntityRenderers.register(Index.SHELF_TILE_ENTITY_TYPE, c -> new ShelfRenderer(c.getBlockEntityRenderDispatcher()));
     	
     	//Start MIDI controller.
     	if(Config.MIDI_ENABLED.get() && Config.MIDI_INPUT_ENABLED.get())

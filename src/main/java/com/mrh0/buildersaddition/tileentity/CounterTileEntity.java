@@ -14,6 +14,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CounterTileEntity extends BaseChestTileEntity implements IComparetorOverride {
@@ -37,12 +38,12 @@ public class CounterTileEntity extends BaseChestTileEntity implements ICompareto
 
 	@Override
 	public int getContainerSize() {
-		return 0;
+		return 27;
 	}
 
 	@Override
 	protected AbstractContainerMenu createMenu(int id, Inventory inv) {
-		return null;
+		return ChestMenu.threeRows(id, inv, this);//new ChestMenu(MenuType.GENERIC_9x3, id, inv, this, 2);
 	}
 
 	@Override

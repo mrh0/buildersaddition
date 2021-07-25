@@ -45,7 +45,7 @@ public class BedsideTileEntity extends BaseChestTileEntity {
 
 	@Override
 	protected AbstractContainerMenu createMenu(int id, Inventory inv) {
-		return new ChestMenu(MenuType.GENERIC_9x1, id, inv, this, 1);
+		return new ChestMenu(MenuType.GENERIC_9x1, id, inv, this, 1);//ChestMenu.oneRow(id, inv);
 	}
 
 	@Override

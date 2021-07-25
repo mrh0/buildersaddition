@@ -2,6 +2,8 @@ package com.mrh0.buildersaddition.tileentity;
 
 import com.mrh0.buildersaddition.Index;
 
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;

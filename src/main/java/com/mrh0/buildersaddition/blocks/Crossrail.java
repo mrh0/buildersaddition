@@ -30,7 +30,7 @@ public class Crossrail extends BaseRailBlock {
 
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
-		builder.add(SHAPE);
+		builder.add(SHAPE, WATERLOGGED);
 	}
 	
 	@Override
@@ -39,7 +39,7 @@ public class Crossrail extends BaseRailBlock {
 			return RailShape.EAST_WEST;
 		//double x = Math.abs();
 		//double z = Math.abs(cart.getForward().z);
-		if (cart.getMotionDirection().getAxis() == Axis.X) {
+		if (cart.getMotionDirection().getAxis() == Axis.Z) {
 			return RailShape.NORTH_SOUTH;
 		}
 		return RailShape.EAST_WEST;
