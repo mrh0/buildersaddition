@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:cobbled_deepslate_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:cobbled_deepslate",
+		"count": 1
+	}
+}

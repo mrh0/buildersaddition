@@ -1,12 +1,12 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "up": "minecraft:block/%name%_top",
-        "north": "minecraft:block/%name%",
-        "west": "minecraft:block/%name%",
-        "east": "minecraft:block/%name%",
-        "south": "minecraft:block/%name%",
-        "down": "minecraft:block/%name%_top",
-        "particle": "minecraft:block/%name%_top"
+        "up": "minecraft:block/%texture%_top",
+        "north": "minecraft:block/%texture%",
+        "west": "minecraft:block/%texture%",
+        "east": "minecraft:block/%texture%",
+        "south": "minecraft:block/%texture%",
+        "down": "minecraft:block/%texture%_top",
+        "particle": "minecraft:block/%texture%_top"
     }
 }

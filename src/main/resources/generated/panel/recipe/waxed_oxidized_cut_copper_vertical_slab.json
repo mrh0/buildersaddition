@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"S",
+		"S",
+		"S"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:waxed_oxidized_cut_copper"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:waxed_oxidized_cut_copper_vertical_slab",
+		"count": 6
+	}
+}

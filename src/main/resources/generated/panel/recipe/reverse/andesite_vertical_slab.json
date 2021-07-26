@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:andesite_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:andesite",
+		"count": 1
+	}
+}

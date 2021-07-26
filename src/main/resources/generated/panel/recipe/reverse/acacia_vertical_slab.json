@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:acacia_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:acacia_planks",
+		"count": 1
+	}
+}

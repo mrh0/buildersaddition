@@ -1,7 +1,7 @@
 {
     "textures": {
-        "texture": "minecraft:block/%name%",
-        "particle": "minecraft:block/%name%"
+        "texture": "minecraft:block/%texture%",
+        "particle": "minecraft:block/%texture%"
     },
     "display": {
         "gui": {

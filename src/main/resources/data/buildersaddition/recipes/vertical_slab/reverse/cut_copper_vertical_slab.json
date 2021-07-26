@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:cut_copper_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:cut_copper",
+		"count": 1
+	}
+}

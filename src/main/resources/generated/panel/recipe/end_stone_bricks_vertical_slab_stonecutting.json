@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:end_stone_bricks"
+    },
+    "result": "buildersaddition:end_stone_bricks_vertical_slab",
+    "count": 2
+}

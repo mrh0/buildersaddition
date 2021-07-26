@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:mossy_cobblestone_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:mossy_cobblestone",
+		"count": 1
+	}
+}

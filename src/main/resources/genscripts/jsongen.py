@@ -5,13 +5,21 @@ import sys, os, re
 modid = 'buildersaddition'
 params = {}
 
-def copy_template(name, base, target, texture=None, params={}):
+def copy_template(name, base, target, texture=None, top=None, bottom=None, params={}):
 	params['modid'] = modid
 	params['name'] = name
 	if texture==None:
 		params['texture'] = name
 	else:
 		params['texture'] = texture
+	if top==None:
+		params['top'] = name
+	else:
+		params['top'] = top
+	if bottom==None:
+		params['bottom'] = name
+	else:
+		params['bottom'] = bottom
 
 	base_file = 'template/{0}'.format(base)
 	target_file = '../generated/{0}'.format(target.format(**params))

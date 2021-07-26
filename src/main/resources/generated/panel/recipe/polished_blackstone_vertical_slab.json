@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"S",
+		"S",
+		"S"
+	],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:polished_blackstone"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:polished_blackstone_vertical_slab",
+		"count": 6
+	}
+}

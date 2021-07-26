@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "minecraft:block/warped_planks",
+        "particle": "minecraft:block/warped_planks"
+    }
+}

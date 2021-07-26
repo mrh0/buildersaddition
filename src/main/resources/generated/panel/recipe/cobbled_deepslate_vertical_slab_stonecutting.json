@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:cobbled_deepslate"
+    },
+    "result": "buildersaddition:cobbled_deepslate_vertical_slab",
+    "count": 2
+}

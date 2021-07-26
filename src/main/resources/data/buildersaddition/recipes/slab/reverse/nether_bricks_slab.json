@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "minecraft:nether_brick_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:nether_bricks",
+		"count": 1
+	}
+}

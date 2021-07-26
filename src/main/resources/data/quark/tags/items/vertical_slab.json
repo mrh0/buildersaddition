@@ -39,6 +39,16 @@
 	"buildersaddition:blackstone_vertical_slab",
 	"buildersaddition:polished_blackstone_vertical_slab",
 	"buildersaddition:polished_blackstone_bricks_vertical_slab",
-	"buildersaddition:smooth_stone_vertical_slab"
+	"buildersaddition:smooth_stone_vertical_slab",
+	"buildersaddition:deepslate_bricks_vertical_slab",
+	"buildersaddition:deepslate_tiles_vertical_slab",
+	"buildersaddition:cut_copper_vertical_slab",
+	"buildersaddition:exposed_cut_copper_vertical_slab",
+	"buildersaddition:weathered_cut_copper_vertical_slab",
+	"buildersaddition:oxidized_cut_copper_vertical_slab",
+	"buildersaddition:waxed_cut_copper_vertical_slab",
+	"buildersaddition:waxed_exposed_cut_copper_vertical_slab",
+	"buildersaddition:waxed_weathered_cut_copper_vertical_slab",
+	"buildersaddition:waxed_oxidized_cut_copper_vertical_slab"
   ]
 }

@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:purpur_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:purpur_block",
+		"count": 1
+	}
+}

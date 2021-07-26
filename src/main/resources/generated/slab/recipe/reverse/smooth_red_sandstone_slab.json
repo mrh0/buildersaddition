@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "minecraft:smooth_red_sandstone_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:smooth_red_sandstone",
+		"count": 1
+	}
+}

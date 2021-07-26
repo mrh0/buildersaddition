@@ -116,6 +116,11 @@ public class Index {
 	public static Block POLISHED_BLACKSTONE_VERTICAL_SLAB;
 	public static Block POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB;
 	
+	public static Block COBBLED_DEEPSLATE_VERTICAL_SLAB;
+	public static Block POLISHED_DEEPSLATE_VERTICAL_SLAB;
+	public static Block DEEPSLATE_BRICKS_VERTICAL_SLAB;
+	public static Block DEEPSLATE_TILES_VERTICAL_SLAB;
+	
 	public static Block BOP_CHERRY_VERTICAL_SLAB;
 	public static Block BOP_CUT_WHITE_SANDSTONE_VERTICAL_SLAB;
 	public static Block BOP_DEAD_VERTICAL_SLAB;
@@ -381,6 +386,11 @@ public class Index {
 		BLACKSTONE_VERTICAL_SLAB = new VerticalSlab("blackstone", Blocks.BLACKSTONE);
 		POLISHED_BLACKSTONE_VERTICAL_SLAB = new VerticalSlab("polished_blackstone", Blocks.POLISHED_BLACKSTONE);
 		POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB = new VerticalSlab("polished_blackstone_bricks", Blocks.POLISHED_BLACKSTONE_BRICKS);
+		
+		COBBLED_DEEPSLATE_VERTICAL_SLAB = new VerticalSlab("cobbled_deepslate", Blocks.COBBLED_DEEPSLATE);
+		POLISHED_DEEPSLATE_VERTICAL_SLAB = new VerticalSlab("polished_deepslate", Blocks.POLISHED_DEEPSLATE);
+		DEEPSLATE_BRICKS_VERTICAL_SLAB = new VerticalSlab("deepslate_bricks", Blocks.DEEPSLATE_BRICKS);
+		DEEPSLATE_TILES_VERTICAL_SLAB = new VerticalSlab("deepslate_tiles", Blocks.DEEPSLATE_TILES);
 		
 		CUT_STONE_PILLAR = new Pillar("stone", Blocks.STONE);
 		CUT_SMOOTH_STONE_PILLAR = new Pillar("smooth_stone", Blocks.SMOOTH_STONE);

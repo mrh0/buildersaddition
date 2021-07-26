@@ -1,9 +1,9 @@
 {
     "textures": {
-        "texture_top": "minecraft:block/%name%_top",
-        "texture": "minecraft:block/%name%",
-        "texture_bottom": "minecraft:block/%name%_bottom",
-        "particle": "minecraft:block/%name%"
+        "texture_top": "minecraft:block/%top%",
+        "texture": "minecraft:block/%texture%",
+        "texture_bottom": "minecraft:block/%bottom%",
+        "particle": "minecraft:block/%texture%"
     },
     "display": {
         "gui": {

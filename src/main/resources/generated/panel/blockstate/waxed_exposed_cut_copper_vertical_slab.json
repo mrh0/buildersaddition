@@ -1,0 +1,17 @@
+{
+    "variants": {
+    	"type=north,waterlogged=false": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_north"},
+    	"type=east,waterlogged=false": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_east"},
+    	"type=south,waterlogged=false": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_south"},
+    	"type=west,waterlogged=false": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_west"},
+    	"type=double_x,waterlogged=false": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_double"},
+		"type=double_z,waterlogged=false": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_double"},
+    	
+    	"type=north,waterlogged=true": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_north"},
+    	"type=east,waterlogged=true": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_east"},
+    	"type=south,waterlogged=true": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_south"},
+    	"type=west,waterlogged=true": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_west"},
+    	"type=double_x,waterlogged=true": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_double"},
+		"type=double_z,waterlogged=true": { "model": "buildersaddition:block/slab/waxed_exposed_cut_copper_double"}
+    }
+}

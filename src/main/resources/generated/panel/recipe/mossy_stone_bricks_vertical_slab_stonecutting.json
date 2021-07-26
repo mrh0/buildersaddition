@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:mossy_stone_bricks"
+    },
+    "result": "buildersaddition:mossy_stone_bricks_vertical_slab",
+    "count": 2
+}

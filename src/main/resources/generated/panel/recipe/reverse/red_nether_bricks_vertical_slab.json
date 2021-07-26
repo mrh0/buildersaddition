@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:red_nether_bricks_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:red_nether_bricks",
+		"count": 1
+	}
+}

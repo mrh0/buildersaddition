@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "minecraft:polished_deepslate_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:polished_deepslate",
+		"count": 1
+	}
+}

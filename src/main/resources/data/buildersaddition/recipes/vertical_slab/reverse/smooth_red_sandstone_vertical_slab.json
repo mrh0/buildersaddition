@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:smooth_red_sandstone_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:smooth_red_sandstone",
+		"count": 1
+	}
+}

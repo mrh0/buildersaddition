@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "minecraft:quartz_block_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:quartz_block",
+		"count": 1
+	}
+}
