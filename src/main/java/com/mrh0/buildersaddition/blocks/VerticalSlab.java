@@ -14,6 +14,8 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -30,8 +32,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.fml.ModList;
 
 public class VerticalSlab extends BaseDerivativeBlock implements SimpleWaterloggedBlock {
-	public static final EnumProperty<VerticalSlabState> TYPE = EnumProperty.<VerticalSlabState>create("type",
-			VerticalSlabState.class);
+	public static final EnumProperty<VerticalSlabState> TYPE = EnumProperty.<VerticalSlabState>create("type", VerticalSlabState.class);
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	protected static final VoxelShape WEST_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 8.0D, 16.0D, 16.0D);
@@ -54,6 +55,20 @@ public class VerticalSlab extends BaseDerivativeBlock implements SimpleWaterlogg
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(TYPE, WATERLOGGED);
+	}
+	
+	@Override
+	public BlockState mirror(BlockState state, Mirror mirror) {
+		return rotate(state, mirror.getRotation(state.getValue(TYPE).getFacing()));
+	}
+	
+	public BlockState rotate(BlockState state, Rotation rotation) {
+    	return state.setValue(TYPE, VerticalSlabState.reverseFacing(rotation.rotate(state.getValue(TYPE).getFacing()), state.getValue(TYPE).isDouble()));
+	}
+	
+	@Override
+	public BlockState rotate(BlockState state, LevelAccessor world, BlockPos pos, Rotation direction) {
+		return rotate(state, direction);
 	}
 	
 	@Override

@@ -146,14 +146,14 @@ public class Cabinet extends BaseDerivativeBlock implements SimpleWaterloggedBlo
 		}
 	}
 
-	@Override
+	/*@Override
 	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
 		BlockEntity tileentity = worldIn.getBlockEntity(pos);
 		if (tileentity instanceof CabinetTileEntity) {
 			((CabinetTileEntity) tileentity).invTick();
 		}
 
-	}
+	}*/
 
 	@Override
 	public RenderShape getRenderShape(BlockState p_60550_) {

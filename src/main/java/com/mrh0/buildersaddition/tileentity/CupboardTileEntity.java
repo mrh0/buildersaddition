@@ -20,6 +20,9 @@ import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 public class CupboardTileEntity extends BaseChestTileEntity implements IComparetorOverride {
 	
@@ -42,21 +45,21 @@ public class CupboardTileEntity extends BaseChestTileEntity implements IComparet
 	}
 	
 	@Override
-	public <T> net.minecraftforge.common.util.LazyOptional<T> getCapability(
-			net.minecraftforge.common.capabilities.Capability<T> cap, Direction side) {
-		if (!this.isRemoved() && cap == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
-			if (this.invHandler == null) {
+	public <T> LazyOptional<T> getCapability(
+			Capability<T> cap, Direction side) {
+		if (!this.isRemoved() && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (this.chestHandler == null) {
 				if(isLower()) {
-					this.invHandler = this.getInvHandler();//net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
+					this.chestHandler = LazyOptional.of(this::createHandler);//net.minecraftforge.common.util.LazyOptional.of(this::createHandler);
 				}
 				else {
 					BlockEntity te = level.getBlockEntity(getBlockPos().below());
 					if(te != null && te instanceof CupboardTileEntity) {
 						CupboardTileEntity cte = (CupboardTileEntity)te;
-						this.invHandler = this.getInvHandler();// net.minecraftforge.common.util.LazyOptional.of(cte::createHandler);
+						this.chestHandler = LazyOptional.of(this::createHandler);// net.minecraftforge.common.util.LazyOptional.of(cte::createHandler);
 					}
 					else {
-						return net.minecraftforge.common.util.LazyOptional.empty();
+						return LazyOptional.empty();
 					}
 				}
 			}

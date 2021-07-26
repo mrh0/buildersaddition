@@ -151,14 +151,14 @@ public class Counter extends BaseDerivativeBlock implements SimpleWaterloggedBlo
 		super.onRemove(state, world, pos, newState, isMoving);
 	}
 
-	@Override
+	/*@Override
 	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
 		BlockEntity tileentity = worldIn.getBlockEntity(pos);
 		if (tileentity instanceof CounterTileEntity) {
 			((CounterTileEntity) tileentity).invTick();
 		}
 
-	}
+	}*/
 
 	@Override
 	public RenderShape getRenderShape(BlockState p_60550_) {

@@ -158,14 +158,14 @@ public class BedsideTable extends BaseDerivativeBlock implements SimpleWaterlogg
 		}
 	}
 
-	@Override
+	/*@Override
 	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
 		BlockEntity tileentity = worldIn.getBlockEntity(pos);
 		if (tileentity instanceof BedsideTileEntity) {
 			((BedsideTileEntity) tileentity).invTick();
 		}
 
-	}
+	}*/
 
 	@Override
 	public RenderShape getRenderShape(BlockState state) {

@@ -71,18 +71,20 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 		
 		helpBtn = new Button(x + 52 - 12, y + 24 * 4, 20, 20, new TextComponent("?"), (b) -> {});
 
-		this.addWidget(connectBtn); //addButton
-		this.addWidget(helpBtn); //addButton
+		this.addRenderableWidget(connectBtn); //addButton
+		this.addRenderableWidget(helpBtn); //addButton
 
 		btns = new Button[SIZE];
 
 		for (int i = 0; i < SIZE; i++) {
 			btns[i] = new Button(x + (i > 7 ? -100 : 4), y + (i % 8 * 24) - 4 * 24, 96, 20,
 					new TranslatableComponent("note.buildersaddition." + Notes.instrumentNames[i]), p);
-			this.addWidget(btns[i]);// addButton
+			this.addRenderableWidget(btns[i]);// addButton
 			btns[i].active = te.isInstrumentActive(i);// active
 		}
 	}
+	
+	
 	
 	@Override
 	public void resize(Minecraft mc, int w, int h) {
@@ -123,6 +125,8 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 	public void render(PoseStack stack, int x, int y, float partialTicks) {
 		super.render(stack, x, y, partialTicks);
 		//GlStateManager._disableLighting();
+		if(btns == null)
+			return;
 		GlStateManager._disableBlend();
 
 		for (int i = 0; i < SIZE; i++) {
@@ -166,5 +170,10 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
 		renderBackground(stack);//renderBackground
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+	}
+	
+	@Override
+	protected void renderLabels(PoseStack p_97808_, int p_97809_, int p_97810_) {
+		//super.renderLabels(p_97808_, p_97809_, p_97810_);
 	}
 }

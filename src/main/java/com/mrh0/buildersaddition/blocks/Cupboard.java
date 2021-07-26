@@ -211,7 +211,7 @@ public class Cupboard extends BaseBlock implements SimpleWaterloggedBlock, Entit
 		}
 	}
 
-	@Override
+	/*@Override
 	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
 		if(state.getValue(HALF) == DoubleBlockHalf.UPPER)
 			return;
@@ -220,7 +220,7 @@ public class Cupboard extends BaseBlock implements SimpleWaterloggedBlock, Entit
 			tileentity.invTick();
 		}
 
-	}
+	}*/
 	
 	private CupboardTileEntity getTE(BlockState state, Level world, BlockPos pos) {
 		BlockEntity tileentity;

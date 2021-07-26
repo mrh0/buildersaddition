@@ -6,34 +6,100 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.ChestBlockEntity;
+import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.IItemHandlerModifiable;
+import net.minecraftforge.items.wrapper.InvWrapper;
 
 public abstract class BaseChestTileEntity extends RandomizableContainerBlockEntity
 		implements IComparetorOverride, ICapabilityProvider {
 	private NonNullList<ItemStack> inv = NonNullList.withSize(getContainerSize(), ItemStack.EMPTY);
-	private int numPlayersUsing;
+	private ContainerOpenersCounter openersCounter = new ContainerOpenersCounter() {
+		protected void onOpen(Level world, BlockPos pos, BlockState state) {
+			playSound(state, SoundEvents.BARREL_OPEN);
+			//updateBlockState(state, true);
+		}
+
+		protected void onClose(Level world, BlockPos pos, BlockState state) {
+			playSound(state, SoundEvents.BARREL_CLOSE);
+			//updateBlockState(state, false);
+		}
+
+		protected void openerCountChanged(Level world, BlockPos pos, BlockState state, int a, int b) {
+			
+		}
+
+		protected boolean isOwnContainer(Player player) {
+			if (player.containerMenu instanceof ChestMenu) {
+				Container container = ((ChestMenu) player.containerMenu).getContainer();
+				return container == this;
+			} else {
+				return false;
+			}
+		}
+	};
 
 	public BaseChestTileEntity(BlockEntityType<?> tet, BlockPos pos, BlockState state) {
 		super(tet, pos, state);
 	}
 
-	public net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandlerModifiable> invHandler;
+	protected LazyOptional<IItemHandlerModifiable> chestHandler;
+
+	@Override
+	public void setBlockState(BlockState p_155251_) {
+		super.setBlockState(p_155251_);
+		if (this.chestHandler != null) {
+			LazyOptional<?> oldHandler = this.chestHandler;
+			this.chestHandler = null;
+			oldHandler.invalidate();
+		}
+	}
+
+	@Override
+	public <T> LazyOptional<T> getCapability(
+			Capability<T> cap, Direction side) {
+		if (!this.remove && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (this.chestHandler == null)
+				this.chestHandler = LazyOptional.of(this::createHandler);
+			return this.chestHandler.cast();
+		}
+		return super.getCapability(cap, side);
+	}
+
+	protected IItemHandlerModifiable createHandler() {
+		BlockState state = this.getBlockState();
+		if (!(state.getBlock() instanceof ChestBlock)) {
+			return new InvWrapper(this);
+		}
+		Container inv = ChestBlock.getContainer((ChestBlock) state.getBlock(), state, getLevel(), getBlockPos(), true);
+		return new InvWrapper(inv == null ? this : inv);
+	}
+
+	@Override
+	protected void invalidateCaps() {
+		super.invalidateCaps();
+		if (chestHandler != null)
+			chestHandler.invalidate();
+	}
+
+	/*public net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandlerModifiable> invHandler;
 
 	@Override
 	public void invalidateCaps() {
@@ -60,7 +126,7 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		return super.createUnSidedHandler();
 	}
 	
-	/*@Override
+	@Override
 	public net.minecraftforge.items.IItemHandlerModifiable createHandler() {
 		BlockState state = this.getBlockState();
 		if (!(state.getBlock() instanceof ChestBlock)) {
@@ -68,17 +134,17 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		}
 		Container inv = ChestBlock.getContainer((ChestBlock) state.getBlock(), state, getLevel(), getBlockPos(), true);
 		return new net.minecraftforge.items.wrapper.InvWrapper(inv == null ? this : inv);
-	}*/
+	}
 	
 	public net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandlerModifiable> getInvHandler() {
 		return invHandler;
-	}
+	}*/
 
 	@Override
 	public void clearRemoved() {
 		super.clearRemoved();
-		if (invHandler != null)
-			invHandler.invalidate();
+		if (chestHandler != null)
+			chestHandler.invalidate();
 	}
 
 	@Override
@@ -126,32 +192,36 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		return ChestMenu.sixRows(id, inv, this);
 	}*/
 
-	@Override
-	public void startOpen(Player player) {
-		if (!player.isSpectator()) {
-			if (this.numPlayersUsing < 0) {
-				this.numPlayersUsing = 0;
-			}
+	public void startOpen(Player p_58616_) {
+		if (!this.remove && !p_58616_.isSpectator()) {
+			this.openersCounter.incrementOpeners(p_58616_, this.getLevel(), this.getBlockPos(), this.getBlockState());
+		}
 
-			++this.numPlayersUsing;
-			BlockState blockstate = this.getBlockState();
-			this.playSound(blockstate, SoundEvents.BARREL_OPEN);
-			this.scheduleTick();
-		}
 	}
-	
-	@Override
-	public void stopOpen(Player player) {
-		if (!player.isSpectator()) {
-			--this.numPlayersUsing;
+
+	public void stopOpen(Player p_58614_) {
+		if (!this.remove && !p_58614_.isSpectator()) {
+			this.openersCounter.decrementOpeners(p_58614_, this.getLevel(), this.getBlockPos(), this.getBlockState());
 		}
+
+	}
+
+	public void recheckOpen() {
+		if (!this.remove) {
+			this.openersCounter.recheckOpeners(this.getLevel(), this.getBlockPos(), this.getBlockState());
+		}
+
+	}
+
+	/*void updateBlockState(BlockState p_58607_, boolean p_58608_) {
+		this.level.setBlock(this.getBlockPos(), p_58607_.setValue(BarrelBlock.OPEN, Boolean.valueOf(p_58608_)), 3);
 	}
 
 	private void scheduleTick() {
 		this.level.getBlockTicks().scheduleTick(this.getBlockPos(), this.getBlockState().getBlock(), 5);
-	}
+	}*/
 
-	public void invTick() {
+	/*public void invTick() {
 		this.numPlayersUsing = ChestBlockEntity.getOpenCount(this.level, this.getBlockPos());
 		if (this.numPlayersUsing > 0) {
 			this.scheduleTick();
@@ -164,7 +234,7 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 			}
 			this.playSound(blockstate, SoundEvents.BARREL_CLOSE);
 		}
-	}
+	}*/
 
 	protected abstract void playSound(BlockState state, SoundEvent evt);
 

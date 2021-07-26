@@ -1,6 +1,7 @@
 package com.mrh0.buildersaddition.state;
 
 import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
 import net.minecraft.util.StringRepresentable;
 
 public enum VerticalSlabState implements StringRepresentable {
@@ -35,8 +36,7 @@ public enum VerticalSlabState implements StringRepresentable {
     }
 
     public static VerticalSlabState byMetadata(int meta) {
-        if (meta < 0 || meta >= META_LOOKUP.length)
-        {
+        if (meta < 0 || meta >= META_LOOKUP.length) {
             meta = 0;
         }
 
@@ -82,5 +82,24 @@ public enum VerticalSlabState implements StringRepresentable {
 	@Override
 	public String getSerializedName() {
 		return this.name;
+	}
+	
+	public static VerticalSlabState reverseFacing(Direction facing, boolean doub) {
+		if(doub) {
+			return facing.getAxis() == Axis.X ? DOUBLEX : DOUBLEZ;
+		}
+		switch(facing) {
+		case EAST:
+			return EAST;
+		case NORTH:
+			return NORTH;
+		case SOUTH:
+			return SOUTH;
+		case WEST:
+			return WEST;
+		default:
+			break;
+		}
+		return NORTH;
 	}
 }
