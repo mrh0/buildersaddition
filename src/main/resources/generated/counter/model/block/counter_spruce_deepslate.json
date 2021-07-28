@@ -1,0 +1,9 @@
+{
+    "parent": "buildersaddition:block/counter/counter_base",
+    "textures": {
+          "stripped": "minecraft:block/stripped_spruce_log",
+          "detail": "minecraft:block/polished_deepslate",
+          "planks": "minecraft:block/spruce_planks",
+          "particle": "minecraft:block/spruce_planks"
+      }
+  }

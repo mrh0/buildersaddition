@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/counter/counter_spruce_blackstone", "y":180 },
+        "facing=west": { "model": "buildersaddition:block/counter/counter_spruce_blackstone", "y":90 },
+        "facing=south": { "model": "buildersaddition:block/counter/counter_spruce_blackstone" },
+        "facing=east": { "model": "buildersaddition:block/counter/counter_spruce_blackstone", "y":270 }
+    }
+}

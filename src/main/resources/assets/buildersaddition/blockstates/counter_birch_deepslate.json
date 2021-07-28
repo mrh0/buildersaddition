@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "buildersaddition:block/counter/counter_birch_deepslate", "y":180 },
+        "facing=west": { "model": "buildersaddition:block/counter/counter_birch_deepslate", "y":90 },
+        "facing=south": { "model": "buildersaddition:block/counter/counter_birch_deepslate" },
+        "facing=east": { "model": "buildersaddition:block/counter/counter_birch_deepslate", "y":270 }
+    }
+}

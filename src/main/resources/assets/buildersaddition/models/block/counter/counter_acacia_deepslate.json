@@ -1,0 +1,9 @@
+{
+    "parent": "buildersaddition:block/counter/counter_base",
+    "textures": {
+          "stripped": "minecraft:block/stripped_acacia_log",
+          "detail": "minecraft:block/polished_deepslate",
+          "planks": "minecraft:block/acacia_planks",
+          "particle": "minecraft:block/acacia_planks"
+      }
+  }

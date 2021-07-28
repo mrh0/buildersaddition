@@ -7,7 +7,7 @@ with open("list/vertical_slab.txt", 'r') as reader:
 		name = line.split(",")[0]
 		texture = line.split(",")[1]
 		craft = line.split(",")[2].replace("\r", "").replace("\n", "")
-		slab = craft.replace("bricks", "brick").replace("tiles", "tile")
+		slab = craft.replace("bricks", "brick").replace("tiles", "tile").replace("_planks", "")
 
 		#state
 		copy_template(name, "vertical_slab/blockstate.json", "panel/blockstate/{name}_vertical_slab.json")

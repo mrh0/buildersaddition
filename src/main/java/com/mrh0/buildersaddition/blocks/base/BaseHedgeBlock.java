@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.blocks.base;
-
+/*
 import com.mrh0.buildersaddition.state.HedgeState;
 
 import net.minecraft.core.BlockPos;
@@ -201,4 +201,4 @@ public class BaseHedgeBlock extends BaseDerivativeBlock implements SimpleWaterlo
 			return false;
 		}
 	}
-}
+}*/

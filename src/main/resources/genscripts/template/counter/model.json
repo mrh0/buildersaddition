@@ -1,0 +1,9 @@
+{
+    "parent": "buildersaddition:block/counter/counter_base",
+    "textures": {
+          "stripped": "minecraft:block/%stripped%",
+          "detail": "minecraft:block/%stone%",
+          "planks": "minecraft:block/%planks%",
+          "particle": "minecraft:block/%planks%"
+      }
+  }

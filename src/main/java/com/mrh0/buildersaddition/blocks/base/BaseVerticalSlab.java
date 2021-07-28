@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.blocks.base;
-
+/*
 import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
@@ -180,4 +180,4 @@ public class BaseVerticalSlab extends BaseDerivativeBlock implements SimpleWater
 		}
 		return state;
 	}
-}
+}*/

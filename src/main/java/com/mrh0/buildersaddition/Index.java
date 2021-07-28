@@ -29,6 +29,7 @@ import com.mrh0.buildersaddition.blocks.VerticalComparatorBlock;
 import com.mrh0.buildersaddition.blocks.VerticalRepeaterBlock;
 import com.mrh0.buildersaddition.blocks.VerticalSlab;
 import com.mrh0.buildersaddition.blocks.Candle;
+import com.mrh0.buildersaddition.blocks.CopperVerticalSlab;
 import com.mrh0.buildersaddition.blocks.base.GenericBlock;
 import com.mrh0.buildersaddition.blocks.base.IConnects;
 import com.mrh0.buildersaddition.container.ArcadeContainer;
@@ -63,6 +64,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.extensions.IForgeContainerType;
 
@@ -120,6 +122,16 @@ public class Index {
 	public static Block POLISHED_DEEPSLATE_VERTICAL_SLAB;
 	public static Block DEEPSLATE_BRICKS_VERTICAL_SLAB;
 	public static Block DEEPSLATE_TILES_VERTICAL_SLAB;
+	
+	public static Block WAXED_CUT_COPPER_VERTICAL_SLAB;
+	public static Block WAXED_EXPOSED_CUT_COPPER_VERTICAL_SLAB;
+	public static Block WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB;
+	public static Block WAXED_OXIDIZED_CUT_COPPER_VERTICAL_SLAB;
+	
+	public static Block CUT_COPPER_VERTICAL_SLAB;
+	public static Block EXPOSED_CUT_COPPER_VERTICAL_SLAB;
+	public static Block WEATHERED_CUT_COPPER_VERTICAL_SLAB;
+	public static Block OXIDIZED_CUT_COPPER_VERTICAL_SLAB;
 	
 	public static Block BOP_CHERRY_VERTICAL_SLAB;
 	public static Block BOP_CUT_WHITE_SANDSTONE_VERTICAL_SLAB;
@@ -198,7 +210,8 @@ public class Index {
 	public static Block[] COUNTER_DIORITE = new Block[8];
 	public static Block[] COUNTER_GRANITE = new Block[8];
 	public static Block[] COUNTER_BLACKSTONE = new Block[8];
-	public static Block[] COUNTER_ALL = new Block[32];
+	public static Block[] COUNTER_DEEPSLATE = new Block[8];
+	public static Block[] COUNTER_ALL = new Block[8*5];
 	
 	public static Block BOOKSHELF_OAK;
 	public static Block BOOKSHELF_BIRCH;
@@ -391,6 +404,14 @@ public class Index {
 		POLISHED_DEEPSLATE_VERTICAL_SLAB = new VerticalSlab("polished_deepslate", Blocks.POLISHED_DEEPSLATE);
 		DEEPSLATE_BRICKS_VERTICAL_SLAB = new VerticalSlab("deepslate_bricks", Blocks.DEEPSLATE_BRICKS);
 		DEEPSLATE_TILES_VERTICAL_SLAB = new VerticalSlab("deepslate_tiles", Blocks.DEEPSLATE_TILES);
+		WAXED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_cut_copper", Blocks.COPPER_BLOCK);
+		WAXED_EXPOSED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_exposed_cut_copper", Blocks.COPPER_BLOCK);
+		WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_weathered_cut_copper", Blocks.COPPER_BLOCK);
+		WAXED_OXIDIZED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_oxidized_cut_copper", Blocks.COPPER_BLOCK);
+		CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.UNAFFECTED);
+		EXPOSED_CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("exposed_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.EXPOSED);
+		WEATHERED_CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("weathered_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.WEATHERED);
+		OXIDIZED_CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("oxidized_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.OXIDIZED);
 		
 		CUT_STONE_PILLAR = new Pillar("stone", Blocks.STONE);
 		CUT_SMOOTH_STONE_PILLAR = new Pillar("smooth_stone", Blocks.SMOOTH_STONE);
@@ -458,10 +479,13 @@ public class Index {
 			COUNTER_DIORITE[i] = new Counter(woods[i]+"_diorite", woodBlocks[i]);
 			COUNTER_GRANITE[i] = new Counter(woods[i]+"_granite", woodBlocks[i]);
 			COUNTER_BLACKSTONE[i] = new Counter(woods[i]+"_blackstone", woodBlocks[i]);
-			COUNTER_ALL[i*4] = COUNTER_ANDESITE[i];
-			COUNTER_ALL[i*4+1] = COUNTER_DIORITE[i];
-			COUNTER_ALL[i*4+2] = COUNTER_GRANITE[i];
-			COUNTER_ALL[i*4+3] = COUNTER_BLACKSTONE[i];
+			COUNTER_DEEPSLATE[i] = new Counter(woods[i]+"_deepslate", woodBlocks[i]);
+			int n = 5;
+			COUNTER_ALL[i*n] = COUNTER_ANDESITE[i];
+			COUNTER_ALL[i*n+1] = COUNTER_DIORITE[i];
+			COUNTER_ALL[i*n+2] = COUNTER_GRANITE[i];
+			COUNTER_ALL[i*n+3] = COUNTER_BLACKSTONE[i];
+			COUNTER_ALL[i*n+4] = COUNTER_DEEPSLATE[i];
 		}
 		
 		BOOKSHELF_OAK = new Bookshelf("oak");
@@ -540,10 +564,10 @@ public class Index {
 		CROSSRAIL = new Crossrail();
 		SPEAKER = new Speaker();
 		PLANTER = new Planter();
-		LARGE_CANDLE = new LargeCandle("large_candle", ParticleTypes.FLAME);
-		LARGE_SOUL_CANDLE = new LargeCandle("large_soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
-		CANDLE = new Candle("candle", ParticleTypes.FLAME);
-		SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
+		//LARGE_CANDLE = new LargeCandle("large_candle", ParticleTypes.FLAME);
+		//LARGE_SOUL_CANDLE = new LargeCandle("large_soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
+		//CANDLE = new Candle("candle", ParticleTypes.FLAME);
+		//SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		
 		ARCADE = new Arcade();
 		ARCADE_OAK = new Arcade("oak");

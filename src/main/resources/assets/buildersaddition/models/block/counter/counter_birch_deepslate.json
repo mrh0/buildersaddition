@@ -1,0 +1,9 @@
+{
+    "parent": "buildersaddition:block/counter/counter_base",
+    "textures": {
+          "stripped": "minecraft:block/stripped_birch_log",
+          "detail": "minecraft:block/polished_deepslate",
+          "planks": "minecraft:block/birch_planks",
+          "particle": "minecraft:block/birch_planks"
+      }
+  }
