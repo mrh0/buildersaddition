@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:smooth_stone"
-	},
-	"result": "buildersaddition:cut_smooth_stone_pillar",
-	"count": 1
-}

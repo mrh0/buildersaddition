@@ -1,8 +1,0 @@
-{
-	"type": "minecraft:stonecutting",
-	"ingredient": {
-		"item": "minecraft:mossy_cobblestone"
-	},
-	"result": "buildersaddition:cut_mossy_cobblestone_pillar",
-	"count": 1
-}

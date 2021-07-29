@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "state=none": { "model": "buildersaddition:block/pillar/cut_smooth_red_sandstone_pillar"},
+        "state=bottom": { "model": "buildersaddition:block/pillar/cut_smooth_red_sandstone_pillar_bottom"},
+        "state=top": { "model": "buildersaddition:block/pillar/cut_smooth_red_sandstone_pillar_top"},
+        "state=both": { "model": "buildersaddition:block/pillar/cut_smooth_red_sandstone_pillar_both"}
+    }
+}

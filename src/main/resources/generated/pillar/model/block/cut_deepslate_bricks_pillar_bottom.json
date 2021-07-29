@@ -1,0 +1,9 @@
+{
+    "parent": "buildersaddition:block/pillar/cut_pillar_bottom_base",
+    "textures": {
+          "side": "minecraft:block/deepslate_bricks",
+          "particle": "minecraft:block/deepslate_bricks",
+          "top": "minecraft:block/deepslate_bricks",
+          "platform": "minecraft:block/deepslate_bricks"
+      }
+  }

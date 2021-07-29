@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:purpur_pillar"
+    },
+    "result": "buildersaddition:cut_purpur_pillar",
+    "count": 1
+}

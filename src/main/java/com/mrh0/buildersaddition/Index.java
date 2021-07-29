@@ -169,6 +169,8 @@ public class Index {
 	public static Block CUT_BASALT_PILLAR;
 	public static Block CUT_BLACKSTONE_PILLAR;
 	public static Block CUT_QUARTZ_BRICKS_PILLAR;
+	public static Block CUT_DEEPSLATE_BRICKS_PILLAR;
+	public static Block CUT_DEEPSLATE_TILES_PILLAR;
 	
 	public static Block TABLE_OAK;
 	public static Block TABLE_SPRUCE;
@@ -349,13 +351,19 @@ public class Index {
 			return state.getBlock() == CUT_SMOOTH_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SMOOTH_SANDSTONE_PILLAR || state.getBlock() == CUT_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SANDSTONE_PILLAR; 
 		};
 		final IConnects stoneBricksConnector = (state, source) -> { 
-			return state.getBlock() == CUT_STONE_BRICKS_PILLAR || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR  || state.getBlock() == CUT_BLACKSTONE_PILLAR; 
+			return state.getBlock() == CUT_STONE_BRICKS_PILLAR || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR  || state.getBlock() == CUT_BLACKSTONE_PILLAR || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR; 
 		};
 		final IConnects netherBricksConnector = (state, source) -> { 
 			return state.getBlock() == CUT_NETHER_BRICKS_PILLAR || state.getBlock() == CUT_RED_NETHER_BRICKS_PILLAR; 
 		};
 		final IConnects quartzConnector = (state, source) -> { 
 			return state.getBlock() == CUT_QUARTZ_PILLAR || state.getBlock() == CUT_QUARTZ_BRICKS_PILLAR; 
+		};
+		final IConnects deepslateConnector = (state, source) -> { 
+			return state.getBlock() == CUT_DEEPSLATE_TILES_PILLAR || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR; 
+		};
+		final IConnects deepslateBricksConnector = (state, source) -> { 
+			return deepslateConnector.connect(state, source) || stoneBricksConnector.connect(state, source); 
 		};
 		
 		
@@ -433,6 +441,8 @@ public class Index {
 		CUT_BASALT_PILLAR = new Pillar("basalt", Blocks.BASALT);
 		CUT_BLACKSTONE_PILLAR = new Pillar("blackstone", Blocks.BLACKSTONE, stoneBricksConnector);
 		CUT_QUARTZ_BRICKS_PILLAR = new Pillar("quartz_bricks", Blocks.QUARTZ_BLOCK, quartzConnector);
+		CUT_DEEPSLATE_BRICKS_PILLAR = new Pillar("deepslate_bricks", Blocks.DEEPSLATE_BRICKS, deepslateBricksConnector);
+		CUT_DEEPSLATE_TILES_PILLAR = new Pillar("deepslate_tiles", Blocks.DEEPSLATE_TILES, deepslateConnector);
 		
 		TABLE_OAK = new Table("oak", Blocks.OAK_PLANKS);
 		TABLE_SPRUCE = new Table("spruce", Blocks.SPRUCE_PLANKS);

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+    	{
+            "item": "buildersaddition:oxidized_cut_copper_vertical_slab"
+        },
+        {
+            "item": "minecraft:honeycomb"
+        }
+        
+    ],
+    "result": {
+        "item": "buildersaddition:waxed_oxidized_cut_copper_vertical_slab",
+        "count": 1
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:cobblestone"
+    },
+    "result": "buildersaddition:cut_cobblestone_pillar",
+    "count": 1
+}

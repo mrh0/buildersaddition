@@ -35,8 +35,9 @@ public class FireplaceGuard extends BaseDerivativeBlock {
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext c) {
+		Direction dir = c.isSecondaryUseActive() ? c.getHorizontalDirection() : c.getHorizontalDirection().getOpposite();
 		if(c.getClickedFace() == Direction.UP || c.getClickedFace() == Direction.DOWN)
-			return this.defaultBlockState().setValue(FACING, c.getHorizontalDirection().getOpposite());
+			return this.defaultBlockState().setValue(FACING, dir);
 		return this.defaultBlockState().setValue(FACING, c.getClickedFace());
 	}
 	

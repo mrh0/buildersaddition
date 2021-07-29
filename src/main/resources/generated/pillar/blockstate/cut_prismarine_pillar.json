@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "state=none": { "model": "buildersaddition:block/pillar/cut_prismarine_pillar"},
+        "state=bottom": { "model": "buildersaddition:block/pillar/cut_prismarine_pillar_bottom"},
+        "state=top": { "model": "buildersaddition:block/pillar/cut_prismarine_pillar_top"},
+        "state=both": { "model": "buildersaddition:block/pillar/cut_prismarine_pillar_both"}
+    }
+}

@@ -2,6 +2,7 @@ package com.mrh0.buildersaddition.blocks;
 
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.blocks.base.IConnects;
+import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.state.PillarState;
 
 import net.minecraft.core.BlockPos;
@@ -112,8 +113,12 @@ public class Pillar extends BaseDerivativeBlock implements SimpleWaterloggedBloc
 				Boolean.valueOf(c.getLevel().getFluidState(c.getClickedPos()).getType() == Fluids.WATER));
 	}
 	
-	public boolean connects(BlockState state, Block b) {
-		return iconnect.connect(state, b);
+	public boolean connects(BlockState state, Block block) {
+		return iconnect.connect(state, block) || connectsAll(state, block);
+	}
+	
+	private boolean connectsAll(BlockState state, Block block) {
+		return (state.getBlock() instanceof Pillar) && Config.PILLARS_CONNECT_ALL.get();
 	}
 	
 	@Override

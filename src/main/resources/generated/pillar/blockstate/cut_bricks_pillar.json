@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "state=none": { "model": "buildersaddition:block/pillar/cut_bricks_pillar"},
+        "state=bottom": { "model": "buildersaddition:block/pillar/cut_bricks_pillar_bottom"},
+        "state=top": { "model": "buildersaddition:block/pillar/cut_bricks_pillar_top"},
+        "state=both": { "model": "buildersaddition:block/pillar/cut_bricks_pillar_both"}
+    }
+}

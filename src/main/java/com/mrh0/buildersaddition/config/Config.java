@@ -25,6 +25,8 @@ public class Config {
 	public static ForgeConfigSpec.BooleanValue PATHBLOCK_CREATION_ENABLED;
 	public static ForgeConfigSpec.BooleanValue CRACKED_CREATION_ENABLED;
 	
+	public static ForgeConfigSpec.BooleanValue PILLARS_CONNECT_ALL;
+	
 	static {
 		
 		/*COMMON_BUILDER.comment("General Settings").push(CATAGORY_GENERAL);
@@ -45,6 +47,9 @@ public class Config {
 		
 		CRACKED_CREATION_ENABLED = COMMON_BUILDER.comment("Whether the creation of cracked block variants using a pickaxe is enabled.")
 				.define("cracked_creation_enabled", true);
+		
+		PILLARS_CONNECT_ALL = COMMON_BUILDER.comment("If set true, pillars will connecto to all other pillar types.")
+				.define("pillars_connect_all", false);
 
 		COMMON_BUILDER.pop();
 		
