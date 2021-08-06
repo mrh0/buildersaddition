@@ -21,6 +21,8 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.SlabType;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -49,6 +51,20 @@ public class VerticalSlab extends BaseDerivativeBlock implements IWaterLoggable 
 		super(name + "_vertical_slab", source, new BlockOptions().setItemOptions(new ItemOptions().hide(ModList.get().isLoaded(mod))));
 		this.setDefaultState(
 				this.getDefaultState().with(TYPE, VerticalSlabState.NORTH).with(WATERLOGGED, Boolean.valueOf(false)));
+	}
+	
+	@Override
+	public BlockState mirror(BlockState state, Mirror mirror) {
+		return rotate(state, mirror.toRotation(state.get(TYPE).getFacing()));
+	}
+	
+	public BlockState rotate(BlockState state, Rotation rotation) {
+    	return state.with(TYPE, VerticalSlabState.reverseFacing(rotation.rotate(state.get(TYPE).getFacing()), state.get(TYPE).isDouble()));
+	}
+	
+	@Override
+	public BlockState rotate(BlockState state, IWorld world, BlockPos pos, Rotation direction) {
+		return rotate(state, direction);
 	}
 	
 	@Override

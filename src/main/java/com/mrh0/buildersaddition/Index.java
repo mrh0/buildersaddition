@@ -6,7 +6,6 @@ import com.mrh0.buildersaddition.blocks.Bench;
 import com.mrh0.buildersaddition.blocks.Bookshelf;
 import com.mrh0.buildersaddition.blocks.Cabinet;
 import com.mrh0.buildersaddition.blocks.LargeCandle;
-import com.mrh0.buildersaddition.blocks.LuminusGlass;
 import com.mrh0.buildersaddition.blocks.Counter;
 import com.mrh0.buildersaddition.blocks.Crossrail;
 import com.mrh0.buildersaddition.blocks.Cupboard;
