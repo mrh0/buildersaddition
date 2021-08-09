@@ -19,7 +19,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.16.5-20210517a'
+version = '1.16.5-20210807a'
 group = 'com.mrh0.buildersaddition' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'buildersaddition'
 
