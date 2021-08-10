@@ -93,7 +93,7 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 	}
 
 	@Override
-	protected void invalidateCaps() {
+	public void invalidateCaps() {
 		super.invalidateCaps();
 		if (chestHandler != null)
 			chestHandler.invalidate();
