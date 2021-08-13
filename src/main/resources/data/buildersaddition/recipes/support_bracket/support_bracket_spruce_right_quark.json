@@ -7,11 +7,11 @@
 	{
 		"S":
 		{
-			"item": "minecraft:acacia_slab"
+			"item": "minecraft:spruce_slab"
 		},
 		"P":
 		{
-			"item": "buildersaddition:acacia_vertical_slab"
+			"item": "buildersaddition:spruce_vertical_slab"
 		},
 		"W":
 		{
@@ -19,7 +19,7 @@
 		}
 	},
 	"result":{
-		"item": "buildersaddition:support_bracket_acacia",
+		"item": "buildersaddition:support_bracket_spruce",
 		"count": 4
 	},
 	"conditions": [ {
