@@ -2,8 +2,10 @@ package com.mrh0.buildersaddition.event;
 
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.Index;
+import com.mrh0.buildersaddition.data.block.BABlockTagsProvider;
 import com.mrh0.buildersaddition.entity.SeatEntity;
 
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -12,10 +14,12 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(modid = BuildersAddition.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -70,5 +74,14 @@ public class EventHandler {
 		reg.register(Index.ENDERMAN_PAINTING);
 		reg.register(Index.WINTER_PAINTING);
 		//reg.register(Index.PROMO_PAINTING);
+	}
+	
+	@SubscribeEvent
+	public static void gatherData(GatherDataEvent event) {
+		ExistingFileHelper exHelper = event.getExistingFileHelper();
+		DataGenerator gen = event.getGenerator();
+		if(event.includeServer()) {
+			gen.addProvider(new BABlockTagsProvider(gen, BuildersAddition.MODID, exHelper));
+		}
 	}
 }

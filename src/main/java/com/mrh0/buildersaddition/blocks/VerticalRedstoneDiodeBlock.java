@@ -29,7 +29,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
-	public static final DirectionProperty VERTICAL_FACING = DirectionProperty.create("vertical_facing", d -> d.getAxis() == Axis.Y);
+	public static final DirectionProperty VERTICAL_FACING = DirectionProperty.create("vertical_facing",
+			d -> d.getAxis() == Axis.Y);
 	public static final DirectionProperty HORIZONTAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	protected static final VoxelShape WEST_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 2.0D, 16.0D, 16.0D);
 	protected static final VoxelShape EAST_SHAPE = Block.box(14D, 0.0D, 0.0D, 16D, 16.0D, 16.0D);
@@ -42,47 +43,45 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	}
 
 	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-		switch(state.getValue(HORIZONTAL_FACING)) {
-			case EAST:
-				return EAST_SHAPE;
-			case NORTH:
-				return NORTH_SHAPE;
-			case SOUTH:
-				return SOUTH_SHAPE;
-			case WEST:
-				return WEST_SHAPE;
-			default:
-				return NORTH_SHAPE;
+		switch (state.getValue(HORIZONTAL_FACING)) {
+		case EAST:
+			return EAST_SHAPE;
+		case NORTH:
+			return NORTH_SHAPE;
+		case SOUTH:
+			return SOUTH_SHAPE;
+		case WEST:
+			return WEST_SHAPE;
+		default:
+			return NORTH_SHAPE;
 		}
 	}
-
 
 	public boolean isValidPosition(BlockState state, LevelReader world, BlockPos pos) {
 		return canSupportRigidBlock(world, pos.relative(state.getValue(HORIZONTAL_FACING)));
 	}
-	 
-
+	
+	@Override
 	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
+		System.out.println("Rand Tick");
 		if (!this.isLocked(worldIn, pos, state)) {
 			boolean flag = state.getValue(POWERED);
 			boolean flag1 = this.shouldTurnOn(worldIn, pos, state);
 			if (flag && !flag1) {
 				worldIn.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(false)), 2);
-			} 
-			else if (!flag) {
+			} else if (!flag) {
 				worldIn.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(true)), 2);
 				if (!flag1)
 					worldIn.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), TickPriority.VERY_HIGH);
 			}
-
 		}
 	}
-	
+
 	@Override
 	public int getDirectSignal(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
-		return state.getDirectSignal(world, pos, side);
+		return state.getSignal(world, pos, side);
 	}
-	
+
 	@Override
 	public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
 		if (!state.getValue(POWERED)) {
@@ -92,72 +91,67 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 		}
 	}
 
-	/*public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos,
-			boolean isMoving) {
-		if (state.isValidPosition(worldIn, pos)) {
-			this.updateState(worldIn, pos, state);
+	/*
+	 * public void neighborChanged(BlockState state, Level worldIn, BlockPos pos,
+	 * Block blockIn, BlockPos fromPos, boolean isMoving) { if
+	 * (state.isValidPosition(worldIn, pos)) { this.updateState(worldIn, pos,
+	 * state); } else { BlockEntity tileentity = state.hasBlockEntity() ?
+	 * worldIn.getBlockEntity(pos) : null; spawnDrops(state, worldIn, pos,
+	 * tileentity); worldIn.removeBlock(pos, false);
+	 * 
+	 * for (Direction direction : Direction.values()) {
+	 * worldIn.notifyNeighborsOfStateChange(pos.offset(direction), this); }
+	 * 
+	 * } }
+	 * 
+	 * protected void updateState(World worldIn, BlockPos pos, BlockState state) {
+	 * if (!this.isLocked(worldIn, pos, state)) { boolean flag =
+	 * state.getValue(POWERED); boolean flag1 = this.shouldBePowered(worldIn, pos,
+	 * state); if (flag != flag1 &&
+	 * !worldIn.getPendingBlockTicks().isTickPending(pos, this)) { TickPriority
+	 * tickpriority = TickPriority.HIGH; if (this.isFacingTowardsRepeater(worldIn,
+	 * pos, state)) { tickpriority = TickPriority.EXTREMELY_HIGH; } else if (flag) {
+	 * tickpriority = TickPriority.VERY_HIGH; }
+	 * 
+	 * worldIn.getPendingBlockTicks().scheduleTick(pos, this, this.getDelay(state),
+	 * tickpriority); }
+	 * 
+	 * } }
+	 */
+	@Override
+	public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos otherPos,
+			boolean flag) {
+		if (state.canSurvive(world, pos)) {
+			this.checkTickOnNeighbor(world, pos, state);
 		} else {
-			BlockEntity tileentity = state.hasBlockEntity() ? worldIn.getBlockEntity(pos) : null;
-			spawnDrops(state, worldIn, pos, tileentity);
-			worldIn.removeBlock(pos, false);
+			BlockEntity blockentity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
+			dropResources(state, world, pos, blockentity);
+			world.removeBlock(pos, false);
 
 			for (Direction direction : Direction.values()) {
-				worldIn.notifyNeighborsOfStateChange(pos.offset(direction), this);
+				world.updateNeighborsAt(pos.relative(direction), this);
 			}
 
 		}
 	}
-
-	protected void updateState(World worldIn, BlockPos pos, BlockState state) {
-		if (!this.isLocked(worldIn, pos, state)) {
+	
+	protected void checkTickOnNeighbor(Level world, BlockPos pos, BlockState state) {
+		if (!this.isLocked(world, pos, state)) {
 			boolean flag = state.getValue(POWERED);
-			boolean flag1 = this.shouldBePowered(worldIn, pos, state);
-			if (flag != flag1 && !worldIn.getPendingBlockTicks().isTickPending(pos, this)) {
+			boolean flag1 = this.shouldTurnOn(world, pos, state);
+			if (flag != flag1 && !world.getBlockTicks().willTickThisTick(pos, this)) {
 				TickPriority tickpriority = TickPriority.HIGH;
-				if (this.isFacingTowardsRepeater(worldIn, pos, state)) {
+				if (this.shouldPrioritize(world, pos, state)) {
 					tickpriority = TickPriority.EXTREMELY_HIGH;
 				} else if (flag) {
 					tickpriority = TickPriority.VERY_HIGH;
 				}
 
-				worldIn.getPendingBlockTicks().scheduleTick(pos, this, this.getDelay(state), tickpriority);
+				world.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), tickpriority);
 			}
 
 		}
-	}*/
-	
-	public void neighborChanged(BlockState state, Level world, BlockPos pos, Block block, BlockPos otherPos, boolean flag) {
-	      if (state.canSurvive(world, pos)) {
-	         this.checkTickOnNeighbor(world, pos, state);
-	      } else {
-	         BlockEntity blockentity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
-	         dropResources(state, world, pos, blockentity);
-	         world.removeBlock(pos, false);
-
-	         for(Direction direction : Direction.values()) {
-	            world.updateNeighborsAt(pos.relative(direction), this);
-	         }
-
-	      }
-	   }
-
-	   protected void checkTickOnNeighbor(Level world, BlockPos pos, BlockState state) {
-	      if (!this.isLocked(world, pos, state)) {
-	         boolean flag = state.getValue(POWERED);
-	         boolean flag1 = this.shouldTurnOn(world, pos, state);
-	         if (flag != flag1 && !world.getBlockTicks().willTickThisTick(pos, this)) {
-	            TickPriority tickpriority = TickPriority.HIGH;
-	            if (this.shouldPrioritize(world, pos, state)) {
-	               tickpriority = TickPriority.EXTREMELY_HIGH;
-	            } else if (flag) {
-	               tickpriority = TickPriority.VERY_HIGH;
-	            }
-
-	            world.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), tickpriority);
-	         }
-
-	      }
-	   }
+	}
 
 	public boolean isLocked(LevelReader worldIn, BlockPos pos, BlockState state) {
 		return false;
@@ -193,30 +187,34 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 			if (blockstate.is(Blocks.REDSTONE_BLOCK))
 				return 15;
 			else
-				return blockstate.is(Blocks.REDSTONE_WIRE) ? blockstate.getValue(RedStoneWireBlock.POWER) : worldIn.getDirectSignal(pos, side);
+				return blockstate.is(Blocks.REDSTONE_WIRE) ? blockstate.getValue(RedStoneWireBlock.POWER)
+						: worldIn.getDirectSignal(pos, side);
 		} else
 			return 0;
 	}
 	
+	@Override
 	public boolean isSignalSource(BlockState state) {
 		return true;
 	}
 
+	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext c) {
 		boolean flag = c.getClickLocation().y - (double) c.getClickedPos().getY() - .5d < 0;
-		if(c.getClickedFace().getAxis() == Axis.Y)
-			return this.defaultBlockState().setValue(HORIZONTAL_FACING, c.getHorizontalDirection()).setValue(VERTICAL_FACING, c.getClickedFace());
-		return this.defaultBlockState().setValue(HORIZONTAL_FACING, c.getClickedFace().getOpposite()).setValue(VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
+		if (c.getClickedFace().getAxis() == Axis.Y)
+			return this.defaultBlockState().setValue(HORIZONTAL_FACING, c.getHorizontalDirection())
+					.setValue(VERTICAL_FACING, c.getClickedFace());
+		return this.defaultBlockState().setValue(HORIZONTAL_FACING, c.getClickedFace().getOpposite())
+				.setValue(VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
 	}
 
 	@Override
-	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent,
-			ItemStack stack) {
+	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent, ItemStack stack) {
 		if (this.shouldTurnOn(world, pos, state)) {
 			world.getBlockTicks().scheduleTick(pos, this, 1);
 		}
 	}
-	
+
 	@Override
 	public void onPlace(BlockState state, Level world, BlockPos pos, BlockState newState, boolean flag) {
 		this.updateNeighborsInFront(world, pos, state);

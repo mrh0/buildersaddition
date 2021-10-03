@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.TickPriority;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ComparatorBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,7 +33,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
-public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock {
+public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implements EntityBlock {
 	public static final EnumProperty<ComparatorMode> MODE = BlockStateProperties.MODE_COMPARATOR;
 
 	public VerticalComparatorBlock() {
@@ -96,6 +97,7 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock {
 		}
 	}
 
+	@Override
 	protected int getInputSignal(Level worldIn, BlockPos pos, BlockState state) {
 		int i = super.getInputSignal(worldIn, pos, state);
 		Direction direction = state.getValue(VERTICAL_FACING);
@@ -129,7 +131,8 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock {
 				});
 		return list.size() == 1 ? list.get(0) : null;
 	}
-
+	
+	@Override
 	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
 			InteractionHand hand, BlockHitResult hit) {
 		if (!player.getAbilities().mayBuild) {
@@ -182,7 +185,7 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock {
 			this.notifyNeighbors(worldIn, pos, state);
 		}
 	}*/
-	
+	@Override
 	protected void checkTickOnNeighbor(Level world, BlockPos pos, BlockState state) {
 		if (!world.getBlockTicks().willTickThisTick(pos, this)) {
 			int i = this.calculateOutputSignal(world, pos, state);
@@ -226,16 +229,19 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock {
 		return new ItemStack(Items.COMPARATOR);
 	}
 	
+	@Override
 	public void tick(BlockState p_51869_, ServerLevel p_51870_, BlockPos p_51871_, Random p_51872_) {
 		this.refreshOutputState(p_51870_, p_51871_, p_51869_);
 	}
 
+	@Override
 	public boolean triggerEvent(BlockState p_51874_, Level p_51875_, BlockPos p_51876_, int p_51877_, int p_51878_) {
 		super.triggerEvent(p_51874_, p_51875_, p_51876_, p_51877_, p_51878_);
 		BlockEntity blockentity = p_51875_.getBlockEntity(p_51876_);
 		return blockentity != null && blockentity.triggerEvent(p_51877_, p_51878_);
 	}
 
+	@Override
 	public BlockEntity newBlockEntity(BlockPos p_153086_, BlockState p_153087_) {
 		return new ComparatorBlockEntity(p_153086_, p_153087_);
 	}

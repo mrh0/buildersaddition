@@ -17,7 +17,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.KnowledgeBookItem;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -25,18 +24,17 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class Util {
-	private static final Tag<Item> FORGE_BOOKS_TAG = ItemTags.bind(new ResourceLocation("forge", "books").toString());
-
 	public static boolean isBook(ItemStack stack) {
 		Item i = stack.getItem();
 		String n = i.getRegistryName().getPath();
+		
+		Tag<Item> FORGE_BOOKS_TAG = ItemTags.bind(new ResourceLocation("forge", "books").toString());
 		
 		return (i instanceof EnchantedBookItem) || (i instanceof KnowledgeBookItem) || i == Items.BOOK || i == Items.WRITABLE_BOOK || i == Items.WRITTEN_BOOK 
 				|| n.endsWith("book") || n.endsWith("manual") || n.endsWith("journal") || n.endsWith("tome")  || n.startsWith("tome") || n.endsWith("lexicon")  || n.endsWith("codex")
 				|| n.endsWith("guide") || n.startsWith("guide") || n.startsWith("handbook") || n.endsWith("chronicle") || n.endsWith("companion") || n.endsWith("binder") || n.endsWith("nomicon")
 				|| n.endsWith("dictionary") || n.startsWith("dictionary") || n.endsWith("materials_and_you") || n.endsWith("binder") || n.startsWith("binder")
 				|| FORGE_BOOKS_TAG.contains(i);
-		
 	}
 	
 	public static BlockState crackedState(BlockState cur) {

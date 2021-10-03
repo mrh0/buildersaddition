@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.blocks.base;
-
+/*
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -81,4 +81,4 @@ public class BaseTable extends BaseDerivativeBlock {
 	public BlockState updateShape(BlockState stateIn, Direction facing, BlockState facingState, LevelAccessor worldIn, BlockPos currentPos, BlockPos facingPos) {
 		return getState(stateIn, worldIn, currentPos);
 	}
-}
+}*/

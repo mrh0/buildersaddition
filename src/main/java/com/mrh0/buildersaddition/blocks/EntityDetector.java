@@ -2,6 +2,7 @@ package com.mrh0.buildersaddition.blocks;
 
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.base.BaseBlock;
+import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.EntityDetectorTileEntity;
 import com.mrh0.buildersaddition.util.Util;
@@ -23,12 +24,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 
-public class EntityDetector extends BaseBlock implements EntityBlock {
+public class EntityDetector extends BaseDerivativeBlock implements EntityBlock {
 	public static final IntegerProperty POWER = IntegerProperty.create("power", 0, 15);
 	public static final DirectionProperty FACING = BlockStateProperties.FACING;
 	
 	public EntityDetector() {
-		super("entity_detector", Properties.copy(Blocks.OBSERVER));
+		super("entity_detector", Blocks.OBSERVER);
 		this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(POWER, 0));
 	}
 

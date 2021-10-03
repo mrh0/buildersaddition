@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "buildersaddition:hedge_oak",
+    "buildersaddition:hedge_spruce",
+    "buildersaddition:hedge_birch",
+    "buildersaddition:hedge_dark_oak",
+    "buildersaddition:hedge_jungle",
+    "buildersaddition:hedge_acacia"
+  ]
+}

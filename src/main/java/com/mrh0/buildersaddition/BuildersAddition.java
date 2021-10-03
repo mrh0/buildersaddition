@@ -17,6 +17,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -27,6 +28,7 @@ import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fmllegacy.network.NetworkRegistry;
 import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
 import net.minecraftforge.fmlserverevents.FMLServerStartingEvent;
+import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 
 
 /*

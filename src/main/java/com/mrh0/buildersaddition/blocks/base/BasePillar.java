@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.blocks.base;
-
+/*
 import com.mrh0.buildersaddition.state.PillarState;
 
 import net.minecraft.core.BlockPos;
@@ -106,16 +106,6 @@ public class BasePillar extends BaseDerivativeBlock implements SimpleWaterlogged
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext c) {
-		/*BlockPos blockpos = c.getPos();
-		PillarState p = getState(this.getDefaultState(), c.getWorld(), blockpos).get(STATE);
-		BlockState cur = c.getWorld().getBlockState(blockpos);
-		if(cur.getBlock() instanceof BasePillar)
-			p = cur.get(STATE);
-		
-
-		FluidState ifluidstate = c.getWorld().getFluidState(blockpos);
-		BlockState blockstate1 = this.getDefaultState().with(STATE, p).with(WATERLOGGED,
-				Boolean.valueOf(ifluidstate.getFluid() == Fluids.WATER));*/
 		return getState(this.defaultBlockState(), c.getLevel(), c.getClickedPos()).setValue(WATERLOGGED, 
 				Boolean.valueOf(c.getLevel().getFluidState(c.getClickedPos()).getType() == Fluids.WATER));
 	}
@@ -162,3 +152,4 @@ public class BasePillar extends BaseDerivativeBlock implements SimpleWaterlogged
 		}
 	}
 }
+*/
