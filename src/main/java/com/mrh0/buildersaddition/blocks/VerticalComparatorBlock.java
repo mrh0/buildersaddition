@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Random;
 import javax.annotation.Nullable;
 
+import com.mrh0.buildersaddition.Index;
+import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
+import com.mrh0.buildersaddition.tileentity.VerticalComparatorTileEntity;
+import com.mrh0.buildersaddition.util.Util;
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -18,12 +23,14 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.TickPriority;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.ComparatorBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -50,17 +57,8 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 	@Override
 	protected int getOutputSignal(BlockGetter worldIn, BlockPos pos, BlockState state) {
 		BlockEntity tileentity = worldIn.getBlockEntity(pos);
-		return tileentity instanceof ComparatorBlockEntity ? ((ComparatorBlockEntity) tileentity).getOutputSignal() : 0;
+		return tileentity instanceof VerticalComparatorTileEntity ? ((VerticalComparatorTileEntity) tileentity).getOutputSignal() : 0;
 	}
-
-	/*
-	private int calculateOutputSignal(Level worldIn, BlockPos pos, BlockState state) {
-		return state.getValue(MODE) == ComparatorMode.SUBTRACT
-				? Math.max(this.calculateInputStrength(worldIn, pos, state) - this.getPowerOnSides(worldIn, pos, state),
-						0)
-				: this.calculateInputStrength(worldIn, pos, state);
-	}
-	*/
 	
 	private int calculateOutputSignal(Level p_51904_, BlockPos p_51905_, BlockState p_51906_) {
 		int i = this.getInputSignal(p_51904_, p_51905_, p_51906_);
@@ -98,7 +96,7 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 	}
 
 	@Override
-	protected int getInputSignal(Level worldIn, BlockPos pos, BlockState state) {
+	public int getInputSignal(Level worldIn, BlockPos pos, BlockState state) {
 		int i = super.getInputSignal(worldIn, pos, state);
 		Direction direction = state.getValue(VERTICAL_FACING);
 		BlockPos blockpos = pos.relative(direction);
@@ -147,67 +145,28 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 		}
 	}
 
-	/*@Override
-	protected void updateState(Level worldIn, BlockPos pos, BlockState state) {
-		if (!worldIn.getPendingBlockTicks().isTickPending(pos, this)) {
-			int i = this.calculateOutput(worldIn, pos, state);
-			BlockEntity tileentity = worldIn.getTileEntity(pos);
-			int j = tileentity instanceof ComparatorBlockEntity ? ((ComparatorBlockEntity) tileentity).getOutputSignal()
-					: 0;
-			if (i != j || state.get(POWERED) != this.shouldBePowered(worldIn, pos, state)) {
-				TickPriority tickpriority = this.isFacingTowardsRepeater(worldIn, pos, state) ? TickPriority.HIGH
-						: TickPriority.NORMAL;
-				worldIn.getPendingBlockTicks().scheduleTick(pos, this, 2, tickpriority);
-			}
-
-		}
-	}
-
-	private void onStateChange(World worldIn, BlockPos pos, BlockState state) {
-		int i = this.calculateOutput(worldIn, pos, state);
-		BlockEntity tileentity = worldIn.getTileEntity(pos);
-		int j = 0;
-		if (tileentity instanceof ComparatorBlockEntity) {
-			ComparatorBlockEntity comparatortileentity = (ComparatorBlockEntity) tileentity;
-			j = comparatortileentity.getOutputSignal();
-			comparatortileentity.setOutputSignal(i);
-		}
-
-		if (j != i || state.get(MODE) == ComparatorMode.COMPARE) {
-			boolean flag1 = this.shouldBePowered(worldIn, pos, state);
-			boolean flag = state.get(POWERED);
-			if (flag && !flag1) {
-				worldIn.setBlockState(pos, state.setValue(POWERED, Boolean.valueOf(false)), 2);
-			} else if (!flag && flag1) {
-				worldIn.setBlockState(pos, state.setValue(POWERED, Boolean.valueOf(true)), 2);
-			}
-
-			this.notifyNeighbors(worldIn, pos, state);
-		}
-	}*/
 	@Override
-	protected void checkTickOnNeighbor(Level world, BlockPos pos, BlockState state) {
+	public void checkTickOnNeighbor(Level world, BlockPos pos, BlockState state) {
 		if (!world.getBlockTicks().willTickThisTick(pos, this)) {
 			int i = this.calculateOutputSignal(world, pos, state);
 			BlockEntity blockentity = world.getBlockEntity(pos);
-			int j = blockentity instanceof ComparatorBlockEntity
-					? ((ComparatorBlockEntity) blockentity).getOutputSignal()
+			int j = blockentity instanceof VerticalComparatorTileEntity
+					? ((VerticalComparatorTileEntity) blockentity).getOutputSignal()
 					: 0;
 			if (i != j || state.getValue(POWERED) != this.shouldTurnOn(world, pos, state)) {
 				TickPriority tickpriority = this.shouldPrioritize(world, pos, state) ? TickPriority.HIGH
 						: TickPriority.NORMAL;
 				world.getBlockTicks().scheduleTick(pos, this, 2, tickpriority);
 			}
-
 		}
 	}
 
-	private void refreshOutputState(Level world, BlockPos pos, BlockState state) {
+	public void refreshOutputState(Level world, BlockPos pos, BlockState state) {
 		int i = this.calculateOutputSignal(world, pos, state);
 		BlockEntity blockentity = world.getBlockEntity(pos);
 		int j = 0;
-		if (blockentity instanceof ComparatorBlockEntity) {
-			ComparatorBlockEntity comparatorblockentity = (ComparatorBlockEntity) blockentity;
+		if (blockentity instanceof VerticalComparatorTileEntity) {
+			VerticalComparatorTileEntity comparatorblockentity = (VerticalComparatorTileEntity) blockentity;
 			j = comparatorblockentity.getOutputSignal();
 			comparatorblockentity.setOutputSignal(i);
 		}
@@ -242,8 +201,8 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 	}
 
 	@Override
-	public BlockEntity newBlockEntity(BlockPos p_153086_, BlockState p_153087_) {
-		return new ComparatorBlockEntity(p_153086_, p_153087_);
+	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+		return new VerticalComparatorTileEntity(pos, state);
 	}
 
 	@Override
@@ -251,27 +210,21 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 		builder.add(HORIZONTAL_FACING, VERTICAL_FACING, MODE, POWERED);
 	}
 
-	/*
-	 * @Override public boolean getWeakChanges(BlockState state,
-	 * net.minecraft.world.IWorldReader world, BlockPos pos) { return
-	 * state.is(Blocks.COMPARATOR); }
-	 * 
-	 * @Override public void onNeighborChange(BlockState state,
-	 * net.minecraft.world.IWorldReader world, BlockPos pos, BlockPos neighbor) { if
-	 * (pos.getY() == neighbor.getY() && world instanceof World && !((World)
-	 * world).isRemote()) { state.neighborChanged((World) world, pos,
-	 * world.getBlockState(neighbor).getBlock(), neighbor, false); } }
-	 */
 	@Override
-	public boolean getWeakChanges(BlockState state, net.minecraft.world.level.LevelReader world, BlockPos pos) {
-		return state.is(Blocks.COMPARATOR);
+	public boolean getWeakChanges(BlockState state, LevelReader world, BlockPos pos) {
+		return state.is(Blocks.COMPARATOR) || state.is(Index.VERTICAL_COMPARATOR);
 	}
 
 	@Override
-	public void onNeighborChange(BlockState state, net.minecraft.world.level.LevelReader world, BlockPos pos,
+	public void onNeighborChange(BlockState state, LevelReader world, BlockPos pos,
 			BlockPos neighbor) {
 		if (pos.getY() == neighbor.getY() && world instanceof Level && !((Level) world).isClientSide()) {
 			state.neighborChanged((Level) world, pos, world.getBlockState(neighbor).getBlock(), neighbor, false);
 		}
+	}
+	
+	@Override
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
+		return !world.isClientSide() ? Util.createTickerHelper(type, Index.VERTICAL_COMPARATOR_TILE_ENTITY_TYPE, VerticalComparatorTileEntity::tick) : null;
 	}
 }

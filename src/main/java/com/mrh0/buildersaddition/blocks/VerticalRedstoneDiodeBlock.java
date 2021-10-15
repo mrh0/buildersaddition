@@ -63,7 +63,6 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	
 	@Override
 	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
-		System.out.println("Rand Tick");
 		if (!this.isLocked(worldIn, pos, state)) {
 			boolean flag = state.getValue(POWERED);
 			boolean flag1 = this.shouldTurnOn(worldIn, pos, state);
@@ -84,11 +83,9 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 
 	@Override
 	public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction side) {
-		if (!state.getValue(POWERED)) {
+		if (!state.getValue(POWERED))
 			return 0;
-		} else {
-			return state.getValue(VERTICAL_FACING) == side ? this.getOutputSignal(world, pos, state) : 0;
-		}
+		return state.getValue(VERTICAL_FACING) == side ? this.getOutputSignal(world, pos, state) : 0;
 	}
 
 	/*
@@ -141,11 +138,10 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 			boolean flag1 = this.shouldTurnOn(world, pos, state);
 			if (flag != flag1 && !world.getBlockTicks().willTickThisTick(pos, this)) {
 				TickPriority tickpriority = TickPriority.HIGH;
-				if (this.shouldPrioritize(world, pos, state)) {
+				if (this.shouldPrioritize(world, pos, state))
 					tickpriority = TickPriority.EXTREMELY_HIGH;
-				} else if (flag) {
+				else if (flag)
 					tickpriority = TickPriority.VERY_HIGH;
-				}
 
 				world.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), tickpriority);
 			}
@@ -165,12 +161,10 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 		Direction direction = state.getValue(VERTICAL_FACING);
 		BlockPos blockpos = pos.relative(direction);
 		int i = worldIn.getSignal(blockpos, direction);
-		if (i >= 15) {
+		if (i >= 15)
 			return i;
-		} else {
-			BlockState blockstate = worldIn.getBlockState(blockpos);
-			return Math.max(i, blockstate.is(Blocks.REDSTONE_WIRE) ? blockstate.getValue(RedStoneWireBlock.POWER) : 0);
-		}
+		BlockState blockstate = worldIn.getBlockState(blockpos);
+		return Math.max(i, blockstate.is(Blocks.REDSTONE_WIRE) ? blockstate.getValue(RedStoneWireBlock.POWER) : 0);
 	}
 
 	protected int getAlternateSignal(LevelReader worldIn, BlockPos pos, BlockState state) {
@@ -189,8 +183,8 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 			else
 				return blockstate.is(Blocks.REDSTONE_WIRE) ? blockstate.getValue(RedStoneWireBlock.POWER)
 						: worldIn.getDirectSignal(pos, side);
-		} else
-			return 0;
+		}
+		return 0;
 	}
 	
 	@Override
@@ -247,7 +241,7 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	}
 
 	public static boolean isDiode(BlockState state) {
-		return state.getBlock() instanceof DiodeBlock;
+		return (state.getBlock() instanceof DiodeBlock) || (state.getBlock() instanceof VerticalRedstoneDiodeBlock);
 	}
 
 	public boolean shouldPrioritize(BlockGetter worldIn, BlockPos pos, BlockState state) {

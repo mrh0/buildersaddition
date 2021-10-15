@@ -54,6 +54,7 @@ import com.mrh0.buildersaddition.tileentity.EntityDetectorTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShopSignTileEntity;
 import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
+import com.mrh0.buildersaddition.tileentity.VerticalComparatorTileEntity;
 import com.mrh0.buildersaddition.util.RegistryUtil;
 
 import net.minecraft.core.particles.ParticleTypes;
@@ -322,6 +323,7 @@ public class Index {
 	public static BlockEntityType<SpeakerTileEntity> SPEAKER_TILE_ENTITY_TYPE;
 	public static BlockEntityType<ArcadeTileEntity> ARCADE_TILE_ENTITY_TYPE;
 	public static BlockEntityType<EntityDetectorTileEntity> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
+	public static BlockEntityType<VerticalComparatorTileEntity> VERTICAL_COMPARATOR_TILE_ENTITY_TYPE;
 
 	public static MenuType<BookshelfContainer> BOOKSHELF_CONTAINER;
 	public static MenuType<ShelfContainer> SHELF_CONTAINER;
@@ -631,6 +633,8 @@ public class Index {
 				TileEntityRegistry.instance.<ArcadeTileEntity>register(ArcadeTileEntity::new, new TileEntityOptions("arcade", ARCADE, ARCADE_OAK, ARCADE_BIRCH, ARCADE_SPRUCE, ARCADE_DARK_OAK, ARCADE_JUNGLE, ARCADE_ACACIA, ARCADE_WARPED, ARCADE_CRIMSON));
 		ENTITY_DETECTOR_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<EntityDetectorTileEntity>register(EntityDetectorTileEntity::new, new TileEntityOptions("entity_detector", ENTITY_DETECTOR));
+		VERTICAL_COMPARATOR_TILE_ENTITY_TYPE = 
+				TileEntityRegistry.instance.<VerticalComparatorTileEntity>register(VerticalComparatorTileEntity::new, new TileEntityOptions("vertical_comparator", VERTICAL_COMPARATOR));
 	}
 	
 	public static void containers() {
