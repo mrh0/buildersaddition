@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "%panel%"
+		},
+		"S":
+		{
+			"item": "minecraft:%wood%_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:%wood%_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_%wood%",
+		"count": 2
+	}
+}

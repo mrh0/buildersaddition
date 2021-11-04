@@ -78,8 +78,8 @@ public class Cupboard extends BaseBlock implements SimpleWaterloggedBlock, Entit
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		BlockPos blockpos = context.getClickedPos();
 		if (blockpos.getY() < 255 && context.getLevel().getBlockState(blockpos.above()).canBeReplaced(context)) {
-			Level world = context.getLevel();
-			boolean flag = world.hasNeighborSignal(blockpos) || world.hasNeighborSignal(blockpos.above());
+			//Level world = context.getLevel();
+			//boolean flag = world.hasNeighborSignal(blockpos) || world.hasNeighborSignal(blockpos.above());
 			return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite())
 					.setValue(HALF, DoubleBlockHalf.LOWER).setValue(MIRROR, context.isSecondaryUseActive())
 					.setValue(WATERLOGGED, Boolean.valueOf(context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER));

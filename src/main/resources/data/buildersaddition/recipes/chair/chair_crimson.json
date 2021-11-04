@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:crimson_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:crimson_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:crimson_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_crimson",
+		"count": 2
+	}
+}

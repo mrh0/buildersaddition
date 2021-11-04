@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:dark_oak_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:dark_oak_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:dark_oak_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_dark_oak",
+		"count": 2
+	}
+}

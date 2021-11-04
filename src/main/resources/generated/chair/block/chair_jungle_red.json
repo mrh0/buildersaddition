@@ -1,0 +1,9 @@
+{
+  "parent": "buildersaddition:block/chair/chair_base",
+  "textures": {
+		"planks": "minecraft:block/jungle_planks",
+		"stripped": "minecraft:block/stripped_jungle_log",
+
+        "particle": "minecraft:block/jungle_planks"
+    }
+}

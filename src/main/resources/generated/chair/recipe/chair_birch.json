@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:birch_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:birch_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:birch_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_birch",
+		"count": 2
+	}
+}

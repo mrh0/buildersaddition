@@ -1,7 +1,5 @@
 package com.mrh0.buildersaddition.blocks;
 
-import java.util.Random;
-import javax.annotation.Nullable;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.CounterTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
@@ -9,7 +7,6 @@ import com.mrh0.buildersaddition.util.Util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;

@@ -1,5 +1,5 @@
 df40b42684b8bf719dee7a10f8b6b4e79726b0be data/minecraft/tags/blocks/leaves.json
-d3cc0621c1bc9f09b1446c2cb8727edf111e0a40 data/minecraft/tags/blocks/mineable/axe.json
+345b09d28c96c678a313bfeac6f0b0f7303bcd74 data/minecraft/tags/blocks/mineable/axe.json
 71934bf0e64199baf8b35dc77b46be458b508245 data/minecraft/tags/blocks/mineable/pickaxe.json
 03ef55addd60e6131764e6901f7ccc87f8aeea80 data/minecraft/tags/blocks/mineable/shovel.json
 ae68e0476a735713cc44aba07910b30f744cf75a data/minecraft/tags/blocks/needs_stone_tool.json

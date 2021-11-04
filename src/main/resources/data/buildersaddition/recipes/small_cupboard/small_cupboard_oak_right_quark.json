@@ -1,0 +1,27 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"CP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "quark:oak_vertical_slab"
+		},
+		"C":
+		{
+			"tag": "forge:chests/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:small_cupboard_oak",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

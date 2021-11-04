@@ -1,0 +1,10 @@
+{
+  "parent": "buildersaddition:block/small_cupboard/small_cupboard_base",
+  "textures": {
+		"planks": "minecraft:block/spruce_planks",
+		"handle": "minecraft:block/polished_andesite",
+		"stripped": "minecraft:block/stripped_spruce_log",
+
+        "particle": "minecraft:block/spruce_planks"
+    }
+}

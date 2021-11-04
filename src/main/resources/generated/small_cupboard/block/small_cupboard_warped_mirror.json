@@ -1,0 +1,10 @@
+{
+  "parent": "buildersaddition:block/small_cupboard/small_cupboard_base_mirror",
+  "textures": {
+		"planks": "minecraft:block/warped_planks",
+		"handle": "minecraft:block/polished_andesite",
+		"stripped": "minecraft:block/stripped_warped_stem",
+
+        "particle": "minecraft:block/warped_planks"
+    }
+}

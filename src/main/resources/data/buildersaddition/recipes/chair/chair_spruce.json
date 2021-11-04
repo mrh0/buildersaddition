@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:spruce_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:spruce_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:spruce_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_spruce",
+		"count": 2
+	}
+}

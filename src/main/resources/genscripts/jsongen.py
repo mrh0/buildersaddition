@@ -21,7 +21,7 @@ def copy_template(name, base, target, texture=None, top=None, bottom=None, param
 	else:
 		params['bottom'] = bottom
 
-	base_file = 'template/{0}'.format(base)
+	base_file = './template/{0}'.format(base)
 	target_file = '../generated/{0}'.format(target.format(**params))
 
 	target_dir = re.sub(r'/[^/]+?$', '', target_file)
@@ -40,7 +40,7 @@ def copy_template_params(base, target, params={}):
 
 	params['modid'] = modid
 
-	base_file = 'template/{0}'.format(base)
+	base_file = './template/{0}'.format(base)
 	target_file = '../generated/{0}'.format(target.format(**params))
 
 	target_dir = re.sub(r'/[^/]+?$', '', target_file)
@@ -56,7 +56,7 @@ def copy_template_params(base, target, params={}):
 				writer.write(line)
 
 def prop(key, value):
-	return '\"{key}\": \"{value}\"'.format(key = key, value = value)
+	return '\t\t\"{key}\": \"{value}\"'.format(key = key, value = value)
 
 def props(props):
 	b = ""

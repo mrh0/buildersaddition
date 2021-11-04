@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "quark:oak_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:oak_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:oak_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_oak",
+		"count": 2
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

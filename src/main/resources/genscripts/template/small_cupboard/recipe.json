@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"CP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "%panel%"
+		},
+		"C":
+		{
+			"tag": "forge:chests/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:%name%",
+		"count": 1
+	}
+}

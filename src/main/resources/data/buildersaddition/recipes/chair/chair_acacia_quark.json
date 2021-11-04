@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "quark:acacia_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:acacia_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:acacia_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_acacia",
+		"count": 2
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

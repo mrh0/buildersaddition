@@ -231,6 +231,15 @@
 	"block.buildersaddition.stool_crimson":"Crimson Stool",
 	"block.buildersaddition.stool_warped":"Warped Stool",
 	
+	"block.buildersaddition.chair_oak":"Oak Chair",
+	"block.buildersaddition.chair_spruce":"Spruce Chair",
+	"block.buildersaddition.chair_birch":"Birch Chair",
+	"block.buildersaddition.chair_acacia":"Acacia Chair",
+	"block.buildersaddition.chair_dark_oak":"Dark Oak Chair",
+	"block.buildersaddition.chair_jungle":"Jungle Chair",
+	"block.buildersaddition.chair_crimson":"Crimson Chair",
+	"block.buildersaddition.chair_warped":"Warped Chair",
+	
 	"block.buildersaddition.cupboard_oak":"Oak Cupboard",
 	"block.buildersaddition.cupboard_spruce":"Spruce Cupboard",
 	"block.buildersaddition.cupboard_birch":"Birch Cupboard",
@@ -239,6 +248,15 @@
 	"block.buildersaddition.cupboard_jungle":"Jungle Cupboard",
 	"block.buildersaddition.cupboard_crimson":"Crimson Cupboard",
 	"block.buildersaddition.cupboard_warped":"Warped Cupboard",
+	
+	"block.buildersaddition.small_cupboard_acacia":"Small Acacia Cupboard",
+	"block.buildersaddition.small_cupboard_birch":"Small Birch Cupboard",
+	"block.buildersaddition.small_cupboard_crimson":"Small Crimson Cupboard",
+	"block.buildersaddition.small_cupboard_dark_oak":"Small Dark Oak Cupboard",
+	"block.buildersaddition.small_cupboard_jungle":"Small Jungle Cupboard",
+	"block.buildersaddition.small_cupboard_oak":"Small Oak Cupboard",
+	"block.buildersaddition.small_cupboard_spruce":"Small Spruce Cupboard",
+	"block.buildersaddition.small_cupboard_warped":"Small Warped Cupboard",
 	
 	"block.buildersaddition.arcade_oak":"Oak Arcade",
 	"block.buildersaddition.arcade_spruce":"Spruce Arcade",
@@ -297,13 +315,16 @@
 	
 	"container.buildersaddition.counter":"Counter",
 	"container.buildersaddition.cupboard":"Cupboard",
+	"container.buildersaddition.small_cupboard":"Small Cupboard",
 	"container.buildersaddition.cabinet":"Cabinet",
 	"container.buildersaddition.bedside_table":"Bedside Table",
 	"container.buildersaddition.bookshelf":"Bookshelf",
 	"container.buildersaddition.shelf":"Shelf",
+	
 	"container.buildersaddition.speaker": "Midi Speaker",
 	"container.buildersaddition.speaker.disconnect": "Disconnect",
 	"container.buildersaddition.speaker.connect": "Connect",
+	
 	"container.buildersaddition.arcade": "Arcade",
 	
 	"block.buildersaddition.speaker":"Midi Speaker",

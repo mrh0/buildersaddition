@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:warped_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:warped_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:warped_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_warped",
+		"count": 2
+	}
+}

@@ -54,9 +54,9 @@ public class CupboardTileEntity extends BaseChestTileEntity implements IComparet
 				}
 				else {
 					BlockEntity te = level.getBlockEntity(getBlockPos().below());
-					if(te != null && te instanceof CupboardTileEntity) {
+					if(te != null && (te instanceof CupboardTileEntity)) {
 						CupboardTileEntity cte = (CupboardTileEntity)te;
-						this.chestHandler = LazyOptional.of(this::createHandler);// net.minecraftforge.common.util.LazyOptional.of(cte::createHandler);
+						this.chestHandler = LazyOptional.of(cte::createHandler);// net.minecraftforge.common.util.LazyOptional.of(cte::createHandler);
 					}
 					else {
 						return LazyOptional.empty();

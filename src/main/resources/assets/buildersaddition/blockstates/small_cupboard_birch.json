@@ -1,0 +1,13 @@
+{
+    "variants": {
+        "facing=north,mirror=false": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch", "y":180 },
+        "facing=west,mirror=false": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch", "y":90 },
+        "facing=south,mirror=false": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch" },
+        "facing=east,mirror=false": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch", "y":270 },
+
+        "facing=north,mirror=true": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch_mirror", "y":180 },
+        "facing=west,mirror=true": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch_mirror", "y":90 },
+        "facing=south,mirror=true": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch_mirror" },
+        "facing=east,mirror=true": { "model": "buildersaddition:block/small_cupboard/small_cupboard_birch_mirror", "y":270 }
+    }
+}

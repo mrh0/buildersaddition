@@ -20,6 +20,7 @@ import com.mrh0.buildersaddition.blocks.Pillow;
 import com.mrh0.buildersaddition.blocks.Planter;
 import com.mrh0.buildersaddition.blocks.Shelf;
 import com.mrh0.buildersaddition.blocks.ShopSign;
+import com.mrh0.buildersaddition.blocks.SmallCupboard;
 import com.mrh0.buildersaddition.blocks.Sofa;
 import com.mrh0.buildersaddition.blocks.Speaker;
 import com.mrh0.buildersaddition.blocks.Stool;
@@ -29,6 +30,7 @@ import com.mrh0.buildersaddition.blocks.VerticalComparatorBlock;
 import com.mrh0.buildersaddition.blocks.VerticalRepeaterBlock;
 import com.mrh0.buildersaddition.blocks.VerticalSlab;
 import com.mrh0.buildersaddition.blocks.Candle;
+import com.mrh0.buildersaddition.blocks.Chair;
 import com.mrh0.buildersaddition.blocks.CopperVerticalSlab;
 import com.mrh0.buildersaddition.blocks.base.GenericBlock;
 import com.mrh0.buildersaddition.blocks.base.IConnects;
@@ -53,6 +55,7 @@ import com.mrh0.buildersaddition.tileentity.CupboardTileEntity;
 import com.mrh0.buildersaddition.tileentity.EntityDetectorTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.tileentity.ShopSignTileEntity;
+import com.mrh0.buildersaddition.tileentity.SmallCupboardTileEntity;
 import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
 import com.mrh0.buildersaddition.tileentity.VerticalComparatorTileEntity;
 import com.mrh0.buildersaddition.util.RegistryUtil;
@@ -200,6 +203,15 @@ public class Index {
 	public static Block STOOL_CRIMSON;
 	public static Block STOOL_WARPED;
 	
+	public static Block CHAIR_OAK;
+	public static Block CHAIR_SPRUCE;
+	public static Block CHAIR_BIRCH;
+	public static Block CHAIR_DARK_OAK;
+	public static Block CHAIR_JUNGLE;
+	public static Block CHAIR_ACACIA;
+	public static Block CHAIR_CRIMSON;
+	public static Block CHAIR_WARPED;
+	
 	public static Block PLANTER;
 	
 	public static Block HEDGE_OAK;
@@ -251,6 +263,15 @@ public class Index {
 	public static Block CUPBOARD_ACACIA;
 	public static Block CUPBOARD_WARPED;
 	public static Block CUPBOARD_CRIMSON;
+	
+	public static Block SMALL_CUPBOARD_OAK;
+	public static Block SMALL_CUPBOARD_BIRCH;
+	public static Block SMALL_CUPBOARD_SPRUCE;
+	public static Block SMALL_CUPBOARD_DARK_OAK;
+	public static Block SMALL_CUPBOARD_JUNGLE;
+	public static Block SMALL_CUPBOARD_ACACIA;
+	public static Block SMALL_CUPBOARD_WARPED;
+	public static Block SMALL_CUPBOARD_CRIMSON;
 	
 	public static Block BENCH_OAK;
 	public static Block BENCH_BIRCH;
@@ -315,6 +336,7 @@ public class Index {
 	
 	public static BlockEntityType<CounterTileEntity> COUNTER_TILE_ENTITY_TYPE;
 	public static BlockEntityType<CupboardTileEntity> CUPBOARD_TILE_ENTITY_TYPE;
+	public static BlockEntityType<SmallCupboardTileEntity> SMALL_CUPBOARD_TILE_ENTITY_TYPE;
 	public static BlockEntityType<CabinetTileEntity> CABINET_TILE_ENTITY_TYPE;
 	public static BlockEntityType<BookshelfTileEntity> BOOKSHELF_TILE_ENTITY_TYPE;
 	public static BlockEntityType<ShelfTileEntity> SHELF_TILE_ENTITY_TYPE;
@@ -479,6 +501,15 @@ public class Index {
 		STOOL_CRIMSON = new Stool("stool_crimson", Blocks.CRIMSON_PLANKS);
 		STOOL_WARPED = new Stool("stool_warped", Blocks.WARPED_PLANKS);
 		
+		CHAIR_OAK = new Chair("chair_oak", Blocks.OAK_PLANKS);
+		CHAIR_SPRUCE = new Chair("chair_spruce", Blocks.SPRUCE_PLANKS);
+		CHAIR_BIRCH = new Chair("chair_birch", Blocks.BIRCH_PLANKS);
+		CHAIR_DARK_OAK = new Chair("chair_dark_oak", Blocks.DARK_OAK_PLANKS);
+		CHAIR_JUNGLE = new Chair("chair_jungle", Blocks.JUNGLE_PLANKS);
+		CHAIR_ACACIA = new Chair("chair_acacia", Blocks.ACACIA_PLANKS);
+		CHAIR_CRIMSON = new Chair("chair_crimson", Blocks.CRIMSON_PLANKS);
+		CHAIR_WARPED = new Chair("chair_warped", Blocks.WARPED_PLANKS);
+		
 		HEDGE_OAK = new Hedge("oak", Blocks.OAK_LEAVES);
 		HEDGE_SPRUCE = new Hedge("spruce", Blocks.SPRUCE_LEAVES);
 		HEDGE_BIRCH = new Hedge("birch", Blocks.BIRCH_LEAVES);
@@ -535,6 +566,15 @@ public class Index {
 		CUPBOARD_ACACIA = new Cupboard("acacia", Blocks.OAK_PLANKS);
 		CUPBOARD_WARPED = new Cupboard("warped", Blocks.WARPED_PLANKS);
 		CUPBOARD_CRIMSON = new Cupboard("crimson", Blocks.CRIMSON_PLANKS);
+		
+		SMALL_CUPBOARD_OAK = new SmallCupboard("oak", Blocks.OAK_PLANKS);
+		SMALL_CUPBOARD_BIRCH = new SmallCupboard("birch", Blocks.OAK_PLANKS);
+		SMALL_CUPBOARD_SPRUCE = new SmallCupboard("spruce", Blocks.OAK_PLANKS);
+		SMALL_CUPBOARD_DARK_OAK = new SmallCupboard("dark_oak", Blocks.OAK_PLANKS);
+		SMALL_CUPBOARD_JUNGLE = new SmallCupboard("jungle", Blocks.OAK_PLANKS);
+		SMALL_CUPBOARD_ACACIA = new SmallCupboard("acacia", Blocks.OAK_PLANKS);
+		SMALL_CUPBOARD_WARPED = new SmallCupboard("warped", Blocks.WARPED_PLANKS);
+		SMALL_CUPBOARD_CRIMSON = new SmallCupboard("crimson", Blocks.CRIMSON_PLANKS);
 		
 		BENCH_OAK = new Bench("oak");
 		BENCH_BIRCH = new Bench("birch");
@@ -616,7 +656,9 @@ public class Index {
 		COUNTER_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<CounterTileEntity>register(CounterTileEntity::new, new TileEntityOptions("counter", COUNTER_ALL));
 		CUPBOARD_TILE_ENTITY_TYPE = 
-				TileEntityRegistry.instance.<CupboardTileEntity>register(CupboardTileEntity::new, new TileEntityOptions("cupboard", CUPBOARD_OAK));
+				TileEntityRegistry.instance.<CupboardTileEntity>register(CupboardTileEntity::new, new TileEntityOptions("cupboard", CUPBOARD_OAK, CUPBOARD_ACACIA, CUPBOARD_BIRCH, CUPBOARD_CRIMSON, CUPBOARD_DARK_OAK, CUPBOARD_JUNGLE, CUPBOARD_SPRUCE, CUPBOARD_WARPED));
+		SMALL_CUPBOARD_TILE_ENTITY_TYPE = 
+				TileEntityRegistry.instance.<SmallCupboardTileEntity>register(SmallCupboardTileEntity::new, new TileEntityOptions("small_cupboard", SMALL_CUPBOARD_OAK, SMALL_CUPBOARD_ACACIA, SMALL_CUPBOARD_BIRCH, SMALL_CUPBOARD_CRIMSON, SMALL_CUPBOARD_DARK_OAK, SMALL_CUPBOARD_JUNGLE, SMALL_CUPBOARD_SPRUCE, SMALL_CUPBOARD_WARPED));
 		CABINET_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<CabinetTileEntity>register(CabinetTileEntity::new, new TileEntityOptions("cabinet", CABINET_OAK, CABINET_BIRCH, CABINET_SPRUCE, CABINET_DARK_OAK, CABINET_JUNGLE, CABINET_ACACIA, CABINET_WARPED, CABINET_CRIMSON));
 		BOOKSHELF_TILE_ENTITY_TYPE = 

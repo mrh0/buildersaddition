@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"CP"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:acacia_vertical_slab"
+		},
+		"C":
+		{
+			"tag": "forge:chests/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:small_cupboard_acacia",
+		"count": 1
+	}
+}

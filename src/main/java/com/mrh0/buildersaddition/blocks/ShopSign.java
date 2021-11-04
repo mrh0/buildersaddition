@@ -152,7 +152,8 @@ public class ShopSign extends BaseDerivativeBlock implements EntityBlock {
 				ItemStack heald = player.getItemInHand(hand);
 				//ItemStack inTE = sste.getDisplayItem();
 				if(player.isCrouching()) {
-					Containers.dropItemStack(world, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), sste.getDisplayItem());
+					if(!player.isCreative())
+						Containers.dropItemStack(world, (double)pos.getX(), (double)pos.getY(), (double)pos.getZ(), sste.getDisplayItem());
 					sste.setDisplayItem(ItemStack.EMPTY);
 					world.playLocalSound(pos.getX(), pos.getY(), pos.getZ(), SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0F, 1.0F, false);
 					return InteractionResult.CONSUME;

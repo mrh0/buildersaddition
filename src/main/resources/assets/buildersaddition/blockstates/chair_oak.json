@@ -1,0 +1,84 @@
+{
+	"multipart": [
+		{
+			"when": { "facing": "north" },
+			"apply": { "model": "buildersaddition:block/chair/chair_oak", "y": 0 }
+		},
+		{
+			"when": { "facing": "east" },
+			"apply": { "model": "buildersaddition:block/chair/chair_oak", "y": 90 }
+		},
+		{
+			"when": { "facing": "south" },
+			"apply": { "model": "buildersaddition:block/chair/chair_oak", "y": 180 }
+		},
+		{
+			"when": { "facing": "west" },
+			"apply": { "model": "buildersaddition:block/chair/chair_oak", "y": 270 }
+		},
+		{
+			"when": { "pillow": "black" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_black" }
+		},
+		{
+			"when": { "pillow": "blue" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_blue" }
+		},
+		{
+			"when": { "pillow": "brown" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_brown" }
+		},
+		{
+			"when": { "pillow": "cyan" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_cyan" }
+		},
+		{
+			"when": { "pillow": "gray" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_gray" }
+		},
+		{
+			"when": { "pillow": "green" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_green" }
+		},
+		{
+			"when": { "pillow": "light_blue" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_light_blue" }
+		},
+		{
+			"when": { "pillow": "light_gray" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_light_gray" }
+		},
+		{
+			"when": { "pillow": "lime" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_lime" }
+		},
+		{
+			"when": { "pillow": "magenta" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_magenta" }
+		},
+		{
+			"when": { "pillow": "orange" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_orange" }
+		},
+		{
+			"when": { "pillow": "pink" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_pink" }
+		},
+		{
+			"when": { "pillow": "purple" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_purple" }
+		},
+		{
+			"when": { "pillow": "red" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_red" }
+		},
+		{
+			"when": { "pillow": "white" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_white" }
+		},
+		{
+			"when": { "pillow": "yellow" },
+			"apply": { "model": "buildersaddition:block/stool/stool_pillow_yellow" }
+		}
+	]
+}

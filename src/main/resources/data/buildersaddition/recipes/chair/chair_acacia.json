@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:acacia_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:acacia_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:acacia_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_acacia",
+		"count": 2
+	}
+}

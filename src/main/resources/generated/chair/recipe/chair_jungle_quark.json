@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "quark:jungle_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:jungle_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:jungle_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_jungle",
+		"count": 2
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

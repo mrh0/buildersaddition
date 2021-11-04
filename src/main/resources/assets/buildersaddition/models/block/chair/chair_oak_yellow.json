@@ -1,0 +1,9 @@
+{
+  "parent": "buildersaddition:block/chair/chair_base",
+  "textures": {
+		"planks": "minecraft:block/oak_planks",
+		"stripped": "minecraft:block/stripped_oak_log",
+
+        "particle": "minecraft:block/oak_planks"
+    }
+}

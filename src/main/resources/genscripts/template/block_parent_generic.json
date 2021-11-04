@@ -1,7 +1,7 @@
 {
   "parent": "buildersaddition:block/%type%/%parent%",
   "textures": {
-        %props%
+%props%
         "particle": "%particle%"
     }
 }
