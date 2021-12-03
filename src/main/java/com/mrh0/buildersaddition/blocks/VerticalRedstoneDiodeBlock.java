@@ -14,7 +14,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.TickPriority;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DiodeBlock;
@@ -27,6 +26,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.world.ticks.TickPriority;
 
 public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	public static final DirectionProperty VERTICAL_FACING = DirectionProperty.create("vertical_facing",
@@ -60,19 +60,20 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	public boolean isValidPosition(BlockState state, LevelReader world, BlockPos pos) {
 		return canSupportRigidBlock(world, pos.relative(state.getValue(HORIZONTAL_FACING)));
 	}
-	
-	@Override
-	public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, Random rand) {
-		if (!this.isLocked(worldIn, pos, state)) {
-			boolean flag = state.getValue(POWERED);
-			boolean flag1 = this.shouldTurnOn(worldIn, pos, state);
+
+	public void tick(BlockState p_52515_, ServerLevel p_52516_, BlockPos p_52517_, Random p_52518_) {
+		if (!this.isLocked(p_52516_, p_52517_, p_52515_)) {
+			boolean flag = p_52515_.getValue(POWERED);
+			boolean flag1 = this.shouldTurnOn(p_52516_, p_52517_, p_52515_);
 			if (flag && !flag1) {
-				worldIn.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(false)), 2);
+				p_52516_.setBlock(p_52517_, p_52515_.setValue(POWERED, Boolean.valueOf(false)), 2);
 			} else if (!flag) {
-				worldIn.setBlock(pos, state.setValue(POWERED, Boolean.valueOf(true)), 2);
-				if (!flag1)
-					worldIn.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), TickPriority.VERY_HIGH);
+				p_52516_.setBlock(p_52517_, p_52515_.setValue(POWERED, Boolean.valueOf(true)), 2);
+				if (!flag1) {
+					p_52516_.m_186464_(p_52517_, this, this.getDelay(p_52515_), TickPriority.VERY_HIGH);
+				}
 			}
+
 		}
 	}
 
@@ -131,19 +132,36 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 
 		}
 	}
-	
-	protected void checkTickOnNeighbor(Level world, BlockPos pos, BlockState state) {
-		if (!this.isLocked(world, pos, state)) {
-			boolean flag = state.getValue(POWERED);
-			boolean flag1 = this.shouldTurnOn(world, pos, state);
-			if (flag != flag1 && !world.getBlockTicks().willTickThisTick(pos, this)) {
-				TickPriority tickpriority = TickPriority.HIGH;
-				if (this.shouldPrioritize(world, pos, state))
-					tickpriority = TickPriority.EXTREMELY_HIGH;
-				else if (flag)
-					tickpriority = TickPriority.VERY_HIGH;
 
-				world.getBlockTicks().scheduleTick(pos, this, this.getDelay(state), tickpriority);
+	/*
+	 * protected void checkTickOnNeighbor(Level world, BlockPos pos, BlockState
+	 * state) { if (!this.isLocked(world, pos, state)) { boolean flag =
+	 * state.getValue(POWERED); boolean flag1 = this.shouldTurnOn(world, pos,
+	 * state); if (flag != flag1 && !world.getBlockTicks().willTickThisTick(pos,
+	 * this)) { TickPriority tickpriority = TickPriority.HIGH; if
+	 * (this.shouldPrioritize(world, pos, state)) tickpriority =
+	 * TickPriority.EXTREMELY_HIGH; else if (flag) tickpriority =
+	 * TickPriority.VERY_HIGH;
+	 * 
+	 * world.getBlockTicks().scheduleTick(pos, this, this.getDelay(state),
+	 * tickpriority); }
+	 * 
+	 * } }
+	 */
+
+	protected void checkTickOnNeighbor(Level p_52577_, BlockPos p_52578_, BlockState p_52579_) {
+		if (!this.isLocked(p_52577_, p_52578_, p_52579_)) {
+			boolean flag = p_52579_.getValue(POWERED);
+			boolean flag1 = this.shouldTurnOn(p_52577_, p_52578_, p_52579_);
+			if (flag != flag1 && !p_52577_.m_183326_().m_183588_(p_52578_, this)) {
+				TickPriority tickpriority = TickPriority.HIGH;
+				if (this.shouldPrioritize(p_52577_, p_52578_, p_52579_)) {
+					tickpriority = TickPriority.EXTREMELY_HIGH;
+				} else if (flag) {
+					tickpriority = TickPriority.VERY_HIGH;
+				}
+
+				p_52577_.m_186464_(p_52578_, this, this.getDelay(p_52579_), tickpriority);
 			}
 
 		}
@@ -186,7 +204,7 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public boolean isSignalSource(BlockState state) {
 		return true;
@@ -205,7 +223,7 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	@Override
 	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent, ItemStack stack) {
 		if (this.shouldTurnOn(world, pos, state)) {
-			world.getBlockTicks().scheduleTick(pos, this, 1);
+			world.m_183326_().m_183582_(pos, this);
 		}
 	}
 

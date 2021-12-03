@@ -95,7 +95,7 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 	@Override
 	public boolean mouseClicked(double p_mouseClicked_1_, double p_mouseClicked_3_, int p_mouseClicked_5_) {
 		for (int i = 0; i < SIZE; i++) {
-			if (btns[i].isHovered())// isHovered
+			if (btns[i].isMouseOver(p_mouseClicked_1_, p_mouseClicked_3_))// isHovered
 				buttonClicked(btns[i], i);
 		}
 
@@ -130,10 +130,10 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 		GlStateManager._disableBlend();
 
 		for (int i = 0; i < SIZE; i++) {
-			if (btns[i].isHovered())// isHovered
+			if (btns[i].isMouseOver(x, y))// isHovered
 				renderTooltip(stack, new TextComponent("F#" + Notes.octaveNames[i]), x, y);
 		}
-		if(helpBtn.isHovered())
+		if(helpBtn.isMouseOver(x, y))
 			renderTooltip(stack, new TextComponent(
 					(hasDevice() ? "Device Discovered" : "No Device Connected") 
 					+ ", Midi Input: " + (Config.MIDI_INPUT_ENABLED.get() ? "Enabled" : "Disabled")), x, y);

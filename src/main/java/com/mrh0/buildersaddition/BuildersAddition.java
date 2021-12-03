@@ -25,10 +25,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.fmllegacy.network.NetworkRegistry;
-import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
-import net.minecraftforge.fmlserverevents.FMLServerStartingEvent;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 
 /*
@@ -53,7 +52,7 @@ public class BuildersAddition {
 	public BuildersAddition() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     	FMLJavaModLoadingContext.get().getModEventBus().addListener(this::postInit);
-    	MinecraftForge.EVENT_BUS.addListener(this::serverevt);
+    	//MinecraftForge.EVENT_BUS.addListener(this::serverevt);
     	MinecraftForge.EVENT_BUS.register(this);
     	
     	ArcadeManager.init();
@@ -80,9 +79,5 @@ public class BuildersAddition {
         Network.registerMessage(i++, PlayNotePacket.class, PlayNotePacket::encode, PlayNotePacket::decode, PlayNotePacket::handle);
         Network.registerMessage(i++, UpdateDataPacket.class, UpdateDataPacket::encode, UpdateDataPacket::decode, UpdateDataPacket::handle);
     	System.out.println("Builders Addition Initialized!");
-    }
-    
-    public void serverevt(FMLServerStartingEvent evt) {
-    	
     }
 }

@@ -1,0 +1,135 @@
+---- Minecraft Crash Report ----
+// Uh... Did I do that?
+
+Time: 2021-01-12 10:56
+Description: Exception in server tick loop
+
+java.lang.NoClassDefFoundError: net/minecraft/client/audio/ISound
+	at com.mrh0.buildersaddition.tileentity.SpeakerTileEntity.playNote(SpeakerTileEntity.java:64) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+	at com.mrh0.buildersaddition.network.PlayNotePacket.sendUpdate(PlayNotePacket.java:57) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+	at com.mrh0.buildersaddition.network.PlayNotePacket.lambda$handle$0(PlayNotePacket.java:41) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+	at net.minecraftforge.fml.network.NetworkEvent$Context.enqueueWork(NetworkEvent.java:215) ~[forge:?] {re:classloading}
+	at com.mrh0.buildersaddition.network.PlayNotePacket.handle(PlayNotePacket.java:36) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+	at net.minecraftforge.fml.network.simple.IndexedMessageCodec.lambda$tryDecode$3(IndexedMessageCodec.java:128) ~[forge:?] {re:classloading}
+	at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_242] {}
+	at net.minecraftforge.fml.network.simple.IndexedMessageCodec.tryDecode(IndexedMessageCodec.java:128) ~[forge:?] {re:classloading}
+	at net.minecraftforge.fml.network.simple.IndexedMessageCodec.consume(IndexedMessageCodec.java:162) ~[forge:?] {re:classloading}
+	at net.minecraftforge.fml.network.simple.SimpleChannel.networkEventListener(SimpleChannel.java:80) ~[forge:?] {re:classloading}
+	at net.minecraftforge.eventbus.EventBus.doCastFilter(EventBus.java:247) ~[eventbus-3.0.5-service.jar:?] {}
+	at net.minecraftforge.eventbus.EventBus.lambda$addListener$11(EventBus.java:239) ~[eventbus-3.0.5-service.jar:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:297) ~[eventbus-3.0.5-service.jar:?] {}
+	at net.minecraftforge.fml.network.NetworkInstance.dispatch(NetworkInstance.java:84) ~[forge:?] {re:classloading}
+	at net.minecraftforge.fml.network.NetworkHooks.lambda$onCustomPayload$1(NetworkHooks.java:88) ~[forge:?] {re:classloading}
+	at java.util.Optional.map(Optional.java:215) ~[?:1.8.0_242] {}
+	at net.minecraftforge.fml.network.NetworkHooks.onCustomPayload(NetworkHooks.java:88) ~[forge:?] {re:classloading}
+	at net.minecraft.network.play.ServerPlayNetHandler.func_147349_a(ServerPlayNetHandler.java:1413) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.network.play.client.CCustomPayloadPacket.func_148833_a(CCustomPayloadPacket.java:42) ~[?:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.network.play.client.CCustomPayloadPacket.func_148833_a(CCustomPayloadPacket.java:12) ~[?:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.minecraft.network.PacketThreadUtil.func_225383_a(SourceFile:21) ~[?:?] {re:classloading}
+	at net.minecraft.util.concurrent.TickDelayedTask.run(SourceFile:18) ~[?:?] {re:classloading}
+	at net.minecraft.util.concurrent.ThreadTaskExecutor.func_213166_h(SourceFile:144) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.util.concurrent.RecursiveEventLoop.func_213166_h(SourceFile:23) ~[?:?] {re:classloading}
+	at net.minecraft.server.MinecraftServer.func_213166_h(MinecraftServer.java:733) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.func_213166_h(MinecraftServer.java:159) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.util.concurrent.ThreadTaskExecutor.func_213168_p(SourceFile:118) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.func_213205_aW(MinecraftServer.java:716) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.func_213168_p(MinecraftServer.java:710) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.util.concurrent.ThreadTaskExecutor.func_213160_bf(SourceFile:103) ~[?:?] {re:classloading,pl:accesstransformer:B}
+	at net.minecraft.server.MinecraftServer.func_213202_o(MinecraftServer.java:695) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.func_240802_v_(MinecraftServer.java:645) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at net.minecraft.server.MinecraftServer.lambda$startServer$0(MinecraftServer.java:232) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_242] {}
+Caused by: java.lang.ClassNotFoundException: net.minecraft.client.audio.ISound
+	at java.lang.ClassLoader.findClass(ClassLoader.java:524) ~[?:1.8.0_242] {}
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:419) ~[?:1.8.0_242] {}
+	at cpw.mods.modlauncher.TransformingClassLoader.loadClass(TransformingClassLoader.java:106) ~[modlauncher-8.0.6.jar:?] {re:classloading}
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:352) ~[?:1.8.0_242] {}
+	... 34 more
+	Suppressed: java.lang.ClassNotFoundException
+		at cpw.mods.modlauncher.TransformingClassLoader$DelegatedClassLoader.findClass(TransformingClassLoader.java:282) ~[modlauncher-8.0.6.jar:?] {}
+		at cpw.mods.modlauncher.TransformingClassLoader.loadClass(TransformingClassLoader.java:136) ~[modlauncher-8.0.6.jar:?] {re:classloading}
+		at cpw.mods.modlauncher.TransformingClassLoader.loadClass(TransformingClassLoader.java:98) ~[modlauncher-8.0.6.jar:?] {re:classloading}
+		at java.lang.ClassLoader.loadClass(ClassLoader.java:352) ~[?:1.8.0_242] {}
+		at com.mrh0.buildersaddition.tileentity.SpeakerTileEntity.playNote(SpeakerTileEntity.java:64) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+		at com.mrh0.buildersaddition.network.PlayNotePacket.sendUpdate(PlayNotePacket.java:57) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+		at com.mrh0.buildersaddition.network.PlayNotePacket.lambda$handle$0(PlayNotePacket.java:41) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+		at net.minecraftforge.fml.network.NetworkEvent$Context.enqueueWork(NetworkEvent.java:215) ~[forge:?] {re:classloading}
+		at com.mrh0.buildersaddition.network.PlayNotePacket.handle(PlayNotePacket.java:36) ~[buildersaddition:1.16.4-20200111a] {re:classloading}
+		at net.minecraftforge.fml.network.simple.IndexedMessageCodec.lambda$tryDecode$3(IndexedMessageCodec.java:128) ~[forge:?] {re:classloading}
+		at java.util.Optional.ifPresent(Optional.java:159) ~[?:1.8.0_242] {}
+		at net.minecraftforge.fml.network.simple.IndexedMessageCodec.tryDecode(IndexedMessageCodec.java:128) ~[forge:?] {re:classloading}
+		at net.minecraftforge.fml.network.simple.IndexedMessageCodec.consume(IndexedMessageCodec.java:162) ~[forge:?] {re:classloading}
+		at net.minecraftforge.fml.network.simple.SimpleChannel.networkEventListener(SimpleChannel.java:80) ~[forge:?] {re:classloading}
+		at net.minecraftforge.eventbus.EventBus.doCastFilter(EventBus.java:247) ~[eventbus-3.0.5-service.jar:?] {}
+		at net.minecraftforge.eventbus.EventBus.lambda$addListener$11(EventBus.java:239) ~[eventbus-3.0.5-service.jar:?] {}
+		at net.minecraftforge.eventbus.EventBus.post(EventBus.java:297) ~[eventbus-3.0.5-service.jar:?] {}
+		at net.minecraftforge.fml.network.NetworkInstance.dispatch(NetworkInstance.java:84) ~[forge:?] {re:classloading}
+		at net.minecraftforge.fml.network.NetworkHooks.lambda$onCustomPayload$1(NetworkHooks.java:88) ~[forge:?] {re:classloading}
+		at java.util.Optional.map(Optional.java:215) ~[?:1.8.0_242] {}
+		at net.minecraftforge.fml.network.NetworkHooks.onCustomPayload(NetworkHooks.java:88) ~[forge:?] {re:classloading}
+		at net.minecraft.network.play.ServerPlayNetHandler.func_147349_a(ServerPlayNetHandler.java:1413) ~[?:?] {re:classloading,pl:accesstransformer:B}
+		at net.minecraft.network.play.client.CCustomPayloadPacket.func_148833_a(CCustomPayloadPacket.java:42) ~[?:?] {re:classloading,pl:runtimedistcleaner:A}
+		at net.minecraft.network.play.client.CCustomPayloadPacket.func_148833_a(CCustomPayloadPacket.java:12) ~[?:?] {re:classloading,pl:runtimedistcleaner:A}
+		at net.minecraft.network.PacketThreadUtil.func_225383_a(SourceFile:21) ~[?:?] {re:classloading}
+		at net.minecraft.util.concurrent.TickDelayedTask.run(SourceFile:18) ~[?:?] {re:classloading}
+		at net.minecraft.util.concurrent.ThreadTaskExecutor.func_213166_h(SourceFile:144) ~[?:?] {re:classloading,pl:accesstransformer:B}
+		at net.minecraft.util.concurrent.RecursiveEventLoop.func_213166_h(SourceFile:23) ~[?:?] {re:classloading}
+		at net.minecraft.server.MinecraftServer.func_213166_h(MinecraftServer.java:733) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+		at net.minecraft.server.MinecraftServer.func_213166_h(MinecraftServer.java:159) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+		at net.minecraft.util.concurrent.ThreadTaskExecutor.func_213168_p(SourceFile:118) ~[?:?] {re:classloading,pl:accesstransformer:B}
+		at net.minecraft.server.MinecraftServer.func_213205_aW(MinecraftServer.java:716) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+		at net.minecraft.server.MinecraftServer.func_213168_p(MinecraftServer.java:710) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+		at net.minecraft.util.concurrent.ThreadTaskExecutor.func_213160_bf(SourceFile:103) ~[?:?] {re:classloading,pl:accesstransformer:B}
+		at net.minecraft.server.MinecraftServer.func_213202_o(MinecraftServer.java:695) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+		at net.minecraft.server.MinecraftServer.func_240802_v_(MinecraftServer.java:645) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+		at net.minecraft.server.MinecraftServer.lambda$startServer$0(MinecraftServer.java:232) ~[?:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
+		at java.lang.Thread.run(Thread.java:748) [?:1.8.0_242] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.4
+	Minecraft Version ID: 1.16.4
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_242, AdoptOpenJDK
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode), 
+	Memory: 385617888 bytes (367 MB) / 1050673152 bytes (1002 MB) up to 1050673152 bytes (1002 MB)
+	CPUs: 8
+	JVM Flags: 2 total; -Xmx1024M -Xms1024M
+	ModLauncher: 8.0.6+85+master.325de55
+	ModLauncher launch target: fmlserver
+	ModLauncher naming: srg
+	ModLauncher services: 
+		/mixin-0.8.2.jar mixin PLUGINSERVICE 
+		/eventbus-3.0.5-service.jar eventbus PLUGINSERVICE 
+		/forge-1.16.4-35.1.36.jar object_holder_definalize PLUGINSERVICE 
+		/forge-1.16.4-35.1.36.jar runtime_enum_extender PLUGINSERVICE 
+		/accesstransformers-2.2.0-shadowed.jar accesstransformer PLUGINSERVICE 
+		/forge-1.16.4-35.1.36.jar capability_inject_definalize PLUGINSERVICE 
+		/forge-1.16.4-35.1.36.jar runtimedistcleaner PLUGINSERVICE 
+		/mixin-0.8.2.jar mixin TRANSFORMATIONSERVICE 
+		/forge-1.16.4-35.1.36.jar fml TRANSFORMATIONSERVICE 
+	FML: 35.1
+	Forge: net.minecraftforge:35.1.36
+	FML Language Providers: 
+		javafml@35.1
+		minecraft@1
+	Mod List: 
+		forge-1.16.4-35.1.36-server.jar                   |Minecraft                     |minecraft                     |1.16.4              |DONE      |NOSIGNATURE
+		TConstruct-1.16.4-3.0.1.DEV.GITBORK.jar           |Tinkers' Construct            |tconstruct                    |3.0.1.DEV.GITBORK   |DONE      |NOSIGNATURE
+		forge-1.16.4-35.1.36-universal.jar                |Forge                         |forge                         |35.1.36             |DONE      |22:af:21:d8:19:82:7f:93:94:fe:2b:ac:b7:e4:41:57:68:39:87:b1:a7:5c:c6:44:f9:25:74:21:14:f5:0d:90
+		buildersaddition-1.16.4-20200111a.jar             |Builders Crafts & Addition    |buildersaddition              |1.16.4-20200111a    |DONE      |NOSIGNATURE
+		Mantle-1.16.4-1.6.43.jar                          |Mantle                        |mantle                        |1.6.43              |DONE      |NOSIGNATURE
+		Inspirations-1.16.3-1.2.1.24.jar                  |Inspirations                  |inspirations                  |1.2.1               |DONE      |NOSIGNATURE
+		RouterReborn-1.16.3-1.0.2a.jar                    |Router Reborn                 |routerreborn                  |1.16.3-1.0.2a       |DONE      |NOSIGNATURE
+		AutoRegLib-1.6-46.jar                             |AutoRegLib                    |autoreglib                    |1.6-46              |DONE      |NOSIGNATURE
+		Quark-r2.4-276.jar                                |Quark                         |quark                         |r2.4-276            |DONE      |NOSIGNATURE
+		jei-1.16.4-7.6.0.58.jar                           |Just Enough Items             |jei                           |7.6.0.58            |DONE      |NOSIGNATURE
+	Crash Report UUID: 3812c1ff-a0b8-4ed6-a8ab-7323949215bc
+	Player Count: 1 / 20; [ServerPlayerEntity['hminer'/471, l='ServerLevel[world]', x=34.67, y=63.00, z=82.78]]
+	Data Packs: vanilla, mod:forge, mod:buildersaddition (incompatible), mod:tconstruct (incompatible), mod:mantle (incompatible), mod:routerreborn (incompatible), mod:inspirations (incompatible), mod:autoreglib (incompatible), mod:quark (incompatible), mod:jei
+	Is Modded: Definitely; Server brand changed to 'forge'
+	Type: Dedicated Server (map_server.txt)

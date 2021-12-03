@@ -7,7 +7,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.fmllegacy.network.NetworkEvent;
+import net.minecraftforge.network.NetworkEvent;
 
 public class UpdateDataPacket {
 	
@@ -53,10 +53,12 @@ public class UpdateDataPacket {
 	    if (te != null) {
 	        if(te instanceof IIntData) {
 	        	((IIntData)te).updateData(data);
-	        	ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
+	        	ClientboundBlockEntityDataPacket.m_195640_(te);
+	        	
+	        	/*ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
 	            if (supdatetileentitypacket != null) {
 	                player.connection.send(supdatetileentitypacket);
-	            }
+	            }*/
 	        }
 		}
     }

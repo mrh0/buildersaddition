@@ -46,7 +46,7 @@ public class GravelPath extends BaseDerivativeBlock {
 	public BlockState updateShape(BlockState state, Direction facing, BlockState otherState, LevelAccessor world,
 			BlockPos pos, BlockPos otherPos) {
 		if (facing == Direction.UP && !isValidPosition(state, world, pos)) {
-			world.getBlockTicks().scheduleTick(pos, this, 1);
+			world.m_186460_(pos, this, 1); //Other?
 		}
 		return super.updateShape(state, facing, otherState, world, pos, otherPos);
 	}

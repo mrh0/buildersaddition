@@ -67,12 +67,13 @@ public class VerticalRepeaterBlock extends VerticalRedstoneDiodeBlock {
 	protected boolean isAlternateInput(BlockState state) {
 		return isDiode(state);
 	}
-	
+
 	@Override
-	public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos,
+			Player player) {
 		return new ItemStack(Items.REPEATER);
 	}
-
+	
 	public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
 		if(!worldIn.isClientSide())
 			return;

@@ -125,12 +125,12 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 		return getBit(instruments, index) > 0;
 	}
 
-	@Override
+	/*@Override
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
 		CompoundTag update = getUpdateTag();
         int data = 0;
         return new ClientboundBlockEntityDataPacket(this.getBlockPos(), data, update);
-	}
+	}*/
 	
 	@Override
 	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {

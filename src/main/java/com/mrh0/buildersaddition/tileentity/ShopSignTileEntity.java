@@ -56,12 +56,12 @@ public class ShopSignTileEntity extends BlockEntity {
 	
 	
 	
-	@Override
+	/*@Override
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
 		CompoundTag update = getUpdateTag();
         int data = 0;
         return new ClientboundBlockEntityDataPacket(this.getBlockPos(), data, update);
-	}
+	}*/
 	
 	@Override
 	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {

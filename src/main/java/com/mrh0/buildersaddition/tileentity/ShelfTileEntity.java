@@ -132,13 +132,13 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 	}
 	*/
 	
-	
-	@Override
+	/*@Override
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
 		CompoundTag update = getUpdateTag();
         int data = 0;
-        return new ClientboundBlockEntityDataPacket(this.getBlockPos(), data, update);
-	}
+        return ClientboundBlockEntityDataPacket.m_195640_(this);
+        //return new ClientboundBlockEntityDataPacket(this.getBlockPos(), Index.SHELF_TILE_ENTITY_TYPE, update);
+	}*/
 	
 	@Override
 	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {

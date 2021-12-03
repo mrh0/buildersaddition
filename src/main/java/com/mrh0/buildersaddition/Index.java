@@ -70,7 +70,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraftforge.common.extensions.IForgeContainerType;
+import net.minecraftforge.common.extensions.IForgeMenuType;
 
 @SuppressWarnings("unchecked")
 public class Index {
@@ -681,13 +681,13 @@ public class Index {
 	
 	public static void containers() {
 		BOOKSHELF_CONTAINER = (MenuType<BookshelfContainer>) 
-				ContainerRegistry.instance.register(IForgeContainerType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
+				ContainerRegistry.instance.register(IForgeMenuType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
 		SHELF_CONTAINER = (MenuType<ShelfContainer>) 
-				ContainerRegistry.instance.register(IForgeContainerType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
+				ContainerRegistry.instance.register(IForgeMenuType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
 		SPEAKER_CONTAINER = (MenuType<SpeakerContainer>) 
-				ContainerRegistry.instance.register(IForgeContainerType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
+				ContainerRegistry.instance.register(IForgeMenuType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
 		ARCADE_CONTAINER = (MenuType<ArcadeContainer>) 
-				ContainerRegistry.instance.register(IForgeContainerType.create(ArcadeContainer::create).setRegistryName("arcade_container"), new ContainerOptions());
+				ContainerRegistry.instance.register(IForgeMenuType.create(ArcadeContainer::create).setRegistryName("arcade_container"), new ContainerOptions());
 	}
 	
 	/*BOP_CHERRY_VERTICAL_SLAB = new VerticalSlab("bop_cherry", Blocks.OAK_PLANKS, "biomesoplenty");

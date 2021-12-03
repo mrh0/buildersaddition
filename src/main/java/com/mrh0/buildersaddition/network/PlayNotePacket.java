@@ -8,7 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.fmllegacy.network.NetworkEvent;
+import net.minecraftforge.network.NetworkEvent;
 
 public class PlayNotePacket {
 	
@@ -54,10 +54,11 @@ public class PlayNotePacket {
 		BaseInstrument te = (BaseInstrument) player.level.getBlockEntity(pos);
         if (te != null) {
         	te.playNote(note);
-        	ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
+        	ClientboundBlockEntityDataPacket.m_195640_(te);
+        	/*ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
             if (supdatetileentitypacket != null) {
                 player.connection.send(supdatetileentitypacket);
-            }
+            }*/
         }
     }
 }

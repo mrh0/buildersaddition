@@ -1,0 +1,286 @@
+[12jan2021 11:52:27.201] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--gameDir, ., --launchTarget, fmlserver, --fml.forgeVersion, 35.1.36, --fml.mcpVersion, 20201102.104115, --fml.mcVersion, 1.16.4, --fml.forgeGroup, net.minecraftforge, nogui]
+[12jan2021 11:52:27.204] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 8.0.6+85+master.325de55 starting: java version 1.8.0_242 by AdoptOpenJDK
+[12jan2021 11:52:27.585] [main/INFO] [net.minecraftforge.fml.loading.FixSSL/CORE]: Added Lets Encrypt root certificates as additional trust
+[12jan2021 11:52:27.645] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.2 Source=file:/W:/Minecraft/MC%20Modding/BuildersAddition_1_16_3_v1/server/libraries/org/spongepowered/mixin/0.8.2/mixin-0.8.2.jar Service=ModLauncher Env=SERVER
+[12jan2021 11:52:28.503] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'fmlserver' with arguments [--gameDir, ., nogui]
+[12jan2021 11:52:34.794] [modloading-worker-3/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 35.1.36, for MC 1.16.4 with MCP 20201102.104115
+[12jan2021 11:52:34.825] [modloading-worker-3/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v35.1.36 Initialized
+[12jan2021 11:52:34.864] [modloading-worker-6/INFO] [inspirations/]: Loading replacements config file...
+[12jan2021 11:52:34.915] [modloading-worker-6/INFO] [inspirations/]: Config loaded.
+[12jan2021 11:52:35.813] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for chest_passenger
+[12jan2021 11:52:36.005] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for glass_frame
+[12jan2021 11:52:36.029] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for colored_frame
+[12jan2021 11:52:36.065] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for gravisand
+[12jan2021 11:52:36.071] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for frog
+[12jan2021 11:52:36.195] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for leash_knot_fake
+[12jan2021 11:52:36.200] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for totem
+[12jan2021 11:52:36.202] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for toretoise
+[12jan2021 11:52:36.228] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for pickarang
+[12jan2021 11:52:36.272] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for foxhound
+[12jan2021 11:52:36.286] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for wrapped
+[12jan2021 11:52:36.309] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for stoneling
+[12jan2021 11:52:36.525] [modloading-worker-0/ERROR] [net.minecraft.util.Util/]: No data fixer registered for crab
+[12jan2021 11:52:39.131] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `iron_bars`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.372] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `white_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.380] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `orange_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.381] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `magenta_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.403] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `light_blue_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.414] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `yellow_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.414] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `lime_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.415] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `pink_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.418] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `gray_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.419] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `light_gray_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.420] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `cyan_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.420] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `purple_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.421] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `blue_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.422] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `brown_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.422] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `green_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.422] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `red_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.423] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `black_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.425] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `hopper`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:39.433] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `cauldron`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.891] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:blue_slime
+[12jan2021 11:52:43.898] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `iron_bars`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.905] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `shield`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.905] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `white_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.906] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `orange_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.906] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `magenta_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.906] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `light_blue_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.906] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `yellow_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.907] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `lime_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.907] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `pink_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.907] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `gray_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.908] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `light_gray_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.909] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `cyan_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.910] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `purple_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.910] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `blue_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.910] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `brown_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.911] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `green_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.914] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `red_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.914] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `black_carpet`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.915] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `hopper`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.919] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `cauldron`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:43.974] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:crafting_station
+[12jan2021 11:52:43.975] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:tinker_station
+[12jan2021 11:52:43.978] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:part_builder
+[12jan2021 11:52:43.978] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:modifier_chest
+[12jan2021 11:52:43.979] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:part_chest
+[12jan2021 11:52:43.979] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:smeltery_component
+[12jan2021 11:52:43.980] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:tank
+[12jan2021 11:52:43.990] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:faucet
+[12jan2021 11:52:43.992] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:basin
+[12jan2021 11:52:43.993] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:table
+[12jan2021 11:52:43.994] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:melter
+[12jan2021 11:52:44.008] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for inspirations:bookshelf
+[12jan2021 11:52:44.009] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for inspirations:enlightened_bush
+[12jan2021 11:52:44.015] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for inspirations:collector
+[12jan2021 11:52:44.017] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for inspirations:pipe
+[12jan2021 11:52:44.019] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for inspirations:cauldron
+[12jan2021 11:52:44.049] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `protection`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.050] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `fire_protection`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.051] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `projectile_protection`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.054] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `blast_protection`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.054] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `thorns`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.059] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `knockback`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.060] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `fire_aspect`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.062] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `looting`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.063] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `sharpness`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.064] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `smite`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.065] [main/INFO] [net.minecraftforge.registries.GameData/]: Potentially Dangerous alternative prefix `minecraft` for name `bane_of_arthropods`, expected `inspirations`. This could be a intended override, but in most cases indicates a broken mod.
+[12jan2021 11:52:44.067] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:fancy_item_frame
+[12jan2021 11:52:44.068] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:glow_ball
+[12jan2021 11:52:44.071] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:efln_ball
+[12jan2021 11:52:44.074] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for tconstruct:indestructible_item
+[12jan2021 11:52:44.076] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for buildersaddition:seat
+[12jan2021 11:52:44.078] [main/ERROR] [net.minecraft.util.Util/]: No data fixer registered for inspirations:redstone_arrow
+[12jan2021 11:52:44.318] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Configuration file W:\Minecraft\MC Modding\BuildersAddition_1_16_3_v1\server\config\quark-common.toml is not correct. Correcting
+[12jan2021 11:52:44.319] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.big_stone_clusters.slate.biomes.Biome Categories was corrected from [icy] to [icy]
+[12jan2021 11:52:44.320] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.blossom_trees.blue.biome_types.Biome Categories was corrected from [icy] to [icy]
+[12jan2021 11:52:44.320] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.new_stone_types.marble.oregen.Max Height was corrected from 256 to 256
+[12jan2021 11:52:44.320] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.new_stone_types.limestone.oregen.Max Height was corrected from 256 to 256
+[12jan2021 11:52:44.321] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.new_stone_types.jasper.oregen.Max Height was corrected from 256 to 256
+[12jan2021 11:52:44.321] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.new_stone_types.slate.oregen.Max Height was corrected from 256 to 256
+[12jan2021 11:52:44.321] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.new_stone_types.voidstone.oregen.Max Height was corrected from 256 to 256
+[12jan2021 11:52:44.322] [main/WARN] [net.minecraftforge.common.ForgeConfigSpec/CORE]: Incorrect key world.permafrost_underground_biome.biome_settings.biomes.Biome Categories was corrected from [icy] to [icy]
+[12jan2021 11:52:44.401] [modloading-worker-1/INFO] [quark/]: Loading Module Chain Linkage
+[12jan2021 11:52:44.403] [modloading-worker-1/INFO] [quark/]: Loading Module Chains Connect Blocks
+[12jan2021 11:52:44.407] [modloading-worker-1/INFO] [quark/]: Loading Module Chute
+[12jan2021 11:52:44.408] [modloading-worker-1/INFO] [quark/]: Loading Module Color Slime
+[12jan2021 11:52:44.408] [modloading-worker-1/INFO] [quark/]: Loading Module Dispensers Place Blocks
+[12jan2021 11:52:44.408] [modloading-worker-1/INFO] [quark/]: Loading Module Ender Watcher
+[12jan2021 11:52:44.409] [modloading-worker-1/INFO] [quark/]: Loading Module Endermites Form Shulkers
+[12jan2021 11:52:44.408] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/maven/net/minecraftforge/forge/promotions_slim.json
+[12jan2021 11:52:44.412] [modloading-worker-1/INFO] [quark/]: Loading Module Feeding Trough
+[12jan2021 11:52:44.416] [modloading-worker-1/INFO] [quark/]: Loading Module Gravisand
+[12jan2021 11:52:44.419] [modloading-worker-1/INFO] [quark/]: Loading Module Iron Rod
+[12jan2021 11:52:44.419] [modloading-worker-1/INFO] [quark/]: Loading Module Metal Buttons
+[12jan2021 11:52:44.419] [modloading-worker-1/INFO] [quark/]: Loading Module Obsidian Plate
+[12jan2021 11:52:44.420] [modloading-worker-1/INFO] [quark/]: Loading Module Pistons Move Tile Entities
+[12jan2021 11:52:44.421] [modloading-worker-1/INFO] [quark/]: Loading Module Redstone Circuit
+[12jan2021 11:52:44.421] [modloading-worker-1/INFO] [quark/]: Loading Module Weather Sensor
+[12jan2021 11:52:44.421] [modloading-worker-1/INFO] [quark/]: Loading Module Bamboo Mat
+[12jan2021 11:52:44.421] [modloading-worker-1/INFO] [quark/]: Loading Module Burn Vines
+[12jan2021 11:52:44.425] [modloading-worker-1/INFO] [quark/]: Loading Module Cobblestone Bricks
+[12jan2021 11:52:44.425] [modloading-worker-1/INFO] [quark/]: Loading Module Compressed Blocks
+[12jan2021 11:52:44.428] [modloading-worker-1/INFO] [quark/]: Loading Module Duskbound Blocks
+[12jan2021 11:52:44.432] [modloading-worker-1/INFO] [quark/]: Loading Module Framed Glass
+[12jan2021 11:52:44.434] [modloading-worker-1/INFO] [quark/]: Loading Module Gold Bars
+[12jan2021 11:52:44.435] [modloading-worker-1/INFO] [quark/]: Loading Module Grate
+[12jan2021 11:52:44.437] [modloading-worker-1/INFO] [quark/]: Loading Module Iron Plates
+[12jan2021 11:52:44.437] [modloading-worker-1/INFO] [quark/]: Loading Module Item Frames
+[12jan2021 11:52:44.437] [modloading-worker-1/INFO] [quark/]: Loading Module Leaf Carpet
+[12jan2021 11:52:44.437] [modloading-worker-1/INFO] [quark/]: Loading Module Lit Lamp
+[12jan2021 11:52:44.438] [modloading-worker-1/INFO] [quark/]: Loading Module Midori
+[12jan2021 11:52:44.439] [modloading-worker-1/INFO] [quark/]: Loading Module More Brick Types
+[12jan2021 11:52:44.439] [modloading-worker-1/INFO] [quark/]: Loading Module More Potted Plants
+[12jan2021 11:52:44.439] [modloading-worker-1/INFO] [quark/]: Loading Module More Stone Variants
+[12jan2021 11:52:44.439] [modloading-worker-1/INFO] [quark/]: Loading Module Nether Brick Fence Gate
+[12jan2021 11:52:44.440] [modloading-worker-1/INFO] [quark/]: Loading Module Paper Decor
+[12jan2021 11:52:44.441] [modloading-worker-1/INFO] [quark/]: Loading Module Quilted Wool
+[12jan2021 11:52:44.441] [modloading-worker-1/INFO] [quark/]: Loading Module Rope
+[12jan2021 11:52:44.442] [modloading-worker-1/INFO] [quark/]: Loading Module Shallow Dirt
+[12jan2021 11:52:44.442] [modloading-worker-1/INFO] [quark/]: Loading Module Shingles
+[12jan2021 11:52:44.442] [modloading-worker-1/INFO] [quark/]: Loading Module Soul Sandstone
+[12jan2021 11:52:44.443] [modloading-worker-1/INFO] [quark/]: Loading Module Stained Planks
+[12jan2021 11:52:44.443] [modloading-worker-1/INFO] [quark/]: Loading Module Sturdy Stone
+[12jan2021 11:52:44.443] [modloading-worker-1/INFO] [quark/]: Loading Module Tallow And Candles
+[12jan2021 11:52:44.444] [modloading-worker-1/INFO] [quark/]: Loading Module Thatch
+[12jan2021 11:52:44.444] [modloading-worker-1/INFO] [quark/]: Loading Module Tie Leads To Fences
+[12jan2021 11:52:44.445] [modloading-worker-1/INFO] [quark/]: Loading Module Turf
+[12jan2021 11:52:44.445] [modloading-worker-1/INFO] [quark/]: Loading Module Variant Bookshelves
+[12jan2021 11:52:44.445] [modloading-worker-1/INFO] [quark/]: Loading Module Variant Chests
+[12jan2021 11:52:44.447] [modloading-worker-1/INFO] [quark/]: Loading Module Variant Ladders
+[12jan2021 11:52:44.447] [modloading-worker-1/INFO] [quark/]: Loading Module Vertical Planks
+[12jan2021 11:52:44.448] [modloading-worker-1/INFO] [quark/]: Loading Module Vertical Slabs
+[12jan2021 11:52:44.449] [modloading-worker-1/INFO] [quark/]: Loading Module Wooden Posts
+[12jan2021 11:52:44.449] [modloading-worker-1/INFO] [quark/]: Loading Module Chests In Boats
+[12jan2021 11:52:44.454] [modloading-worker-1/INFO] [quark/]: Loading Module Easy Transfering
+[12jan2021 11:52:44.454] [modloading-worker-1/INFO] [quark/]: Loading Module F To Switch
+[12jan2021 11:52:44.455] [modloading-worker-1/INFO] [quark/]: Loading Module Hotbar Changer
+[12jan2021 11:52:44.456] [modloading-worker-1/INFO] [quark/]: Loading Module Inventory Sorting
+[12jan2021 11:52:44.456] [modloading-worker-1/INFO] [quark/]: Loading Module Item Sharing
+[12jan2021 11:52:44.456] [modloading-worker-1/INFO] [quark/]: Loading Module Shulker Box Right Click
+[12jan2021 11:52:44.457] [modloading-worker-1/INFO] [quark/]: Loading Module Ancient Tomes
+[12jan2021 11:52:44.459] [modloading-worker-1/INFO] [quark/]: Loading Module Bottled Cloud
+[12jan2021 11:52:44.460] [modloading-worker-1/INFO] [quark/]: Loading Module Camera
+[12jan2021 11:52:44.460] [modloading-worker-1/INFO] [quark/]: Loading Module Color Runes
+[12jan2021 11:52:44.462] [modloading-worker-1/INFO] [quark/]: Loading Module Pathfinder Maps
+[12jan2021 11:52:44.465] [modloading-worker-1/INFO] [quark/]: Loading Module Pickarang
+[12jan2021 11:52:44.465] [modloading-worker-1/INFO] [quark/]: Loading Module Slime In A Bucket
+[12jan2021 11:52:44.466] [modloading-worker-1/INFO] [quark/]: Loading Module Trowel
+[12jan2021 11:52:44.466] [modloading-worker-1/INFO] [quark/]: Loading Module Armed Armor Stands
+[12jan2021 11:52:44.467] [modloading-worker-1/INFO] [quark/]: Loading Module Automatic Recipe Unlock
+[12jan2021 11:52:44.468] [modloading-worker-1/INFO] [quark/]: Loading Module Axe Leaf Harvesting
+[12jan2021 11:52:44.468] [modloading-worker-1/INFO] [quark/]: Loading Module Campfires Boost Elytra
+[12jan2021 11:52:44.469] [modloading-worker-1/INFO] [quark/]: Loading Module Compasses Work Everywhere
+[12jan2021 11:52:44.469] [modloading-worker-1/INFO] [quark/]: Loading Module Dirt To Path
+[12jan2021 11:52:44.471] [modloading-worker-1/INFO] [quark/]: Loading Module Double Door Opening
+[12jan2021 11:52:44.471] [modloading-worker-1/INFO] [quark/]: Loading Module Dragon Scales
+[12jan2021 11:52:44.472] [modloading-worker-1/INFO] [quark/]: Loading Module Emotes
+[12jan2021 11:52:44.472] [modloading-worker-1/INFO] [quark/]: Loading Module Enhanced Ladders
+[12jan2021 11:52:44.473] [modloading-worker-1/INFO] [quark/]: Loading Module Glass Shard
+[12jan2021 11:52:44.473] [modloading-worker-1/INFO] [quark/]: Loading Module Hoe Harvesting
+[12jan2021 11:52:44.474] [modloading-worker-1/INFO] [quark/]: Loading Module Improved Sleeping
+[12jan2021 11:52:44.475] [modloading-worker-1/INFO] [quark/]: Loading Module Infinity Bucket
+[12jan2021 11:52:44.475] [modloading-worker-1/INFO] [quark/]: Loading Module Lock Rotation
+[12jan2021 11:52:44.477] [modloading-worker-1/INFO] [quark/]: Loading Module Note Block Mob Sounds
+[12jan2021 11:52:44.479] [modloading-worker-1/INFO] [quark/]: Loading Module Pat The Dogs
+[12jan2021 11:52:44.480] [modloading-worker-1/INFO] [quark/]: Loading Module Poison Potato Usage
+[12jan2021 11:52:44.482] [modloading-worker-1/INFO] [quark/]: Loading Module Reacharound Placing
+[12jan2021 11:52:44.483] [modloading-worker-1/INFO] [quark/]: Loading Module Replace Scaffolding
+[12jan2021 11:52:44.484] [modloading-worker-1/INFO] [quark/]: Loading Module Sign Editing
+[12jan2021 11:52:44.487] [modloading-worker-1/INFO] [quark/]: Loading Module Simple Harvest
+[12jan2021 11:52:44.488] [modloading-worker-1/INFO] [quark/]: Loading Module Snow Golem Player Heads
+[12jan2021 11:52:44.490] [modloading-worker-1/INFO] [quark/]: Loading Module Springy Slime
+[12jan2021 11:52:44.491] [modloading-worker-1/INFO] [quark/]: Loading Module Utility Recipes
+[12jan2021 11:52:44.492] [modloading-worker-1/INFO] [quark/]: Loading Module Villagers Follow Emeralds
+[12jan2021 11:52:44.493] [modloading-worker-1/INFO] [quark/]: Loading Module Big Dungeon
+[12jan2021 11:52:44.494] [modloading-worker-1/INFO] [quark/]: Loading Module Big Stone Clusters
+[12jan2021 11:52:44.495] [modloading-worker-1/INFO] [quark/]: Loading Module Biotite
+[12jan2021 11:52:44.496] [modloading-worker-1/INFO] [quark/]: Loading Module Blossom Trees
+[12jan2021 11:52:44.496] [modloading-worker-1/INFO] [quark/]: Loading Module Cave Roots
+[12jan2021 11:52:44.496] [modloading-worker-1/INFO] [quark/]: Loading Module Crevices
+[12jan2021 11:52:44.496] [modloading-worker-1/INFO] [quark/]: Loading Module Fairy Rings
+[12jan2021 11:52:44.497] [modloading-worker-1/INFO] [quark/]: Loading Module Mega Caves
+[12jan2021 11:52:44.498] [modloading-worker-1/INFO] [quark/]: Loading Module Monster Box
+[12jan2021 11:52:44.498] [modloading-worker-1/INFO] [quark/]: Loading Module Nether Obsidian Spikes
+[12jan2021 11:52:44.499] [modloading-worker-1/INFO] [quark/]: Loading Module New Stone Types
+[12jan2021 11:52:44.499] [modloading-worker-1/INFO] [quark/]: Loading Module Realistic World Gen
+[12jan2021 11:52:44.501] [modloading-worker-1/INFO] [quark/]: Loading Module Speleothems
+[12jan2021 11:52:44.501] [modloading-worker-1/INFO] [quark/]: Loading Module Underground Clay
+[12jan2021 11:52:44.501] [modloading-worker-1/INFO] [quark/]: Loading Module Brimstone Underground Biome
+[12jan2021 11:52:44.501] [modloading-worker-1/INFO] [quark/]: Loading Module Cave Crystal Underground Biome
+[12jan2021 11:52:44.501] [modloading-worker-1/INFO] [quark/]: Loading Module Elder Prismarine Underground Biome
+[12jan2021 11:52:44.501] [modloading-worker-1/INFO] [quark/]: Loading Module Glowshroom Underground Biome
+[12jan2021 11:52:44.502] [modloading-worker-1/INFO] [quark/]: Loading Module Lush Underground Biome
+[12jan2021 11:52:44.502] [modloading-worker-1/INFO] [quark/]: Loading Module Overgrown Underground Biome
+[12jan2021 11:52:44.502] [modloading-worker-1/INFO] [quark/]: Loading Module Permafrost Underground Biome
+[12jan2021 11:52:44.503] [modloading-worker-1/INFO] [quark/]: Loading Module Sandstone Underground Biome
+[12jan2021 11:52:44.503] [modloading-worker-1/INFO] [quark/]: Loading Module Slime Underground Biome
+[12jan2021 11:52:44.503] [modloading-worker-1/INFO] [quark/]: Loading Module Spider Nest Underground Biome
+[12jan2021 11:52:44.504] [modloading-worker-1/INFO] [quark/]: Loading Module Crabs
+[12jan2021 11:52:44.505] [modloading-worker-1/INFO] [quark/]: Loading Module Foxhound
+[12jan2021 11:52:44.505] [modloading-worker-1/INFO] [quark/]: Loading Module Frogs
+[12jan2021 11:52:44.506] [modloading-worker-1/INFO] [quark/]: Loading Module Stonelings
+[12jan2021 11:52:44.506] [modloading-worker-1/INFO] [quark/]: Loading Module Toretoise
+[12jan2021 11:52:44.506] [modloading-worker-1/INFO] [quark/]: Loading Module Back Button Keybind
+[12jan2021 11:52:44.508] [modloading-worker-1/INFO] [quark/]: Loading Module Chest Searching
+[12jan2021 11:52:44.509] [modloading-worker-1/INFO] [quark/]: Loading Module Greener Grass
+[12jan2021 11:52:44.509] [modloading-worker-1/INFO] [quark/]: Loading Module Improved Mount Hud
+[12jan2021 11:52:44.510] [modloading-worker-1/INFO] [quark/]: Loading Module Improved Tooltips
+[12jan2021 11:52:44.510] [modloading-worker-1/INFO] [quark/]: Loading Module Usage Ticker
+[12jan2021 11:52:44.510] [modloading-worker-1/INFO] [quark/]: Loading Module Variant Animal Textures
+[12jan2021 11:52:44.511] [modloading-worker-1/INFO] [quark/]: Loading Module Backpack
+[12jan2021 11:52:44.511] [modloading-worker-1/INFO] [quark/]: Loading Module Magnets
+[12jan2021 11:52:44.511] [modloading-worker-1/INFO] [quark/]: Loading Module Matrix Enchanting
+[12jan2021 11:52:44.513] [modloading-worker-1/INFO] [quark/]: Loading Module Pipes
+[12jan2021 11:52:44.513] [modloading-worker-1/INFO] [quark/]: Loading Module Totem Of Holding
+[12jan2021 11:52:44.513] [modloading-worker-1/INFO] [quark/]: Loading Module Adjustable Chat
+[12jan2021 11:52:44.513] [modloading-worker-1/INFO] [quark/]: Loading Module Custom Underground Biome
+[12jan2021 11:52:44.586] [modloading-worker-1/INFO] [STDOUT/]: [com.mrh0.buildersaddition.BuildersAddition:postInit:78]: Builders Addition Initialized!
+[12jan2021 11:52:45.309] [Forge Version Check/INFO] [net.minecraftforge.fml.VersionChecker/]: [forge] Found status: AHEAD Current: 35.1.36 Target: null
+[12jan2021 11:52:48.272] [main/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[12jan2021 11:52:50.344] [main/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[12jan2021 11:52:50.348] [main/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[12jan2021 11:52:50.350] [main/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[12jan2021 11:52:50.354] [main/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[12jan2021 11:52:50.357] [main/WARN] [net.minecraft.command.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[12jan2021 11:52:50.362] [main/INFO] [net.minecraft.resources.SimpleReloadableResourceManager/]: Reloading ResourceManager: Default, forge-1.16.4-35.1.36-universal.jar, buildersaddition-1.16.4-20200112a.jar, TConstruct-1.16.4-3.0.1.DEV.GITBORK.jar, Mantle-1.16.4-1.6.43.jar, RouterReborn-1.16.3-1.0.2a.jar, Inspirations-1.16.3-1.2.1.24.jar, AutoRegLib-1.6-46.jar, Quark-r2.4-276.jar, jei-1.16.4-7.6.0.58.jar
+[12jan2021 11:52:53.133] [Worker-Main-14/INFO] [net.minecraft.item.crafting.RecipeManager/]: Loaded 16 recipes
+[12jan2021 11:52:55.658] [Worker-Main-14/INFO] [net.minecraft.advancements.AdvancementList/]: Loaded 1782 advancements
+[12jan2021 11:52:55.679] [Worker-Main-14/INFO] [slimeknights.tconstruct.library.materials.MaterialManager/]: 40 materials loaded
+[12jan2021 11:52:55.692] [Worker-Main-14/INFO] [slimeknights.tconstruct.library.materials.stats.MaterialStatsManager/]: 81 stats loaded for 27 materials
+[12jan2021 11:52:59.242] [main/WARN] [net.minecraftforge.fml.FMLWorldPersistenceHook/WP]: This world was saved with mod buildersaddition version 1.16.4-20200111a and it is now at version 1.16.4-20200112a, things may not work well
+[12jan2021 11:53:01.015] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting minecraft server version 1.16.4
+[12jan2021 11:53:01.015] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Loading properties
+[12jan2021 11:53:01.016] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Default game type: SURVIVAL
+[12jan2021 11:53:01.016] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Generating keypair
+[12jan2021 11:53:01.057] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Starting Minecraft server on *:25565
+[12jan2021 11:53:01.063] [Server thread/INFO] [net.minecraft.network.NetworkSystem/]: Using default channel type
+[12jan2021 11:53:01.352] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Preparing level "world"
+[12jan2021 11:53:01.461] [Server thread/INFO] [net.minecraft.server.MinecraftServer/]: Preparing start region for dimension minecraft:overworld
+[12jan2021 11:53:02.529] [Server thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
+[12jan2021 11:53:02.529] [Server thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
+[12jan2021 11:53:02.530] [Server thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 0%
+[12jan2021 11:53:04.130] [Worker-Main-12/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
+[12jan2021 11:53:04.130] [Worker-Main-12/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
+[12jan2021 11:53:04.132] [Worker-Main-12/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 83%
+[12jan2021 11:53:04.465] [Worker-Main-13/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 91%
+[12jan2021 11:53:05.020] [Worker-Main-8/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 91%
+[12jan2021 11:53:05.462] [Worker-Main-15/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 91%
+[12jan2021 11:53:05.964] [Worker-Main-13/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 92%
+[12jan2021 11:53:06.495] [Worker-Main-10/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Preparing spawn area: 98%
+[12jan2021 11:53:06.671] [Server thread/INFO] [net.minecraft.world.chunk.listener.LoggingChunkStatusListener/]: Time elapsed: 5210 ms
+[12jan2021 11:53:06.673] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: Done (5.351s)! For help, type "help"
+[12jan2021 11:53:28.660] [User Authenticator #1/INFO] [net.minecraft.network.login.ServerLoginNetHandler/]: UUID of player hminer is 70e7f081-a4f5-493a-bf9f-38e348e8f0de
+[12jan2021 11:53:31.895] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.advancements.PlayerAdvancements@40da8f2e
+[12jan2021 11:53:31.985] [Server thread/INFO] [net.minecraft.server.management.PlayerList/]: hminer[/192.168.56.1:56269] logged in with entity id 187 at (34.66779271710602, 63.0, 82.77719336039634)
+[12jan2021 11:53:32.006] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: hminer joined the game
+[12jan2021 11:53:56.160] [Server thread/INFO] [net.minecraft.network.play.ServerPlayNetHandler/]: hminer lost connection: Disconnected
+[12jan2021 11:53:56.160] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: hminer left the game
+[12jan2021 11:53:59.195] [User Authenticator #2/INFO] [net.minecraft.network.login.ServerLoginNetHandler/]: UUID of player hminer is 70e7f081-a4f5-493a-bf9f-38e348e8f0de
+[12jan2021 11:54:01.769] [Server thread/INFO] [net.minecraftforge.common.AdvancementLoadFix/]: Using new advancement loading for net.minecraft.advancements.PlayerAdvancements@269d466f
+[12jan2021 11:54:01.808] [Server thread/INFO] [net.minecraft.server.management.PlayerList/]: hminer[/192.168.56.1:56281] logged in with entity id 230 at (34.66779271710602, 63.0, 82.77719336039634)
+[12jan2021 11:54:01.831] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: hminer joined the game
+[12jan2021 11:54:47.355] [Server thread/INFO] [net.minecraft.network.play.ServerPlayNetHandler/]: hminer lost connection: Disconnected
+[12jan2021 11:54:47.356] [Server thread/INFO] [net.minecraft.server.dedicated.DedicatedServer/]: hminer left the game

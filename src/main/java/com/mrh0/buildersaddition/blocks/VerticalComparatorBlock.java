@@ -24,13 +24,13 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.TickPriority;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.entity.ComparatorBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -39,6 +39,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.ticks.TickPriority;
 
 public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implements EntityBlock {
 	public static final EnumProperty<ComparatorMode> MODE = BlockStateProperties.MODE_COMPARATOR;
@@ -57,9 +58,11 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 	@Override
 	protected int getOutputSignal(BlockGetter worldIn, BlockPos pos, BlockState state) {
 		BlockEntity tileentity = worldIn.getBlockEntity(pos);
-		return tileentity instanceof VerticalComparatorTileEntity ? ((VerticalComparatorTileEntity) tileentity).getOutputSignal() : 0;
+		return tileentity instanceof VerticalComparatorTileEntity
+				? ((VerticalComparatorTileEntity) tileentity).getOutputSignal()
+				: 0;
 	}
-	
+
 	private int calculateOutputSignal(Level p_51904_, BlockPos p_51905_, BlockState p_51906_) {
 		int i = this.getInputSignal(p_51904_, p_51905_, p_51906_);
 		if (i == 0) {
@@ -120,19 +123,19 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 
 	@Nullable
 	private ItemFrame getItemFrame(Level worldIn, Direction facing, BlockPos pos) {
-		List<ItemFrame> list = worldIn.getEntitiesOfClass(ItemFrame.class,
-				new AABB((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(), (double) (pos.getX() + 1),
-						(double) (pos.getY() + 1), (double) (pos.getZ() + 1)),
+		List<ItemFrame> list = worldIn.getEntitiesOfClass(
+				ItemFrame.class, new AABB((double) pos.getX(), (double) pos.getY(), (double) pos.getZ(),
+						(double) (pos.getX() + 1), (double) (pos.getY() + 1), (double) (pos.getZ() + 1)),
 				(itemFrame) -> {
 					// Issue here if there are more than one at block! (Why you so hardcoded)
 					return itemFrame != null; // itemFrame.getHorizontalFacing() == facing
 				});
 		return list.size() == 1 ? list.get(0) : null;
 	}
-	
+
 	@Override
-	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player,
-			InteractionHand hand, BlockHitResult hit) {
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand,
+			BlockHitResult hit) {
 		if (!player.getAbilities().mayBuild) {
 			return InteractionResult.PASS;
 		} else {
@@ -145,19 +148,19 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 		}
 	}
 
-	@Override
-	public void checkTickOnNeighbor(Level world, BlockPos pos, BlockState state) {
-		if (!world.getBlockTicks().willTickThisTick(pos, this)) {
-			int i = this.calculateOutputSignal(world, pos, state);
-			BlockEntity blockentity = world.getBlockEntity(pos);
-			int j = blockentity instanceof VerticalComparatorTileEntity
-					? ((VerticalComparatorTileEntity) blockentity).getOutputSignal()
+	public void checkTickOnNeighbor(Level p_51900_, BlockPos p_51901_, BlockState p_51902_) {
+		if (!p_51900_.m_183326_().m_183588_(p_51901_, this)) {
+			int i = this.calculateOutputSignal(p_51900_, p_51901_, p_51902_);
+			BlockEntity blockentity = p_51900_.getBlockEntity(p_51901_);
+			int j = blockentity instanceof ComparatorBlockEntity
+					? ((ComparatorBlockEntity) blockentity).getOutputSignal()
 					: 0;
-			if (i != j || state.getValue(POWERED) != this.shouldTurnOn(world, pos, state)) {
-				TickPriority tickpriority = this.shouldPrioritize(world, pos, state) ? TickPriority.HIGH
+			if (i != j || p_51902_.getValue(POWERED) != this.shouldTurnOn(p_51900_, p_51901_, p_51902_)) {
+				TickPriority tickpriority = this.shouldPrioritize(p_51900_, p_51901_, p_51902_) ? TickPriority.HIGH
 						: TickPriority.NORMAL;
-				world.getBlockTicks().scheduleTick(pos, this, 2, tickpriority);
+				p_51900_.m_186464_(p_51901_, this, 2, tickpriority);
 			}
+
 		}
 	}
 
@@ -184,10 +187,11 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 	}
 
 	@Override
-	public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
-		return new ItemStack(Items.COMPARATOR);
+	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos,
+			Player player) {
+		return new ItemStack(Items.COMPARATOR);// super.getCloneItemStack(state, target, world, pos, player);
 	}
-	
+
 	@Override
 	public void tick(BlockState p_51869_, ServerLevel p_51870_, BlockPos p_51871_, Random p_51872_) {
 		this.refreshOutputState(p_51870_, p_51871_, p_51869_);
@@ -216,15 +220,16 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 	}
 
 	@Override
-	public void onNeighborChange(BlockState state, LevelReader world, BlockPos pos,
-			BlockPos neighbor) {
+	public void onNeighborChange(BlockState state, LevelReader world, BlockPos pos, BlockPos neighbor) {
 		if (pos.getY() == neighbor.getY() && world instanceof Level && !((Level) world).isClientSide()) {
 			state.neighborChanged((Level) world, pos, world.getBlockState(neighbor).getBlock(), neighbor, false);
 		}
 	}
-	
+
 	@Override
-	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-		return !world.isClientSide() ? Util.createTickerHelper(type, Index.VERTICAL_COMPARATOR_TILE_ENTITY_TYPE, VerticalComparatorTileEntity::tick) : null;
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state,
+			BlockEntityType<T> type) {
+		return !world.isClientSide() ? Util.createTickerHelper(type, Index.VERTICAL_COMPARATOR_TILE_ENTITY_TYPE,
+				VerticalComparatorTileEntity::tick) : null;
 	}
 }
