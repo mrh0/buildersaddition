@@ -21,6 +21,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -51,6 +52,7 @@ public class BuildersAddition {
 	
 	public BuildersAddition() {
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
     	FMLJavaModLoadingContext.get().getModEventBus().addListener(this::postInit);
     	//MinecraftForge.EVENT_BUS.addListener(this::serverevt);
     	MinecraftForge.EVENT_BUS.register(this);
@@ -71,9 +73,13 @@ public class BuildersAddition {
 
     private void setup(final FMLCommonSetupEvent evt) {
     	proxy.init(evt);
-    	DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEventHandler::clientRegistry);
+    	//DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientEventHandler::clientRegistry);
     }
 
+    private void setupClient(final FMLClientSetupEvent evt) {
+    	ClientEventHandler.clientRegistry();
+    }
+    
     public void postInit(FMLLoadCompleteEvent evt) {
     	int i = 0;
         Network.registerMessage(i++, PlayNotePacket.class, PlayNotePacket::encode, PlayNotePacket::decode, PlayNotePacket::handle);

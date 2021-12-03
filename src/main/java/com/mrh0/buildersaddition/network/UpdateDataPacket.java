@@ -53,7 +53,7 @@ public class UpdateDataPacket {
 	    if (te != null) {
 	        if(te instanceof IIntData) {
 	        	((IIntData)te).updateData(data);
-	        	ClientboundBlockEntityDataPacket.m_195640_(te);
+	        	ClientboundBlockEntityDataPacket.create(te);
 	        	
 	        	/*ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
 	            if (supdatetileentitypacket != null) {

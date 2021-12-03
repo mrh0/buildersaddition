@@ -154,7 +154,7 @@ public class Pillar extends BaseDerivativeBlock implements SimpleWaterloggedBloc
 	public BlockState updateShape(BlockState state, Direction facing, BlockState otherState, LevelAccessor world,
 			BlockPos currentPos, BlockPos otherPos) {
 		if(state.getValue(WATERLOGGED)) {
-			world.m_186469_(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
+			world.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(world));
 		}
 		return getState(state, world, currentPos);
 	}

@@ -1,8 +1,6 @@
 package com.mrh0.buildersaddition.tileentity;
 
 import com.mrh0.buildersaddition.Index;
-import com.mrh0.buildersaddition.blocks.Bookshelf;
-import com.mrh0.buildersaddition.container.BookshelfContainer;
 import com.mrh0.buildersaddition.container.ShelfContainer;
 import com.mrh0.buildersaddition.inventory.ModInventory;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
@@ -12,17 +10,13 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -49,13 +43,20 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 	
 	@Override
 	public CompoundTag save(CompoundTag nbt) {
-		nbt.put("ItemStackHandler", this.handler.serializeNBT());
 		return super.save(nbt);
+	}
+	
+	@Override
+	protected void saveAdditional(CompoundTag nbt) {
+		nbt.put("ItemStackHandler", this.handler.serializeNBT());
+		super.saveAdditional(nbt);
 	}
 	
 	public void changed(int slot) {
 		this.setChanged();
 	}
+	
+	
 
 	/*@Override
 	public int getSizeInventory() {
@@ -139,6 +140,7 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
         return ClientboundBlockEntityDataPacket.m_195640_(this);
         //return new ClientboundBlockEntityDataPacket(this.getBlockPos(), Index.SHELF_TILE_ENTITY_TYPE, update);
 	}*/
+	
 	
 	@Override
 	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {

@@ -148,7 +148,7 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 		}
 	}
 
-	public void checkTickOnNeighbor(Level p_51900_, BlockPos p_51901_, BlockState p_51902_) {
+	/*public void checkTickOnNeighbor(Level p_51900_, BlockPos p_51901_, BlockState p_51902_) {
 		if (!p_51900_.m_183326_().m_183588_(p_51901_, this)) {
 			int i = this.calculateOutputSignal(p_51900_, p_51901_, p_51902_);
 			BlockEntity blockentity = p_51900_.getBlockEntity(p_51901_);
@@ -162,7 +162,20 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 			}
 
 		}
-	}
+	}*/
+	
+	public void checkTickOnNeighbor(Level p_51900_, BlockPos p_51901_, BlockState p_51902_) {
+	      if (!p_51900_.getBlockTicks().willTickThisTick(p_51901_, this)) {
+	         int i = this.calculateOutputSignal(p_51900_, p_51901_, p_51902_);
+	         BlockEntity blockentity = p_51900_.getBlockEntity(p_51901_);
+	         int j = blockentity instanceof VerticalComparatorTileEntity ? ((VerticalComparatorTileEntity)blockentity).getOutputSignal() : 0;
+	         if (i != j || p_51902_.getValue(POWERED) != this.shouldTurnOn(p_51900_, p_51901_, p_51902_)) {
+	            TickPriority tickpriority = this.shouldPrioritize(p_51900_, p_51901_, p_51902_) ? TickPriority.HIGH : TickPriority.NORMAL;
+	            p_51900_.scheduleTick(p_51901_, this, 2, tickpriority);
+	         }
+
+	      }
+	   }
 
 	public void refreshOutputState(Level world, BlockPos pos, BlockState state) {
 		int i = this.calculateOutputSignal(world, pos, state);

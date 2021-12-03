@@ -54,7 +54,7 @@ public class PlayNotePacket {
 		BaseInstrument te = (BaseInstrument) player.level.getBlockEntity(pos);
         if (te != null) {
         	te.playNote(note);
-        	ClientboundBlockEntityDataPacket.m_195640_(te);
+        	ClientboundBlockEntityDataPacket.create(te);
         	/*ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
             if (supdatetileentitypacket != null) {
                 player.connection.send(supdatetileentitypacket);

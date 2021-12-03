@@ -43,10 +43,16 @@ public class VerticalComparatorTileEntity extends BlockEntity {
 
 	public CompoundTag save(CompoundTag p_59181_) {
 		super.save(p_59181_);
-		p_59181_.putInt("OutputSignal", this.output);
+		
 		return p_59181_;
 	}
 
+	@Override
+	protected void saveAdditional(CompoundTag nbt) {
+		nbt.putInt("OutputSignal", this.output);
+		super.saveAdditional(nbt);
+	}
+	
 	public void load(CompoundTag p_155389_) {
 		super.load(p_155389_);
 		this.output = p_155389_.getInt("OutputSignal");

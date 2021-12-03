@@ -113,8 +113,14 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 	
 	@Override
 	public CompoundTag save(CompoundTag nbt) {
-		nbt.putInt("instruments", instruments);
+		
 		return super.save(nbt);
+	}
+	
+	@Override
+	protected void saveAdditional(CompoundTag nbt) {
+		nbt.putInt("instruments", instruments);
+		super.saveAdditional(nbt);
 	}
 	
 	private int getBit(int n, int k) {

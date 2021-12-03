@@ -14,10 +14,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 
 public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
-
-	private Object object;
-	private final Minecraft mc = Minecraft.getInstance();
-
 	public ShelfRenderer(BlockEntityRenderDispatcher rendererDispatcherIn) {
 		super();
 	}
@@ -28,7 +24,6 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 	public void render(ShelfTileEntity tileEntityIn, float partialTicks, PoseStack matrixStackIn,
 			MultiBufferSource bufferIn, int combinedLightIn, int combinedOverlayIn) {
 		Direction dir = tileEntityIn.getBlockState().getValue(Shelf.FACING);
-		
 		ModInventory items = tileEntityIn.handler;
         
 		float scale = .30f;

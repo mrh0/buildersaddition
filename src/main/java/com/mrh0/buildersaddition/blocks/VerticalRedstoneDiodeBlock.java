@@ -70,7 +70,7 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 			} else if (!flag) {
 				p_52516_.setBlock(p_52517_, p_52515_.setValue(POWERED, Boolean.valueOf(true)), 2);
 				if (!flag1) {
-					p_52516_.m_186464_(p_52517_, this, this.getDelay(p_52515_), TickPriority.VERY_HIGH);
+					p_52516_.scheduleTick(p_52517_, this, this.getDelay(p_52515_), TickPriority.VERY_HIGH);
 				}
 			}
 
@@ -153,7 +153,7 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 		if (!this.isLocked(p_52577_, p_52578_, p_52579_)) {
 			boolean flag = p_52579_.getValue(POWERED);
 			boolean flag1 = this.shouldTurnOn(p_52577_, p_52578_, p_52579_);
-			if (flag != flag1 && !p_52577_.m_183326_().m_183588_(p_52578_, this)) {
+			if (flag != flag1 && !p_52577_.getBlockTicks().willTickThisTick(p_52578_, this)) {
 				TickPriority tickpriority = TickPriority.HIGH;
 				if (this.shouldPrioritize(p_52577_, p_52578_, p_52579_)) {
 					tickpriority = TickPriority.EXTREMELY_HIGH;
@@ -161,7 +161,7 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 					tickpriority = TickPriority.VERY_HIGH;
 				}
 
-				p_52577_.m_186464_(p_52578_, this, this.getDelay(p_52579_), tickpriority);
+				p_52577_.scheduleTick(p_52578_, this, this.getDelay(p_52579_), tickpriority);
 			}
 
 		}
@@ -223,7 +223,7 @@ public abstract class VerticalRedstoneDiodeBlock extends BaseBlock {
 	@Override
 	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent, ItemStack stack) {
 		if (this.shouldTurnOn(world, pos, state)) {
-			world.m_183326_().m_183582_(pos, this);
+			world.getBlockTicks().willTickThisTick(pos, this);
 		}
 	}
 

@@ -42,8 +42,14 @@ public class ShopSignTileEntity extends BlockEntity {
 	
 	@Override
 	public CompoundTag save(CompoundTag nbt) {
-		nbt.put("item", item.save(new CompoundTag()));
+		
 		return super.save(nbt);
+	}
+	
+	@Override
+	protected void saveAdditional(CompoundTag nbt) {
+		nbt.put("item", item.save(new CompoundTag()));
+		super.saveAdditional(nbt);
 	}
 	
 	@Override

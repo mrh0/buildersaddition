@@ -17,7 +17,7 @@ public class ModInventory extends ItemStackHandler{
 	protected void onContentsChanged(int slot) {
 		super.onContentsChanged(slot);
 		if(change != null)
-		change.changed(slot);
+			change.changed(slot);
 	}
 	
 	public interface IChanged {
