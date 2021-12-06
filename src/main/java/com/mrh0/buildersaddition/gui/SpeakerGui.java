@@ -95,7 +95,7 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 	@Override
 	public boolean mouseClicked(double p_mouseClicked_1_, double p_mouseClicked_3_, int p_mouseClicked_5_) {
 		for (int i = 0; i < SIZE; i++) {
-			if (btns[i].isMouseOver(p_mouseClicked_1_, p_mouseClicked_3_))// isHovered
+			if (btns[i].isHoveredOrFocused())// isHovered
 				buttonClicked(btns[i], i);
 		}
 
@@ -130,7 +130,7 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 		GlStateManager._disableBlend();
 
 		for (int i = 0; i < SIZE; i++) {
-			if (btns[i].isMouseOver(x, y))// isHovered
+			if (btns[i].isHoveredOrFocused())// isHovered
 				renderTooltip(stack, new TextComponent("F#" + Notes.octaveNames[i]), x, y);
 		}
 		if(helpBtn.isMouseOver(x, y))

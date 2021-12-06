@@ -1,8 +1,12 @@
 package com.mrh0.buildersaddition.blocks;
 
+import javax.annotation.Nullable;
+
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
+import com.mrh0.buildersaddition.util.Util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -34,27 +38,27 @@ import net.minecraftforge.network.NetworkHooks;
 
 public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-	
+
 	protected static final VoxelShape NORTH_SHAPE = Block.box(0.0D, 0.0D, 8D, 16D, 16D, 16D);
 	protected static final VoxelShape EAST_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 8.0D, 16.0D, 16.0D);
 	protected static final VoxelShape SOUTH_SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16D, 16D, 8D);
 	protected static final VoxelShape WEST_SHAPE = Block.box(8D, 0.0D, 0.0D, 16D, 16.0D, 16.0D);
-	
+
 	public Shelf(String name) {
 		super("shelf_" + name, Blocks.OAK_PLANKS);
 		registerDefaultState(defaultBlockState().setValue(FACING, Direction.NORTH));
 	}
-	
+
 	@Override
 	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		builder.add(FACING);
 	}
-	
+
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext c) {
 		return this.defaultBlockState().setValue(FACING, c.getHorizontalDirection().getOpposite());
 	}
-	
+
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext c) {
 		switch (state.getValue(FACING)) {
@@ -70,32 +74,32 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 			return NORTH_SHAPE;
 		}
 	}
-	
+
 	@Override
-	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand,
+			BlockHitResult hit) {
 		if (player.isSpectator()) {
-            return InteractionResult.PASS;
-        }
-    	if (world.isClientSide()) {
-            return InteractionResult.SUCCESS;
-        }
-    	
-    	ShelfTileEntity mte = (ShelfTileEntity) world.getBlockEntity(pos);
+			return InteractionResult.PASS;
+		}
+		if (world.isClientSide()) {
+			return InteractionResult.SUCCESS;
+		}
+
+		ShelfTileEntity mte = (ShelfTileEntity) world.getBlockEntity(pos);
 		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
-            extraData.writeBlockPos(mte.getBlockPos());
-        });
-    	return InteractionResult.CONSUME;
+			extraData.writeBlockPos(mte.getBlockPos());
+		});
+		return InteractionResult.CONSUME;
 	}
 
-	
 	public int getBookSum(BlockState state, LevelReader world, BlockPos pos) {
 		BlockEntity te = world.getBlockEntity(pos);
-		if(te != null) {
-			if(te instanceof ShelfTileEntity) {
-				ShelfTileEntity bte = (ShelfTileEntity)te;
+		if (te != null) {
+			if (te instanceof ShelfTileEntity) {
+				ShelfTileEntity bte = (ShelfTileEntity) te;
 				int sum = 0;
-				for(int i = 0; i < bte.handler.getSlots(); i++) {
-					if(bte.handler.getStackInSlot(i).getCount() > 0)
+				for (int i = 0; i < bte.handler.getSlots(); i++) {
+					if (bte.handler.getStackInSlot(i).getCount() > 0)
 						sum++;
 				}
 				return sum;
@@ -103,14 +107,14 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (!state.is(newState.getBlock())) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof Container) {
 				Containers.dropContents(world, pos, (Container) tileentity);
-				world.updateNeighborsAt(pos, this); //Comparators
+				world.updateNeighborsAt(pos, this); // Comparators
 			}
 			super.onRemove(state, world, pos, newState, isMoving);
 		}
@@ -125,7 +129,7 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 			}
 		}
 	}
-	
+
 	public boolean hasAnalogOutputSignal(BlockState state) {
 		return true;
 	}
@@ -139,4 +143,12 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 		return new ShelfTileEntity(pos, state);
 	}
+
+	/*@Nullable
+	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level p_152755_, BlockState p_152756_,
+			BlockEntityType<T> p_152757_) {
+		if (p_152755_.isClientSide)
+			return Util.createTickerHelper(p_152757_, Index.SHELF_TILE_ENTITY_TYPE, ShelfTileEntity::ticker);
+		return null;
+	}*/
 }

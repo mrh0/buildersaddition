@@ -7,6 +7,8 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -41,12 +43,6 @@ public class ShopSignTileEntity extends BlockEntity {
 	}
 	
 	@Override
-	public CompoundTag save(CompoundTag nbt) {
-		
-		return super.save(nbt);
-	}
-	
-	@Override
 	protected void saveAdditional(CompoundTag nbt) {
 		nbt.put("item", item.save(new CompoundTag()));
 		super.saveAdditional(nbt);
@@ -59,8 +55,6 @@ public class ShopSignTileEntity extends BlockEntity {
 			item = ItemStack.EMPTY;
 		super.load(nbt);
 	}
-	
-	
 	
 	/*@Override
 	public ClientboundBlockEntityDataPacket getUpdatePacket() {
@@ -76,9 +70,15 @@ public class ShopSignTileEntity extends BlockEntity {
 	}
 	
 	@Override
+	public Packet<ClientGamePacketListener> getUpdatePacket() {
+		return ClientboundBlockEntityDataPacket.create(this);
+	}
+	
+	@Override
 	public CompoundTag getUpdateTag() {
 		CompoundTag nbt = new CompoundTag();
-		save(nbt);
+        save(nbt);
+        saveAdditional(nbt);
         return nbt;
 	}
 	

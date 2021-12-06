@@ -4,6 +4,8 @@ import java.util.function.Supplier;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -53,12 +55,10 @@ public class UpdateDataPacket {
 	    if (te != null) {
 	        if(te instanceof IIntData) {
 	        	((IIntData)te).updateData(data);
-	        	ClientboundBlockEntityDataPacket.create(te);
-	        	
-	        	/*ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
+	        	Packet<ClientGamePacketListener> supdatetileentitypacket = te.getUpdatePacket();
 	            if (supdatetileentitypacket != null) {
 	                player.connection.send(supdatetileentitypacket);
-	            }*/
+	            }
 	        }
 		}
     }

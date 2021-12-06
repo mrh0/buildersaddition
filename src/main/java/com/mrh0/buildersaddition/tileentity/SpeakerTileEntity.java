@@ -11,6 +11,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -102,6 +104,7 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 	@Override
 	public void updateData(int encoded) {
 		instruments = encoded;
+		this.setChanged();
 	}
 	
 	//Read
@@ -109,12 +112,6 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 	public void load(CompoundTag nbt) {
 		instruments = nbt.getInt("instruments");
 		super.load(nbt);
-	}
-	
-	@Override
-	public CompoundTag save(CompoundTag nbt) {
-		
-		return super.save(nbt);
 	}
 	
 	@Override
@@ -139,6 +136,11 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 	}*/
 	
 	@Override
+	public Packet<ClientGamePacketListener> getUpdatePacket() {
+		return ClientboundBlockEntityDataPacket.create(this);
+	}
+	
+	@Override
 	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
 		CompoundTag update = pkt.getTag();
         handleUpdateTag(update);
@@ -148,6 +150,7 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 	public CompoundTag getUpdateTag() {
 		CompoundTag nbt = new CompoundTag();
         save(nbt);
+        saveAdditional(nbt);
         return nbt;
 	}
 	

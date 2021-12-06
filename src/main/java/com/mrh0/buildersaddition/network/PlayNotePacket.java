@@ -6,6 +6,8 @@ import com.mrh0.buildersaddition.tileentity.base.BaseInstrument;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
@@ -54,11 +56,10 @@ public class PlayNotePacket {
 		BaseInstrument te = (BaseInstrument) player.level.getBlockEntity(pos);
         if (te != null) {
         	te.playNote(note);
-        	ClientboundBlockEntityDataPacket.create(te);
-        	/*ClientboundBlockEntityDataPacket supdatetileentitypacket = te.getUpdatePacket();
+        	Packet<ClientGamePacketListener> supdatetileentitypacket = te.getUpdatePacket();
             if (supdatetileentitypacket != null) {
                 player.connection.send(supdatetileentitypacket);
-            }*/
+            }
         }
     }
 }

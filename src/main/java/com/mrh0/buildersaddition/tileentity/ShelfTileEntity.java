@@ -11,12 +11,15 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -37,13 +40,9 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 	
 	@Override
 	public void load(CompoundTag nbt) {
+		
 		this.handler.deserializeNBT(nbt.getCompound("ItemStackHandler"));
 		super.load(nbt);
-	}
-	
-	@Override
-	public CompoundTag save(CompoundTag nbt) {
-		return super.save(nbt);
 	}
 	
 	@Override
@@ -70,6 +69,14 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 				return false;
 		}
 		return true;
+	}
+	
+	boolean first = true;
+	public static void ticker(Level level, BlockPos pos, BlockState state, ShelfTileEntity te) {
+		/*System.out.println("ticker " + level.isClientSide);
+		if(te.first)
+			te.load(te.getTileData());
+		te.first = false;*/
 	}
 
 	/*@Override
@@ -141,23 +148,37 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
         //return new ClientboundBlockEntityDataPacket(this.getBlockPos(), Index.SHELF_TILE_ENTITY_TYPE, update);
 	}*/
 	
-	
 	@Override
 	public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
 		CompoundTag update = pkt.getTag();
         handleUpdateTag(update);
 	}
 	
+	/*@Override
+	public CompoundTag getUpdateTag() {
+		CompoundTag nbt = new CompoundTag();
+		//save(nbt);
+		//saveAdditional(nbt);
+        return nbt;
+	}*/
+	
+	@Override
+	public Packet<ClientGamePacketListener> getUpdatePacket() {
+		return ClientboundBlockEntityDataPacket.create(this);
+	}
+	
 	@Override
 	public CompoundTag getUpdateTag() {
 		CompoundTag nbt = new CompoundTag();
-		save(nbt);
+        save(nbt);
+        saveAdditional(nbt);
         return nbt;
 	}
 	
 	@Override
 	public void handleUpdateTag(CompoundTag nbt) {
 		load(nbt);
+		super.handleUpdateTag(nbt);
 	}
 	
 	@Override
