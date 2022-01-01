@@ -161,15 +161,13 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		}
 
 	}
-
+	
 	@Override
-	public CompoundTag save(CompoundTag p_59112_) {
-		super.save(p_59112_);
-		if (!this.trySaveLootTable(p_59112_)) {
-			ContainerHelper.saveAllItems(p_59112_, this.inv);
+	protected void saveAdditional(CompoundTag nbt) {
+		if (!this.trySaveLootTable(nbt)) {
+			ContainerHelper.saveAllItems(nbt, this.inv);
 		}
-
-		return p_59112_;
+		super.saveAdditional(nbt);
 	}
 	
 	/*@Override

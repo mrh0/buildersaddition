@@ -31,7 +31,6 @@ public class BookshelfTileEntity extends RandomizableContainerBlockEntity implem
 	
 	@Override
 	public CompoundTag save(CompoundTag nbt) {
-		
 		return super.save(nbt);
 	}
 	
