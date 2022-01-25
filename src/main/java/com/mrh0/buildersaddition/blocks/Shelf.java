@@ -1,12 +1,8 @@
 package com.mrh0.buildersaddition.blocks;
 
-import javax.annotation.Nullable;
-
-import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
-import com.mrh0.buildersaddition.util.Util;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

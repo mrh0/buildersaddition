@@ -149,7 +149,7 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 	@Override
 	public CompoundTag getUpdateTag() {
 		CompoundTag nbt = new CompoundTag();
-        save(nbt);
+        //save(nbt);
         saveAdditional(nbt);
         return nbt;
 	}

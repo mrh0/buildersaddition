@@ -44,7 +44,7 @@ public class EntityDetector extends BaseDerivativeBlock implements EntityBlock {
 	
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext c) {
-		return this.defaultBlockState().setValue(FACING, c.getNearestLookingDirection().getOpposite().getOpposite());
+		return this.defaultBlockState().setValue(FACING, c.isSecondaryUseActive() ? c.getNearestLookingDirection().getOpposite() : c.getNearestLookingDirection());
 	}
 	
 	@Override

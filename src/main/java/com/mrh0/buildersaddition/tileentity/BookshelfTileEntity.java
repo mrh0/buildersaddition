@@ -30,11 +30,6 @@ public class BookshelfTileEntity extends RandomizableContainerBlockEntity implem
 	}
 	
 	@Override
-	public CompoundTag save(CompoundTag nbt) {
-		return super.save(nbt);
-	}
-	
-	@Override
 	protected void saveAdditional(CompoundTag nbt) {
 		nbt.put("ItemStackHandler", this.handler.serializeNBT());
 		super.saveAdditional(nbt);

@@ -1,5 +1,6 @@
 package com.mrh0.buildersaddition.blocks;
 
+import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
 
@@ -15,6 +16,7 @@ public class IronFence extends FenceBlock {
 		super(Properties.copy(Blocks.IRON_BLOCK));
 		this.setRegistryName(name);
 		BlockRegistry.instance.register(this, new BlockOptions());
+		BaseDerivativeBlock.blockTagSort(this, Blocks.IRON_BLOCK);
 	}
 	
 	

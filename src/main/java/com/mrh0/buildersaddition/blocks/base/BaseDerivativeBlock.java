@@ -30,7 +30,7 @@ public class BaseDerivativeBlock extends BaseBlock {
 		blockTagSort(this, source);
 	}
 	
-	private static void blockTagSort(Block current, Block source) {
+	public static void blockTagSort(Block current, Block source) {
 		Material m = source.defaultBlockState().getMaterial();
 		
 		if(m == Material.WOOD || m == Material.NETHER_WOOD || m == Material.WOOL)

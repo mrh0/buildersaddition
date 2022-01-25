@@ -170,7 +170,7 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 	@Override
 	public CompoundTag getUpdateTag() {
 		CompoundTag nbt = new CompoundTag();
-        save(nbt);
+        //save(nbt);
         saveAdditional(nbt);
         return nbt;
 	}

@@ -68,6 +68,8 @@
     "buildersaddition:cut_deepslate_tiles_pillar",
     "buildersaddition:iron_ladder",
     "buildersaddition:iron_ladder_rough",
+    "buildersaddition:iron_fence",
+    "buildersaddition:iron_fence_rough",
     "buildersaddition:fireplace_guard",
     "buildersaddition:rough_fireplace_guard",
     "buildersaddition:entity_detector"
