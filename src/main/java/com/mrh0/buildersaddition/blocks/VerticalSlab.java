@@ -29,7 +29,6 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.fml.ModList;
 
 public class VerticalSlab extends BaseDerivativeBlock implements SimpleWaterloggedBlock {
 	public static final EnumProperty<VerticalSlabState> TYPE = EnumProperty.<VerticalSlabState>create("type", VerticalSlabState.class);
@@ -47,7 +46,7 @@ public class VerticalSlab extends BaseDerivativeBlock implements SimpleWaterlogg
 	}
 	
 	public VerticalSlab(String name, Block source, String mod) {
-		super(name + "_vertical_slab", source, new BlockOptions().setItemOptions(new ItemOptions().hide(ModList.get().isLoaded(mod))));
+		super(name + "_vertical_slab", source, new BlockOptions()/*.setItemOptions(new ItemOptions().hide(ModList.get().isLoaded(mod)))*/);
 		this.registerDefaultState(
 				this.defaultBlockState().setValue(TYPE, VerticalSlabState.NORTH).setValue(WATERLOGGED, Boolean.valueOf(false)));
 	}

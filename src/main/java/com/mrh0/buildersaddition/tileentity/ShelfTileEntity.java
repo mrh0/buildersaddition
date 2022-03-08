@@ -33,6 +33,10 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 		handler = new ModInventory(6, this::changed);
 	}
 	
+	protected net.minecraftforge.items.IItemHandler createUnSidedHandler() {
+    	return handler;
+	}
+	
 	@Override
 	protected AbstractContainerMenu createMenu(int windowId, Inventory inv) {
 		return ShelfContainer.create(windowId, inv, this.getBlockPos(), this.handler);
@@ -61,7 +65,6 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 	public int getSizeInventory() {
 		return handler.getSlots();
 	}*/
-
 	@Override
 	public boolean isEmpty() {
 		for(int i = 0; i < handler.getSlots(); i++) {
@@ -188,10 +191,12 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 
 	@Override
 	public int getContainerSize() {
-		return 0;
+		return handler.getSlots();
 	}
 
 	@Override
-	protected void setItems(NonNullList<ItemStack> p_59625_) {
+	protected void setItems(NonNullList<ItemStack> list) {
+		for(int i = 0; i < list.size(); i++)
+			handler.setStackInSlot(i, list.get(i));
 	}
 }

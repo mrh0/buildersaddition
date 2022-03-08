@@ -29,6 +29,10 @@ public class BookshelfTileEntity extends RandomizableContainerBlockEntity implem
 		handler = new ModInventory(18, this::changed);
 	}
 	
+	protected net.minecraftforge.items.IItemHandler createUnSidedHandler() {
+    	return handler;
+	}
+	
 	@Override
 	protected void saveAdditional(CompoundTag nbt) {
 		nbt.put("ItemStackHandler", this.handler.serializeNBT());

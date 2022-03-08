@@ -3,9 +3,7 @@ package com.mrh0.buildersaddition.config;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber
 public class Config {
 	public static final String CATAGORY_GENERAL = "general";
 	public static final String CATAGORY_MIDI = "midi";
@@ -73,7 +71,7 @@ public class Config {
 	}
 	
 	public static void loadConfig(ForgeConfigSpec spec, java.nio.file.Path path) {
-		final CommentedFileConfig configData = CommentedFileConfig.builder(path)
+		CommentedFileConfig configData = CommentedFileConfig.builder(path)
 				.sync()
 				.autosave()
 				.writingMode(WritingMode.REPLACE)

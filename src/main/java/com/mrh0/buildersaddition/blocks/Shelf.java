@@ -108,8 +108,8 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
 		if (!state.is(newState.getBlock())) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof Container) {
-				Containers.dropContents(world, pos, (Container) tileentity);
+			if (tileentity instanceof ShelfTileEntity) {
+				Containers.dropContents(world, pos, (ShelfTileEntity) tileentity);
 				world.updateNeighborsAt(pos, this); // Comparators
 			}
 			super.onRemove(state, world, pos, newState, isMoving);
