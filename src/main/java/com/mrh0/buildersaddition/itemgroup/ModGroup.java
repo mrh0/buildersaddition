@@ -6,7 +6,7 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
 public class ModGroup extends CreativeModeTab {
-	public static ModGroup MAIN;;
+	public static ModGroup MAIN;
 	
 	public ModGroup(String name) {
 		super(BuildersAddition.MODID+":"+name);
