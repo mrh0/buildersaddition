@@ -45,8 +45,8 @@ public class BaseDerivativeBlock extends BaseBlock {
 			BABlockTagsProvider.earthBlocks.add(current);
 		else if(m == Material.LEAVES) 
 			BABlockTagsProvider.leavesBlocks.add(current);
-		else
-			System.out.println("Skipping: " + current.getRegistryName());
+		//else
+		//	System.out.println("Skipping: " + current.getRegistryName());
 	}
 	
 	public Block getSourceBlock() {

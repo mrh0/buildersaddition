@@ -5,7 +5,6 @@ import com.mrh0.buildersaddition.blocks.BedsideTable;
 import com.mrh0.buildersaddition.blocks.Bench;
 import com.mrh0.buildersaddition.blocks.Bookshelf;
 import com.mrh0.buildersaddition.blocks.Cabinet;
-import com.mrh0.buildersaddition.blocks.LargeCandle;
 import com.mrh0.buildersaddition.blocks.Counter;
 import com.mrh0.buildersaddition.blocks.Crossrail;
 import com.mrh0.buildersaddition.blocks.Cupboard;
@@ -29,7 +28,6 @@ import com.mrh0.buildersaddition.blocks.Table;
 import com.mrh0.buildersaddition.blocks.VerticalComparatorBlock;
 import com.mrh0.buildersaddition.blocks.VerticalRepeaterBlock;
 import com.mrh0.buildersaddition.blocks.VerticalSlab;
-import com.mrh0.buildersaddition.blocks.Candle;
 import com.mrh0.buildersaddition.blocks.Chair;
 import com.mrh0.buildersaddition.blocks.CopperVerticalSlab;
 import com.mrh0.buildersaddition.blocks.base.GenericBlock;
@@ -62,7 +60,8 @@ import com.mrh0.buildersaddition.util.RegistryUtil;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.decoration.Motive;
+import net.minecraft.world.entity.decoration.PaintingVariant;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
@@ -71,9 +70,18 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
+import net.minecraftforge.network.IContainerFactory;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
 @SuppressWarnings("unchecked")
 public class Index {
+	
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
+            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, BuildersAddition.MODID);
+    public static final DeferredRegister<MenuType<?>> MENUS =
+            DeferredRegister.create(ForgeRegistries.CONTAINERS, BuildersAddition.MODID);
 	
 	public static String[] woods = {"oak", "spruce", "birch", "acacia", "dark_oak", "jungle", "crimson", "warped"};
 	public static Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS};
@@ -347,20 +355,20 @@ public class Index {
 	public static BlockEntityType<EntityDetectorTileEntity> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
 	public static BlockEntityType<VerticalComparatorTileEntity> VERTICAL_COMPARATOR_TILE_ENTITY_TYPE;
 
-	public static MenuType<BookshelfContainer> BOOKSHELF_CONTAINER;
-	public static MenuType<ShelfContainer> SHELF_CONTAINER;
-	public static MenuType<SpeakerContainer> SPEAKER_CONTAINER;
-	public static MenuType<ArcadeContainer> ARCADE_CONTAINER;
+	public static RegistryObject<MenuType<BookshelfContainer>> BOOKSHELF_CONTAINER;
+	public static RegistryObject<MenuType<ShelfContainer>> SHELF_CONTAINER;
+	public static RegistryObject<MenuType<SpeakerContainer>> SPEAKER_CONTAINER;
+	public static RegistryObject<MenuType<ArcadeContainer>> ARCADE_CONTAINER;
 
-	public static Motive SUMMER_FIELD_PAINTING;
-	public static Motive SHARD_PAINTING;
-	public static Motive SKARGARD_PAINTING;
-	public static Motive HORIZONS_PAINTING;
-	public static Motive PORTRAIT_PAINTING;
-	public static Motive PROMO_PAINTING;
-	public static Motive HEROBRINE_PAINTING;
-	public static Motive ENDERMAN_PAINTING;
-	public static Motive WINTER_PAINTING;
+	public static PaintingVariant SUMMER_FIELD_PAINTING;
+	public static PaintingVariant SHARD_PAINTING;
+	public static PaintingVariant SKARGARD_PAINTING;
+	public static PaintingVariant HORIZONS_PAINTING;
+	public static PaintingVariant PORTRAIT_PAINTING;
+	public static PaintingVariant PROMO_PAINTING;
+	public static PaintingVariant HEROBRINE_PAINTING;
+	public static PaintingVariant ENDERMAN_PAINTING;
+	public static PaintingVariant WINTER_PAINTING;
 	
 	
 	public static void items() {
@@ -679,15 +687,31 @@ public class Index {
 				TileEntityRegistry.instance.<VerticalComparatorTileEntity>register(VerticalComparatorTileEntity::new, new TileEntityOptions("vertical_comparator", VERTICAL_COMPARATOR));
 	}
 	
+	private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
+        return MENUS.register(name, () -> IForgeMenuType.create(factory));
+    }
+	
 	public static void containers() {
-		BOOKSHELF_CONTAINER = (MenuType<BookshelfContainer>) 
-				ContainerRegistry.instance.register(IForgeMenuType.create(BookshelfContainer::create).setRegistryName("bookshelf_container"), new ContainerOptions());
+		BOOKSHELF_CONTAINER = registerMenuType(BookshelfContainer::create, "bookshelf_container");
+		SHELF_CONTAINER = registerMenuType(ShelfContainer::create, "shelf_container");
+		SPEAKER_CONTAINER = registerMenuType(SpeakerContainer::create, "speaker_container");
+		ARCADE_CONTAINER = registerMenuType(ArcadeContainer::create, "arcade_container");
+		
+		/*BOOKSHELF_CONTAINER = (MenuType<BookshelfContainer>) 
+				ContainerRegistry.instance.register(IForgeMenuType.create(BookshelfContainer::create), new ContainerOptions());
+		ForgeRegistries.CONTAINERS.register("bookshelf_container", BOOKSHELF_CONTAINER);
+		
 		SHELF_CONTAINER = (MenuType<ShelfContainer>) 
-				ContainerRegistry.instance.register(IForgeMenuType.create(ShelfContainer::create).setRegistryName("shelf_container"), new ContainerOptions());
+				ContainerRegistry.instance.register(IForgeMenuType.create(ShelfContainer::create), new ContainerOptions());
+		ForgeRegistries.CONTAINERS.register("shelf_container", SHELF_CONTAINER);
+		
 		SPEAKER_CONTAINER = (MenuType<SpeakerContainer>) 
-				ContainerRegistry.instance.register(IForgeMenuType.create(SpeakerContainer::create).setRegistryName("speaker_container"), new ContainerOptions());
+				ContainerRegistry.instance.register(IForgeMenuType.create(SpeakerContainer::create), new ContainerOptions());
+		ForgeRegistries.CONTAINERS.register("speaker_container", SPEAKER_CONTAINER);
+		
 		ARCADE_CONTAINER = (MenuType<ArcadeContainer>) 
-				ContainerRegistry.instance.register(IForgeMenuType.create(ArcadeContainer::create).setRegistryName("arcade_container"), new ContainerOptions());
+				ContainerRegistry.instance.register(IForgeMenuType.create(ArcadeContainer::create), new ContainerOptions());
+		ForgeRegistries.CONTAINERS.register("arcade_container", ARCADE_CONTAINER);*/
 	}
 	
 	/*BOP_CHERRY_VERTICAL_SLAB = new VerticalSlab("bop_cherry", Blocks.OAK_PLANKS, "biomesoplenty");

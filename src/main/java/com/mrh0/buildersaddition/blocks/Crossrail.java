@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.RailShape;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class Crossrail extends BaseRailBlock {
 
@@ -24,7 +25,8 @@ public class Crossrail extends BaseRailBlock {
 	public Crossrail() {
 		super(true, Properties.copy(Blocks.RAIL));
 		this.registerDefaultState(this.defaultBlockState().setValue(SHAPE, RailShape.NORTH_SOUTH));
-		this.setRegistryName("crossrail");
+		ForgeRegistries.BLOCKS.register("crossrail", this);
+		//this.setRegistryName("crossrail");
 		BlockRegistry.instance.register(this, new BlockOptions());
 	}
 

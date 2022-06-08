@@ -9,12 +9,14 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class IronFence extends FenceBlock {
 
 	public IronFence(String name) {
 		super(Properties.copy(Blocks.IRON_BLOCK));
-		this.setRegistryName(name);
+		//this.setRegistryName(name);
+		ForgeRegistries.BLOCKS.register(name, this);
 		BlockRegistry.instance.register(this, new BlockOptions());
 		BaseDerivativeBlock.blockTagSort(this, Blocks.IRON_BLOCK);
 	}

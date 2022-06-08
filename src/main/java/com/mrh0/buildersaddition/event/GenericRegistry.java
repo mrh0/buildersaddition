@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import com.mrh0.buildersaddition.event.opts.RegOptions;
 
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
-public abstract class GenericRegistry<T extends IForgeRegistryEntry<T>, O extends RegOptions<O>> {
+public abstract class GenericRegistry<T, O extends RegOptions<O>> {
 	protected ArrayList<T> objs;
 	
 	public GenericRegistry() {

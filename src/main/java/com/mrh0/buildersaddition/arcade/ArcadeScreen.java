@@ -5,7 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 
 public class ArcadeScreen {
 	public final int width = 40;
@@ -188,7 +188,7 @@ public class ArcadeScreen {
 			int x = startx + getX(i) * cellWidth;
 			int y = starty + getY(i) * cellHeight;
 			if(getChar(screen[i]) != '\0')
-				fr.draw(stack, new TextComponent(getChar(screen[i])+""), x+1, y, getHexColor(getFg(screen[i])));
+				fr.draw(stack, Component.translatable(getChar(screen[i])+""), x+1, y, getHexColor(getFg(screen[i])));
 		}
 		
 		if(fgRenderer != null)

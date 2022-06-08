@@ -10,7 +10,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -22,7 +21,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-
 
 public class ShelfTileEntity extends RandomizableContainerBlockEntity implements MenuProvider, IComparetorOverride {
 
@@ -117,7 +115,7 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 
 	@Override
 	protected Component getDefaultName() {
-		return new TranslatableComponent("container.buildersaddition.shelf");
+		return Component.translatable("container.buildersaddition.shelf");
 	}
 
 	/*@Override

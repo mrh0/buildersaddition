@@ -22,11 +22,12 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class Util {
 	public static boolean isBook(ItemStack stack) {
 		Item i = stack.getItem();
-		String n = i.getRegistryName().getPath();
+		String n = ForgeRegistries.ITEMS.getKey(i).getPath();
 		
 		TagKey<Item> FORGE_BOOKS_TAG = ItemTags.create(new ResourceLocation("forge", "books"));
 

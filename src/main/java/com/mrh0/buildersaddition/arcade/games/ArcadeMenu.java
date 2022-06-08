@@ -6,7 +6,8 @@ import com.mrh0.buildersaddition.arcade.ArcadeScreen;
 import com.mrh0.buildersaddition.gui.ArcadeGui;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 
 public class ArcadeMenu extends ArcadeGame {
 
@@ -42,8 +43,8 @@ public class ArcadeMenu extends ArcadeGame {
 		s.print(x, 4, l5);
 		s.print(x, 5, l6);
 		
-		s.print(1, s.height-3, new TranslatableComponent("arcade.buildersaddition.menu.select")); //"Select a game with [UP] and [DOWN]"
-		s.print(1, s.height-2, new TranslatableComponent("arcade.buildersaddition.menu.start")); //"Start the game with [ENTER] or [SPACE]"
+		s.print(1, s.height-3, Component.translatable("arcade.buildersaddition.menu.select")); //"Select a game with [UP] and [DOWN]"
+		s.print(1, s.height-2, Component.translatable("arcade.buildersaddition.menu.start")); //"Start the game with [ENTER] or [SPACE]"
 	}
 	
 	private void render() {

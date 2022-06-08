@@ -26,7 +26,7 @@ public class BABlockTagsProvider extends TagsProvider<Block> {
 	}
 
 	protected Path getPath(ResourceLocation rl) {
-		return this.generator.getOutputFolder()
+		return this.getPath(rl)
 				.resolve("data/" + rl.getNamespace() + "/tags/blocks/" + rl.getPath() + ".json");
 	}
 

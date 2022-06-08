@@ -8,7 +8,6 @@ import com.mrh0.buildersaddition.util.IComparetorOverride;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
@@ -48,6 +47,6 @@ public class SmallCupboardTileEntity extends BaseChestTileEntity implements ICom
 
 	@Override
 	protected Component getDefaultName() {
-		return new TranslatableComponent("container.buildersaddition.small_cupboard");
+		return Component.translatable("container.buildersaddition.small_cupboard");
 	}
 }

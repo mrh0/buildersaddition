@@ -16,8 +16,6 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Button.OnPress;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
@@ -57,19 +55,19 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 		};
 
 		connectBtn = new Button(x - 48 - 12, y + 24 * 4, 96, 20,
-				new TranslatableComponent(BuildersAddition.midi == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"), (b) -> {
+				Component.translatable(BuildersAddition.midi == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"), (b) -> {
 					if (BuildersAddition.midi != null) {
 						if (BuildersAddition.midi.midiEvent == null)
 							BuildersAddition.midi.midiEvent = this;
 						else
 							BuildersAddition.midi.midiEvent = null;
 
-						connectBtn.setMessage(new TranslatableComponent(
+						connectBtn.setMessage(Component.translatable(
 								BuildersAddition.midi.midiEvent == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"));// SetMessage
 					}
 				});
 		
-		helpBtn = new Button(x + 52 - 12, y + 24 * 4, 20, 20, new TextComponent("?"), (b) -> {});
+		helpBtn = new Button(x + 52 - 12, y + 24 * 4, 20, 20, Component.literal("?"), (b) -> {});
 
 		this.addRenderableWidget(connectBtn); //addButton
 		this.addRenderableWidget(helpBtn); //addButton
@@ -78,7 +76,7 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 
 		for (int i = 0; i < SIZE; i++) {
 			btns[i] = new Button(x + (i > 7 ? -100 : 4), y + (i % 8 * 24) - 4 * 24, 96, 20,
-					new TranslatableComponent("note.buildersaddition." + Notes.instrumentNames[i]), p);
+					Component.translatable("note.buildersaddition." + Notes.instrumentNames[i]), p);
 			this.addRenderableWidget(btns[i]);// addButton
 			btns[i].active = te.isInstrumentActive(i);// active
 		}
@@ -131,10 +129,10 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 
 		for (int i = 0; i < SIZE; i++) {
 			if (btns[i].isHoveredOrFocused())// isHovered
-				renderTooltip(stack, new TextComponent("F#" + Notes.octaveNames[i]), x, y);
+				renderTooltip(stack, Component.literal("F#" + Notes.octaveNames[i]), x, y);
 		}
 		if(helpBtn.isMouseOver(x, y))
-			renderTooltip(stack, new TextComponent(
+			renderTooltip(stack, Component.literal(
 					(hasDevice() ? "Device Discovered" : "No Device Connected") 
 					+ ", Midi Input: " + (Config.MIDI_INPUT_ENABLED.get() ? "Enabled" : "Disabled")), x, y);
 		this.renderTooltip(stack, x, y);

@@ -8,7 +8,6 @@ import com.mrh0.buildersaddition.arcade.games.ArcadeSnake;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 
 public class ArcadeManager {
 	public interface GameConstructor {
@@ -28,7 +27,7 @@ public class ArcadeManager {
 	
 	public void add(GameConstructor game, String key) {
 		games.add(game);
-		names.add(new TranslatableComponent("arcade.buildersaddition.game." + key));
+		names.add(Component.translatable("arcade.buildersaddition.game." + key));
 	}
 	
 	public List<GameConstructor> getGames() {

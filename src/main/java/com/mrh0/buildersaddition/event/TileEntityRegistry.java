@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.event.opts.TileEntityOptions;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -21,7 +22,7 @@ public class TileEntityRegistry {
 	
 	public <T extends BlockEntity> BlockEntityType<T> register(BlockEntityType.BlockEntitySupplier<T> obj, TileEntityOptions opts) {
 		BlockEntityType<T> type = new BlockEntityType<T>(obj, opts.isUsedByBlocks, null);
-		type.setRegistryName(BuildersAddition.MODID+":"+opts.regName);
+		type.setRegistryName();
 		if(opts.isEnabled) {
 			objs.add(type);
 		}
@@ -35,6 +36,6 @@ public class TileEntityRegistry {
 	}
 
 	protected void init(IForgeRegistry<BlockEntityType<?>> reg, BlockEntityType<?> type) {
-		reg.register(type);
+		reg.register(new ResourceLocation(BuildersAddition.MODID, opts.regName), type);
 	}
 }

@@ -8,7 +8,6 @@ import com.mrh0.buildersaddition.container.ArcadeContainer;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +36,7 @@ public class ArcadeTileEntity extends BlockEntity implements MenuProvider {
 
 	@Override
 	public Component getDisplayName() {
-		return new TranslatableComponent("container.buildersaddition.arcade");
+		return Component.translatable("container.buildersaddition.arcade");
 	}
 
 	public static void tick(Level world, BlockPos pos, BlockState state, ArcadeTileEntity te) {

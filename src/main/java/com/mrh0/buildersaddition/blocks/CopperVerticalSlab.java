@@ -35,7 +35,8 @@ public class CopperVerticalSlab extends VerticalSlab implements WeatheringCopper
 	}
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-		this.onRandomTick(state, level, pos, random);
+		this.randomTick(state, level, pos, random);
+		//this.onRandomTick(state, level, pos, random);
 	}
 
 	public boolean isRandomlyTicking(BlockState state) {

@@ -10,7 +10,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Inventory;
@@ -32,7 +31,7 @@ public class CupboardTileEntity extends BaseChestTileEntity implements IComparet
 
 	@Override
 	protected Component getDefaultName() {
-		return new TranslatableComponent("container.buildersaddition.cupboard");
+		return Component.translatable("container.buildersaddition.cupboard");
 	}
 	
 	protected void playSound(BlockState state, SoundEvent evt) {

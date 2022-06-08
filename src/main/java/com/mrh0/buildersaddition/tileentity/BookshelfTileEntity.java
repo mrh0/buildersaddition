@@ -10,7 +10,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -146,7 +145,7 @@ public class BookshelfTileEntity extends RandomizableContainerBlockEntity implem
 
 	@Override
 	protected Component getDefaultName() {
-		return new TranslatableComponent("container.buildersaddition.bookshelf");
+		return Component.translatable("container.buildersaddition.bookshelf");
 	}
 
 	@Override
