@@ -19,11 +19,13 @@ public abstract class GenericRegistry<T, O extends RegOptions<O>> {
 		return obj;
 	}
 	
+	@Deprecated
 	public void initAll(IForgeRegistry<T> reg) {
 		for(T obj : objs) {
 			init(reg, obj);
 		}
 	}
 	
+	@Deprecated
 	protected abstract void init(IForgeRegistry<T> reg, T obj);
 }

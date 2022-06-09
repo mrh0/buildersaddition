@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class SmallCupboardTileEntity extends BaseChestTileEntity implements IComparetorOverride {
 	public SmallCupboardTileEntity(BlockPos pos, BlockState state) {
-		super(Index.SMALL_CUPBOARD_TILE_ENTITY_TYPE, pos, state);
+		super(Index.SMALL_CUPBOARD_TILE_ENTITY_TYPE.get(), pos, state);
 	}
 	
 	protected void playSound(BlockState state, SoundEvent evt) {

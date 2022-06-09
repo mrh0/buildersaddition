@@ -148,7 +148,7 @@ public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
 		super.onRemove(state, world, pos, newState, isMoving);
 	}
 	
-	@Override
+	/*@Override
 	public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity ent, ItemStack stack) {
 		if (stack.hasCustomHoverName()) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
@@ -156,7 +156,7 @@ public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
 				((BookshelfTileEntity) tileentity).setCustomName(stack.getDisplayName());
 			}
 		}
-	}
+	}*/
 	
 	@Override
 	public int getAnalogOutputSignal(BlockState sate, Level world, BlockPos pos) {

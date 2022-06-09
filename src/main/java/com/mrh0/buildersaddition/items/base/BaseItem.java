@@ -23,8 +23,8 @@ public class BaseItem extends Item {
 		this.itemName = name;
 		this.opts = opts;
 		//setRegistryName(name);
-		ForgeRegistries.ITEMS.register(name, this);
-		ItemRegistry.instance.register(this, opts);
+		//ForgeRegistries.ITEMS.register(name, this);
+		//ItemRegistry.instance.register(this, opts);
 	}
 	
 	@Override

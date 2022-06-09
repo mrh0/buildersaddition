@@ -16,6 +16,6 @@ public class ItemRegistry extends GenericRegistry<Item, ItemOptions>{
 
 	@Override
 	public void init(IForgeRegistry<Item> reg, Item obj) {
-		reg.register(obj);
+		//reg.register(obj);
 	}
 }

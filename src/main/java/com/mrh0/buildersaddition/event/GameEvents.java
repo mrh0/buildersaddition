@@ -45,7 +45,7 @@ public class GameEvents {
         		BlockState stateAbove = evt.getWorld().getBlockState(evt.getPos().above());
     			if(!stateAbove.getMaterial().isSolid() || stateAbove.getBlock() instanceof FenceGateBlock) {
 	        		if(!evt.getWorld().isClientSide()) {
-	        			evt.getWorld().setBlockAndUpdate(evt.getPos(), Index.GRAVEL_PATH.defaultBlockState());
+	        			evt.getWorld().setBlockAndUpdate(evt.getPos(), Index.GRAVEL_PATH.get().defaultBlockState());
 	        			evt.getItemStack().hurtAndBreak(1, evt.getPlayer(), (Player e) -> {});
 	        		}
 	        		else {
@@ -94,7 +94,7 @@ public class GameEvents {
         			}
         				
         			boolean flag = evt.getHitVec().getLocation().y - (double) evt.getPos().getY() - .5d < 0;
-        			BlockState state = Index.VERTICAL_REPEATER.defaultBlockState().setValue(VerticalRepeaterBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).setValue(VerticalRepeaterBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
+        			BlockState state = Index.VERTICAL_REPEATER.get().defaultBlockState().setValue(VerticalRepeaterBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).setValue(VerticalRepeaterBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
         			//TODO
         			//if(!evt.getWorld().isModifiable(evt.getPlayer(), pos))
         			//	return;
@@ -103,7 +103,7 @@ public class GameEvents {
         				return;
         			
         			evt.getWorld().setBlockAndUpdate(pos, state);
-        			Index.VERTICAL_REPEATER.setPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
+        			Index.VERTICAL_REPEATER.get().setPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
         			if(!evt.getPlayer().isCreative())
         				evt.getItemStack().shrink(1);
         			
@@ -129,7 +129,7 @@ public class GameEvents {
         			}
         			
         			boolean flag = evt.getHitVec().getLocation().y - (double) evt.getPos().getY() - .5d < 0;
-        			BlockState state = Index.VERTICAL_COMPARATOR.defaultBlockState().setValue(VerticalComparatorBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).setValue(VerticalComparatorBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
+        			BlockState state = Index.VERTICAL_COMPARATOR.get().defaultBlockState().setValue(VerticalComparatorBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).setValue(VerticalComparatorBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
         			
         			//if(!evt.getWorld().isModifiable(evt.getPlayer(), pos))
         			//	return;
@@ -138,7 +138,7 @@ public class GameEvents {
         				return;
         			
         			evt.getWorld().setBlockAndUpdate(pos, state);
-        			Index.VERTICAL_COMPARATOR.setPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
+        			Index.VERTICAL_COMPARATOR.get().setPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
         			if(!evt.getPlayer().isCreative())
         				evt.getItemStack().shrink(1);
         			

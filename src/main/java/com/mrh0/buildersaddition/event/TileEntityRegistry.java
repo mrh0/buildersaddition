@@ -22,7 +22,7 @@ public class TileEntityRegistry {
 	
 	public <T extends BlockEntity> BlockEntityType<T> register(BlockEntityType.BlockEntitySupplier<T> obj, TileEntityOptions opts) {
 		BlockEntityType<T> type = new BlockEntityType<T>(obj, opts.isUsedByBlocks, null);
-		type.setRegistryName();
+		//type.setRegistryName();
 		if(opts.isEnabled) {
 			objs.add(type);
 		}
@@ -36,6 +36,6 @@ public class TileEntityRegistry {
 	}
 
 	protected void init(IForgeRegistry<BlockEntityType<?>> reg, BlockEntityType<?> type) {
-		reg.register(new ResourceLocation(BuildersAddition.MODID, opts.regName), type);
+		//reg.register(new ResourceLocation(BuildersAddition.MODID, opts.regName), type);
 	}
 }

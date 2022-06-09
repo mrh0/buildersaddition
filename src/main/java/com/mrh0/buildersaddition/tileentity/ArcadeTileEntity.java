@@ -23,7 +23,7 @@ public class ArcadeTileEntity extends BlockEntity implements MenuProvider {
 	public long time = 0;
 	
 	public ArcadeTileEntity(BlockPos pos, BlockState state) {
-		super(Index.ARCADE_TILE_ENTITY_TYPE, pos, state);
+		super(Index.ARCADE_TILE_ENTITY_TYPE.get(), pos, state);
 		screen = new ArcadeScreen();
 		//game = new QSPLArcadeGame(screen, this);
 		

@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class CounterTileEntity extends BaseChestTileEntity implements IComparetorOverride {
 	public CounterTileEntity(BlockPos pos, BlockState state) {
-		super(Index.COUNTER_TILE_ENTITY_TYPE, pos, state);
+		super(Index.COUNTER_TILE_ENTITY_TYPE.get(), pos, state);
 	}
 	
 	protected void playSound(BlockState state, SoundEvent evt) {

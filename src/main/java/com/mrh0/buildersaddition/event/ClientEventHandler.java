@@ -34,7 +34,7 @@ public class ClientEventHandler {
 			return b != null && c != null ? BiomeColors.getAverageFoliageColor(b, c) : FoliageColor.getDefaultColor();
 		};
 		
-		evt.getBlockColors().register(bc, Index.HEDGE_OAK, Index.HEDGE_BIRCH, Index.HEDGE_SPRUCE, Index.HEDGE_DARK_OAK, Index.HEDGE_JUNGLE, Index.HEDGE_ACACIA);
+		evt.getBlockColors().register(bc, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get());
 	}
 	
 	@SubscribeEvent
@@ -44,20 +44,20 @@ public class ClientEventHandler {
 			return Minecraft.getInstance().getBlockColors().getColor(blockstate, null, (BlockPos)null, b);
 		};
 		
-		evt.getItemColors().register(ic, Index.HEDGE_OAK, Index.HEDGE_BIRCH, Index.HEDGE_SPRUCE, Index.HEDGE_DARK_OAK, Index.HEDGE_JUNGLE, Index.HEDGE_ACACIA);
+		evt.getItemColors().register(ic, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get());
 	}
 	
 	public static void clientRegistry() {
-		MenuScreens.register(Index.BOOKSHELF_CONTAINER, BookshelfGui::new);
-		MenuScreens.register(Index.SHELF_CONTAINER, ShelfGui::new);
-		MenuScreens.register(Index.SPEAKER_CONTAINER, SpeakerGui::new);
-		MenuScreens.register(Index.ARCADE_CONTAINER, ArcadeGui::new);
+		MenuScreens.register(Index.BOOKSHELF_CONTAINER.get(), BookshelfGui::new);
+		MenuScreens.register(Index.SHELF_CONTAINER.get(), ShelfGui::new);
+		MenuScreens.register(Index.SPEAKER_CONTAINER.get(), SpeakerGui::new);
+		MenuScreens.register(Index.ARCADE_CONTAINER.get(), ArcadeGui::new);
 		
 		// TODO FIX!
     	//ClientRegistry.bindTileEntityRenderer(Index.SHOP_SIGN_TILE_ENTITY_TYPE, ShopSignRenderer::new);
     	//ClientRegistry.bindTileEntityRenderer(Index.SHELF_TILE_ENTITY_TYPE, ShelfRenderer::new);
-		BlockEntityRenderers.register(Index.SHOP_SIGN_TILE_ENTITY_TYPE, c -> new ShopSignRenderer(c.getBlockEntityRenderDispatcher()));
-		BlockEntityRenderers.register(Index.SHELF_TILE_ENTITY_TYPE, c -> new ShelfRenderer(c.getBlockEntityRenderDispatcher()));
+		BlockEntityRenderers.register(Index.SHOP_SIGN_TILE_ENTITY_TYPE.get(), c -> new ShopSignRenderer(c.getBlockEntityRenderDispatcher()));
+		BlockEntityRenderers.register(Index.SHELF_TILE_ENTITY_TYPE.get(), c -> new ShelfRenderer(c.getBlockEntityRenderDispatcher()));
     	
     	//Start MIDI controller.
     	if(Config.MIDI_ENABLED.get() && Config.MIDI_INPUT_ENABLED.get())

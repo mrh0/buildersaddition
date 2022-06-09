@@ -28,7 +28,7 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 	private int instruments;
 	
 	public SpeakerTileEntity(BlockPos pos, BlockState state) {
-		super(Index.SPEAKER_TILE_ENTITY_TYPE, pos, state);
+		super(Index.SPEAKER_TILE_ENTITY_TYPE.get(), pos, state);
 	}
 	@Override
 	public Component getDisplayName() {

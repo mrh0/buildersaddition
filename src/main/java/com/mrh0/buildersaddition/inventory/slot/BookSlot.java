@@ -13,16 +13,6 @@ public class BookSlot extends SlotItemHandler {
 	}
 	
 	@Override
-	public int getMaxStackSize() {
-		return 64;
-	}
-	
-	@Override
-	public int getMaxStackSize(ItemStack stack) {
-		return super.getMaxStackSize(stack);
-	}
-	
-	@Override
 	public boolean mayPlace(ItemStack stack) {
 		return Util.isBook(stack);
 	}

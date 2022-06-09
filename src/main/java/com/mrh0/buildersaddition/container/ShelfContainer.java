@@ -37,7 +37,7 @@ public class ShelfContainer extends BaseContainer {
 	}
 
 	public ShelfContainer(Inventory playerInv, BlockPos pos, int window, ItemStackHandler inv){
-		super(Index.SHELF_CONTAINER, window);
+		super(Index.SHELF_CONTAINER.get(), window);
 		//this.te = (ShelfTileEntity) te.getWorld().getTileEntity(pos);
 		this.handler = inv;
 		

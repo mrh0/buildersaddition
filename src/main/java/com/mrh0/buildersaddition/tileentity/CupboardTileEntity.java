@@ -26,7 +26,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 public class CupboardTileEntity extends BaseChestTileEntity implements IComparetorOverride {
 	
 	public CupboardTileEntity(BlockPos pos, BlockState state) {
-		super(Index.CUPBOARD_TILE_ENTITY_TYPE, pos, state);
+		super(Index.CUPBOARD_TILE_ENTITY_TYPE.get(), pos, state);
 	}
 
 	@Override

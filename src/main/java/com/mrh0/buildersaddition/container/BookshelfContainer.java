@@ -6,49 +6,61 @@ import com.mrh0.buildersaddition.inventory.slot.BookSlot;
 import com.mrh0.buildersaddition.tileentity.BookshelfTileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class BookshelfContainer extends BaseContainer {
 
-	//public BookshelfTileEntity te;
-	private ItemStackHandler handler;
+	public BookshelfTileEntity be;
+	private ContainerData data;
 	public static final int SLOTS = 18;
 	
-	protected BookshelfContainer(MenuType<?> type, int id) {
-		super(type, id);
+	public BookshelfContainer(int id, Inventory playerInv, FriendlyByteBuf data) {
+		this(id, playerInv, playerInv.player.level.getBlockEntity(data.readBlockPos()), new SimpleContainerData(0));
 	}
 
-	public static BookshelfContainer create(int windowId, Inventory playerInventory, BlockPos pos, ItemStackHandler inv) {
+	/*public static BookshelfContainer create(int windowId, Inventory playerInventory, BlockPos pos, ItemStackHandler inv) {
 		return new BookshelfContainer(playerInventory, pos, windowId, inv);
 	}
 
 	public static BookshelfContainer create(int windowId, Inventory playerInventory, FriendlyByteBuf buf) {
 		BlockPos pos = buf.readBlockPos();
-		return new BookshelfContainer(playerInventory, pos, windowId, ((BookshelfTileEntity) Minecraft.getInstance().level.getBlockEntity(pos)).handler);
-	}
+		return new BookshelfContainer(playerInventory, pos, windowId, new ItemStackHandler(SLOTS));//((BookshelfTileEntity) Minecraft.getInstance().level.getBlockEntity(pos)).handler
+	}*/
 
-	public BookshelfContainer(Inventory playerInv, BlockPos pos, int window, ItemStackHandler inv){
-		super(Index.BOOKSHELF_CONTAINER, window);
-		//this.te = (BookshelfTileEntity) te.getWorld().getTileEntity(pos);
-		this.handler = inv;
+	public BookshelfContainer(int window, Inventory playerInv, BlockEntity be, ContainerData data) {
+		super(Index.BOOKSHELF_CONTAINER.get(), window);
+		checkContainerSize(playerInv, SLOTS);
+		System.out.println("SLOTS: " + slots.size());
+		this.data = data;
+		this.be = (BookshelfTileEntity) be;
+		
+		this.be.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+			int xPos = 8;
+			int yPos = 18;
+			
+			for (int y = 0; y < 2; y++) {
+				for (int x = 0; x < 9; x++) {
+					this.addSlot(new BookSlot(handler, x + y * 9, xPos + x * 18, yPos + y * 18));
+				}
+			}
+        });
+
 		
 		int xPos = 8;
-		int yPos = 18;
-		
-		for (int y = 0; y < 2; y++) {
-			for (int x = 0; x < 9; x++) {
-				this.addSlot(new BookSlot(handler, x + y * 9, xPos + x * 18, yPos + y * 18));
-			}
-		}
-		
-		xPos = 8;
-		yPos = 66;
+		int yPos = 66;
 				
 		for (int y = 0; y < 3; y++) {
 			for (int x = 0; x < 9; x++) {
@@ -59,6 +71,8 @@ public class BookshelfContainer extends BaseContainer {
 		for (int x = 0; x < 9; x++) {
 			this.addSlot(new Slot(playerInv, x, xPos + x * 18, yPos + 58));
 		}
+		
+		addDataSlots(data);
 	}
 	
 	@Override
@@ -70,9 +84,9 @@ public class BookshelfContainer extends BaseContainer {
 			ItemStack current = slot.getItem();
 			previous = current.copy();
 
-			if (fromSlot < this.handler.getSlots()) {
+			if (fromSlot < SLOTS) {
 				// From the container inventory to the player's inventory
-				if (!this.moveItemStackTo(current, this.handler.getSlots(), this.handler.getSlots() + 36, true))
+				if (!this.moveItemStackTo(current, SLOTS, SLOTS + 36, true))
 					return ItemStack.EMPTY;
 			} else {
 				// From the player's inventory to the container inventory

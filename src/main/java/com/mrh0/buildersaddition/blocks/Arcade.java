@@ -72,7 +72,7 @@ public class Arcade extends BaseBlock implements EntityBlock {
 	}
 	
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-		return world.isClientSide() ? Util.createTickerHelper(type, Index.ARCADE_TILE_ENTITY_TYPE, ArcadeTileEntity::tick) : null;
+		return world.isClientSide() ? Util.createTickerHelper(type, Index.ARCADE_TILE_ENTITY_TYPE.get(), ArcadeTileEntity::tick) : null;
 	}
 	
 	@Override

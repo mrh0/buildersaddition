@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class BedsideTileEntity extends BaseChestTileEntity {
 
 	public BedsideTileEntity(BlockPos pos, BlockState state) {
-		super(Index.BEDSIDE_TILE_ENTITY_TYPE, pos, state);
+		super(Index.BEDSIDE_TILE_ENTITY_TYPE.get(), pos, state);
 	}
 
 	@Override

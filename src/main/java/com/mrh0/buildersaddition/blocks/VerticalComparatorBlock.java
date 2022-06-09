@@ -229,7 +229,7 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 
 	@Override
 	public boolean getWeakChanges(BlockState state, LevelReader world, BlockPos pos) {
-		return state.is(Blocks.COMPARATOR) || state.is(Index.VERTICAL_COMPARATOR);
+		return state.is(Blocks.COMPARATOR) || state.is(Index.VERTICAL_COMPARATOR.get());
 	}
 
 	@Override
@@ -242,7 +242,7 @@ public class VerticalComparatorBlock extends VerticalRedstoneDiodeBlock implemen
 	@Override
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state,
 			BlockEntityType<T> type) {
-		return !world.isClientSide() ? Util.createTickerHelper(type, Index.VERTICAL_COMPARATOR_TILE_ENTITY_TYPE,
+		return !world.isClientSide() ? Util.createTickerHelper(type, Index.VERTICAL_COMPARATOR_TILE_ENTITY_TYPE.get(),
 				VerticalComparatorTileEntity::tick) : null;
 	}
 }

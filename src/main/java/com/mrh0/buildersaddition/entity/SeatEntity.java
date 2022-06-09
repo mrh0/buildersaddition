@@ -20,18 +20,18 @@ import net.minecraftforge.network.NetworkHooks;
 public class SeatEntity extends Entity {
 
 	public SeatEntity(EntityType<?> entityTypeIn, Level worldIn) {
-		super(Index.SEAT_ENTITY_TYPE, worldIn);
+		super(Index.SEAT_ENTITY_TYPE.get(), worldIn);
 		this.noPhysics = true;
 	}
 	
 	public SeatEntity(EntityType<?> entityTypeIn, Level worldIn, BlockPos pos) {
-		super(Index.SEAT_ENTITY_TYPE, worldIn);
+		super(Index.SEAT_ENTITY_TYPE.get(), worldIn);
 		this.setPos(pos.getX(), pos.getY(), pos.getZ());
 	}
 	
 	private SeatEntity(Level world, BlockPos pos, double y)
     {
-        this(Index.SEAT_ENTITY_TYPE, world);
+        this(Index.SEAT_ENTITY_TYPE.get(), world);
         this.setPos(pos.getX() + 0.5, pos.getY() + y, pos.getZ() + 0.5);
     }
 	

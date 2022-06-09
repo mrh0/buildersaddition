@@ -14,6 +14,6 @@ public class ModGroup extends CreativeModeTab {
 	}
 	@Override
 	public net.minecraft.world.item.ItemStack makeIcon() {
-		return new ItemStack(Index.CUT_QUARTZ_PILLAR);
+		return new ItemStack(Index.CUT_QUARTZ_PILLAR.get());
 	}
 }

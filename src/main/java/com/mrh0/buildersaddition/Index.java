@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition;
 
+import java.util.function.Supplier;
+
 import com.mrh0.buildersaddition.blocks.Arcade;
 import com.mrh0.buildersaddition.blocks.BedsideTable;
 import com.mrh0.buildersaddition.blocks.Bench;
@@ -43,6 +45,7 @@ import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import com.mrh0.buildersaddition.event.opts.ContainerOptions;
 import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import com.mrh0.buildersaddition.event.opts.TileEntityOptions;
+import com.mrh0.buildersaddition.itemgroup.ModGroup;
 import com.mrh0.buildersaddition.items.base.GenericItem;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;
@@ -60,9 +63,11 @@ import com.mrh0.buildersaddition.util.RegistryUtil;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraft.world.level.block.Block;
@@ -70,6 +75,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.network.IContainerFactory;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -77,20 +83,36 @@ import net.minecraftforge.registries.RegistryObject;
 
 @SuppressWarnings("unchecked")
 public class Index {
-	
+	public static final DeferredRegister<Item> ITEMS =
+            DeferredRegister.create(ForgeRegistries.ITEMS, BuildersAddition.MODID);
+	public static final DeferredRegister<Block> BLOCKS =
+            DeferredRegister.create(ForgeRegistries.BLOCKS, BuildersAddition.MODID);
+	public static final DeferredRegister<PaintingVariant> PAINTINGS =
+            DeferredRegister.create(ForgeRegistries.PAINTING_VARIANTS, BuildersAddition.MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, BuildersAddition.MODID);
     public static final DeferredRegister<MenuType<?>> MENUS =
             DeferredRegister.create(ForgeRegistries.CONTAINERS, BuildersAddition.MODID);
-	
-	public static String[] woods = {"oak", "spruce", "birch", "acacia", "dark_oak", "jungle", "crimson", "warped"};
-	public static Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS};
-	public static String[] colors = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", 
+    public static final DeferredRegister<EntityType<?>> ENTITIES =
+            DeferredRegister.create(ForgeRegistries.ENTITIES, BuildersAddition.MODID);
+    
+    public static void register(IEventBus eventBus) {
+    	BLOCKS.register(eventBus);
+        ITEMS.register(eventBus);
+        PAINTINGS.register(eventBus);
+        BLOCK_ENTITIES.register(eventBus);
+        MENUS.register(eventBus);
+        ENTITIES.register(eventBus);
+    }
+    
+    public static final String[] woods = {"oak", "spruce", "birch", "acacia", "dark_oak", "jungle", "crimson", "warped"};
+	public static final Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS};
+	public static final String[] colors = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", 
 			"gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 	
-	public static Item IRON_ROD;
+	public static RegistryObject<GenericItem> IRON_ROD;
 	
-	public static Block OAK_VERTICAL_SLAB;
+	/*public static Block OAK_VERTICAL_SLAB;
 	public static Block SPRUCE_VERTICAL_SLAB;
 	public static Block BIRCH_VERTICAL_SLAB;
 	public static Block JUNGLE_VERTICAL_SLAB;
@@ -143,9 +165,64 @@ public class Index {
 	public static Block CUT_COPPER_VERTICAL_SLAB;
 	public static Block EXPOSED_CUT_COPPER_VERTICAL_SLAB;
 	public static Block WEATHERED_CUT_COPPER_VERTICAL_SLAB;
-	public static Block OXIDIZED_CUT_COPPER_VERTICAL_SLAB;
+	public static Block OXIDIZED_CUT_COPPER_VERTICAL_SLAB;*/
 	
-	public static Block BOP_CHERRY_VERTICAL_SLAB;
+	public static RegistryObject<Block> OAK_VERTICAL_SLAB;
+	public static RegistryObject<Block> SPRUCE_VERTICAL_SLAB;
+	public static RegistryObject<Block> BIRCH_VERTICAL_SLAB;
+	public static RegistryObject<Block> JUNGLE_VERTICAL_SLAB;
+	public static RegistryObject<Block> ACACIA_VERTICAL_SLAB;
+	public static RegistryObject<Block> DARK_OAK_VERTICAL_SLAB;
+	public static RegistryObject<Block> STONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> SMOOTH_STONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> SANDSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> CUT_SANDSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> COBBLESTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> STONE_BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> NETHER_BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> QUARTZ_VERTICAL_SLAB;
+	public static RegistryObject<Block> RED_SANDSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> CUT_RED_SANDSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> PURPUR_VERTICAL_SLAB;
+	public static RegistryObject<Block> PRISMARINE_VERTICAL_SLAB;
+	public static RegistryObject<Block> PRISMARINE_BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> DARK_PRISMARINE_VERTICAL_SLAB;
+	public static RegistryObject<Block> POLISHED_GRANITE_VERTICAL_SLAB;
+	public static RegistryObject<Block> SMOOTH_RED_SANDSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> MOSSY_STONE_BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> POLISHED_DIORITE_VERTICAL_SLAB;
+	public static RegistryObject<Block> MOSSY_COBBLESTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> END_STONE_BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> SMOOTH_SANDSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> SMOOTH_QUARTZ_VERTICAL_SLAB;
+	public static RegistryObject<Block> GRANITE_VERTICAL_SLAB;
+	public static RegistryObject<Block> ANDESITE_VERTICAL_SLAB;
+	public static RegistryObject<Block> RED_NETHER_BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> POLISHED_ANDESITE_VERTICAL_SLAB;
+	public static RegistryObject<Block> DIORITE_VERTICAL_SLAB;
+	public static RegistryObject<Block> CRIMSON_VERTICAL_SLAB;
+	public static RegistryObject<Block> WARPED_VERTICAL_SLAB;
+	public static RegistryObject<Block> BLACKSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> POLISHED_BLACKSTONE_VERTICAL_SLAB;
+	public static RegistryObject<Block> POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB;
+	
+	public static RegistryObject<Block> COBBLED_DEEPSLATE_VERTICAL_SLAB;
+	public static RegistryObject<Block> POLISHED_DEEPSLATE_VERTICAL_SLAB;
+	public static RegistryObject<Block> DEEPSLATE_BRICKS_VERTICAL_SLAB;
+	public static RegistryObject<Block> DEEPSLATE_TILES_VERTICAL_SLAB;
+	
+	public static RegistryObject<Block> WAXED_CUT_COPPER_VERTICAL_SLAB;
+	public static RegistryObject<Block> WAXED_EXPOSED_CUT_COPPER_VERTICAL_SLAB;
+	public static RegistryObject<Block> WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB;
+	public static RegistryObject<Block> WAXED_OXIDIZED_CUT_COPPER_VERTICAL_SLAB;
+	
+	public static RegistryObject<Block> CUT_COPPER_VERTICAL_SLAB;
+	public static RegistryObject<Block> EXPOSED_CUT_COPPER_VERTICAL_SLAB;
+	public static RegistryObject<Block> WEATHERED_CUT_COPPER_VERTICAL_SLAB;
+	public static RegistryObject<Block> OXIDIZED_CUT_COPPER_VERTICAL_SLAB;
+	
+	/*public static Block BOP_CHERRY_VERTICAL_SLAB;
 	public static Block BOP_CUT_WHITE_SANDSTONE_VERTICAL_SLAB;
 	public static Block BOP_DEAD_VERTICAL_SLAB;
 	public static Block BOP_FIR_VERTICAL_SLAB;
@@ -159,240 +236,251 @@ public class Index {
 	public static Block BOP_SMOOTH_WHITE_SANDSTONE_VERTICAL_SLAB;
 	public static Block BOP_UMBRAN_VERTICAL_SLAB;
 	public static Block BOP_WHITE_SANDSTONE_VERTICAL_SLAB;
-	public static Block BOP_WILLOW_VERTICAL_SLAB;
+	public static Block BOP_WILLOW_VERTICAL_SLAB;*/
 	
-	public static Block CUT_STONE_PILLAR;
-	public static Block CUT_SMOOTH_STONE_PILLAR;
-	public static Block CUT_SANDSTONE_PILLAR;
-	public static Block CUT_COBBLESTONE_PILLAR;
-	public static Block CUT_BRICKS_PILLAR;
-	public static Block CUT_STONE_BRICKS_PILLAR;
-	public static Block CUT_NETHER_BRICKS_PILLAR;
-	public static Block CUT_QUARTZ_PILLAR;
-	public static Block CUT_RED_SANDSTONE_PILLAR;
-	public static Block CUT_PURPUR_PILLAR;
-	public static Block CUT_PRISMARINE_PILLAR;
-	public static Block CUT_SMOOTH_RED_SANDSTONE_PILLAR;
-	public static Block CUT_SMOOTH_SANDSTONE_PILLAR;
-	public static Block CUT_MOSSY_STONE_BRICKS_PILLAR;
-	public static Block CUT_MOSSY_COBBLESTONE_PILLAR;
-	public static Block CUT_END_STONE_BRICKS_PILLAR;
-	public static Block CUT_RED_NETHER_BRICKS_PILLAR;
-	public static Block CUT_BASALT_PILLAR;
-	public static Block CUT_BLACKSTONE_PILLAR;
-	public static Block CUT_QUARTZ_BRICKS_PILLAR;
-	public static Block CUT_DEEPSLATE_BRICKS_PILLAR;
-	public static Block CUT_DEEPSLATE_TILES_PILLAR;
+	public static RegistryObject<Block> CUT_STONE_PILLAR;
+	public static RegistryObject<Block> CUT_SMOOTH_STONE_PILLAR;
+	public static RegistryObject<Block> CUT_SANDSTONE_PILLAR;
+	public static RegistryObject<Block> CUT_COBBLESTONE_PILLAR;
+	public static RegistryObject<Block> CUT_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_STONE_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_NETHER_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_QUARTZ_PILLAR;
+	public static RegistryObject<Block> CUT_RED_SANDSTONE_PILLAR;
+	public static RegistryObject<Block> CUT_PURPUR_PILLAR;
+	public static RegistryObject<Block> CUT_PRISMARINE_PILLAR;
+	public static RegistryObject<Block> CUT_SMOOTH_RED_SANDSTONE_PILLAR;
+	public static RegistryObject<Block> CUT_SMOOTH_SANDSTONE_PILLAR;
+	public static RegistryObject<Block> CUT_MOSSY_STONE_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_MOSSY_COBBLESTONE_PILLAR;
+	public static RegistryObject<Block> CUT_END_STONE_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_RED_NETHER_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_BASALT_PILLAR;
+	public static RegistryObject<Block> CUT_BLACKSTONE_PILLAR;
+	public static RegistryObject<Block> CUT_QUARTZ_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_DEEPSLATE_BRICKS_PILLAR;
+	public static RegistryObject<Block> CUT_DEEPSLATE_TILES_PILLAR;
 	
-	public static Block TABLE_OAK;
-	public static Block TABLE_SPRUCE;
-	public static Block TABLE_BIRCH;
-	public static Block TABLE_DARK_OAK;
-	public static Block TABLE_JUNGLE;
-	public static Block TABLE_ACACIA;
-	public static Block TABLE_CRIMSON;
-	public static Block TABLE_WARPED;
+	public static RegistryObject<Block> TABLE_OAK;
+	public static RegistryObject<Block> TABLE_SPRUCE;
+	public static RegistryObject<Block> TABLE_BIRCH;
+	public static RegistryObject<Block> TABLE_DARK_OAK;
+	public static RegistryObject<Block> TABLE_JUNGLE;
+	public static RegistryObject<Block> TABLE_ACACIA;
+	public static RegistryObject<Block> TABLE_CRIMSON;
+	public static RegistryObject<Block> TABLE_WARPED;
 	
-	/*public static Block[] STOOL_OAK = new Block[16];
-	public static Block[] STOOL_SPRUCE = new Block[16];
-	public static Block[] STOOL_BIRCH = new Block[16];
-	public static Block[] STOOL_DARK_OAK = new Block[16];
-	public static Block[] STOOL_JUNGLE = new Block[16];
-	public static Block[] STOOL_ACACIA = new Block[16];
-	public static Block[] STOOL_CRIMSON = new Block[16];
-	public static Block[] STOOL_WARPED = new Block[16];*/
+	/*public static RegistryObject<Block>[] STOOL_OAK = new RegistryObject<Block>[16];
+	public static RegistryObject<Block>[] STOOL_SPRUCE = new RegistryObject<Block>[16];
+	public static RegistryObject<Block>[] STOOL_BIRCH = new RegistryObject<Block>[16];
+	public static RegistryObject<Block>[] STOOL_DARK_OAK = new RegistryObject<Block>[16];
+	public static RegistryObject<Block>[] STOOL_JUNGLE = new RegistryObject<Block>[16];
+	public static RegistryObject<Block>[] STOOL_ACACIA = new RegistryObject<Block>[16];
+	public static RegistryObject<Block>[] STOOL_CRIMSON = new RegistryObject<Block>[16];
+	public static RegistryObject<Block>[] STOOL_WARPED = new RegistryObject<Block>[16];*/
 	
-	public static Block STOOL_OAK;
-	public static Block STOOL_SPRUCE;
-	public static Block STOOL_BIRCH;
-	public static Block STOOL_DARK_OAK;
-	public static Block STOOL_JUNGLE;
-	public static Block STOOL_ACACIA;
-	public static Block STOOL_CRIMSON;
-	public static Block STOOL_WARPED;
+	public static RegistryObject<Block> STOOL_OAK;
+	public static RegistryObject<Block> STOOL_SPRUCE;
+	public static RegistryObject<Block> STOOL_BIRCH;
+	public static RegistryObject<Block> STOOL_DARK_OAK;
+	public static RegistryObject<Block> STOOL_JUNGLE;
+	public static RegistryObject<Block> STOOL_ACACIA;
+	public static RegistryObject<Block> STOOL_CRIMSON;
+	public static RegistryObject<Block> STOOL_WARPED;
 	
-	public static Block CHAIR_OAK;
-	public static Block CHAIR_SPRUCE;
-	public static Block CHAIR_BIRCH;
-	public static Block CHAIR_DARK_OAK;
-	public static Block CHAIR_JUNGLE;
-	public static Block CHAIR_ACACIA;
-	public static Block CHAIR_CRIMSON;
-	public static Block CHAIR_WARPED;
+	public static RegistryObject<Block> CHAIR_OAK;
+	public static RegistryObject<Block> CHAIR_SPRUCE;
+	public static RegistryObject<Block> CHAIR_BIRCH;
+	public static RegistryObject<Block> CHAIR_DARK_OAK;
+	public static RegistryObject<Block> CHAIR_JUNGLE;
+	public static RegistryObject<Block> CHAIR_ACACIA;
+	public static RegistryObject<Block> CHAIR_CRIMSON;
+	public static RegistryObject<Block> CHAIR_WARPED;
 	
-	public static Block PLANTER;
+	public static RegistryObject<Block> PLANTER;
 	
-	public static Block HEDGE_OAK;
-	public static Block HEDGE_SPRUCE;
-	public static Block HEDGE_BIRCH;
-	public static Block HEDGE_DARK_OAK;
-	public static Block HEDGE_JUNGLE;
-	public static Block HEDGE_ACACIA;
+	public static RegistryObject<Block> HEDGE_OAK;
+	public static RegistryObject<Block> HEDGE_SPRUCE;
+	public static RegistryObject<Block> HEDGE_BIRCH;
+	public static RegistryObject<Block> HEDGE_DARK_OAK;
+	public static RegistryObject<Block> HEDGE_JUNGLE;
+	public static RegistryObject<Block> HEDGE_ACACIA;
 	
-	public static Block[] COUNTER_ANDESITE = new Block[8];
-	public static Block[] COUNTER_DIORITE = new Block[8];
-	public static Block[] COUNTER_GRANITE = new Block[8];
-	public static Block[] COUNTER_BLACKSTONE = new Block[8];
-	public static Block[] COUNTER_DEEPSLATE = new Block[8];
-	public static Block[] COUNTER_ALL = new Block[8*5];
+	public static RegistryObject<Block>[] COUNTER_ANDESITE = new RegistryObject[8];
+	public static RegistryObject<Block>[] COUNTER_DIORITE = new RegistryObject[8];
+	public static RegistryObject<Block>[] COUNTER_GRANITE = new RegistryObject[8];
+	public static RegistryObject<Block>[] COUNTER_BLACKSTONE = new RegistryObject[8];
+	public static RegistryObject<Block>[] COUNTER_DEEPSLATE = new RegistryObject[8];
+	public static RegistryObject<Block>[] COUNTER_ALL = new RegistryObject[8*5];
 	
-	public static Block BOOKSHELF_OAK;
-	public static Block BOOKSHELF_BIRCH;
-	public static Block BOOKSHELF_SPRUCE;
-	public static Block BOOKSHELF_DARK_OAK;
-	public static Block BOOKSHELF_JUNGLE;
-	public static Block BOOKSHELF_ACACIA;
-	public static Block BOOKSHELF_WARPED;
-	public static Block BOOKSHELF_CRIMSON;
+	public static RegistryObject<Block> BOOKSHELF_OAK;
+	public static RegistryObject<Block> BOOKSHELF_BIRCH;
+	public static RegistryObject<Block> BOOKSHELF_SPRUCE;
+	public static RegistryObject<Block> BOOKSHELF_DARK_OAK;
+	public static RegistryObject<Block> BOOKSHELF_JUNGLE;
+	public static RegistryObject<Block> BOOKSHELF_ACACIA;
+	public static RegistryObject<Block> BOOKSHELF_WARPED;
+	public static RegistryObject<Block> BOOKSHELF_CRIMSON;
 	
-	public static Block SHELF_OAK;
-	public static Block SHELF_BIRCH;
-	public static Block SHELF_SPRUCE;
-	public static Block SHELF_DARK_OAK;
-	public static Block SHELF_JUNGLE;
-	public static Block SHELF_ACACIA;
-	public static Block SHELF_WARPED;
-	public static Block SHELF_CRIMSON;
+	public static RegistryObject<Block> SHELF_OAK;
+	public static RegistryObject<Block> SHELF_BIRCH;
+	public static RegistryObject<Block> SHELF_SPRUCE;
+	public static RegistryObject<Block> SHELF_DARK_OAK;
+	public static RegistryObject<Block> SHELF_JUNGLE;
+	public static RegistryObject<Block> SHELF_ACACIA;
+	public static RegistryObject<Block> SHELF_WARPED;
+	public static RegistryObject<Block> SHELF_CRIMSON;
 	
-	public static Block CABINET_OAK;
-	public static Block CABINET_BIRCH;
-	public static Block CABINET_SPRUCE;
-	public static Block CABINET_DARK_OAK;
-	public static Block CABINET_JUNGLE;
-	public static Block CABINET_ACACIA;
-	public static Block CABINET_WARPED;
-	public static Block CABINET_CRIMSON;
+	public static RegistryObject<Block> CABINET_OAK;
+	public static RegistryObject<Block> CABINET_BIRCH;
+	public static RegistryObject<Block> CABINET_SPRUCE;
+	public static RegistryObject<Block> CABINET_DARK_OAK;
+	public static RegistryObject<Block> CABINET_JUNGLE;
+	public static RegistryObject<Block> CABINET_ACACIA;
+	public static RegistryObject<Block> CABINET_WARPED;
+	public static RegistryObject<Block> CABINET_CRIMSON;
 	
-	public static Block CUPBOARD_OAK;
-	public static Block CUPBOARD_BIRCH;
-	public static Block CUPBOARD_SPRUCE;
-	public static Block CUPBOARD_DARK_OAK;
-	public static Block CUPBOARD_JUNGLE;
-	public static Block CUPBOARD_ACACIA;
-	public static Block CUPBOARD_WARPED;
-	public static Block CUPBOARD_CRIMSON;
+	public static RegistryObject<Block> CUPBOARD_OAK;
+	public static RegistryObject<Block> CUPBOARD_BIRCH;
+	public static RegistryObject<Block> CUPBOARD_SPRUCE;
+	public static RegistryObject<Block> CUPBOARD_DARK_OAK;
+	public static RegistryObject<Block> CUPBOARD_JUNGLE;
+	public static RegistryObject<Block> CUPBOARD_ACACIA;
+	public static RegistryObject<Block> CUPBOARD_WARPED;
+	public static RegistryObject<Block> CUPBOARD_CRIMSON;
 	
-	public static Block SMALL_CUPBOARD_OAK;
-	public static Block SMALL_CUPBOARD_BIRCH;
-	public static Block SMALL_CUPBOARD_SPRUCE;
-	public static Block SMALL_CUPBOARD_DARK_OAK;
-	public static Block SMALL_CUPBOARD_JUNGLE;
-	public static Block SMALL_CUPBOARD_ACACIA;
-	public static Block SMALL_CUPBOARD_WARPED;
-	public static Block SMALL_CUPBOARD_CRIMSON;
+	public static RegistryObject<Block> SMALL_CUPBOARD_OAK;
+	public static RegistryObject<Block> SMALL_CUPBOARD_BIRCH;
+	public static RegistryObject<Block> SMALL_CUPBOARD_SPRUCE;
+	public static RegistryObject<Block> SMALL_CUPBOARD_DARK_OAK;
+	public static RegistryObject<Block> SMALL_CUPBOARD_JUNGLE;
+	public static RegistryObject<Block> SMALL_CUPBOARD_ACACIA;
+	public static RegistryObject<Block> SMALL_CUPBOARD_WARPED;
+	public static RegistryObject<Block> SMALL_CUPBOARD_CRIMSON;
 	
-	public static Block BENCH_OAK;
-	public static Block BENCH_BIRCH;
-	public static Block BENCH_SPRUCE;
-	public static Block BENCH_DARK_OAK;
-	public static Block BENCH_JUNGLE;
-	public static Block BENCH_ACACIA;
-	public static Block BENCH_WARPED;
-	public static Block BENCH_CRIMSON;
+	public static RegistryObject<Block> BENCH_OAK;
+	public static RegistryObject<Block> BENCH_BIRCH;
+	public static RegistryObject<Block> BENCH_SPRUCE;
+	public static RegistryObject<Block> BENCH_DARK_OAK;
+	public static RegistryObject<Block> BENCH_JUNGLE;
+	public static RegistryObject<Block> BENCH_ACACIA;
+	public static RegistryObject<Block> BENCH_WARPED;
+	public static RegistryObject<Block> BENCH_CRIMSON;
 	
-	public static Block SUPPORT_BRACKET_OAK;
-	public static Block SUPPORT_BRACKET_BIRCH;
-	public static Block SUPPORT_BRACKET_SPRUCE;
-	public static Block SUPPORT_BRACKET_DARK_OAK;
-	public static Block SUPPORT_BRACKET_JUNGLE;
-	public static Block SUPPORT_BRACKET_ACACIA;
-	public static Block SUPPORT_BRACKET_WARPED;
-	public static Block SUPPORT_BRACKET_CRIMSON;
+	public static RegistryObject<Block> SUPPORT_BRACKET_OAK;
+	public static RegistryObject<Block> SUPPORT_BRACKET_BIRCH;
+	public static RegistryObject<Block> SUPPORT_BRACKET_SPRUCE;
+	public static RegistryObject<Block> SUPPORT_BRACKET_DARK_OAK;
+	public static RegistryObject<Block> SUPPORT_BRACKET_JUNGLE;
+	public static RegistryObject<Block> SUPPORT_BRACKET_ACACIA;
+	public static RegistryObject<Block> SUPPORT_BRACKET_WARPED;
+	public static RegistryObject<Block> SUPPORT_BRACKET_CRIMSON;
 	
-	public static Block SOFA[] = new Sofa[16];
+	public static RegistryObject<Block> SOFA[] = new RegistryObject[16];
 	
-	//public static Block LUMINUS_GLASS[] = new LuminusGlass[16];
+	//public static RegistryObject<Block> LUMINUS_GLASS[] = new LuminusGlass[16];
 	
-	public static Block PILLOW[] = new Pillow[16];
+	public static RegistryObject<Block> PILLOW[] = new RegistryObject[16];
 	
-	public static Block[] BEDSIDE_TABLE = new BedsideTable[8];
+	public static RegistryObject<Block>[] BEDSIDE_TABLE_ALL = new RegistryObject[8];
 	
-	public static Block SHOP_SIGN_WOOD;
-	public static Block IRON_LADDER;
-	public static Block IRON_LADDER_ROUGH;
-	public static Block IRON_FENCE;
-	public static Block IRON_FENCE_ROUGH;
-	public static Block ROUGH_IRON_BLOCK;
-	public static Block GRAVEL_PATH;
-	public static Block CROSSRAIL;
-	public static Block SPEAKER;
-	public static Block LARGE_CANDLE;
-	public static Block LARGE_SOUL_CANDLE;
-	public static Block CANDLE;
-	public static Block SOUL_CANDLE;
+	public static RegistryObject<Block> SHOP_SIGN_WOOD;
+	public static RegistryObject<Block> IRON_LADDER;
+	public static RegistryObject<Block> IRON_LADDER_ROUGH;
+	public static RegistryObject<Block> IRON_FENCE;
+	public static RegistryObject<Block> IRON_FENCE_ROUGH;
+	public static RegistryObject<Block> ROUGH_IRON_BLOCK;
+	public static RegistryObject<Block> GRAVEL_PATH;
+	public static RegistryObject<Block> CROSSRAIL;
+	public static RegistryObject<Block> SPEAKER;
+	public static RegistryObject<Block> LARGE_CANDLE;
+	public static RegistryObject<Block> LARGE_SOUL_CANDLE;
+	public static RegistryObject<Block> CANDLE;
+	public static RegistryObject<Block> SOUL_CANDLE;
 	
-	public static Block ARCADE;
+	public static RegistryObject<Block> ARCADE;
 	
-	public static Block ARCADE_OAK;
-	public static Block ARCADE_BIRCH;
-	public static Block ARCADE_SPRUCE;
-	public static Block ARCADE_DARK_OAK;
-	public static Block ARCADE_JUNGLE;
-	public static Block ARCADE_ACACIA;
-	public static Block ARCADE_WARPED;
-	public static Block ARCADE_CRIMSON;
+	public static RegistryObject<Block> ARCADE_OAK;
+	public static RegistryObject<Block> ARCADE_BIRCH;
+	public static RegistryObject<Block> ARCADE_SPRUCE;
+	public static RegistryObject<Block> ARCADE_DARK_OAK;
+	public static RegistryObject<Block> ARCADE_JUNGLE;
+	public static RegistryObject<Block> ARCADE_ACACIA;
+	public static RegistryObject<Block> ARCADE_WARPED;
+	public static RegistryObject<Block> ARCADE_CRIMSON;
 	
-	public static Block FIREPLACE_GUARD;
-	public static Block ROUGH_FIREPLACE_GUARD;
+	public static RegistryObject<Block> FIREPLACE_GUARD;
+	public static RegistryObject<Block> ROUGH_FIREPLACE_GUARD;
 	
-	public static Block VERTICAL_REPEATER;
-	public static Block VERTICAL_COMPARATOR;
+	public static RegistryObject<Block> VERTICAL_REPEATER;
+	public static RegistryObject<Block> VERTICAL_COMPARATOR;
 	
-	public static Block ENTITY_DETECTOR;
+	public static RegistryObject<Block> ENTITY_DETECTOR;
 	
-	public static EntityType<SeatEntity> SEAT_ENTITY_TYPE;
+	public static RegistryObject<EntityType<SeatEntity>> SEAT_ENTITY_TYPE;
 	
-	public static BlockEntityType<CounterTileEntity> COUNTER_TILE_ENTITY_TYPE;
-	public static BlockEntityType<CupboardTileEntity> CUPBOARD_TILE_ENTITY_TYPE;
-	public static BlockEntityType<SmallCupboardTileEntity> SMALL_CUPBOARD_TILE_ENTITY_TYPE;
-	public static BlockEntityType<CabinetTileEntity> CABINET_TILE_ENTITY_TYPE;
-	public static BlockEntityType<BookshelfTileEntity> BOOKSHELF_TILE_ENTITY_TYPE;
-	public static BlockEntityType<ShelfTileEntity> SHELF_TILE_ENTITY_TYPE;
-	public static BlockEntityType<ShopSignTileEntity> SHOP_SIGN_TILE_ENTITY_TYPE;
-	public static BlockEntityType<BedsideTileEntity> BEDSIDE_TILE_ENTITY_TYPE;
-	public static BlockEntityType<SpeakerTileEntity> SPEAKER_TILE_ENTITY_TYPE;
-	public static BlockEntityType<ArcadeTileEntity> ARCADE_TILE_ENTITY_TYPE;
-	public static BlockEntityType<EntityDetectorTileEntity> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
-	public static BlockEntityType<VerticalComparatorTileEntity> VERTICAL_COMPARATOR_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<CounterTileEntity>> COUNTER_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<CupboardTileEntity>> CUPBOARD_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<SmallCupboardTileEntity>> SMALL_CUPBOARD_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<CabinetTileEntity>> CABINET_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<BookshelfTileEntity>> BOOKSHELF_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<ShelfTileEntity>> SHELF_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<ShopSignTileEntity>> SHOP_SIGN_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<BedsideTileEntity>> BEDSIDE_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<SpeakerTileEntity>> SPEAKER_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<ArcadeTileEntity>> ARCADE_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<EntityDetectorTileEntity>> ENTITY_DETECTOR_TILE_ENTITY_TYPE;
+	public static RegistryObject<BlockEntityType<VerticalComparatorTileEntity>> VERTICAL_COMPARATOR_TILE_ENTITY_TYPE;
 
 	public static RegistryObject<MenuType<BookshelfContainer>> BOOKSHELF_CONTAINER;
 	public static RegistryObject<MenuType<ShelfContainer>> SHELF_CONTAINER;
 	public static RegistryObject<MenuType<SpeakerContainer>> SPEAKER_CONTAINER;
 	public static RegistryObject<MenuType<ArcadeContainer>> ARCADE_CONTAINER;
 
-	public static PaintingVariant SUMMER_FIELD_PAINTING;
-	public static PaintingVariant SHARD_PAINTING;
-	public static PaintingVariant SKARGARD_PAINTING;
-	public static PaintingVariant HORIZONS_PAINTING;
-	public static PaintingVariant PORTRAIT_PAINTING;
-	public static PaintingVariant PROMO_PAINTING;
-	public static PaintingVariant HEROBRINE_PAINTING;
-	public static PaintingVariant ENDERMAN_PAINTING;
-	public static PaintingVariant WINTER_PAINTING;
+	public static RegistryObject<PaintingVariant> SUMMER_FIELD_PAINTING;
+	public static RegistryObject<PaintingVariant> SHARD_PAINTING;
+	public static RegistryObject<PaintingVariant> SKARGARD_PAINTING;
+	public static RegistryObject<PaintingVariant> HORIZONS_PAINTING;
+	public static RegistryObject<PaintingVariant> PORTRAIT_PAINTING;
+	public static RegistryObject<PaintingVariant> PROMO_PAINTING;
+	public static RegistryObject<PaintingVariant> HEROBRINE_PAINTING;
+	public static RegistryObject<PaintingVariant> ENDERMAN_PAINTING;
+	public static RegistryObject<PaintingVariant> WINTER_PAINTING;
 	
 	
 	public static void items() {
-		IRON_ROD = new GenericItem("iron_rod", new Properties(), new ItemOptions());
+		IRON_ROD = ITEMS.register("iron_rod", () -> new GenericItem("iron_rod", new Properties(), new ItemOptions()));
+	}
+	
+	public static RegistryObject<Block> block(String name, Supplier<Block> block) {
+		RegistryObject<Block> b = BLOCKS.register(name, block);
+		ITEMS.register(name, () -> new BlockItem(b.get(), new Item.Properties().tab(ModGroup.MAIN)));
+		return b;
+	}
+	
+	public static RegistryObject<Block> blockNoItem(String name, Supplier<Block> block) {
+		RegistryObject<Block> b = BLOCKS.register(name, block);
+		return b;
 	}
 	
 	public static void blocks() {
 		final IConnects cobbleConnector = (state, source) -> { 
-			return state.getBlock() == CUT_MOSSY_COBBLESTONE_PILLAR || state.getBlock() == CUT_COBBLESTONE_PILLAR; 
+			return state.getBlock() == CUT_MOSSY_COBBLESTONE_PILLAR.get() || state.getBlock() == CUT_COBBLESTONE_PILLAR.get(); 
 		};
 		final IConnects sandstoneConnector = (state, source) -> { 
-			return state.getBlock() == CUT_SMOOTH_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SMOOTH_SANDSTONE_PILLAR || state.getBlock() == CUT_RED_SANDSTONE_PILLAR || state.getBlock() == CUT_SANDSTONE_PILLAR; 
+			return state.getBlock() == CUT_SMOOTH_RED_SANDSTONE_PILLAR.get() || state.getBlock() == CUT_SMOOTH_SANDSTONE_PILLAR.get() || state.getBlock() == CUT_RED_SANDSTONE_PILLAR.get() || state.getBlock() == CUT_SANDSTONE_PILLAR.get(); 
 		};
 		final IConnects stoneBricksConnector = (state, source) -> { 
-			return state.getBlock() == CUT_STONE_BRICKS_PILLAR || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR  || state.getBlock() == CUT_BLACKSTONE_PILLAR || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR; 
+			return state.getBlock() == CUT_STONE_BRICKS_PILLAR.get() || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR.get()  || state.getBlock() == CUT_BLACKSTONE_PILLAR.get() || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR.get(); 
 		};
 		final IConnects netherBricksConnector = (state, source) -> { 
-			return state.getBlock() == CUT_NETHER_BRICKS_PILLAR || state.getBlock() == CUT_RED_NETHER_BRICKS_PILLAR; 
+			return state.getBlock() == CUT_NETHER_BRICKS_PILLAR.get() || state.getBlock() == CUT_RED_NETHER_BRICKS_PILLAR.get(); 
 		};
 		final IConnects quartzConnector = (state, source) -> { 
-			return state.getBlock() == CUT_QUARTZ_PILLAR || state.getBlock() == CUT_QUARTZ_BRICKS_PILLAR; 
+			return state.getBlock() == CUT_QUARTZ_PILLAR.get() || state.getBlock() == CUT_QUARTZ_BRICKS_PILLAR.get(); 
 		};
 		final IConnects deepslateConnector = (state, source) -> { 
-			return state.getBlock() == CUT_DEEPSLATE_TILES_PILLAR || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR; 
+			return state.getBlock() == CUT_DEEPSLATE_TILES_PILLAR.get() || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR.get(); 
 		};
 		final IConnects deepslateBricksConnector = (state, source) -> { 
 			return deepslateConnector.connect(state, source) || stoneBricksConnector.connect(state, source); 
@@ -400,90 +488,89 @@ public class Index {
 		
 		
 		
-		OAK_VERTICAL_SLAB = new VerticalSlab("oak", Blocks.OAK_PLANKS);
-		SPRUCE_VERTICAL_SLAB = new VerticalSlab("spruce", Blocks.SPRUCE_PLANKS);
-		BIRCH_VERTICAL_SLAB = new VerticalSlab("birch", Blocks.BIRCH_PLANKS);
-		JUNGLE_VERTICAL_SLAB = new VerticalSlab("jungle", Blocks.JUNGLE_PLANKS);
-		ACACIA_VERTICAL_SLAB = new VerticalSlab("acacia", Blocks.ACACIA_PLANKS);
-		DARK_OAK_VERTICAL_SLAB = new VerticalSlab("dark_oak", Blocks.DARK_OAK_PLANKS);
-		STONE_VERTICAL_SLAB = new VerticalSlab("stone", Blocks.STONE);
-		SMOOTH_STONE_VERTICAL_SLAB = new VerticalSlab("smooth_stone", Blocks.SMOOTH_STONE);
-		SANDSTONE_VERTICAL_SLAB = new VerticalSlab("sandstone", Blocks.SANDSTONE);
-		CUT_SANDSTONE_VERTICAL_SLAB = new VerticalSlab("cut_sandstone", Blocks.CUT_SANDSTONE);
-		COBBLESTONE_VERTICAL_SLAB = new VerticalSlab("cobblestone", Blocks.COBBLESTONE);
-		BRICKS_VERTICAL_SLAB = new VerticalSlab("bricks", Blocks.BRICKS);
-		STONE_BRICKS_VERTICAL_SLAB = new VerticalSlab("stone_bricks", Blocks.STONE_BRICKS);
-		NETHER_BRICKS_VERTICAL_SLAB = new VerticalSlab("nether_bricks", Blocks.NETHER_BRICKS);
-		QUARTZ_VERTICAL_SLAB = new VerticalSlab("quartz", Blocks.QUARTZ_BLOCK);
-		RED_SANDSTONE_VERTICAL_SLAB = new VerticalSlab("red_sandstone", Blocks.RED_SANDSTONE);
-		CUT_RED_SANDSTONE_VERTICAL_SLAB = new VerticalSlab("cut_red_sandstone", Blocks.CUT_RED_SANDSTONE);
-		PURPUR_VERTICAL_SLAB = new VerticalSlab("purpur", Blocks.PURPUR_BLOCK);
-		PRISMARINE_VERTICAL_SLAB = new VerticalSlab("prismarine", Blocks.PRISMARINE);
-		PRISMARINE_BRICKS_VERTICAL_SLAB = new VerticalSlab("prismarine_bricks", Blocks.PRISMARINE_BRICKS);
-		DARK_PRISMARINE_VERTICAL_SLAB = new VerticalSlab("dark_prismarine", Blocks.DARK_PRISMARINE);
-		POLISHED_GRANITE_VERTICAL_SLAB = new VerticalSlab("polished_granite", Blocks.POLISHED_GRANITE);
-		SMOOTH_RED_SANDSTONE_VERTICAL_SLAB = new VerticalSlab("smooth_red_sandstone", Blocks.SMOOTH_RED_SANDSTONE);
-		MOSSY_STONE_BRICKS_VERTICAL_SLAB = new VerticalSlab("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS);
-		POLISHED_DIORITE_VERTICAL_SLAB = new VerticalSlab("polished_diorite", Blocks.POLISHED_DIORITE);
-		MOSSY_COBBLESTONE_VERTICAL_SLAB = new VerticalSlab("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE);
-		END_STONE_BRICKS_VERTICAL_SLAB = new VerticalSlab("end_stone_bricks", Blocks.END_STONE_BRICKS);
-		SMOOTH_SANDSTONE_VERTICAL_SLAB = new VerticalSlab("smooth_sandstone", Blocks.SMOOTH_SANDSTONE);
-		SMOOTH_QUARTZ_VERTICAL_SLAB = new VerticalSlab("smooth_quartz", Blocks.SMOOTH_QUARTZ);
-		GRANITE_VERTICAL_SLAB = new VerticalSlab("granite", Blocks.GRANITE);
-		ANDESITE_VERTICAL_SLAB = new VerticalSlab("andesite", Blocks.ANDESITE);
-		RED_NETHER_BRICKS_VERTICAL_SLAB = new VerticalSlab("red_nether_bricks", Blocks.RED_NETHER_BRICKS);
-		POLISHED_ANDESITE_VERTICAL_SLAB = new VerticalSlab("polished_andesite", Blocks.POLISHED_ANDESITE);
-		DIORITE_VERTICAL_SLAB = new VerticalSlab("diorite", Blocks.DIORITE);
-		CRIMSON_VERTICAL_SLAB = new VerticalSlab("crimson", Blocks.CRIMSON_PLANKS);
-		WARPED_VERTICAL_SLAB = new VerticalSlab("warped", Blocks.WARPED_PLANKS);
-		BLACKSTONE_VERTICAL_SLAB = new VerticalSlab("blackstone", Blocks.BLACKSTONE);
-		POLISHED_BLACKSTONE_VERTICAL_SLAB = new VerticalSlab("polished_blackstone", Blocks.POLISHED_BLACKSTONE);
-		POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB = new VerticalSlab("polished_blackstone_bricks", Blocks.POLISHED_BLACKSTONE_BRICKS);
+		OAK_VERTICAL_SLAB = block("oak_vertical_slab", () -> new VerticalSlab("oak", Blocks.OAK_PLANKS));
+		SPRUCE_VERTICAL_SLAB = block("spruce_vertical_slab", () -> new VerticalSlab("spruce", Blocks.SPRUCE_PLANKS));
+		BIRCH_VERTICAL_SLAB = block("birch_vertical_slab", () -> new VerticalSlab("birch", Blocks.BIRCH_PLANKS));
+		JUNGLE_VERTICAL_SLAB = block("jungle_vertical_slab", () -> new VerticalSlab("jungle", Blocks.JUNGLE_PLANKS));
+		ACACIA_VERTICAL_SLAB = block("acacia_vertical_slab", () -> new VerticalSlab("acacia", Blocks.ACACIA_PLANKS));
+		DARK_OAK_VERTICAL_SLAB = block("dark_oak_vertical_slab", () -> new VerticalSlab("dark_oak", Blocks.DARK_OAK_PLANKS));
+		STONE_VERTICAL_SLAB = block("stone_vertical_slab", () -> new VerticalSlab("stone", Blocks.STONE));
+		SMOOTH_STONE_VERTICAL_SLAB = block("smooth_stone_vertical_slab", () -> new VerticalSlab("smooth_stone", Blocks.SMOOTH_STONE));
+		SANDSTONE_VERTICAL_SLAB = block("sandstone_vertical_slab", () -> new VerticalSlab("sandstone", Blocks.SANDSTONE));
+		CUT_SANDSTONE_VERTICAL_SLAB = block("cut_sandstone_vertical_slab", () -> new VerticalSlab("cut_sandstone", Blocks.CUT_SANDSTONE));
+		COBBLESTONE_VERTICAL_SLAB = block("cobblestone_vertical_slab", () -> new VerticalSlab("cobblestone", Blocks.COBBLESTONE));
+		BRICKS_VERTICAL_SLAB = block("bricks_vertical_slab", () -> new VerticalSlab("bricks", Blocks.BRICKS));
+		STONE_BRICKS_VERTICAL_SLAB = block("stone_bricks_vertical_slab", () -> new VerticalSlab("stone_bricks", Blocks.STONE_BRICKS));
+		NETHER_BRICKS_VERTICAL_SLAB = block("nether_bricks_vertical_slab", () -> new VerticalSlab("nether_bricks", Blocks.NETHER_BRICKS));
+		QUARTZ_VERTICAL_SLAB = block("quartz_vertical_slab", () -> new VerticalSlab("quartz", Blocks.QUARTZ_BLOCK));
+		RED_SANDSTONE_VERTICAL_SLAB = block("red_sandstone_vertical_slab", () -> new VerticalSlab("red_sandstone", Blocks.RED_SANDSTONE));
+		CUT_RED_SANDSTONE_VERTICAL_SLAB = block("cut_red_sandstone_vertical_slab", () -> new VerticalSlab("cut_red_sandstone", Blocks.CUT_RED_SANDSTONE));
+		PURPUR_VERTICAL_SLAB = block("purpur_vertical_slab", () -> new VerticalSlab("purpur", Blocks.PURPUR_BLOCK));
+		PRISMARINE_VERTICAL_SLAB = block("prismarine_vertical_slab", () -> new VerticalSlab("prismarine", Blocks.PRISMARINE));
+		PRISMARINE_BRICKS_VERTICAL_SLAB = block("prismarine_bricks_vertical_slab", () -> new VerticalSlab("prismarine_bricks", Blocks.PRISMARINE_BRICKS));
+		DARK_PRISMARINE_VERTICAL_SLAB = block("dark_prismarine_vertical_slab", () -> new VerticalSlab("dark_prismarine", Blocks.DARK_PRISMARINE));
+		POLISHED_GRANITE_VERTICAL_SLAB = block("polished_granite_vertical_slab", () -> new VerticalSlab("polished_granite", Blocks.POLISHED_GRANITE));
+		SMOOTH_RED_SANDSTONE_VERTICAL_SLAB = block("smooth_red_sandstone_vertical_slab", () -> new VerticalSlab("smooth_red_sandstone", Blocks.SMOOTH_RED_SANDSTONE));
+		MOSSY_STONE_BRICKS_VERTICAL_SLAB = block("mossy_stone_bricks_vertical_slab", () -> new VerticalSlab("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS));
+		POLISHED_DIORITE_VERTICAL_SLAB = block("polished_diorite_vertical_slab", () -> new VerticalSlab("polished_diorite", Blocks.POLISHED_DIORITE));
+		MOSSY_COBBLESTONE_VERTICAL_SLAB = block("mossy_cobblestone_vertical_slab", () -> new VerticalSlab("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE));
+		END_STONE_BRICKS_VERTICAL_SLAB = block("end_stone_bricks_vertical_slab", () -> new VerticalSlab("end_stone_bricks", Blocks.END_STONE_BRICKS));
+		SMOOTH_SANDSTONE_VERTICAL_SLAB = block("smooth_sandstone_vertical_slab", () -> new VerticalSlab("smooth_sandstone", Blocks.SMOOTH_SANDSTONE));
+		SMOOTH_QUARTZ_VERTICAL_SLAB = block("smooth_quartz_vertical_slab", () -> new VerticalSlab("smooth_quartz", Blocks.SMOOTH_QUARTZ));
+		GRANITE_VERTICAL_SLAB = block("granite_vertical_slab", () -> new VerticalSlab("granite", Blocks.GRANITE));
+		ANDESITE_VERTICAL_SLAB = block("andesite_vertical_slab", () -> new VerticalSlab("andesite", Blocks.ANDESITE));
+		RED_NETHER_BRICKS_VERTICAL_SLAB = block("red_nether_bricks_vertical_slab", () -> new VerticalSlab("red_nether_bricks", Blocks.RED_NETHER_BRICKS));
+		POLISHED_ANDESITE_VERTICAL_SLAB = block("polished_andesite_vertical_slab", () -> new VerticalSlab("polished_andesite", Blocks.POLISHED_ANDESITE));
+		DIORITE_VERTICAL_SLAB = block("diorite_vertical_slab", () -> new VerticalSlab("diorite", Blocks.DIORITE));
+		CRIMSON_VERTICAL_SLAB = block("crimson_vertical_slab", () -> new VerticalSlab("crimson", Blocks.CRIMSON_PLANKS));
+		WARPED_VERTICAL_SLAB = block("warped_vertical_slab", () -> new VerticalSlab("warped", Blocks.WARPED_PLANKS));
+		BLACKSTONE_VERTICAL_SLAB = block("blackstone_vertical_slab", () -> new VerticalSlab("blackstone", Blocks.BLACKSTONE));
+		POLISHED_BLACKSTONE_VERTICAL_SLAB = block("polished_blackstone_vertical_slab", () -> new VerticalSlab("polished_blackstone", Blocks.POLISHED_BLACKSTONE));
+		POLISHED_BLACKSTONE_BRICKS_VERTICAL_SLAB = block("polished_blackstone_bricks_vertical_slab", () -> new VerticalSlab("polished_blackstone_bricks", Blocks.POLISHED_BLACKSTONE_BRICKS));
+		COBBLED_DEEPSLATE_VERTICAL_SLAB = block("cobbled_deepslate_vertical_slab", () -> new VerticalSlab("cobbled_deepslate", Blocks.COBBLED_DEEPSLATE));
+		POLISHED_DEEPSLATE_VERTICAL_SLAB = block("polished_deepslate_vertical_slab", () -> new VerticalSlab("polished_deepslate", Blocks.POLISHED_DEEPSLATE));
+		DEEPSLATE_BRICKS_VERTICAL_SLAB = block("deepslate_bricks_vertical_slab", () -> new VerticalSlab("deepslate_bricks", Blocks.DEEPSLATE_BRICKS));
+		DEEPSLATE_TILES_VERTICAL_SLAB = block("deepslate_tiles_vertical_slab", () -> new VerticalSlab("deepslate_tiles", Blocks.DEEPSLATE_TILES));
+		WAXED_CUT_COPPER_VERTICAL_SLAB = block("waxed_cut_copper_vertical_slab", () -> new VerticalSlab("waxed_cut_copper", Blocks.COPPER_BLOCK));
+		WAXED_EXPOSED_CUT_COPPER_VERTICAL_SLAB = block("waxed_exposed_cut_copper_vertical_slab", () -> new VerticalSlab("waxed_exposed_cut_copper", Blocks.COPPER_BLOCK));
+		WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB = block("waxed_weathered_cut_copper_vertical_slab", () -> new VerticalSlab("waxed_weathered_cut_copper", Blocks.COPPER_BLOCK));
+		WAXED_OXIDIZED_CUT_COPPER_VERTICAL_SLAB = block("waxed_oxidized_cut_copper_vertical_slab", () -> new VerticalSlab("waxed_oxidized_cut_copper", Blocks.COPPER_BLOCK));
+		CUT_COPPER_VERTICAL_SLAB = block("cut_copper_vertical_slab", () -> new CopperVerticalSlab("cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.UNAFFECTED));
+		EXPOSED_CUT_COPPER_VERTICAL_SLAB = block("exposed_cut_copper_vertical_slab", () -> new CopperVerticalSlab("exposed_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.EXPOSED));
+		WEATHERED_CUT_COPPER_VERTICAL_SLAB = block("weathered_cut_copper_vertical_slab", () -> new CopperVerticalSlab("weathered_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.WEATHERED));
+		OXIDIZED_CUT_COPPER_VERTICAL_SLAB = block("oxidized_cut_copper_vertical_slab", () -> new CopperVerticalSlab("oxidized_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.OXIDIZED));
 		
-		COBBLED_DEEPSLATE_VERTICAL_SLAB = new VerticalSlab("cobbled_deepslate", Blocks.COBBLED_DEEPSLATE);
-		POLISHED_DEEPSLATE_VERTICAL_SLAB = new VerticalSlab("polished_deepslate", Blocks.POLISHED_DEEPSLATE);
-		DEEPSLATE_BRICKS_VERTICAL_SLAB = new VerticalSlab("deepslate_bricks", Blocks.DEEPSLATE_BRICKS);
-		DEEPSLATE_TILES_VERTICAL_SLAB = new VerticalSlab("deepslate_tiles", Blocks.DEEPSLATE_TILES);
-		WAXED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_cut_copper", Blocks.COPPER_BLOCK);
-		WAXED_EXPOSED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_exposed_cut_copper", Blocks.COPPER_BLOCK);
-		WAXED_WEATHERED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_weathered_cut_copper", Blocks.COPPER_BLOCK);
-		WAXED_OXIDIZED_CUT_COPPER_VERTICAL_SLAB = new VerticalSlab("waxed_oxidized_cut_copper", Blocks.COPPER_BLOCK);
-		CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.UNAFFECTED);
-		EXPOSED_CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("exposed_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.EXPOSED);
-		WEATHERED_CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("weathered_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.WEATHERED);
-		OXIDIZED_CUT_COPPER_VERTICAL_SLAB = new CopperVerticalSlab("oxidized_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.OXIDIZED);
+		CUT_STONE_PILLAR = block("cut_stone_pillar", () -> new Pillar("stone", Blocks.STONE));
+		CUT_SMOOTH_STONE_PILLAR = block("cut_smooth_stone_pillar", () -> new Pillar("smooth_stone", Blocks.SMOOTH_STONE));
+		CUT_SANDSTONE_PILLAR = block("cut_sandstone_pillar", () -> new Pillar("sandstone", Blocks.SANDSTONE, sandstoneConnector));
+		CUT_COBBLESTONE_PILLAR = block("cut_cobblestone_pillar", () -> new Pillar("cobblestone", Blocks.COBBLESTONE, cobbleConnector));
+		CUT_BRICKS_PILLAR = block("cut_bricks_pillar", () -> new Pillar("bricks", Blocks.BRICKS));
+		CUT_STONE_BRICKS_PILLAR = block("cut_stone_bricks_pillar", () -> new Pillar("stone_bricks", Blocks.STONE_BRICKS, stoneBricksConnector));
+		CUT_NETHER_BRICKS_PILLAR = block("cut_nether_bricks_pillar", () -> new Pillar("nether_bricks", Blocks.NETHER_BRICKS, netherBricksConnector));
+		CUT_QUARTZ_PILLAR = block("cut_quartz_pillar", () -> new Pillar("quartz", Blocks.QUARTZ_BLOCK, quartzConnector));
+		CUT_RED_SANDSTONE_PILLAR = block("cut_red_sandstone_pillar", () -> new Pillar("red_sandstone", Blocks.RED_SANDSTONE, sandstoneConnector));
+		CUT_PURPUR_PILLAR = block("cut_purpur_pillar", () -> new Pillar("purpur", Blocks.PURPUR_PILLAR));
+		CUT_PRISMARINE_PILLAR = block("cut_prismarine_pillar", () -> new Pillar("prismarine", Blocks.PRISMARINE, 15));
+		CUT_SMOOTH_RED_SANDSTONE_PILLAR = block("cut_smooth_red_sandstone_pillar", () -> new Pillar("smooth_red_sandstone", Blocks.SMOOTH_RED_SANDSTONE, sandstoneConnector));
+		CUT_SMOOTH_SANDSTONE_PILLAR = block("cut_smooth_sandstone_pillar", () -> new Pillar("smooth_sandstone", Blocks.SMOOTH_SANDSTONE, sandstoneConnector));
+		CUT_MOSSY_STONE_BRICKS_PILLAR = block("cut_mossy_stone_bricks_pillar", () -> new Pillar("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS, stoneBricksConnector));
+		CUT_MOSSY_COBBLESTONE_PILLAR = block("cut_mossy_cobblestone_pillar", () -> new Pillar("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE, cobbleConnector));
+		CUT_END_STONE_BRICKS_PILLAR = block("cut_end_stone_bricks_pillar", () -> new Pillar("end_stone_bricks", Blocks.END_STONE_BRICKS));
+		CUT_RED_NETHER_BRICKS_PILLAR = block("cut_red_nether_bricks_pillar", () -> new Pillar("red_nether_bricks", Blocks.RED_NETHER_BRICKS, netherBricksConnector));
+		CUT_BASALT_PILLAR = block("cut_basalt_pillar", () -> new Pillar("basalt", Blocks.BASALT));
+		CUT_BLACKSTONE_PILLAR = block("cut_blackstone_pillar", () -> new Pillar("blackstone", Blocks.BLACKSTONE, stoneBricksConnector));
+		CUT_QUARTZ_BRICKS_PILLAR = block("cut_quartz_bricks_pillar", () -> new Pillar("quartz_bricks", Blocks.QUARTZ_BLOCK, quartzConnector));
+		CUT_DEEPSLATE_BRICKS_PILLAR = block("cut_deepslate_bricks_pillar", () -> new Pillar("deepslate_bricks", Blocks.DEEPSLATE_BRICKS, deepslateBricksConnector));
+		CUT_DEEPSLATE_TILES_PILLAR = block("cut_deepslate_tiles_pillar", () -> new Pillar("deepslate_tiles", Blocks.DEEPSLATE_TILES, deepslateConnector));
 		
-		CUT_STONE_PILLAR = new Pillar("stone", Blocks.STONE);
-		CUT_SMOOTH_STONE_PILLAR = new Pillar("smooth_stone", Blocks.SMOOTH_STONE);
-		CUT_SANDSTONE_PILLAR = new Pillar("sandstone", Blocks.SANDSTONE, sandstoneConnector);
-		CUT_COBBLESTONE_PILLAR = new Pillar("cobblestone", Blocks.COBBLESTONE, cobbleConnector);
-		CUT_BRICKS_PILLAR = new Pillar("bricks", Blocks.BRICKS);
-		CUT_STONE_BRICKS_PILLAR = new Pillar("stone_bricks", Blocks.STONE_BRICKS, stoneBricksConnector);
-		CUT_NETHER_BRICKS_PILLAR = new Pillar("nether_bricks", Blocks.NETHER_BRICKS, netherBricksConnector);
-		CUT_QUARTZ_PILLAR = new Pillar("quartz", Blocks.QUARTZ_BLOCK, quartzConnector);
-		CUT_RED_SANDSTONE_PILLAR = new Pillar("red_sandstone", Blocks.RED_SANDSTONE, sandstoneConnector);
-		CUT_PURPUR_PILLAR = new Pillar("purpur", Blocks.PURPUR_PILLAR);
-		CUT_PRISMARINE_PILLAR = new Pillar("prismarine", Blocks.PRISMARINE, 15);
-		CUT_SMOOTH_RED_SANDSTONE_PILLAR = new Pillar("smooth_red_sandstone", Blocks.SMOOTH_RED_SANDSTONE, sandstoneConnector);
-		CUT_SMOOTH_SANDSTONE_PILLAR = new Pillar("smooth_sandstone", Blocks.SMOOTH_SANDSTONE, sandstoneConnector);
-		CUT_MOSSY_STONE_BRICKS_PILLAR = new Pillar("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS, stoneBricksConnector);
-		CUT_MOSSY_COBBLESTONE_PILLAR = new Pillar("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE, cobbleConnector);
-		CUT_END_STONE_BRICKS_PILLAR = new Pillar("end_stone_bricks", Blocks.END_STONE_BRICKS);
-		CUT_RED_NETHER_BRICKS_PILLAR = new Pillar("red_nether_bricks", Blocks.RED_NETHER_BRICKS, netherBricksConnector);
-		CUT_BASALT_PILLAR = new Pillar("basalt", Blocks.BASALT);
-		CUT_BLACKSTONE_PILLAR = new Pillar("blackstone", Blocks.BLACKSTONE, stoneBricksConnector);
-		CUT_QUARTZ_BRICKS_PILLAR = new Pillar("quartz_bricks", Blocks.QUARTZ_BLOCK, quartzConnector);
-		CUT_DEEPSLATE_BRICKS_PILLAR = new Pillar("deepslate_bricks", Blocks.DEEPSLATE_BRICKS, deepslateBricksConnector);
-		CUT_DEEPSLATE_TILES_PILLAR = new Pillar("deepslate_tiles", Blocks.DEEPSLATE_TILES, deepslateConnector);
-		
-		TABLE_OAK = new Table("oak", Blocks.OAK_PLANKS);
-		TABLE_SPRUCE = new Table("spruce", Blocks.SPRUCE_PLANKS);
-		TABLE_BIRCH = new Table("birch", Blocks.BIRCH_PLANKS);
-		TABLE_DARK_OAK = new Table("dark_oak", Blocks.DARK_OAK_PLANKS);
-		TABLE_JUNGLE = new Table("jungle", Blocks.JUNGLE_PLANKS);
-		TABLE_ACACIA = new Table("acacia", Blocks.ACACIA_PLANKS);
-		TABLE_CRIMSON = new Table("crimson", Blocks.CRIMSON_PLANKS);
-		TABLE_WARPED = new Table("warped", Blocks.WARPED_PLANKS);
+		TABLE_OAK = block("table_oak", () -> new Table("oak", Blocks.OAK_PLANKS));
+		TABLE_SPRUCE = block("table_spruce", () -> new Table("spruce", Blocks.SPRUCE_PLANKS));
+		TABLE_BIRCH = block("table_birch", () -> new Table("birch", Blocks.BIRCH_PLANKS));
+		TABLE_DARK_OAK = block("table_dark_oak", () -> new Table("dark_oak", Blocks.DARK_OAK_PLANKS));
+		TABLE_JUNGLE = block("table_jungle", () -> new Table("jungle", Blocks.JUNGLE_PLANKS));
+		TABLE_ACACIA = block("table_acacia", () -> new Table("acacia", Blocks.ACACIA_PLANKS));
+		TABLE_CRIMSON = block("table_crimson", () -> new Table("crimson", Blocks.CRIMSON_PLANKS));
+		TABLE_WARPED = block("table_warped", () -> new Table("warped", Blocks.WARPED_PLANKS));
 		
 		/*for(int i = 0; i < colors.length; i++) {
 			STOOL_OAK[i] = new Stool("stool_oak_" + colors[i], Blocks.OAK_PLANKS);
@@ -497,40 +584,43 @@ public class Index {
 		}*/
 		
 		for(int i = 0; i < colors.length; i++) {
-			PILLOW[i] = new Pillow("pillow_" + colors[i]);
+			final String color = colors[i];
+			PILLOW[i] = block("pillow_" + color, () -> new Pillow("pillow_" + color));
 		}
 		
-		STOOL_OAK = new Stool("stool_oak", Blocks.OAK_PLANKS);
-		STOOL_SPRUCE = new Stool("stool_spruce", Blocks.SPRUCE_PLANKS);
-		STOOL_BIRCH = new Stool("stool_birch", Blocks.BIRCH_PLANKS);
-		STOOL_DARK_OAK = new Stool("stool_dark_oak", Blocks.DARK_OAK_PLANKS);
-		STOOL_JUNGLE = new Stool("stool_jungle", Blocks.JUNGLE_PLANKS);
-		STOOL_ACACIA = new Stool("stool_acacia", Blocks.ACACIA_PLANKS);
-		STOOL_CRIMSON = new Stool("stool_crimson", Blocks.CRIMSON_PLANKS);
-		STOOL_WARPED = new Stool("stool_warped", Blocks.WARPED_PLANKS);
+		STOOL_OAK = block("stool_oak", () -> new Stool("stool_oak", Blocks.OAK_PLANKS));
+		STOOL_SPRUCE = block("stool_spruce", () -> new Stool("stool_spruce", Blocks.SPRUCE_PLANKS));
+		STOOL_BIRCH = block("stool_birch", () -> new Stool("stool_birch", Blocks.BIRCH_PLANKS));
+		STOOL_DARK_OAK = block("stool_dark_oak", () -> new Stool("stool_dark_oak", Blocks.DARK_OAK_PLANKS));
+		STOOL_JUNGLE = block("stool_jungle", () -> new Stool("stool_jungle", Blocks.JUNGLE_PLANKS));
+		STOOL_ACACIA = block("stool_acacia", () -> new Stool("stool_acacia", Blocks.ACACIA_PLANKS));
+		STOOL_CRIMSON = block("stool_crimson", () -> new Stool("stool_crimson", Blocks.CRIMSON_PLANKS));
+		STOOL_WARPED = block("stool_warped", () -> new Stool("stool_warped", Blocks.WARPED_PLANKS));
 		
-		CHAIR_OAK = new Chair("chair_oak", Blocks.OAK_PLANKS);
-		CHAIR_SPRUCE = new Chair("chair_spruce", Blocks.SPRUCE_PLANKS);
-		CHAIR_BIRCH = new Chair("chair_birch", Blocks.BIRCH_PLANKS);
-		CHAIR_DARK_OAK = new Chair("chair_dark_oak", Blocks.DARK_OAK_PLANKS);
-		CHAIR_JUNGLE = new Chair("chair_jungle", Blocks.JUNGLE_PLANKS);
-		CHAIR_ACACIA = new Chair("chair_acacia", Blocks.ACACIA_PLANKS);
-		CHAIR_CRIMSON = new Chair("chair_crimson", Blocks.CRIMSON_PLANKS);
-		CHAIR_WARPED = new Chair("chair_warped", Blocks.WARPED_PLANKS);
-		
-		HEDGE_OAK = new Hedge("oak", Blocks.OAK_LEAVES);
-		HEDGE_SPRUCE = new Hedge("spruce", Blocks.SPRUCE_LEAVES);
-		HEDGE_BIRCH = new Hedge("birch", Blocks.BIRCH_LEAVES);
-		HEDGE_DARK_OAK = new Hedge("dark_oak", Blocks.DARK_OAK_LEAVES);
-		HEDGE_JUNGLE = new Hedge("jungle", Blocks.JUNGLE_LEAVES);
-		HEDGE_ACACIA = new Hedge("acacia", Blocks.ACACIA_LEAVES);
+		CHAIR_OAK = block("chair_oak", () -> new Chair("chair_oak", Blocks.OAK_PLANKS));
+		CHAIR_SPRUCE = block("chair_spruce", () -> new Chair("chair_spruce", Blocks.SPRUCE_PLANKS));
+		CHAIR_BIRCH = block("chair_birch", () -> new Chair("chair_birch", Blocks.BIRCH_PLANKS));
+		CHAIR_DARK_OAK = block("chair_dark_oak", () -> new Chair("chair_dark_oak", Blocks.DARK_OAK_PLANKS));
+		CHAIR_JUNGLE = block("chair_jungle", () -> new Chair("chair_jungle", Blocks.JUNGLE_PLANKS));
+		CHAIR_ACACIA = block("chair_acacia", () -> new Chair("chair_acacia", Blocks.ACACIA_PLANKS));
+		CHAIR_CRIMSON = block("chair_crimson", () -> new Chair("chair_crimson", Blocks.CRIMSON_PLANKS));
+		CHAIR_WARPED = block("chair_warped", () -> new Chair("chair_warped", Blocks.WARPED_PLANKS));
+
+		HEDGE_OAK = block("hedge_oak", () -> new Hedge("oak", Blocks.OAK_LEAVES));
+		HEDGE_SPRUCE = block("hedge_spruce", () -> new Hedge("spruce", Blocks.SPRUCE_LEAVES));
+		HEDGE_BIRCH = block("hedge_birch", () -> new Hedge("birch", Blocks.BIRCH_LEAVES));
+		HEDGE_DARK_OAK = block("hedge_dark_oak", () -> new Hedge("dark_oak", Blocks.DARK_OAK_LEAVES));
+		HEDGE_JUNGLE = block("hedge_jungle", () -> new Hedge("jungle", Blocks.JUNGLE_LEAVES));
+		HEDGE_ACACIA = block("hedge_acacia", () -> new Hedge("acacia", Blocks.ACACIA_LEAVES));
 		
 		for(int i = 0; i < woods.length; i++) {
-			COUNTER_ANDESITE[i] = new Counter(woods[i]+"_andesite", woodBlocks[i]);
-			COUNTER_DIORITE[i] = new Counter(woods[i]+"_diorite", woodBlocks[i]);
-			COUNTER_GRANITE[i] = new Counter(woods[i]+"_granite", woodBlocks[i]);
-			COUNTER_BLACKSTONE[i] = new Counter(woods[i]+"_blackstone", woodBlocks[i]);
-			COUNTER_DEEPSLATE[i] = new Counter(woods[i]+"_deepslate", woodBlocks[i]);
+			final String wood = woods[i];
+			final Block woodBlock = woodBlocks[i];
+			COUNTER_ANDESITE[i] = block("counter_"+wood+"_andesite", () -> new Counter(wood+"_andesite", woodBlock));
+			COUNTER_DIORITE[i] = block("counter_"+woods[i]+"_diorite", () -> new Counter(wood+"_diorite", woodBlock));
+			COUNTER_GRANITE[i] = block("counter_"+woods[i]+"_granite", () -> new Counter(wood+"_granite", woodBlock));
+			COUNTER_BLACKSTONE[i] = block("counter_"+woods[i]+"_blackstone", () -> new Counter(wood+"_blackstone", woodBlock));
+			COUNTER_DEEPSLATE[i] = block("counter_"+woods[i]+"_deepslate", () -> new Counter(wood+"_deepslate", woodBlock));
 			int n = 5;
 			COUNTER_ALL[i*n] = COUNTER_ANDESITE[i];
 			COUNTER_ALL[i*n+1] = COUNTER_DIORITE[i];
@@ -539,71 +629,72 @@ public class Index {
 			COUNTER_ALL[i*n+4] = COUNTER_DEEPSLATE[i];
 		}
 		
-		BOOKSHELF_OAK = new Bookshelf("oak");
-		BOOKSHELF_BIRCH = new Bookshelf("birch");
-		BOOKSHELF_SPRUCE = new Bookshelf("spruce");
-		BOOKSHELF_DARK_OAK = new Bookshelf("dark_oak");
-		BOOKSHELF_JUNGLE = new Bookshelf("jungle");
-		BOOKSHELF_ACACIA = new Bookshelf("acacia");
-		BOOKSHELF_WARPED = new Bookshelf("warped");
-		BOOKSHELF_CRIMSON = new Bookshelf("crimson");
+		BOOKSHELF_OAK = block("bookshelf_oak", () -> new Bookshelf("oak"));
+		BOOKSHELF_BIRCH = block("bookshelf_birch", () -> new Bookshelf("birch"));
+		BOOKSHELF_SPRUCE = block("bookshelf_spruce", () -> new Bookshelf("spruce"));
+		BOOKSHELF_DARK_OAK = block("bookshelf_dark_oak", () -> new Bookshelf("dark_oak"));
+		BOOKSHELF_JUNGLE = block("bookshelf_jungle", () -> new Bookshelf("jungle"));
+		BOOKSHELF_ACACIA = block("bookshelf_acacia", () -> new Bookshelf("acacia"));
+		BOOKSHELF_WARPED = block("bookshelf_warped", () -> new Bookshelf("warped"));
+		BOOKSHELF_CRIMSON = block("bookshelf_crimson", () -> new Bookshelf("crimson"));
 		
-		SHELF_OAK = new Shelf("oak");
-		SHELF_BIRCH = new Shelf("birch");
-		SHELF_SPRUCE = new Shelf("spruce");
-		SHELF_DARK_OAK = new Shelf("dark_oak");
-		SHELF_JUNGLE = new Shelf("jungle");
-		SHELF_ACACIA = new Shelf("acacia");
-		SHELF_WARPED = new Shelf("warped");
-		SHELF_CRIMSON = new Shelf("crimson");
+		SHELF_OAK = block("shelf_oak", () -> new Shelf("oak"));
+		SHELF_BIRCH = block("shelf_birch", () -> new Shelf("birch"));
+		SHELF_SPRUCE = block("shelf_spruce", () -> new Shelf("spruce"));
+		SHELF_DARK_OAK = block("shelf_dark_oak", () -> new Shelf("dark_oak"));
+		SHELF_JUNGLE = block("shelf_jungle", () -> new Shelf("jungle"));
+		SHELF_ACACIA = block("shelf_acacia", () -> new Shelf("acacia"));
+		SHELF_WARPED = block("shelf_warped", () -> new Shelf("warped"));
+		SHELF_CRIMSON = block("shelf_crimson", () -> new Shelf("crimson"));
+
+		CABINET_OAK = block("cabinet_oak", () -> new Cabinet("oak"));
+		CABINET_BIRCH = block("cabinet_birch", () -> new Cabinet("birch"));
+		CABINET_SPRUCE = block("cabinet_spruce", () -> new Cabinet("spruce"));
+		CABINET_DARK_OAK = block("cabinet_dark_oak", () -> new Cabinet("dark_oak"));
+		CABINET_JUNGLE = block("cabinet_jungle", () -> new Cabinet("jungle"));
+		CABINET_ACACIA = block("cabinet_acacia", () -> new Cabinet("acacia"));
+		CABINET_WARPED = block("cabinet_warped", () -> new Cabinet("warped"));
+		CABINET_CRIMSON = block("cabinet_crimson", () -> new Cabinet("crimson"));
 		
-		CABINET_OAK = new Cabinet("oak");
-		CABINET_BIRCH = new Cabinet("birch");
-		CABINET_SPRUCE = new Cabinet("spruce");
-		CABINET_DARK_OAK = new Cabinet("dark_oak");
-		CABINET_JUNGLE = new Cabinet("jungle");
-		CABINET_ACACIA = new Cabinet("acacia");
-		CABINET_WARPED = new Cabinet("warped");
-		CABINET_CRIMSON = new Cabinet("crimson");
+		CUPBOARD_OAK = block("cupboard_oak", () -> new Cupboard("oak", Blocks.OAK_PLANKS));
+		CUPBOARD_BIRCH = block("cupboard_birch", () -> new Cupboard("birch", Blocks.OAK_PLANKS));
+		CUPBOARD_SPRUCE = block("cupboard_spruce", () -> new Cupboard("spruce", Blocks.OAK_PLANKS));
+		CUPBOARD_DARK_OAK = block("cupboard_dark_oak", () -> new Cupboard("dark_oak", Blocks.OAK_PLANKS));
+		CUPBOARD_JUNGLE = block("cupboard_jungle", () -> new Cupboard("jungle", Blocks.OAK_PLANKS));
+		CUPBOARD_ACACIA = block("cupboard_acacia", () -> new Cupboard("acacia", Blocks.OAK_PLANKS));
+		CUPBOARD_WARPED = block("cupboard_warped", () -> new Cupboard("warped", Blocks.WARPED_PLANKS));
+		CUPBOARD_CRIMSON = block("cupboard_crimson", () -> new Cupboard("crimson", Blocks.CRIMSON_PLANKS));
+
+		SMALL_CUPBOARD_OAK = block("small_cupboard_oak", () -> new SmallCupboard("oak", Blocks.OAK_PLANKS));
+		SMALL_CUPBOARD_BIRCH = block("small_cupboard_birch", () -> new SmallCupboard("birch", Blocks.OAK_PLANKS));
+		SMALL_CUPBOARD_SPRUCE = block("small_cupboard_spruce", () -> new SmallCupboard("spruce", Blocks.OAK_PLANKS));
+		SMALL_CUPBOARD_DARK_OAK = block("small_cupboard_dark_oak", () -> new SmallCupboard("dark_oak", Blocks.OAK_PLANKS));
+		SMALL_CUPBOARD_JUNGLE = block("small_cupboard_jungle", () -> new SmallCupboard("jungle", Blocks.OAK_PLANKS));
+		SMALL_CUPBOARD_ACACIA = block("small_cupboard_acacia", () -> new SmallCupboard("acacia", Blocks.OAK_PLANKS));
+		SMALL_CUPBOARD_WARPED = block("small_cupboard_warped", () -> new SmallCupboard("warped", Blocks.WARPED_PLANKS));
+		SMALL_CUPBOARD_CRIMSON = block("small_cupboard_crimson", () -> new SmallCupboard("crimson", Blocks.CRIMSON_PLANKS));
 		
-		CUPBOARD_OAK = new Cupboard("oak", Blocks.OAK_PLANKS);
-		CUPBOARD_BIRCH = new Cupboard("birch", Blocks.OAK_PLANKS);
-		CUPBOARD_SPRUCE = new Cupboard("spruce", Blocks.OAK_PLANKS);
-		CUPBOARD_DARK_OAK = new Cupboard("dark_oak", Blocks.OAK_PLANKS);
-		CUPBOARD_JUNGLE = new Cupboard("jungle", Blocks.OAK_PLANKS);
-		CUPBOARD_ACACIA = new Cupboard("acacia", Blocks.OAK_PLANKS);
-		CUPBOARD_WARPED = new Cupboard("warped", Blocks.WARPED_PLANKS);
-		CUPBOARD_CRIMSON = new Cupboard("crimson", Blocks.CRIMSON_PLANKS);
+		BENCH_OAK = block("bench_oak", () -> new Bench("oak"));
+		BENCH_BIRCH = block("bench_birch", () -> new Bench("birch"));
+		BENCH_SPRUCE = block("bench_spruce", () -> new Bench("spruce"));
+		BENCH_DARK_OAK = block("bench_dark_oak", () -> new Bench("dark_oak"));
+		BENCH_JUNGLE = block("bench_jungle", () -> new Bench("jungle"));
+		BENCH_ACACIA = block("bench_acacia", () -> new Bench("acacia"));
+		BENCH_WARPED = block("bench_warped", () -> new Bench("warped", Blocks.WARPED_PLANKS));
+		BENCH_CRIMSON = block("bench_crimson", () -> new Bench("crimson", Blocks.CRIMSON_PLANKS));
 		
-		SMALL_CUPBOARD_OAK = new SmallCupboard("oak", Blocks.OAK_PLANKS);
-		SMALL_CUPBOARD_BIRCH = new SmallCupboard("birch", Blocks.OAK_PLANKS);
-		SMALL_CUPBOARD_SPRUCE = new SmallCupboard("spruce", Blocks.OAK_PLANKS);
-		SMALL_CUPBOARD_DARK_OAK = new SmallCupboard("dark_oak", Blocks.OAK_PLANKS);
-		SMALL_CUPBOARD_JUNGLE = new SmallCupboard("jungle", Blocks.OAK_PLANKS);
-		SMALL_CUPBOARD_ACACIA = new SmallCupboard("acacia", Blocks.OAK_PLANKS);
-		SMALL_CUPBOARD_WARPED = new SmallCupboard("warped", Blocks.WARPED_PLANKS);
-		SMALL_CUPBOARD_CRIMSON = new SmallCupboard("crimson", Blocks.CRIMSON_PLANKS);
-		
-		BENCH_OAK = new Bench("oak");
-		BENCH_BIRCH = new Bench("birch");
-		BENCH_SPRUCE = new Bench("spruce");
-		BENCH_DARK_OAK = new Bench("dark_oak");
-		BENCH_JUNGLE = new Bench("jungle");
-		BENCH_ACACIA = new Bench("acacia");
-		BENCH_WARPED = new Bench("warped", Blocks.WARPED_PLANKS);
-		BENCH_CRIMSON = new Bench("crimson", Blocks.CRIMSON_PLANKS);
-		
-		SUPPORT_BRACKET_OAK = new SupportBracket("oak");
-		SUPPORT_BRACKET_BIRCH = new SupportBracket("birch");
-		SUPPORT_BRACKET_SPRUCE = new SupportBracket("spruce");
-		SUPPORT_BRACKET_DARK_OAK = new SupportBracket("dark_oak");
-		SUPPORT_BRACKET_JUNGLE = new SupportBracket("jungle");
-		SUPPORT_BRACKET_ACACIA = new SupportBracket("acacia");
-		SUPPORT_BRACKET_WARPED = new SupportBracket("warped", Blocks.WARPED_PLANKS);
-		SUPPORT_BRACKET_CRIMSON = new SupportBracket("crimson", Blocks.CRIMSON_PLANKS);
+		SUPPORT_BRACKET_OAK = block("support_bracket_oak", () -> new SupportBracket("oak"));
+		SUPPORT_BRACKET_BIRCH = block("support_bracket_birch", () -> new SupportBracket("birch"));
+		SUPPORT_BRACKET_SPRUCE = block("support_bracket_spruce", () -> new SupportBracket("spruce"));
+		SUPPORT_BRACKET_DARK_OAK = block("support_bracket_dark_oak", () -> new SupportBracket("dark_oak"));
+		SUPPORT_BRACKET_JUNGLE = block("support_bracket_jungle", () -> new SupportBracket("jungle"));
+		SUPPORT_BRACKET_ACACIA = block("support_bracket_acacia", () -> new SupportBracket("acacia"));
+		SUPPORT_BRACKET_WARPED = block("support_bracket_warped", () -> new SupportBracket("warped", Blocks.WARPED_PLANKS));
+		SUPPORT_BRACKET_CRIMSON = block("support_bracket_crimson", () -> new SupportBracket("crimson", Blocks.CRIMSON_PLANKS));
 		
 		for(int i = 0; i < colors.length; i++) {
-			SOFA[i] = new Sofa(colors[i]);
+			final String color = colors[i];
+			SOFA[i] = block("sofa_" + colors[i], () -> new Sofa(color));
 		}
 		
 		for(int i = 0; i < colors.length; i++) {
@@ -611,45 +702,57 @@ public class Index {
 		}
 		
 		for(int i = 0; i < woods.length; i++) {
-			BEDSIDE_TABLE[i] = new BedsideTable(woods[i], woodBlocks[i]);
+			final String wood = woods[i];
+			final Block woodBlock = woodBlocks[i];
+			BEDSIDE_TABLE_ALL[i] = block("bedside_table_" + wood, () -> new BedsideTable(wood, woodBlock));
 		}
 		
-		SHOP_SIGN_WOOD = new ShopSign("wood");
-		IRON_LADDER = new IronLadder("iron_ladder");
-		IRON_LADDER_ROUGH = new IronLadder("iron_ladder_rough");
-		IRON_FENCE = new IronFence("iron_fence");
-		IRON_FENCE_ROUGH = new IronFence("iron_fence_rough");
-		ROUGH_IRON_BLOCK = new GenericBlock("rough_iron_block", Block.Properties.copy(Blocks.IRON_BLOCK), new BlockOptions());
-		GRAVEL_PATH = new GravelPath();
-		CROSSRAIL = new Crossrail();
-		SPEAKER = new Speaker();
-		PLANTER = new Planter();
+		SHOP_SIGN_WOOD = block("shop_sign_wood", () -> new ShopSign("wood"));
+		IRON_LADDER = block("iron_ladder", () -> new IronLadder("iron_ladder"));
+		IRON_LADDER_ROUGH = block("iron_ladder_rough", () -> new IronLadder("iron_ladder_rough"));
+		IRON_FENCE = block("iron_fence", () -> new IronFence("iron_fence"));
+		IRON_FENCE_ROUGH = block("iron_fence_rough", () -> new IronFence("iron_fence_rough"));
+		ROUGH_IRON_BLOCK = block("rough_iron_block", () -> new GenericBlock("rough_iron_block", Block.Properties.copy(Blocks.IRON_BLOCK), new BlockOptions()));
+		GRAVEL_PATH = block("gravel_path", () -> new GravelPath());
+		CROSSRAIL = block("crossrail", () -> new Crossrail());
+		SPEAKER = block("speaker", () -> new Speaker());
+		PLANTER = block("planter", () -> new Planter());
 		//LARGE_CANDLE = new LargeCandle("large_candle", ParticleTypes.FLAME);
 		//LARGE_SOUL_CANDLE = new LargeCandle("large_soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		//CANDLE = new Candle("candle", ParticleTypes.FLAME);
 		//SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		
-		ARCADE = new Arcade();
-		ARCADE_OAK = new Arcade("oak");
-		ARCADE_BIRCH = new Arcade("birch");
-		ARCADE_SPRUCE = new Arcade("spruce");
-		ARCADE_DARK_OAK = new Arcade("dark_oak");
-		ARCADE_JUNGLE = new Arcade("jungle");
-		ARCADE_ACACIA = new Arcade("acacia");
-		ARCADE_WARPED = new Arcade("warped");
-		ARCADE_CRIMSON = new Arcade("crimson");
+		ARCADE = block("arcade", () -> new Arcade());
+		ARCADE_OAK = block("arcade_oak", () -> new Arcade("oak"));
+		ARCADE_BIRCH = block("arcade_birch", () -> new Arcade("birch"));
+		ARCADE_SPRUCE = block("arcade_spruce", () -> new Arcade("spruce"));
+		ARCADE_DARK_OAK = block("arcade_dark_oak", () -> new Arcade("dark_oak"));
+		ARCADE_JUNGLE = block("arcade_jungle", () -> new Arcade("jungle"));
+		ARCADE_ACACIA = block("arcade_acacia", () -> new Arcade("acacia"));
+		ARCADE_WARPED = block("arcade_warped", () -> new Arcade("warped"));
+		ARCADE_CRIMSON = block("arcade_crimson", () -> new Arcade("crimson"));
 		
-		FIREPLACE_GUARD = new FireplaceGuard("fireplace_guard");
-		ROUGH_FIREPLACE_GUARD = new FireplaceGuard("rough_fireplace_guard");
+		FIREPLACE_GUARD = block("fireplace_guard", () -> new FireplaceGuard("fireplace_guard"));
+		ROUGH_FIREPLACE_GUARD = block("rough_fireplace_guard", () -> new FireplaceGuard("rough_fireplace_guard"));
 		
-		VERTICAL_REPEATER = new VerticalRepeaterBlock();
-		VERTICAL_COMPARATOR = new VerticalComparatorBlock();
+		VERTICAL_REPEATER = blockNoItem("vertical_repeater", () -> new VerticalRepeaterBlock());
+		VERTICAL_COMPARATOR = blockNoItem("vertical_comparator", () -> new VerticalComparatorBlock());
 		
-		ENTITY_DETECTOR = new EntityDetector();
+		ENTITY_DETECTOR = block("entity_detector", () -> new EntityDetector());
 	}
 	
 	public static void paintings() {
-		SUMMER_FIELD_PAINTING = RegistryUtil.createPainting("summer_field", 1, 1);
+		SUMMER_FIELD_PAINTING = PAINTINGS.register("summer_field", () -> RegistryUtil.createPainting(1, 1));
+		SHARD_PAINTING = PAINTINGS.register("shard", () -> RegistryUtil.createPainting(1, 1));
+		SKARGARD_PAINTING = PAINTINGS.register("skargard", () -> RegistryUtil.createPainting(2, 1));
+		HORIZONS_PAINTING = PAINTINGS.register("horizons", () -> RegistryUtil.createPainting(1, 1));
+		PORTRAIT_PAINTING = PAINTINGS.register("portrait", () -> RegistryUtil.createPainting(1, 1));
+		PROMO_PAINTING = PAINTINGS.register("promo", () -> RegistryUtil.createPainting(1, 1));
+		HEROBRINE_PAINTING = PAINTINGS.register("herobrine", () -> RegistryUtil.createPainting(1, 1));
+		ENDERMAN_PAINTING = PAINTINGS.register("enderman", () -> RegistryUtil.createPainting(1, 2));
+		WINTER_PAINTING = PAINTINGS.register("winter", () -> RegistryUtil.createPainting(2, 2));
+		
+		/*SUMMER_FIELD_PAINTING = RegistryUtil.createPainting("summer_field", 1, 1);
 		SHARD_PAINTING = RegistryUtil.createPainting("shard", 1, 1);
 		SKARGARD_PAINTING = RegistryUtil.createPainting("skargard", 2, 1);
 		HORIZONS_PAINTING = RegistryUtil.createPainting("horizons", 1, 1);
@@ -657,11 +760,55 @@ public class Index {
 		PROMO_PAINTING = RegistryUtil.createPainting("promo", 1, 1);
 		HEROBRINE_PAINTING = RegistryUtil.createPainting("herobrine", 1, 1);
 		ENDERMAN_PAINTING = RegistryUtil.createPainting("enderman", 1, 2);
-		WINTER_PAINTING = RegistryUtil.createPainting("winter", 2, 2);
+		WINTER_PAINTING = RegistryUtil.createPainting("winter", 2, 2);*/
+	}
+	
+	public static Block[] getAll(RegistryObject<Block>...regs) {
+		Block[] a = new Block[regs.length];
+		for(int i = 0; i < a.length; i++) {
+			a[i] = regs[i].get();
+		}
+		return a;
 	}
 	
 	public static void tileentities() {
-		COUNTER_TILE_ENTITY_TYPE = 
+		COUNTER_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("counter", () ->
+        	BlockEntityType.Builder.of(CounterTileEntity::new, getAll(COUNTER_ALL)).build(null));
+		
+		CUPBOARD_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("cupboard", () ->
+    		BlockEntityType.Builder.of(CupboardTileEntity::new, getAll(CUPBOARD_OAK, CUPBOARD_ACACIA, CUPBOARD_BIRCH, CUPBOARD_CRIMSON, CUPBOARD_DARK_OAK, CUPBOARD_JUNGLE, CUPBOARD_SPRUCE, CUPBOARD_WARPED)).build(null));
+		
+		SMALL_CUPBOARD_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("small_cupboard", () ->
+    		BlockEntityType.Builder.of(SmallCupboardTileEntity::new, getAll(SMALL_CUPBOARD_OAK, SMALL_CUPBOARD_ACACIA, SMALL_CUPBOARD_BIRCH, SMALL_CUPBOARD_CRIMSON, SMALL_CUPBOARD_DARK_OAK, SMALL_CUPBOARD_JUNGLE, SMALL_CUPBOARD_SPRUCE, SMALL_CUPBOARD_WARPED)).build(null));
+		
+		CABINET_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("cabinet", () ->
+    		BlockEntityType.Builder.of(CabinetTileEntity::new, getAll(CABINET_OAK, CABINET_BIRCH, CABINET_SPRUCE, CABINET_DARK_OAK, CABINET_JUNGLE, CABINET_ACACIA, CABINET_WARPED, CABINET_CRIMSON)).build(null));
+		
+		BOOKSHELF_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("bookshelf", () ->
+    		BlockEntityType.Builder.of(BookshelfTileEntity::new, getAll(BOOKSHELF_OAK, BOOKSHELF_BIRCH, BOOKSHELF_SPRUCE, BOOKSHELF_DARK_OAK, BOOKSHELF_JUNGLE, BOOKSHELF_ACACIA, BOOKSHELF_WARPED, BOOKSHELF_CRIMSON)).build(null));
+		
+		SHELF_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("shelf", () ->
+    		BlockEntityType.Builder.of(ShelfTileEntity::new, getAll(SHELF_OAK, SHELF_BIRCH, SHELF_SPRUCE, SHELF_DARK_OAK, SHELF_ACACIA, SHELF_JUNGLE, SHELF_CRIMSON, SHELF_WARPED)).build(null));
+		
+		SHOP_SIGN_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("shop_sign", () ->
+    		BlockEntityType.Builder.of(ShopSignTileEntity::new, SHOP_SIGN_WOOD.get()).build(null));
+		
+		BEDSIDE_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("bedside_table", () ->
+    		BlockEntityType.Builder.of(BedsideTileEntity::new, getAll(BEDSIDE_TABLE_ALL)).build(null));
+		
+		SPEAKER_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("speaker", () ->
+    		BlockEntityType.Builder.of(SpeakerTileEntity::new, SPEAKER.get()).build(null));
+		
+		ARCADE_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("arcade", () ->
+    		BlockEntityType.Builder.of(ArcadeTileEntity::new, getAll(ARCADE, ARCADE_OAK, ARCADE_BIRCH, ARCADE_SPRUCE, ARCADE_DARK_OAK, ARCADE_JUNGLE, ARCADE_ACACIA, ARCADE_WARPED, ARCADE_CRIMSON)).build(null));
+		
+		ENTITY_DETECTOR_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("entity_detector", () ->
+    		BlockEntityType.Builder.of(EntityDetectorTileEntity::new, ENTITY_DETECTOR.get()).build(null));
+		
+		VERTICAL_COMPARATOR_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("vertical_comparator", () ->
+    		BlockEntityType.Builder.of(VerticalComparatorTileEntity::new, VERTICAL_COMPARATOR.get()).build(null));
+		
+		/*COUNTER_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<CounterTileEntity>register(CounterTileEntity::new, new TileEntityOptions("counter", COUNTER_ALL));
 		CUPBOARD_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<CupboardTileEntity>register(CupboardTileEntity::new, new TileEntityOptions("cupboard", CUPBOARD_OAK, CUPBOARD_ACACIA, CUPBOARD_BIRCH, CUPBOARD_CRIMSON, CUPBOARD_DARK_OAK, CUPBOARD_JUNGLE, CUPBOARD_SPRUCE, CUPBOARD_WARPED));
@@ -676,7 +823,7 @@ public class Index {
 		SHOP_SIGN_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<ShopSignTileEntity>register(ShopSignTileEntity::new, new TileEntityOptions("shop_sign", SHOP_SIGN_WOOD));
 		BEDSIDE_TILE_ENTITY_TYPE = 
-				TileEntityRegistry.instance.<BedsideTileEntity>register(BedsideTileEntity::new, new TileEntityOptions("bedside_table", BEDSIDE_TABLE));
+				TileEntityRegistry.instance.<BedsideTileEntity>register(BedsideTileEntity::new, new TileEntityOptions("bedside_table", BEDSIDE_TABLE_ALL));
 		SPEAKER_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<SpeakerTileEntity>register(SpeakerTileEntity::new, new TileEntityOptions("speaker", SPEAKER));
 		ARCADE_TILE_ENTITY_TYPE = 
@@ -684,7 +831,7 @@ public class Index {
 		ENTITY_DETECTOR_TILE_ENTITY_TYPE = 
 				TileEntityRegistry.instance.<EntityDetectorTileEntity>register(EntityDetectorTileEntity::new, new TileEntityOptions("entity_detector", ENTITY_DETECTOR));
 		VERTICAL_COMPARATOR_TILE_ENTITY_TYPE = 
-				TileEntityRegistry.instance.<VerticalComparatorTileEntity>register(VerticalComparatorTileEntity::new, new TileEntityOptions("vertical_comparator", VERTICAL_COMPARATOR));
+				TileEntityRegistry.instance.<VerticalComparatorTileEntity>register(VerticalComparatorTileEntity::new, new TileEntityOptions("vertical_comparator", VERTICAL_COMPARATOR));*/
 	}
 	
 	private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
@@ -692,7 +839,7 @@ public class Index {
     }
 	
 	public static void containers() {
-		BOOKSHELF_CONTAINER = registerMenuType(BookshelfContainer::create, "bookshelf_container");
+		BOOKSHELF_CONTAINER = registerMenuType(BookshelfContainer::new, "bookshelf_container");
 		SHELF_CONTAINER = registerMenuType(ShelfContainer::create, "shelf_container");
 		SPEAKER_CONTAINER = registerMenuType(SpeakerContainer::create, "speaker_container");
 		ARCADE_CONTAINER = registerMenuType(ArcadeContainer::create, "arcade_container");
@@ -714,6 +861,10 @@ public class Index {
 		ForgeRegistries.CONTAINERS.register("arcade_container", ARCADE_CONTAINER);*/
 	}
 	
+	public static void entities() {
+		SEAT_ENTITY_TYPE = ENTITIES.register("seat", () -> EntityType.Builder.<SeatEntity>of(SeatEntity::new, MobCategory.MISC).setCustomClientFactory((packet, world) -> new SeatEntity(Index.SEAT_ENTITY_TYPE.get(), world)).build(BuildersAddition.MODID+":seat"));
+	}
+	
 	/*BOP_CHERRY_VERTICAL_SLAB = new VerticalSlab("bop_cherry", Blocks.OAK_PLANKS, "biomesoplenty");
 	BOP_CUT_WHITE_SANDSTONE_VERTICAL_SLAB = new VerticalSlab("bop_cut_white_sandstone", Blocks.SANDSTONE, "biomesoplenty");
 	BOP_DEAD_VERTICAL_SLAB = new VerticalSlab("bop_dead", Blocks.OAK_PLANKS, "biomesoplenty");
@@ -729,4 +880,13 @@ public class Index {
 	BOP_UMBRAN_VERTICAL_SLAB = new VerticalSlab("bop_umbran", Blocks.OAK_PLANKS, "biomesoplenty");
 	BOP_WHITE_SANDSTONE_VERTICAL_SLAB = new VerticalSlab("bop_white_sandstone", Blocks.SANDSTONE, "biomesoplenty");
 	BOP_WILLOW_VERTICAL_SLAB = new VerticalSlab("bop_willow", Blocks.OAK_PLANKS, "biomesoplenty");*/
+	
+	static {
+    	blocks();
+    	items();
+    	paintings();
+    	tileentities();
+    	containers();
+    	entities();
+    }
 }

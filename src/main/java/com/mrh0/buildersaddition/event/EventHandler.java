@@ -9,13 +9,12 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.decoration.Motive;
+import net.minecraft.world.entity.decoration.PaintingVariant;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,7 +23,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(modid = BuildersAddition.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class EventHandler {
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public static void registerBlock(Register<Block> evt){
 		IForgeRegistry<Block> reg = evt.getRegistry();
 		Index.blocks();
@@ -55,13 +54,13 @@ public class EventHandler {
 	@SubscribeEvent
     public static void registerEntityType(Register<EntityType<?>> evt) {
     	Index.SEAT_ENTITY_TYPE = EntityType.Builder.<SeatEntity>of(SeatEntity::new, MobCategory.MISC).setCustomClientFactory((packet, world) -> new SeatEntity(Index.SEAT_ENTITY_TYPE, world)).build(BuildersAddition.MODID+":seat");
-    	Index.SEAT_ENTITY_TYPE.setRegistryName(new ResourceLocation(BuildersAddition.MODID, "seat"));
+    	//Index.SEAT_ENTITY_TYPE.setRegistryName(new ResourceLocation(BuildersAddition.MODID, "seat"));
     	evt.getRegistry().register(Index.SEAT_ENTITY_TYPE);
-    }
+    }*/
 	
-	@SubscribeEvent
-	public static void registerPaintings(Register<Motive> evt){
-		IForgeRegistry<Motive> reg = evt.getRegistry();
+	/*@SubscribeEvent
+	public static void registerPaintings(Register<PaintingVariant> evt){
+		IForgeRegistry<PaintingVariant> reg = evt.getRegistry();
 		
 		Index.paintings();
 		
@@ -74,14 +73,14 @@ public class EventHandler {
 		reg.register(Index.ENDERMAN_PAINTING);
 		reg.register(Index.WINTER_PAINTING);
 		//reg.register(Index.PROMO_PAINTING);
-	}
+	}*/
 	
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
 		ExistingFileHelper exHelper = event.getExistingFileHelper();
 		DataGenerator gen = event.getGenerator();
 		if(event.includeServer()) {
-			gen.addProvider(new BABlockTagsProvider(gen, BuildersAddition.MODID, exHelper));
+			gen.addProvider(false, new BABlockTagsProvider(gen, BuildersAddition.MODID, exHelper));
 		}
 	}
 }

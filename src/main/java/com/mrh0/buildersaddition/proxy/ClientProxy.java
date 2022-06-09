@@ -12,21 +12,21 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(final FMLCommonSetupEvent evt) {
 		//RenderingRegistry.registerEntityRenderingHandler(Index.SEAT_ENTITY_TYPE, new SeatRenderFactory());
-		EntityRenderers.register(Index.SEAT_ENTITY_TYPE, new SeatRenderFactory());
+		EntityRenderers.register(Index.SEAT_ENTITY_TYPE.get(), new SeatRenderFactory());
 		
 		//RenderType transl = RenderType.translucent();
 		RenderType cutout = RenderType.cutoutMipped();       
 		
-		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_OAK, cutout);
-		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_BIRCH, cutout);
-		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_SPRUCE, cutout);
-		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_DARK_OAK, cutout);
-		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_JUNGLE, cutout);
-		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_ACACIA, cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_OAK.get(), cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_BIRCH.get(), cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_SPRUCE.get(), cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_DARK_OAK.get(), cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_JUNGLE.get(), cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_ACACIA.get(), cutout);
         
-		ItemBlockRenderTypes.setRenderLayer(Index.CROSSRAIL, cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.CROSSRAIL.get(), cutout);
         
-		ItemBlockRenderTypes.setRenderLayer(Index.VERTICAL_REPEATER, cutout);
-		ItemBlockRenderTypes.setRenderLayer(Index.VERTICAL_COMPARATOR, cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.VERTICAL_REPEATER.get(), cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.VERTICAL_COMPARATOR.get(), cutout);
 	}
 }

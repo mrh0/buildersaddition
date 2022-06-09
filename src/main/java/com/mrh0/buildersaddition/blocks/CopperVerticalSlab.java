@@ -20,9 +20,9 @@ public class CopperVerticalSlab extends VerticalSlab implements WeatheringCopper
 
 	static Supplier<BiMap<Block, Block>> NEXT_BY_BLOCK = Suppliers.memoize(() -> {
 		return ImmutableBiMap.<Block, Block>builder()
-				.put(Index.CUT_COPPER_VERTICAL_SLAB, Index.EXPOSED_CUT_COPPER_VERTICAL_SLAB)
-				.put(Index.EXPOSED_CUT_COPPER_VERTICAL_SLAB, Index.WEATHERED_CUT_COPPER_VERTICAL_SLAB)
-				.put(Index.WEATHERED_CUT_COPPER_VERTICAL_SLAB, Index.OXIDIZED_CUT_COPPER_VERTICAL_SLAB).build();
+				.put(Index.CUT_COPPER_VERTICAL_SLAB.get(), Index.EXPOSED_CUT_COPPER_VERTICAL_SLAB.get())
+				.put(Index.EXPOSED_CUT_COPPER_VERTICAL_SLAB.get(), Index.WEATHERED_CUT_COPPER_VERTICAL_SLAB.get())
+				.put(Index.WEATHERED_CUT_COPPER_VERTICAL_SLAB.get(), Index.OXIDIZED_CUT_COPPER_VERTICAL_SLAB.get()).build();
 	});
 
 	static Optional<Block> getNext(Block block) {

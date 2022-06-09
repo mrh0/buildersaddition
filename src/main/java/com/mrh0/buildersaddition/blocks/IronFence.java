@@ -1,23 +1,24 @@
 package com.mrh0.buildersaddition.blocks;
 
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
+import com.mrh0.buildersaddition.itemgroup.ModGroup;
 
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class IronFence extends FenceBlock {
 
 	public IronFence(String name) {
 		super(Properties.copy(Blocks.IRON_BLOCK));
-		//this.setRegistryName(name);
-		ForgeRegistries.BLOCKS.register(name, this);
-		BlockRegistry.instance.register(this, new BlockOptions());
+
 		BaseDerivativeBlock.blockTagSort(this, Blocks.IRON_BLOCK);
 	}
 	

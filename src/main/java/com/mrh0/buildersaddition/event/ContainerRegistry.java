@@ -15,6 +15,6 @@ public class ContainerRegistry extends GenericRegistry<MenuType<?>, ContainerOpt
 	}
 
 	protected void init(IForgeRegistry<MenuType<?>> reg, MenuType<?> obj) {
-		reg.register(obj);
+		//reg.register(obj);
 	}
 }

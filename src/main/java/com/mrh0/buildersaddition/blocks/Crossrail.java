@@ -1,11 +1,15 @@
 package com.mrh0.buildersaddition.blocks;
 
+import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
+import com.mrh0.buildersaddition.itemgroup.ModGroup;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.world.entity.vehicle.AbstractMinecart;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.BaseRailBlock;
 import net.minecraft.world.level.block.Block;
@@ -25,9 +29,8 @@ public class Crossrail extends BaseRailBlock {
 	public Crossrail() {
 		super(true, Properties.copy(Blocks.RAIL));
 		this.registerDefaultState(this.defaultBlockState().setValue(SHAPE, RailShape.NORTH_SOUTH));
-		ForgeRegistries.BLOCKS.register("crossrail", this);
-		//this.setRegistryName("crossrail");
-		BlockRegistry.instance.register(this, new BlockOptions());
+
+		//BlockRegistry.instance.register(this, new BlockOptions());
 	}
 
 	@Override

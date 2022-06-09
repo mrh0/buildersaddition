@@ -25,6 +25,7 @@ public class BlockRegistry extends GenericRegistry<Block, BlockOptions>{
 
 	@Override
 	public void init(IForgeRegistry<Block> reg, Block obj) {
-		reg.register(obj);
+		
+		//reg.register(obj);
 	}
 }

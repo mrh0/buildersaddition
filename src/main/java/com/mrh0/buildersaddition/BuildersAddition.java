@@ -17,6 +17,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
@@ -53,6 +54,11 @@ public class BuildersAddition {
             .simpleChannel();
 	
 	public BuildersAddition() {
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		new ModGroup("builders_addition_group");
+		
+		Index.register(eventBus);
+		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
     	FMLJavaModLoadingContext.get().getModEventBus().addListener(this::postInit);
@@ -61,12 +67,10 @@ public class BuildersAddition {
     	
     	ArcadeManager.init();
     	
-    	new ModGroup("builders_addition_group");
-    	
-    	new BlockRegistry();
-    	new ItemRegistry();
-    	new TileEntityRegistry();
-    	new ContainerRegistry();
+    	//new BlockRegistry();
+    	//new ItemRegistry();
+    	//new TileEntityRegistry();
+    	//new ContainerRegistry();
     	
     	BOP_ACTIVE = ModList.get().isLoaded("biomesoplenty");
     	

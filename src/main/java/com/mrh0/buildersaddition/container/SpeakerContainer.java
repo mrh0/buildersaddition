@@ -11,7 +11,7 @@ public class SpeakerContainer extends BaseContainer {
 	public final BlockPos pos;
 	
 	protected SpeakerContainer(int id, BlockPos pos) {
-		super(Index.SPEAKER_CONTAINER, id);
+		super(Index.SPEAKER_CONTAINER.get(), id);
 		this.pos = pos;
 	}
 	

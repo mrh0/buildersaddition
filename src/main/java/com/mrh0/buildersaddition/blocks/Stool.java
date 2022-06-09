@@ -47,7 +47,7 @@ public class Stool extends BaseDerivativeBlock implements ISeat {
 		if(type) {
 			Item item = player.getItemInHand(hand).getItem();
 			for(int i = 0; i < Index.PILLOW.length; i++) {
-				if(item == Index.PILLOW[i].asItem()) {
+				if(item == Index.PILLOW[i].get().asItem()) {
 					if(!player.isCreative())
 						player.getItemInHand(hand).shrink(1);
 					world.setBlockAndUpdate(pos, state.setValue(PILLOW, StoolState.fromIndex(i)));

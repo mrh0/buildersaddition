@@ -27,7 +27,7 @@ public class ShelfTileEntity extends RandomizableContainerBlockEntity implements
 	public ModInventory handler;
 	
 	public ShelfTileEntity(BlockPos pos, BlockState state) {
-		super(Index.SHELF_TILE_ENTITY_TYPE, pos, state);
+		super(Index.SHELF_TILE_ENTITY_TYPE.get(), pos, state);
 		handler = new ModInventory(6, this::changed);
 	}
 	

@@ -14,7 +14,7 @@ public class ArcadeContainer extends BaseContainer {
 	public final BlockPos pos;
 	
 	protected ArcadeContainer(int id, BlockPos pos) {
-		super(Index.ARCADE_CONTAINER, id);
+		super(Index.ARCADE_CONTAINER.get(), id);
 		this.pos = pos;
 	}
 	

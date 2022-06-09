@@ -14,11 +14,11 @@ public class VerticalComparatorTileEntity extends BlockEntity {
 	private int cache;
 
 	public VerticalComparatorTileEntity(BlockPos pos, BlockState state) {
-		super(Index.VERTICAL_COMPARATOR_TILE_ENTITY_TYPE, pos, state);
+		super(Index.VERTICAL_COMPARATOR_TILE_ENTITY_TYPE.get(), pos, state);
 	}
 
 	public static void tick(Level world, BlockPos pos, BlockState state, VerticalComparatorTileEntity te) {
-		VerticalComparatorBlock b = ((VerticalComparatorBlock) Index.VERTICAL_COMPARATOR);
+		VerticalComparatorBlock b = ((VerticalComparatorBlock) Index.VERTICAL_COMPARATOR.get());
 		int n = b.getInputSignal(world, pos, state);
 		if(te.cache != n) {
 			b.checkTickOnNeighbor(world, pos, state);

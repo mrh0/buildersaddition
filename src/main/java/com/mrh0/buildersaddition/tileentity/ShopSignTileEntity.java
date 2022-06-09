@@ -20,7 +20,7 @@ public class ShopSignTileEntity extends BlockEntity {
 	private ItemStack item;
 	
 	public ShopSignTileEntity(BlockPos pos, BlockState state) {
-		super(Index.SHOP_SIGN_TILE_ENTITY_TYPE, pos, state);
+		super(Index.SHOP_SIGN_TILE_ENTITY_TYPE.get(), pos, state);
 		item = ItemStack.EMPTY;
 	}
 	

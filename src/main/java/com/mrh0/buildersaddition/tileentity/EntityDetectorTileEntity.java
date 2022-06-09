@@ -16,7 +16,7 @@ public class EntityDetectorTileEntity extends BlockEntity {
 	public int cycle = 0;
 	
 	public EntityDetectorTileEntity(BlockPos pos, BlockState state) {
-		super(Index.ENTITY_DETECTOR_TILE_ENTITY_TYPE, pos, state);
+		super(Index.ENTITY_DETECTOR_TILE_ENTITY_TYPE.get(), pos, state);
 	}
 
 	public static void tick(Level world, BlockPos pos, BlockState state, EntityDetectorTileEntity te) {
@@ -33,6 +33,6 @@ public class EntityDetectorTileEntity extends BlockEntity {
 			power = n > 0 ? (dis-i+1) * 15/dis : power;
 		}
 		if(power != state.getValue(EntityDetector.POWER))
-			world.setBlockAndUpdate(pos, Index.ENTITY_DETECTOR.defaultBlockState().setValue(EntityDetector.FACING, state.getValue(EntityDetector.FACING)).setValue(EntityDetector.POWER, Math.max(Math.min(power, 15), 0)));
+			world.setBlockAndUpdate(pos, Index.ENTITY_DETECTOR.get().defaultBlockState().setValue(EntityDetector.FACING, state.getValue(EntityDetector.FACING)).setValue(EntityDetector.POWER, Math.max(Math.min(power, 15), 0)));
 	}
 }
