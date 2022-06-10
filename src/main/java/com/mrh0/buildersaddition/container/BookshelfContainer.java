@@ -43,7 +43,7 @@ public class BookshelfContainer extends BaseContainer {
 	public BookshelfContainer(int window, Inventory playerInv, BlockEntity be, ContainerData data) {
 		super(Index.BOOKSHELF_CONTAINER.get(), window);
 		checkContainerSize(playerInv, SLOTS);
-		System.out.println("SLOTS: " + slots.size());
+		
 		this.data = data;
 		this.be = (BookshelfTileEntity) be;
 		
@@ -73,6 +73,7 @@ public class BookshelfContainer extends BaseContainer {
 		}
 		
 		addDataSlots(data);
+		System.out.println("SLOTS: " + slots.size() + ":" + playerInv.player.level.isClientSide());
 	}
 	
 	@Override
