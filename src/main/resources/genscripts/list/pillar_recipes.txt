@@ -36,3 +36,4 @@ _0,deepslate_bricks,deepslate_bricks
 _0,deepslate_tiles,deepslate_tiles
 _1,deepslate_bricks,polished_deepslate
 _1,deepslate_tiles,polished_deepslate
+#,mud_bricks,mud_bricks

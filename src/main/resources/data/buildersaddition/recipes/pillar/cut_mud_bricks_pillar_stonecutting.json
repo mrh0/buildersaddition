@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+      "item": "minecraft:mud_bricks"
+    },
+    "result": "buildersaddition:cut_mud_bricks_pillar",
+    "count": 1
+}

@@ -1,0 +1,9 @@
+{
+    "parent": "buildersaddition:block/pillar/cut_pillar_both_base",
+    "textures": {
+          "side": "minecraft:block/mud_bricks",
+          "particle": "minecraft:block/mud_bricks",
+          "top": "minecraft:block/mud_bricks",
+          "platform": "minecraft:block/mud_bricks"
+      }
+  }

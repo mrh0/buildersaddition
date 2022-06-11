@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "quark:mangrove_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:mangrove_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:mangrove_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_mangrove",
+		"count": 2
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

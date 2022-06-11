@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SSS","FTF"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:mangrove_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:mangrove_fence"
+		},
+		"T":
+		{
+			"item": "minecraft:stick"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bench_mangrove",
+		"count": 3
+	}
+}

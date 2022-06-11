@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "buildersaddition:mud_bricks_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:mud_bricks",
+		"count": 1
+	}
+}

@@ -21,3 +21,4 @@ basalt,polished_basalt_top,polished_basalt_side,polished_basalt_side
 blackstone,polished_blackstone,polished_blackstone_bricks,polished_blackstone
 deepslate_bricks,deepslate_bricks,deepslate_bricks,deepslate_bricks
 deepslate_tiles,deepslate_tiles,deepslate_tiles,deepslate_tiles
+mud_bricks,mud_bricks,mud_bricks,mud_bricks

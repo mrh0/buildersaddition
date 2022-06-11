@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SS","PW"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:mangrove_slab"
+		},
+		"P":
+		{
+			"item": "quark:mangrove_vertical_slab"
+		},
+		"W":
+		{
+			"tag": "forge:rods/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:support_bracket_mangrove",
+		"count": 4
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

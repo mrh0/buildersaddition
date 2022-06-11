@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PSP","P P","PSP"],
+	"key":
+	{
+		"P":
+		{
+			"item": "buildersaddition:mangrove_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:mangrove_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:cabinet_mangrove",
+		"count": 1
+	}
+}

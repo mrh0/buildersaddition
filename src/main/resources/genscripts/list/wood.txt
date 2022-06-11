@@ -6,3 +6,4 @@ jungle,jungle_planks,jungle_log
 oak,oak_planks,oak_log
 spruce,spruce_planks,spruce_log
 warped,warped_planks,warped_stem
+mangrove,mangrove_planks,mangrove_log
