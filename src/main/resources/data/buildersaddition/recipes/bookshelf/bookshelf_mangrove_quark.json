@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["PSP","PSP","PSP"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:mangrove_slab"
+		},
+		"P":
+		{
+			"item": "quark:mangrove_vertical_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:bookshelf_mangrove",
+		"count": 2
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

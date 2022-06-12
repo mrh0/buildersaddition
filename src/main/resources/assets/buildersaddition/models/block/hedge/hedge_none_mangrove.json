@@ -1,0 +1,7 @@
+{
+  "parent": "buildersaddition:block/hedge/hedge_none_base",
+  "textures": {
+        "leaves": "minecraft:block/mangrove_leaves",
+        "particle": "minecraft:block/mangrove_leaves"
+    }
+}

@@ -34,7 +34,7 @@ public class ClientEventHandler {
 			return b != null && c != null ? BiomeColors.getAverageFoliageColor(b, c) : FoliageColor.getDefaultColor();
 		};
 		
-		evt.getBlockColors().register(bc, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get());
+		evt.getBlockColors().register(bc, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get(),  Index.HEDGE_MANGROVE.get());
 	}
 	
 	@SubscribeEvent
@@ -44,7 +44,7 @@ public class ClientEventHandler {
 			return Minecraft.getInstance().getBlockColors().getColor(blockstate, null, (BlockPos)null, b);
 		};
 		
-		evt.getItemColors().register(ic, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get());
+		evt.getItemColors().register(ic, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get(),  Index.HEDGE_MANGROVE.get());
 	}
 	
 	public static void clientRegistry() {

@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SSS","SSS","SSS"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:mangrove_slab"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:shelf_mangrove",
+		"count": 2
+	}
+}

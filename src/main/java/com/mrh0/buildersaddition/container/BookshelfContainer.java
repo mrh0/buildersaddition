@@ -73,7 +73,6 @@ public class BookshelfContainer extends BaseContainer {
 		}
 		
 		addDataSlots(data);
-		System.out.println("SLOTS: " + slots.size() + ":" + playerInv.player.level.isClientSide());
 	}
 	
 	@Override

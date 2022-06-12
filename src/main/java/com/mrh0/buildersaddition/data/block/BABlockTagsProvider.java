@@ -8,6 +8,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.TagsProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -26,8 +27,8 @@ public class BABlockTagsProvider extends TagsProvider<Block> {
 	}
 
 	protected Path getPath(ResourceLocation rl) {
-		return this.getPath(rl)
-				.resolve("data/" + rl.getNamespace() + "/tags/blocks/" + rl.getPath() + ".json");
+		return this.pathProvider.json(rl); //Path.of("data", rl.getNamespace(), "/tags/blocks/" + rl.getPath() + ".json");
+				//.resolve("data/" + rl.getNamespace() + "/tags/blocks/" + rl.getPath() + ".json");
 	}
 
 	public String getName() {

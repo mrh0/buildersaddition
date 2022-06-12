@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "quark:mangrove_vertical_slab"
+		},
+		{
+			"item": "quark:mangrove_vertical_slab"
+		},
+		{
+			"item": "quark:mangrove_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_mangrove"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_mangrove",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

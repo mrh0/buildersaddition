@@ -1,0 +1,6 @@
+// 1.19	2022-06-12T14:33:50.3305471	BA Block Tags
+0b619317e3473c19c16a05ae6872fdca862c3df0 data/minecraft/tags/blocks/leaves.json
+c4af342d0b8a90f2cd63f431c26a42e548a9f9c3 data/minecraft/tags/blocks/mineable/axe.json
+b9d3745689431434584cbcae1acbfada924b296f data/minecraft/tags/blocks/mineable/pickaxe.json
+e5de6f9232b6df626caccd95f859e6d8b077c2a8 data/minecraft/tags/blocks/mineable/shovel.json
+9db6db7bbea36d89e1d9b576f31fc1a6ef270d5e data/minecraft/tags/blocks/needs_stone_tool.json

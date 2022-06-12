@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "buildersaddition:stone_vertical_slab",
     "buildersaddition:smooth_stone_vertical_slab",
@@ -44,6 +43,7 @@
     "buildersaddition:exposed_cut_copper_vertical_slab",
     "buildersaddition:weathered_cut_copper_vertical_slab",
     "buildersaddition:oxidized_cut_copper_vertical_slab",
+    "buildersaddition:mud_bricks_vertical_slab",
     "buildersaddition:cut_stone_pillar",
     "buildersaddition:cut_smooth_stone_pillar",
     "buildersaddition:cut_sandstone_pillar",
@@ -66,6 +66,7 @@
     "buildersaddition:cut_quartz_bricks_pillar",
     "buildersaddition:cut_deepslate_bricks_pillar",
     "buildersaddition:cut_deepslate_tiles_pillar",
+    "buildersaddition:cut_mud_bricks_pillar",
     "buildersaddition:iron_ladder",
     "buildersaddition:iron_ladder_rough",
     "buildersaddition:iron_fence",

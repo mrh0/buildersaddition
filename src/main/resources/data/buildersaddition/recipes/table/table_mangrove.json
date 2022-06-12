@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"PP",
+		"FF"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "minecraft:mangrove_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:mangrove_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:table_mangrove",
+		"count": 2
+	}
+}

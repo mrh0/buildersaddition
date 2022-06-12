@@ -80,7 +80,7 @@ public class EventHandler {
 		ExistingFileHelper exHelper = event.getExistingFileHelper();
 		DataGenerator gen = event.getGenerator();
 		if(event.includeServer()) {
-			gen.addProvider(false, new BABlockTagsProvider(gen, BuildersAddition.MODID, exHelper));
+			gen.addProvider(true, new BABlockTagsProvider(gen, BuildersAddition.MODID, exHelper));
 		}
 	}
 }

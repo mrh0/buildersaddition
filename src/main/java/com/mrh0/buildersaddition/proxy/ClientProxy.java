@@ -23,6 +23,7 @@ public class ClientProxy extends CommonProxy {
 		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_DARK_OAK.get(), cutout);
 		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_JUNGLE.get(), cutout);
 		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_ACACIA.get(), cutout);
+		ItemBlockRenderTypes.setRenderLayer(Index.HEDGE_MANGROVE.get(), cutout);
         
 		ItemBlockRenderTypes.setRenderLayer(Index.CROSSRAIL.get(), cutout);
         

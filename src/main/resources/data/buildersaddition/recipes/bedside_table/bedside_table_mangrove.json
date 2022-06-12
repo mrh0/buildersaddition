@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "buildersaddition:mangrove_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:mangrove_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:mangrove_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_mangrove"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_mangrove",
+		"count": 1
+	}
+}

@@ -19,18 +19,17 @@ public class BaseDerivativeBlock extends BaseBlock {
 	public BaseDerivativeBlock(String name, Block source) {
 		super(name, Properties.copy(source));
 		this.source = source;
-		
 		blockTagSort(this, source);
 	}
 	
 	public BaseDerivativeBlock(String name, Block source, BlockOptions opts) {
 		super(name, Properties.copy(source), opts);
 		this.source = source;
-		
 		blockTagSort(this, source);
 	}
 	
 	public static void blockTagSort(Block current, Block source) {
+		
 		Material m = source.defaultBlockState().getMaterial();
 		
 		if(m == Material.WOOD || m == Material.NETHER_WOOD || m == Material.WOOL)
@@ -45,8 +44,8 @@ public class BaseDerivativeBlock extends BaseBlock {
 			BABlockTagsProvider.earthBlocks.add(current);
 		else if(m == Material.LEAVES) 
 			BABlockTagsProvider.leavesBlocks.add(current);
-		//else
-		//	System.out.println("Skipping: " + current.getRegistryName());
+		else
+			System.out.println("Skipping: " + current + " : " + m);
 	}
 	
 	public Block getSourceBlock() {

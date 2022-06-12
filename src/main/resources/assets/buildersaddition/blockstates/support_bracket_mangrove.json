@@ -1,0 +1,46 @@
+{
+    "variants": {
+        "facing=north,supporting=up,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_up_full_mangrove", "y":180 },
+        "facing=west,supporting=up,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_up_full_mangrove", "y":90 },
+        "facing=south,supporting=up,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_up_full_mangrove" },
+        "facing=east,supporting=up,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_up_full_mangrove", "y":270 },
+        
+        "facing=north,supporting=down,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_down_full_mangrove", "y":180 },
+        "facing=west,supporting=down,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_down_full_mangrove", "y":90 },
+        "facing=south,supporting=down,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_down_full_mangrove" },
+        "facing=east,supporting=down,mount=full": { "model": "buildersaddition:block/support_bracket/support_bracket_down_full_mangrove", "y":270 },
+        
+        
+        "facing=north,supporting=up,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_up_pillar_mangrove", "y":180 },
+        "facing=west,supporting=up,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_up_pillar_mangrove", "y":90 },
+        "facing=south,supporting=up,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_up_pillar_mangrove" },
+        "facing=east,supporting=up,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_up_pillar_mangrove", "y":270 },
+        
+        "facing=north,supporting=down,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_down_pillar_mangrove", "y":180 },
+        "facing=west,supporting=down,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_down_pillar_mangrove", "y":90 },
+        "facing=south,supporting=down,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_down_pillar_mangrove" },
+        "facing=east,supporting=down,mount=pillar": { "model": "buildersaddition:block/support_bracket/support_bracket_down_pillar_mangrove", "y":270 },
+        
+        
+        "facing=north,supporting=up,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_up_wall_mangrove", "y":180 },
+        "facing=west,supporting=up,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_up_wall_mangrove", "y":90 },
+        "facing=south,supporting=up,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_up_wall_mangrove" },
+        "facing=east,supporting=up,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_up_wall_mangrove", "y":270 },
+        
+        "facing=north,supporting=down,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_down_wall_mangrove", "y":180 },
+        "facing=west,supporting=down,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_down_wall_mangrove", "y":90 },
+        "facing=south,supporting=down,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_down_wall_mangrove" },
+        "facing=east,supporting=down,mount=wall": { "model": "buildersaddition:block/support_bracket/support_bracket_down_wall_mangrove", "y":270 },
+        
+        
+        "facing=north,supporting=up,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_up_fence_mangrove", "y":180 },
+        "facing=west,supporting=up,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_up_fence_mangrove", "y":90 },
+        "facing=south,supporting=up,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_up_fence_mangrove" },
+        "facing=east,supporting=up,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_up_fence_mangrove", "y":270 },
+        
+        "facing=north,supporting=down,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_down_fence_mangrove", "y":180 },
+        "facing=west,supporting=down,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_down_fence_mangrove", "y":90 },
+        "facing=south,supporting=down,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_down_fence_mangrove" },
+        "facing=east,supporting=down,mount=fence": { "model": "buildersaddition:block/support_bracket/support_bracket_down_fence_mangrove", "y":270 }
+    }
+}

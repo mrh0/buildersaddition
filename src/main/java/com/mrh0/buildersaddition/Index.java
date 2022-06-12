@@ -487,7 +487,7 @@ public class Index {
 			return state.getBlock() == CUT_SMOOTH_RED_SANDSTONE_PILLAR.get() || state.getBlock() == CUT_SMOOTH_SANDSTONE_PILLAR.get() || state.getBlock() == CUT_RED_SANDSTONE_PILLAR.get() || state.getBlock() == CUT_SANDSTONE_PILLAR.get(); 
 		};
 		final IConnects stoneBricksConnector = (state, source) -> { 
-			return state.getBlock() == CUT_STONE_BRICKS_PILLAR.get() || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR.get()  || state.getBlock() == CUT_BLACKSTONE_PILLAR.get() || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR.get(); 
+			return state.getBlock() == CUT_STONE_BRICKS_PILLAR.get() || state.getBlock() == CUT_MOSSY_STONE_BRICKS_PILLAR.get()  || state.getBlock() == CUT_BLACKSTONE_PILLAR.get() || state.getBlock() == CUT_DEEPSLATE_BRICKS_PILLAR.get() || state.getBlock() == CUT_MUD_BRICKS_PILLAR.get(); 
 		};
 		final IConnects netherBricksConnector = (state, source) -> { 
 			return state.getBlock() == CUT_NETHER_BRICKS_PILLAR.get() || state.getBlock() == CUT_RED_NETHER_BRICKS_PILLAR.get(); 
