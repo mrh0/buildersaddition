@@ -56,7 +56,7 @@ public class Speaker extends BaseDerivativeBlock implements EntityBlock {
         }
     	
     	BaseInstrument mte = (BaseInstrument) world.getBlockEntity(pos);
-		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+		NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos);
         });
     	return InteractionResult.SUCCESS;

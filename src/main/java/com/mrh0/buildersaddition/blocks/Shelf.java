@@ -82,7 +82,7 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 		}
 
 		ShelfTileEntity mte = (ShelfTileEntity) world.getBlockEntity(pos);
-		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+		NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
 			extraData.writeBlockPos(mte.getBlockPos());
 		});
 		return InteractionResult.CONSUME;

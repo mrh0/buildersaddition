@@ -40,16 +40,16 @@ public class GameEvents {
         if(item instanceof ShovelItem) {
         	if(!Config.PATHBLOCK_CREATION_ENABLED.get())
         		return;
-        	BlockState stateClicked = evt.getWorld().getBlockState(evt.getPos());
+        	BlockState stateClicked = evt.getLevel().getBlockState(evt.getPos());
         	if(stateClicked.is(Blocks.GRAVEL)) {
-        		BlockState stateAbove = evt.getWorld().getBlockState(evt.getPos().above());
+        		BlockState stateAbove = evt.getLevel().getBlockState(evt.getPos().above());
     			if(!stateAbove.getMaterial().isSolid() || stateAbove.getBlock() instanceof FenceGateBlock) {
-	        		if(!evt.getWorld().isClientSide()) {
-	        			evt.getWorld().setBlockAndUpdate(evt.getPos(), Index.GRAVEL_PATH.get().defaultBlockState());
-	        			evt.getItemStack().hurtAndBreak(1, evt.getPlayer(), (Player e) -> {});
+	        		if(!evt.getLevel().isClientSide()) {
+	        			evt.getLevel().setBlockAndUpdate(evt.getPos(), Index.GRAVEL_PATH.get().defaultBlockState());
+	        			evt.getItemStack().hurtAndBreak(1, evt.getEntity(), (Player e) -> {});
 	        		}
 	        		else {
-	        			evt.getPlayer().playSound(SoundEvents.GRAVEL_BREAK, 1, 1);
+	        			evt.getEntity().playSound(SoundEvents.GRAVEL_BREAK, 1, 1);
 	        		}
 	        		evt.setCancellationResult(InteractionResult.SUCCESS);
                 	evt.setCanceled(true);
@@ -59,17 +59,17 @@ public class GameEvents {
         else if(item instanceof PickaxeItem) {
         	if(!Config.CRACKED_CREATION_ENABLED.get())
         		return;
-        	BlockState stateClicked = evt.getWorld().getBlockState(evt.getPos());
+        	BlockState stateClicked = evt.getLevel().getBlockState(evt.getPos());
         	BlockState next = Util.crackedState(stateClicked);
     		if(next != null) {
-    			if(!evt.getWorld().isClientSide()) {
-        			evt.getWorld().setBlockAndUpdate(evt.getPos(), next);
-        			evt.getItemStack().hurtAndBreak(1, evt.getPlayer(), (Player e) -> {});
+    			if(!evt.getLevel().isClientSide()) {
+        			evt.getLevel().setBlockAndUpdate(evt.getPos(), next);
+        			evt.getItemStack().hurtAndBreak(1, evt.getEntity(), (Player e) -> {});
                 	return;
     			}
     			evt.setCancellationResult(InteractionResult.SUCCESS);
             	evt.setCanceled(true);
-        		evt.getPlayer().playSound(SoundEvents.UI_STONECUTTER_TAKE_RESULT, 1, 1);
+        		evt.getEntity().playSound(SoundEvents.UI_STONECUTTER_TAKE_RESULT, 1, 1);
     		}	
         }
         else if(item == Items.REPEATER) {
@@ -82,11 +82,11 @@ public class GameEvents {
         		//if(evt.getUseBlock() != Result.DEFAULT)
         		//	return;
         		BlockPos pos = evt.getPos().relative(evt.getFace());
-        		if(evt.getWorld().getBlockState(pos).isAir()) {
+        		if(evt.getLevel().getBlockState(pos).isAir()) {
         			
         			// Ugly Work-around
-        			if(!evt.getPlayer().isCrouching()) {
-	        			if(evt.getWorld().getBlockState(evt.getPos()).use(evt.getWorld(), evt.getPlayer(), evt.getHand(), evt.getHitVec()) != InteractionResult.PASS) {
+        			if(!evt.getEntity().isCrouching()) {
+	        			if(evt.getLevel().getBlockState(evt.getPos()).use(evt.getLevel(), evt.getEntity(), evt.getHand(), evt.getHitVec()) != InteractionResult.PASS) {
 	        				evt.setCancellationResult(InteractionResult.SUCCESS);
 	                    	evt.setCanceled(true);
 	                    	return;
@@ -99,29 +99,29 @@ public class GameEvents {
         			//if(!evt.getWorld().isModifiable(evt.getPlayer(), pos))
         			//	return;
         			
-        			if(!evt.getWorld().getBlockState(evt.getPos()).isFaceSturdy(evt.getWorld(), evt.getPos(), evt.getFace()))
+        			if(!evt.getLevel().getBlockState(evt.getPos()).isFaceSturdy(evt.getLevel(), evt.getPos(), evt.getFace()))
         				return;
         			
-        			evt.getWorld().setBlockAndUpdate(pos, state);
-        			Index.VERTICAL_REPEATER.get().setPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
-        			if(!evt.getPlayer().isCreative())
+        			evt.getLevel().setBlockAndUpdate(pos, state);
+        			Index.VERTICAL_REPEATER.get().setPlacedBy(evt.getLevel(), pos, state, evt.getEntity(), evt.getItemStack());
+        			if(!evt.getEntity().isCreative())
         				evt.getItemStack().shrink(1);
         			
         			evt.setCancellationResult(InteractionResult.SUCCESS);
                 	evt.setCanceled(true);
-                	SoundType snd = Blocks.REPEATER.getSoundType(state, evt.getWorld(), pos, evt.getEntity());
-            		evt.getPlayer().playSound(snd.getPlaceSound(), snd.getVolume(), snd.getPitch());
+                	SoundType snd = Blocks.REPEATER.getSoundType(state, evt.getLevel(), pos, evt.getEntity());
+            		evt.getEntity().playSound(snd.getPlaceSound(), snd.getVolume(), snd.getPitch());
         		}
         	}
         }
         else if(item == Items.COMPARATOR) {
         	if(evt.getFace().getAxis() != Axis.Y) {
         		BlockPos pos = evt.getPos().relative(evt.getFace());
-        		if(evt.getWorld().getBlockState(pos).isAir()) {
+        		if(evt.getLevel().getBlockState(pos).isAir()) {
         			
         			// Ugly Work-around
-        			if(!evt.getPlayer().isCrouching()) {
-	        			if(evt.getWorld().getBlockState(evt.getPos()).use(evt.getWorld(), evt.getPlayer(), evt.getHand(), evt.getHitVec()) != InteractionResult.PASS) {
+        			if(!evt.getEntity().isCrouching()) {
+	        			if(evt.getLevel().getBlockState(evt.getPos()).use(evt.getLevel(), evt.getEntity(), evt.getHand(), evt.getHitVec()) != InteractionResult.PASS) {
 	        				evt.setCancellationResult(InteractionResult.SUCCESS);
 	                    	evt.setCanceled(true);
 	                    	return;
@@ -134,18 +134,18 @@ public class GameEvents {
         			//if(!evt.getWorld().isModifiable(evt.getPlayer(), pos))
         			//	return;
         			
-        			if(!evt.getWorld().getBlockState(evt.getPos()).isFaceSturdy(evt.getWorld(), evt.getPos(), evt.getFace()))
+        			if(!evt.getLevel().getBlockState(evt.getPos()).isFaceSturdy(evt.getLevel(), evt.getPos(), evt.getFace()))
         				return;
         			
-        			evt.getWorld().setBlockAndUpdate(pos, state);
-        			Index.VERTICAL_COMPARATOR.get().setPlacedBy(evt.getWorld(), pos, state, evt.getEntityLiving(), evt.getItemStack());
-        			if(!evt.getPlayer().isCreative())
+        			evt.getLevel().setBlockAndUpdate(pos, state);
+        			Index.VERTICAL_COMPARATOR.get().setPlacedBy(evt.getLevel(), pos, state, evt.getEntity(), evt.getItemStack());
+        			if(!evt.getEntity().isCreative())
         				evt.getItemStack().shrink(1);
         			
         			evt.setCancellationResult(InteractionResult.SUCCESS);
                 	evt.setCanceled(true);
-                	SoundType snd = Blocks.COMPARATOR.getSoundType(state, evt.getWorld(), pos, evt.getEntity());
-            		evt.getPlayer().playSound(snd.getPlaceSound(), snd.getVolume(), snd.getPitch());
+                	SoundType snd = Blocks.COMPARATOR.getSoundType(state, evt.getLevel(), pos, evt.getEntity());
+            		evt.getEntity().playSound(snd.getPlaceSound(), snd.getVolume(), snd.getPitch());
         		}
         	}
         }

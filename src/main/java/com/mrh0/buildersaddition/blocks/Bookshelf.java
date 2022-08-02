@@ -102,7 +102,7 @@ public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
         }
     	
     	BookshelfTileEntity mte = (BookshelfTileEntity) world.getBlockEntity(pos);
-		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+		NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos);
         });
     	return InteractionResult.CONSUME;

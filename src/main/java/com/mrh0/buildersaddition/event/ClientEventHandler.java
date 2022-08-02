@@ -22,14 +22,14 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ColorHandlerEvent;
+import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BuildersAddition.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEventHandler {
 	@SubscribeEvent
-	public static void registerColor(ColorHandlerEvent.Block evt){
+	public static void registerColor(RegisterColorHandlersEvent.Block evt){
 		BlockColor bc = (a, b, c, d) -> {
 			return b != null && c != null ? BiomeColors.getAverageFoliageColor(b, c) : FoliageColor.getDefaultColor();
 		};
@@ -38,7 +38,7 @@ public class ClientEventHandler {
 	}
 	
 	@SubscribeEvent
-	public static void registerColor(ColorHandlerEvent.Item evt){
+	public static void registerColor(RegisterColorHandlersEvent.Item evt){
 		ItemColor ic = (a, b) -> {
 			BlockState blockstate = ((BlockItem)a.getItem()).getBlock().defaultBlockState();
 			return Minecraft.getInstance().getBlockColors().getColor(blockstate, null, (BlockPos)null, b);

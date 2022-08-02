@@ -90,11 +90,11 @@ public class Index {
 	public static final DeferredRegister<PaintingVariant> PAINTINGS =
             DeferredRegister.create(ForgeRegistries.PAINTING_VARIANTS, BuildersAddition.MODID);
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, BuildersAddition.MODID);
+            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, BuildersAddition.MODID);
     public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(ForgeRegistries.CONTAINERS, BuildersAddition.MODID);
+            DeferredRegister.create(ForgeRegistries.MENU_TYPES, BuildersAddition.MODID);
     public static final DeferredRegister<EntityType<?>> ENTITIES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, BuildersAddition.MODID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, BuildersAddition.MODID);
     
     public static void register(IEventBus eventBus) {
     	BLOCKS.register(eventBus);

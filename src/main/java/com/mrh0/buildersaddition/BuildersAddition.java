@@ -2,23 +2,17 @@ package com.mrh0.buildersaddition;
 
 import com.mrh0.buildersaddition.arcade.ArcadeManager;
 import com.mrh0.buildersaddition.config.Config;
-import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.ClientEventHandler;
-import com.mrh0.buildersaddition.event.ContainerRegistry;
-import com.mrh0.buildersaddition.event.ItemRegistry;
-import com.mrh0.buildersaddition.event.TileEntityRegistry;
 import com.mrh0.buildersaddition.itemgroup.ModGroup;
 import com.mrh0.buildersaddition.midi.MidiHandler;
 import com.mrh0.buildersaddition.network.PlayNotePacket;
 import com.mrh0.buildersaddition.network.UpdateDataPacket;
 import com.mrh0.buildersaddition.proxy.*;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -29,7 +23,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 

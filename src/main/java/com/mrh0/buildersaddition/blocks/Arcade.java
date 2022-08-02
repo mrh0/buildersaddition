@@ -142,7 +142,7 @@ public class Arcade extends BaseBlock implements EntityBlock {
         }
     	
     	ArcadeTileEntity mte = getTE(state, world, pos);
-		NetworkHooks.openGui((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+		NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos); //mte.pos
         });
     	return InteractionResult.SUCCESS;
