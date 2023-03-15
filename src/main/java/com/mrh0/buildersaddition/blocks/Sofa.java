@@ -1,6 +1,5 @@
 package com.mrh0.buildersaddition.blocks;
 
-import com.mojang.math.Vector3d;
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.blocks.base.ISeat;
 import com.mrh0.buildersaddition.entity.SeatEntity;

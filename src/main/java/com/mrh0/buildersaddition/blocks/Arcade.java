@@ -60,14 +60,14 @@ public class Arcade extends BaseBlock implements EntityBlock {
 
 	public Arcade() {
 		super("arcade", Properties.copy(Blocks.IRON_BLOCK)
-				.noCollission().isSuffocating(Util::isntSolid).isValidSpawn(Util::isntSolid).isViewBlocking(Util::isntSolid), new BlockOptions().setItemOptions(new ItemOptions().group(null)));
+				.isSuffocating(Util::isntSolid).isValidSpawn(Util::isntSolid).isViewBlocking(Util::isntSolid), new BlockOptions().setItemOptions(new ItemOptions()));
 		
 		this.registerDefaultState(this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH));
 	}
 
 	public Arcade(String name) {
 		super("arcade_" + name, Properties.copy(Blocks.OAK_PLANKS)
-				.noCollission().isValidSpawn(Util::isntSolid).isSuffocating(Util::isntSolid).isViewBlocking(Util::isntSolid));
+				.isValidSpawn(Util::isntSolid).isSuffocating(Util::isntSolid).isViewBlocking(Util::isntSolid));
 		this.registerDefaultState(this.defaultBlockState().setValue(HALF, DoubleBlockHalf.LOWER).setValue(FACING, Direction.NORTH));
 	}
 	

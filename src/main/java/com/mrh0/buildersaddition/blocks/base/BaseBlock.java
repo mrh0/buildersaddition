@@ -4,7 +4,6 @@ import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
-import com.mrh0.buildersaddition.itemgroup.ModGroup;
 
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

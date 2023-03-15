@@ -47,7 +47,6 @@ import com.mrh0.buildersaddition.event.opts.BlockOptions;
 import com.mrh0.buildersaddition.event.opts.ContainerOptions;
 import com.mrh0.buildersaddition.event.opts.ItemOptions;
 import com.mrh0.buildersaddition.event.opts.TileEntityOptions;
-import com.mrh0.buildersaddition.itemgroup.ModGroup;
 import com.mrh0.buildersaddition.items.base.GenericItem;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;

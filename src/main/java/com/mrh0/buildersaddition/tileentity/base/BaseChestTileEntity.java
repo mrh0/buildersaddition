@@ -21,9 +21,9 @@ import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.items.wrapper.InvWrapper;
@@ -49,7 +49,7 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		protected boolean isOwnContainer(Player player) {
 			if (player.containerMenu instanceof ChestMenu) {
 				Container container = ((ChestMenu) player.containerMenu).getContainer();
-				return container == this;
+				return container == BaseChestTileEntity.this;
 			} else {
 				return false;
 			}
@@ -75,7 +75,7 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 	@Override
 	public <T> LazyOptional<T> getCapability(
 			Capability<T> cap, Direction side) {
-		if (!this.remove && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+		if (!this.remove && cap == ForgeCapabilities.ITEM_HANDLER) {
 			if (this.chestHandler == null)
 				this.chestHandler = LazyOptional.of(this::createHandler);
 			return this.chestHandler.cast();

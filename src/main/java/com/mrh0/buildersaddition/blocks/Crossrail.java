@@ -3,7 +3,6 @@ package com.mrh0.buildersaddition.blocks;
 import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.event.BlockRegistry;
 import com.mrh0.buildersaddition.event.opts.BlockOptions;
-import com.mrh0.buildersaddition.itemgroup.ModGroup;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;

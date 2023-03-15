@@ -41,10 +41,10 @@ public class BABlockTagsProvider extends TagsProvider<Block> {
 
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
-		this.tag(BlockTags.MINEABLE_WITH_AXE).add(woodenBlocks);
-		this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(stoneBlocks.toArray(new Block[0]));
-		this.tag(BlockTags.NEEDS_STONE_TOOL).add(ironBlocks.toArray(new Block[0]));
-		this.tag(BlockTags.LEAVES).add(leavesBlocks.toArray(new Block[0]));
-		this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(earthBlocks.toArray(new Block[0]));
+		//this.tag(BlockTags.MINEABLE_WITH_AXE).add(woodenBlocks);
+		//this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(stoneBlocks.toArray(new Block[0]));
+		//this.tag(BlockTags.NEEDS_STONE_TOOL).add(ironBlocks.toArray(new Block[0]));
+		//this.tag(BlockTags.LEAVES).add(leavesBlocks.toArray(new Block[0]));
+		//this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(earthBlocks.toArray(new Block[0]));
 	}
 }

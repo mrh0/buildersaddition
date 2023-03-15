@@ -18,7 +18,7 @@ import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class BookshelfContainer extends BaseContainer {
@@ -47,7 +47,7 @@ public class BookshelfContainer extends BaseContainer {
 		this.data = data;
 		this.be = (BookshelfTileEntity) be;
 		
-		this.be.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
+		this.be.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
 			int xPos = 8;
 			int yPos = 18;
 			

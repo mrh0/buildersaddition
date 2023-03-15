@@ -56,13 +56,13 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	@Override
 	public void resize(Minecraft p_96575_, int p_96576_, int p_96577_) {
 		super.resize(p_96575_, p_96576_, p_96577_);
-		this.minecraft.keyboardHandler.setSendRepeatsToGui(false);
+		//this.minecraft.keyboardHandler.setSendRepeatsToGui(false);
 	}
 	
 	@Override
 	public void onClose() {
 		super.onClose();
-		this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
+		//this.minecraft.keyboardHandler.setSendRepeatsToGui(true);
 	}
 
 	@Override

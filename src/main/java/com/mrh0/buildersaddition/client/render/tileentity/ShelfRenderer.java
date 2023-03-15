@@ -1,7 +1,6 @@
 package com.mrh0.buildersaddition.client.render.tileentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
 import com.mrh0.buildersaddition.blocks.Shelf;
 import com.mrh0.buildersaddition.inventory.ModInventory;
 import com.mrh0.buildersaddition.tileentity.ShelfTileEntity;
@@ -36,7 +35,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 		if(items.getStackInSlot(0) != ItemStack.EMPTY) {
 	        matrixStackIn.pushPose();
 	        matrixStackIn.translate(.5f, .5f, .5f);
-			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(-dir.toYRot()+180f)); // rotate | getHorizontalAngle
+			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f)); // rotate | getHorizontalAngle
 			matrixStackIn.translate(u1*xoffset, u1*yoffset, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
 	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(0), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1); // 1 ? 
@@ -47,7 +46,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 		if(items.getStackInSlot(1) != ItemStack.EMPTY) {
 	        matrixStackIn.pushPose();
 	        matrixStackIn.translate(.5f, .5f, .5f);
-			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(-dir.toYRot()+180f));
+			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(0, u1*yoffset, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
 	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(1), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
@@ -58,7 +57,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
         if(items.getStackInSlot(2) != ItemStack.EMPTY) {
 	        matrixStackIn.pushPose();
 	        matrixStackIn.translate(.5f, .5f, .5f);
-			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(-dir.toYRot()+180f));
+			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(-u1*xoffset, u1*yoffset, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
 	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(2), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
@@ -69,7 +68,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
         if(items.getStackInSlot(3) != ItemStack.EMPTY) {
 	        matrixStackIn.pushPose();
 	        matrixStackIn.translate(.5f, .5f, .5f);
-			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(-dir.toYRot()+180f));
+			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(u1*xoffset, -u1*yoffset2, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
 	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(3), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
@@ -80,7 +79,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
         if(items.getStackInSlot(4) != ItemStack.EMPTY) {
 	        matrixStackIn.pushPose();
 	        matrixStackIn.translate(.5f, .5f, .5f);
-			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(-dir.toYRot()+180f));
+			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(0, -u1*yoffset2, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
 	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(4), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
@@ -91,7 +90,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
         if(items.getStackInSlot(5) != ItemStack.EMPTY) {
 	        matrixStackIn.pushPose();
 	        matrixStackIn.translate(.5f, .5f, .5f);
-			matrixStackIn.mulPose(Vector3f.YP.rotationDegrees(-dir.toYRot()+180f));
+			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(-u1*xoffset, -u1*yoffset2, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
 	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(5), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);

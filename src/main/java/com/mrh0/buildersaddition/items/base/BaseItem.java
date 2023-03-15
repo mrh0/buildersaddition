@@ -3,7 +3,6 @@ package com.mrh0.buildersaddition.items.base;
 import java.util.List;
 import com.mrh0.buildersaddition.event.ItemRegistry;
 import com.mrh0.buildersaddition.event.opts.ItemOptions;
-import com.mrh0.buildersaddition.itemgroup.ModGroup;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
