@@ -1,5 +1,5 @@
 package com.mrh0.buildersaddition.itemgroup;
-
+/*
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.Index;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,3 +17,4 @@ public class ModGroup extends CreativeModeTab {
 		return new ItemStack(Index.CUT_QUARTZ_PILLAR.get());
 	}
 }
+*/

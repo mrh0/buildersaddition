@@ -19,7 +19,7 @@ public class BaseItem extends Item {
 	private String itemName;
 	private ItemOptions opts;
 	public BaseItem(String name, Properties properties, ItemOptions opts) {
-		super(properties.tab(opts.hidden?null:ModGroup.MAIN));
+		super(properties);
 		this.itemName = name;
 		this.opts = opts;
 		//setRegistryName(name);

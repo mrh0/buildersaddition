@@ -3,7 +3,7 @@ package com.mrh0.buildersaddition;
 import com.mrh0.buildersaddition.arcade.ArcadeManager;
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.event.ClientEventHandler;
-import com.mrh0.buildersaddition.itemgroup.ModGroup;
+import com.mrh0.buildersaddition.event.EventHandler;
 import com.mrh0.buildersaddition.midi.MidiHandler;
 import com.mrh0.buildersaddition.network.PlayNotePacket;
 import com.mrh0.buildersaddition.network.UpdateDataPacket;
@@ -11,6 +11,7 @@ import com.mrh0.buildersaddition.proxy.*;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 import net.minecraftforge.fml.DistExecutor;
@@ -48,7 +49,7 @@ public class BuildersAddition {
 	
 	public BuildersAddition() {
 		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-		new ModGroup("builders_addition_group");
+		//new ModGroup("builders_addition_group");
 		
 		Index.register(eventBus);
 		
@@ -57,6 +58,7 @@ public class BuildersAddition {
     	FMLJavaModLoadingContext.get().getModEventBus().addListener(this::postInit);
     	//MinecraftForge.EVENT_BUS.addListener(this::serverevt);
     	MinecraftForge.EVENT_BUS.register(this);
+		eventBus.addListener(this::addCreative);
     	
     	ArcadeManager.init();
     	
@@ -86,4 +88,10 @@ public class BuildersAddition {
         Network.registerMessage(i++, UpdateDataPacket.class, UpdateDataPacket::encode, UpdateDataPacket::decode, UpdateDataPacket::handle);
     	System.out.println("Builders Addition Initialized!");
     }
+
+	public void addCreative(CreativeModeTabEvent.BuildContents event) {
+		if(event.getTab() != EventHandler.MAIN_TAB) return;
+
+		Index.ITEMS.getEntries().forEach(event::accept);
+	}
 }

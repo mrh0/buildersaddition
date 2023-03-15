@@ -1,5 +1,7 @@
 package com.mrh0.buildersaddition;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Supplier;
 
 import com.mrh0.buildersaddition.blocks.Arcade;
@@ -462,7 +464,8 @@ public class Index {
 	public static RegistryObject<PaintingVariant> HEROBRINE_PAINTING;
 	public static RegistryObject<PaintingVariant> ENDERMAN_PAINTING;
 	public static RegistryObject<PaintingVariant> WINTER_PAINTING;
-	
+
+	public static List<RegistryObject<Item>> ALL_ITEMS;
 	
 	public static void items() {
 		IRON_ROD = ITEMS.register("iron_rod", () -> new GenericItem("iron_rod", new Properties(), new ItemOptions()));
@@ -470,7 +473,7 @@ public class Index {
 	
 	public static RegistryObject<Block> block(String name, Supplier<Block> block) {
 		RegistryObject<Block> b = BLOCKS.register(name, block);
-		ITEMS.register(name, () -> new BlockItem(b.get(), new Item.Properties().tab(ModGroup.MAIN)));
+		ITEMS.register(name, () -> new BlockItem(b.get(), new Item.Properties()));
 		return b;
 	}
 	

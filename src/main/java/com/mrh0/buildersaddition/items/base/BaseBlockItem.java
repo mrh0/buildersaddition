@@ -10,13 +10,13 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class BaseBlockItem extends BlockItem {
 
 	public BaseBlockItem(Block block, ItemOptions opts) {
-		super(block,  new Properties().tab(opts.group));
+		super(block,  new Properties());
 		//ForgeRegistries.ITEMS.register(ForgeRegistries.BLOCKS.getKey(block), this);
 		//this.setRegistryName(block.getRegistryName());
 	}
 	
 	public BaseBlockItem(Block block, CreativeModeTab group) {
-		super(block,  new Properties().tab(group));
+		super(block,  new Properties());
 		//ForgeRegistries.ITEMS.register(ForgeRegistries.BLOCKS.getKey(block), this);
 		//this.setRegistryName(block.getRegistryName());
 	}

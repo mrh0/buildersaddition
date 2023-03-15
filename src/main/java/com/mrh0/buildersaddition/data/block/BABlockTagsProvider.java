@@ -3,15 +3,19 @@ package com.mrh0.buildersaddition.data.block;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.Registry;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class BABlockTagsProvider extends TagsProvider<Block> {
 	
@@ -22,8 +26,8 @@ public class BABlockTagsProvider extends TagsProvider<Block> {
 	public static List<Block> earthBlocks = new ArrayList<>();
 	public static List<Block> circuitBlocks = new ArrayList<>();
 	
-	public BABlockTagsProvider(DataGenerator gen, String modId, ExistingFileHelper existingFileHelper) {
-		super(gen, Registry.BLOCK, modId, existingFileHelper);
+	public BABlockTagsProvider(DataGenerator gen, String modId, CompletableFuture<HolderLookup.Provider> provider, ExistingFileHelper existingFileHelper) {
+		super(gen.getPackOutput(), ForgeRegistries.Keys.BLOCKS, provider, modId,  existingFileHelper);
 	}
 
 	protected Path getPath(ResourceLocation rl) {
@@ -36,8 +40,8 @@ public class BABlockTagsProvider extends TagsProvider<Block> {
 	}
 
 	@Override
-	protected void addTags() {
-		this.tag(BlockTags.MINEABLE_WITH_AXE).add(woodenBlocks.toArray(new Block[0]));
+	protected void addTags(HolderLookup.Provider provider) {
+		this.tag(BlockTags.MINEABLE_WITH_AXE).add(woodenBlocks);
 		this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(stoneBlocks.toArray(new Block[0]));
 		this.tag(BlockTags.NEEDS_STONE_TOOL).add(ironBlocks.toArray(new Block[0]));
 		this.tag(BlockTags.LEAVES).add(leavesBlocks.toArray(new Block[0]));

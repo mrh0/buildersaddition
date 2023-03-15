@@ -43,45 +43,45 @@ public class SpeakerTileEntity extends BaseInstrument implements MenuProvider, I
 		BlockPos pos = getBlockPos();
 		if(note > 0 && note <= 24) {
 			if(isInstrumentActive(0))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_BASS, note);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_BASS.get(), note);
 			if(isInstrumentActive(1))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_SNARE, note);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_SNARE.get(), note);
 			if(isInstrumentActive(2))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_HAT, note);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_HAT.get(), note);
 			if(isInstrumentActive(3))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_BASEDRUM, note);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_BASEDRUM.get(), note);
 			if(isInstrumentActive(11))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_DIDGERIDOO, note);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_DIDGERIDOO.get(), note);
 		}
 		if(note > 12 && note <= 36) {
 			if(isInstrumentActive(7))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_GUITAR, note - 12);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_GUITAR.get(), note - 12);
 		}
 		if(note > 24 && note <= 48) {
 			if(isInstrumentActive(6))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_CHIME, note - 24);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_CHIME.get(), note - 24);
 			if(isInstrumentActive(9))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_IRON_XYLOPHONE, note - 24);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_IRON_XYLOPHONE.get(), note - 24);
 			if(isInstrumentActive(12))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_BIT, note - 24);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_BIT.get(), note - 24);
 			if(isInstrumentActive(13))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_BANJO, note - 24);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_BANJO.get(), note - 24);
 			if(isInstrumentActive(14))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_PLING, note - 24);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_PLING.get(), note - 24);
 			if(isInstrumentActive(15))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_HARP, note - 24);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_HARP.get(), note - 24);
 		}
 		if(note > 36 && note <= 60) {
 			if(isInstrumentActive(5))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_FLUTE, note - 36);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_FLUTE.get(), note - 36);
 			if(isInstrumentActive(10))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_COW_BELL, note - 36);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_COW_BELL.get(), note - 36);
 		}
 		if(note > 48 ) {//&& note <= 72
 			if(isInstrumentActive(4))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_BELL, note - 48);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_BELL.get(), note - 48);
 			if(isInstrumentActive(8))
-				playNote(world, pos, SoundEvents.NOTE_BLOCK_XYLOPHONE, note - 48);
+				playNote(world, pos, SoundEvents.NOTE_BLOCK_XYLOPHONE.get(), note - 48);
 		}
 	}
 	

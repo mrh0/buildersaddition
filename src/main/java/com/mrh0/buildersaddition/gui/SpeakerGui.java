@@ -54,8 +54,9 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 			
 		};
 
-		connectBtn = new Button(x - 48 - 12, y + 24 * 4, 96, 20,
-				Component.translatable(BuildersAddition.midi == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"), (b) -> {
+		connectBtn = new Button.Builder(
+				Component.translatable(BuildersAddition.midi == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"),
+				(b) -> {
 					if (BuildersAddition.midi != null) {
 						if (BuildersAddition.midi.midiEvent == null)
 							BuildersAddition.midi.midiEvent = this;
@@ -65,9 +66,12 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 						connectBtn.setMessage(Component.translatable(
 								BuildersAddition.midi.midiEvent == null ? "container.buildersaddition.speaker.connect" : "container.buildersaddition.speaker.disconnect"));// SetMessage
 					}
-				});
+				}
+		).bounds(x - 48 - 12, y + 24 * 4, 96, 20).build();
 		
-		helpBtn = new Button(x + 52 - 12, y + 24 * 4, 20, 20, Component.literal("?"), (b) -> {});
+		helpBtn = new Button.Builder(Component.literal("?"), (b) -> {})
+				.bounds(x + 52 - 12, y + 24 * 4, 20, 20)
+				.build();
 
 		this.addRenderableWidget(connectBtn); //addButton
 		this.addRenderableWidget(helpBtn); //addButton
@@ -75,8 +79,9 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 		btns = new Button[SIZE];
 
 		for (int i = 0; i < SIZE; i++) {
-			btns[i] = new Button(x + (i > 7 ? -100 : 4), y + (i % 8 * 24) - 4 * 24, 96, 20,
-					Component.translatable("note.buildersaddition." + Notes.instrumentNames[i]), p);
+			btns[i] = new Button.Builder(Component.translatable("note.buildersaddition." + Notes.instrumentNames[i]), p)
+					.bounds(x + (i > 7 ? -100 : 4), y + (i % 8 * 24) - 4 * 24, 96, 20)
+					.build();
 			this.addRenderableWidget(btns[i]);// addButton
 			btns[i].active = te.isInstrumentActive(i);// active
 		}
