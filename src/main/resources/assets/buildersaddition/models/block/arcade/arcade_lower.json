@@ -1,9 +1,9 @@
 {
     "textures": {
-        "pad": "buildersaddition:blocks/arcade_pad",
+        "pad": "buildersaddition:block/arcade_pad",
         "sides": "minecraft:block/purple_concrete",
-        "body": "buildersaddition:blocks/arcade_panel",
-        "particle": "buildersaddition:blocks/arcade_panel"
+        "body": "buildersaddition:block/arcade_panel",
+        "particle": "buildersaddition:block/arcade_panel"
     },
     "display": {
         "gui": {

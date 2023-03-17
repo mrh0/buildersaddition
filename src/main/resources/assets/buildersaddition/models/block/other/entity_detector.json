@@ -4,7 +4,7 @@
         "bottom": "block/observer_back",
         "side": "block/observer_side",
         "top": "block/observer_top",
-        "front": "buildersaddition:blocks/entity_detector_front",
+        "front": "buildersaddition:block/entity_detector_front",
         "particle": "block/observer_front"
     },
     "elements": [

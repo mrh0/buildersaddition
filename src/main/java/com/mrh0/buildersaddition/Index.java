@@ -414,7 +414,7 @@ public class Index {
 	public static RegistryObject<Block> CANDLE;
 	public static RegistryObject<Block> SOUL_CANDLE;
 	
-	public static RegistryObject<Block> ARCADE;
+	//public static RegistryObject<Block> ARCADE;
 	
 	public static RegistryObject<Block> ARCADE_OAK;
 	public static RegistryObject<Block> ARCADE_BIRCH;
@@ -754,7 +754,7 @@ public class Index {
 		//CANDLE = new Candle("candle", ParticleTypes.FLAME);
 		//SOUL_CANDLE = new Candle("soul_candle", ParticleTypes.SOUL_FIRE_FLAME);
 		
-		ARCADE = block("arcade", () -> new Arcade());
+		//ARCADE = block("arcade", () -> new Arcade());
 		ARCADE_OAK = block("arcade_oak", () -> new Arcade("oak"));
 		ARCADE_BIRCH = block("arcade_birch", () -> new Arcade("birch"));
 		ARCADE_SPRUCE = block("arcade_spruce", () -> new Arcade("spruce"));
@@ -833,7 +833,7 @@ public class Index {
     		BlockEntityType.Builder.of(SpeakerTileEntity::new, SPEAKER.get()).build(null));
 		
 		ARCADE_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("arcade", () ->
-    		BlockEntityType.Builder.of(ArcadeTileEntity::new, getAll(ARCADE, ARCADE_OAK, ARCADE_BIRCH, ARCADE_SPRUCE, ARCADE_DARK_OAK, ARCADE_JUNGLE, ARCADE_ACACIA, ARCADE_WARPED, ARCADE_CRIMSON, ARCADE_MANGROVE)).build(null));
+    		BlockEntityType.Builder.of(ArcadeTileEntity::new, getAll(ARCADE_OAK, ARCADE_BIRCH, ARCADE_SPRUCE, ARCADE_DARK_OAK, ARCADE_JUNGLE, ARCADE_ACACIA, ARCADE_WARPED, ARCADE_CRIMSON, ARCADE_MANGROVE)).build(null));
 		
 		ENTITY_DETECTOR_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("entity_detector", () ->
     		BlockEntityType.Builder.of(EntityDetectorTileEntity::new, ENTITY_DETECTOR.get()).build(null));

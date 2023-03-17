@@ -1,6 +1,6 @@
 {
     "parent": "block/rail_flat",
     "textures": {
-        "rail": "buildersaddition:blocks/crossrail"
+        "rail": "buildersaddition:block/crossrail"
     }
 }

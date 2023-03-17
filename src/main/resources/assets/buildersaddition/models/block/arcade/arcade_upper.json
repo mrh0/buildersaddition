@@ -1,12 +1,12 @@
 {
     "textures": {
         "ball": "minecraft:block/red_concrete",
-        "sign": "buildersaddition:blocks/arcade_sign",
-        "screen": "buildersaddition:blocks/arcade_screen",
+        "sign": "buildersaddition:block/arcade_sign",
+        "screen": "buildersaddition:block/arcade_screen",
         "sides": "minecraft:block/purple_concrete",
         "stick": "minecraft:block/black_concrete_powder",
-        "body": "buildersaddition:blocks/arcade_panel",
-        "particle": "buildersaddition:blocks/arcade_panel"
+        "body": "buildersaddition:block/arcade_panel",
+        "particle": "buildersaddition:block/arcade_panel"
     },
     "display": {
         "gui": {
