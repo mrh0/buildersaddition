@@ -40,7 +40,7 @@ public class SeatEntity extends Entity {
 	public void tick() {
 		super.tick();
 		if(!level.isClientSide()) {
-			if(this.getPassengers().isEmpty() || !(level.getBlockState(new BlockPos(this.getX(), this.getY(), this.getZ())).getBlock() instanceof ISeat)) {
+			if(this.getPassengers().isEmpty() || !(level.getBlockState(new BlockPos((int)this.getX(), (int)this.getY(), (int)this.getZ())).getBlock() instanceof ISeat)) {
 				this.setRemoved(RemovalReason.KILLED);
 			}
 		}

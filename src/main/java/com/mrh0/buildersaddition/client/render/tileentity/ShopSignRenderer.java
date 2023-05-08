@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.core.Direction.Axis;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Vector3f;
 
@@ -43,7 +44,7 @@ public class ShopSignRenderer implements BlockEntityRenderer<ShopSignTileEntity>
 		matrixStackIn.translate(-offsetSide(state), offsetY(state), u1);
 		matrixStackIn.scale(0.8f, 0.8f, .8f);
 		matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(180f));
-        Minecraft.getInstance().getItemRenderer().renderStatic(item, ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
+        Minecraft.getInstance().getItemRenderer().renderStatic(item, ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1);
         matrixStackIn.popPose();
         
         //Other side
@@ -55,7 +56,7 @@ public class ShopSignRenderer implements BlockEntityRenderer<ShopSignTileEntity>
 		matrixStackIn.translate(offsetSide(state), offsetY(state), u1);
 		matrixStackIn.scale(0.8f, 0.8f, .8f);
 		matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(180f));
-        Minecraft.getInstance().getItemRenderer().renderStatic(item, ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
+        Minecraft.getInstance().getItemRenderer().renderStatic(item, ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1);
         matrixStackIn.popPose();
 	}
 	

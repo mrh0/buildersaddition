@@ -8,6 +8,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
@@ -38,7 +39,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f)); // rotate | getHorizontalAngle
 			matrixStackIn.translate(u1*xoffset, u1*yoffset, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
-	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(0), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1); // 1 ? 
+	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(0), ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1); // 1 ?
 	        matrixStackIn.popPose();
 		}
         
@@ -49,7 +50,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(0, u1*yoffset, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
-	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(1), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
+	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(1), ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1);
 	        matrixStackIn.popPose();
 		}
         
@@ -60,7 +61,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(-u1*xoffset, u1*yoffset, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
-	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(2), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
+	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(2), ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1);
 	        matrixStackIn.popPose();
         }
         
@@ -71,7 +72,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(u1*xoffset, -u1*yoffset2, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
-	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(3), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
+	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(3), ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1);
 	        matrixStackIn.popPose();
         }
         
@@ -82,7 +83,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(0, -u1*yoffset2, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
-	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(4), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
+	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(4), ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1);
 	        matrixStackIn.popPose();
         }
         
@@ -93,7 +94,7 @@ public class ShelfRenderer implements BlockEntityRenderer<ShelfTileEntity> {
 			matrixStackIn.mulPose(com.mojang.math.Axis.YP.rotationDegrees(-dir.toYRot()+180f));
 			matrixStackIn.translate(-u1*xoffset, -u1*yoffset2, zoffset);
 			matrixStackIn.scale(scale, scale, scale);
-	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(5), ItemTransforms.TransformType.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, 1);
+	        Minecraft.getInstance().getItemRenderer().renderStatic(items.getStackInSlot(5), ItemDisplayContext.FIXED, combinedLightIn, combinedOverlayIn, matrixStackIn, bufferIn, tileEntityIn.getLevel(), 1);
 	        matrixStackIn.popPose();
         }
 	}
