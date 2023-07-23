@@ -12,6 +12,7 @@ import com.mrh0.buildersaddition.network.UpdateDataPacket;
 import com.mrh0.buildersaddition.tileentity.SpeakerTileEntity;
 import com.mrh0.buildersaddition.util.Notes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Button.OnPress;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -125,8 +126,8 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 
 	// render
 	@Override
-	public void render(PoseStack stack, int x, int y, float partialTicks) {
-		super.render(stack, x, y, partialTicks);
+	public void render(GuiGraphics gg, int x, int y, float partialTicks) {
+		super.render(gg, x, y, partialTicks);
 		//GlStateManager._disableLighting();
 		if(btns == null)
 			return;
@@ -134,13 +135,20 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 
 		for (int i = 0; i < SIZE; i++) {
 			if (btns[i].isHoveredOrFocused())// isHovered
-				renderTooltip(stack, Component.literal("F#" + Notes.octaveNames[i]), x, y);
+				setTooltipForNextRenderPass(Component.literal("F#" + Notes.octaveNames[i]));
+				//renderTooltip(gg, Component.literal("F#" + Notes.octaveNames[i]), x, y);
 		}
 		if(helpBtn.isMouseOver(x, y))
-			renderTooltip(stack, Component.literal(
-					(hasDevice() ? "Device Discovered" : "No Device Connected") 
-					+ ", Midi Input: " + (Config.MIDI_INPUT_ENABLED.get() ? "Enabled" : "Disabled")), x, y);
-		this.renderTooltip(stack, x, y);
+			setTooltipForNextRenderPass(Component.literal(
+					(hasDevice() ? "Device Discovered" : "No Device Connected")
+							+ ", Midi Input: " + (Config.MIDI_INPUT_ENABLED.get() ? "Enabled" : "Disabled")));
+			/*renderTooltip(gg, Component.literal(
+					(hasDevice() ? "Device Discovered" : "No Device Connected")
+					+ ", Midi Input: " + (Config.MIDI_INPUT_ENABLED.get() ? "Enabled" : "Disabled")), x, y);*/
+
+
+
+		this.renderTooltip(gg, x, y);
 	}
 	
 	
@@ -170,13 +178,8 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 	}
 
 	@Override
-	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
-		renderBackground(stack);//renderBackground
+	protected void renderBg(GuiGraphics gg, float partialTicks, int x, int y) {
+		renderBackground(gg);//renderBackground
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-	}
-	
-	@Override
-	protected void renderLabels(PoseStack p_97808_, int p_97809_, int p_97810_) {
-		//super.renderLabels(p_97808_, p_97809_, p_97810_);
 	}
 }

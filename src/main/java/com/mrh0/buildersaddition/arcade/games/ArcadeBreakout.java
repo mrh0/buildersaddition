@@ -8,6 +8,7 @@ import com.mrh0.buildersaddition.arcade.ArcadeScreen;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 
 
 public class ArcadeBreakout extends ArcadeGame {
@@ -34,9 +35,9 @@ public class ArcadeBreakout extends ArcadeGame {
 		s.print(0, "Work in progress.");
 	}
 	
-	private void fgRender(PoseStack stack, int x, int y, int width, int height) {
+	private void fgRender(GuiGraphics gg, int x, int y, int width, int height) {
 		for(Ball b : balls) {
-			b.render(stack, x, y, width, height);
+			b.render(gg, x, y, width, height);
 		}
 	}
 
@@ -81,8 +82,8 @@ public class ArcadeBreakout extends ArcadeGame {
 			//s.print(getX(), getY(), " ");
 		}
 		
-		public void render(PoseStack stack, int sx, int sy, int swidth, int sheight) {
-			Gui.fill(stack, sx + (int)(x*s.cellWidth), sy + (int)(y*s.cellHeight), sx + s.cellWidth + (int)(x*s.cellWidth), sy + s.cellHeight + (int)(y*s.cellHeight), ArcadeScreen.getRenderColor(0xa));
+		public void render(GuiGraphics gg, int sx, int sy, int swidth, int sheight) {
+			gg.fill(sx + (int)(x*s.cellWidth), sy + (int)(y*s.cellHeight), sx + s.cellWidth + (int)(x*s.cellWidth), sy + s.cellHeight + (int)(y*s.cellHeight), ArcadeScreen.getRenderColor(0xa));
 		}
 		
 		public int getX() {

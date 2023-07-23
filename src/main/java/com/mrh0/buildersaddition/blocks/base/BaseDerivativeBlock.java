@@ -7,9 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 
 
 public class BaseDerivativeBlock extends BaseBlock {
@@ -29,8 +27,8 @@ public class BaseDerivativeBlock extends BaseBlock {
 	}
 	
 	public static void blockTagSort(Block current, Block source) {
-		
-		Material m = source.defaultBlockState().getMaterial();
+		// TODO: Sigh.
+		/*Material m = source.defaultBlockState().getMaterial();
 		
 		if(m == Material.WOOD || m == Material.NETHER_WOOD || m == Material.WOOL)
 			BABlockTagsProvider.woodenBlocks.add(current);
@@ -45,7 +43,7 @@ public class BaseDerivativeBlock extends BaseBlock {
 		else if(m == Material.LEAVES) 
 			BABlockTagsProvider.leavesBlocks.add(current);
 		else
-			System.out.println("Skipping: " + current + " : " + m);
+			System.out.println("Skipping: " + current + " : " + m);*/
 	}
 	
 	public Block getSourceBlock() {

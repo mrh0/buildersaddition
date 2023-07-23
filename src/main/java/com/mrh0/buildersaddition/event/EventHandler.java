@@ -5,6 +5,7 @@ import com.mrh0.buildersaddition.Index;
 import com.mrh0.buildersaddition.data.block.BABlockTagsProvider;
 import com.mrh0.buildersaddition.entity.SeatEntity;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -19,10 +20,10 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(modid = BuildersAddition.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -79,14 +80,7 @@ public class EventHandler {
 		//reg.register(Index.PROMO_PAINTING);
 	}*/
 
-	public static CreativeModeTab MAIN_TAB;
-	@SubscribeEvent
-	public static void registerCreativeTab(CreativeModeTabEvent.Register event) {
-		MAIN_TAB = event.registerCreativeModeTab(
-				new ResourceLocation(BuildersAddition.MODID, "builders_addition_group"),
-				builder -> builder.icon(() -> new ItemStack(Index.CUT_BRICKS_PILLAR.get(), 1)).title(Component.translatable("itemGroup.buildersaddition:builders_addition_group"))
-		);
-	}
+
 	
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {

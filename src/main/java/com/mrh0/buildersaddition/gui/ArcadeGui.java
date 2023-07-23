@@ -11,7 +11,7 @@ import com.mrh0.buildersaddition.arcade.games.ArcadeMenu;
 import com.mrh0.buildersaddition.container.ArcadeContainer;
 import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.ContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -37,12 +37,24 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 		
 		this.imageWidth = 336;
 		this.imageHeight = 226;
+		//this.inventoryLabelY -= 5;
 		
 		screen = te.screen;
 		
 		setGame(ArcadeMenu::new);
 	}
-	
+
+	@Override
+	protected void renderBg(GuiGraphics gg, float p_97788_, int p_97789_, int p_97790_) {
+		renderBackground(gg);
+		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+		//RenderSystem.setShaderTexture(0, GUI);
+
+		int i = (this.width - this.imageWidth) / 2;
+		int j = (this.height - this.imageHeight) / 2;
+		gg.blit(GUI, i, j - 5, 0, 0, this.imageWidth, this.imageHeight, 512, 256);
+	}
+
 	public void setGame(GameConstructor g) {
 		screen.setBgRenderer(null);
 		screen.setFgRenderer(null);
@@ -71,16 +83,16 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	}
 
 	@Override
-	public void render(PoseStack stack, int x, int y, float p_230430_4_) {
-		super.render(stack, x, y, p_230430_4_);
+	public void render(GuiGraphics gg, int x, int y, float p_230430_4_) {
+		super.render(gg, x, y, p_230430_4_);
 		
-		screen.renderBackground(stack, this.width, this.height);
-		screen.renderForeground(stack, this.font, this.width, this.height);
+		screen.renderBackground(gg, this.width, this.height);
+		screen.renderForeground(gg, this.font, this.width, this.height);
 		
 		//GlStateManager._disableLighting();
 		GlStateManager._disableBlend();
 		//Screen.fill(stack, p_238467_1_, p_238467_2_, p_238467_3_, p_238467_4_, color);
-		this.renderTooltip(stack, x, y);
+		this.renderTooltip(gg, x, y);
 	}
 	
 	public BlockEntity getTE() {
@@ -100,18 +112,7 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	}
 
 	@Override
-	protected void renderBg(PoseStack stack, float p_97788_, int p_97789_, int p_97790_) {
-		renderBackground(stack);
-		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-		RenderSystem.setShaderTexture(0, GUI);
-		//this.minecraft.getTextureManager().bindForSetup(GUI);
-		int i = (this.width - this.imageWidth) / 2;
-		int j = (this.height - this.imageHeight) / 2;
-		GuiComponent.blit(stack, i, j - 5, 0, 0, this.imageWidth, this.imageHeight, 512, 256);
-	}
-	
-	@Override
-	protected void renderLabels(PoseStack stack, int p_97809_, int p_97810_) {
-		this.font.draw(stack, this.title, (float)this.inventoryLabelX, (float)this.inventoryLabelY - 5, 4210752);
+	protected void renderLabels(GuiGraphics gg, int p_282681_, int p_283686_) {
+		gg.drawString(this.font, this.title, this.titleLabelX, this.titleLabelY - 5, 4210752, false);
 	}
 }

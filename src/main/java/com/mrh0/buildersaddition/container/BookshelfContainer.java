@@ -28,7 +28,7 @@ public class BookshelfContainer extends BaseContainer {
 	public static final int SLOTS = 18;
 	
 	public BookshelfContainer(int id, Inventory playerInv, FriendlyByteBuf data) {
-		this(id, playerInv, playerInv.player.level.getBlockEntity(data.readBlockPos()), new SimpleContainerData(0));
+		this(id, playerInv, playerInv.player.level().getBlockEntity(data.readBlockPos()), new SimpleContainerData(0));
 	}
 
 	/*public static BookshelfContainer create(int windowId, Inventory playerInventory, BlockPos pos, ItemStackHandler inv) {

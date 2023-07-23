@@ -3,6 +3,7 @@ package com.mrh0.buildersaddition;
 import com.mrh0.buildersaddition.arcade.ArcadeManager;
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.event.ClientEventHandler;
+import com.mrh0.buildersaddition.event.CreativeModeTabRegistry;
 import com.mrh0.buildersaddition.event.EventHandler;
 import com.mrh0.buildersaddition.midi.MidiHandler;
 import com.mrh0.buildersaddition.network.PlayNotePacket;
@@ -11,7 +12,7 @@ import com.mrh0.buildersaddition.proxy.*;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 import net.minecraftforge.fml.DistExecutor;
@@ -52,6 +53,7 @@ public class BuildersAddition {
 		//new ModGroup("builders_addition_group");
 		
 		Index.register(eventBus);
+		CreativeModeTabRegistry.register(eventBus);
 		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setupClient);
@@ -89,8 +91,8 @@ public class BuildersAddition {
     	System.out.println("Builders Addition Initialized!");
     }
 
-	public void addCreative(CreativeModeTabEvent.BuildContents event) {
-		if(event.getTab() != EventHandler.MAIN_TAB) return;
+	public void addCreative(BuildCreativeModeTabContentsEvent event) {
+		if(event.getTabKey() != CreativeModeTabRegistry.MAIN_TAB.getKey()) return;
 
 		Index.ITEMS.getEntries().forEach(event::accept);
 	}

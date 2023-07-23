@@ -50,7 +50,7 @@ public class UpdateDataPacket {
 		
 		}
 	private static void sendUpdate(BlockPos pos, ServerPlayer player, int data) {
-		BlockEntity te = (BlockEntity) player.level.getBlockEntity(pos);
+		BlockEntity te = (BlockEntity) player.level().getBlockEntity(pos);
 		
 	    if (te != null) {
 	        if(te instanceof IIntData) {

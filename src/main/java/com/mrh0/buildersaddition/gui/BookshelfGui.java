@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.container.BookshelfContainer;
 
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -32,19 +33,19 @@ public class BookshelfGui extends AbstractContainerScreen<BookshelfContainer> {
 	}
 
 	// Render
-	public void render(PoseStack stack, int p_230430_2_, int p_230430_3_, float ticks) {
-		this.renderBackground(stack);
-		super.render(stack, p_230430_2_, p_230430_3_, ticks);
-		this.renderTooltip(stack, p_230430_2_, p_230430_3_);
+	public void render(GuiGraphics gg, int p_230430_2_, int p_230430_3_, float ticks) {
+		this.renderBackground(gg);
+		super.render(gg, p_230430_2_, p_230430_3_, ticks);
+		this.renderTooltip(gg, p_230430_2_, p_230430_3_);
 	}
 
 	@Override
-	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
+	protected void renderBg(GuiGraphics gg, float partialTicks, int x, int y) {
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-		RenderSystem.setShaderTexture(0, GUI);//this.minecraft.getTextureManager().bindForSetup(GUI);
+		//RenderSystem.setShaderTexture(0, GUI);
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(stack, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		gg.blit(GUI, i, j, 0, 0, this.imageWidth, this.imageHeight);
 	}
 	
 	/*@Override

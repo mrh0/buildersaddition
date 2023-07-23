@@ -57,6 +57,6 @@ public class GravelPath extends BaseDerivativeBlock {
 
 	public boolean isValidPosition(BlockState state, LevelAccessor worldIn, BlockPos pos) {
 		BlockState blockstate = worldIn.getBlockState(pos.above());
-		return !blockstate.getMaterial().isSolid() || blockstate.getBlock() instanceof FenceGateBlock;
+		return blockstate.isAir() || blockstate.getBlock() instanceof FenceGateBlock;
 	}
 }

@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
 
@@ -39,7 +40,7 @@ public class ArcadeScreen {
 	private ScreenRender bgRenderer = null;
 	
 	public interface ScreenRender {
-		void render(PoseStack stack, int startx, int starty, int width, int height);
+		void render(GuiGraphics gg, int startx, int starty, int width, int height);
 	}
 	
 	public ArcadeScreen() {
@@ -168,30 +169,30 @@ public class ArcadeScreen {
 		System.out.println(getChar(e) + ":" + getBg(e) + ":" + getFg(e));
 	}
 	
-	public void renderBackground(PoseStack stack, int swidth, int sheight) {
+	public void renderBackground(GuiGraphics gg, int swidth, int sheight) {
 		int startx = swidth/2 - width*cellWidth/2;
 		int starty = sheight/2 - height*cellHeight/2;
 		for(int i = 0; i < screen.length; i++) {
 			int x = startx + getX(i) * cellWidth;
 			int y = starty + getY(i) * cellHeight;
-			Gui.fill(stack, x, y, x + cellWidth, y + cellHeight, getRenderColor(getBg(screen[i])));
+			gg.fill(x, y, x + cellWidth, y + cellHeight, getRenderColor(getBg(screen[i])));
 		}
 		
 		if(bgRenderer != null)
-			bgRenderer.render(stack, startx, starty, width * cellWidth, height * cellHeight);
+			bgRenderer.render(gg, startx, starty, width * cellWidth, height * cellHeight);
 	}
 	
-	public void renderForeground(PoseStack stack, Font fr, int swidth, int sheight) {
+	public void renderForeground(GuiGraphics gg, Font fr, int swidth, int sheight) {
 		int startx = swidth/2 - width*cellWidth/2;
 		int starty = sheight/2 - height*cellHeight/2;
 		for(int i = 0; i < screen.length; i++) {
 			int x = startx + getX(i) * cellWidth;
 			int y = starty + getY(i) * cellHeight;
 			if(getChar(screen[i]) != '\0')
-				fr.draw(stack, Component.translatable(getChar(screen[i])+""), x+1, y, getHexColor(getFg(screen[i])));
+				gg.drawString(fr, Component.translatable(getChar(screen[i])+""), x+1, y, getHexColor(getFg(screen[i])));
 		}
 		
 		if(fgRenderer != null)
-			fgRenderer.render(stack, startx, starty, width * cellWidth, height * cellHeight);
+			fgRenderer.render(gg, startx, starty, width * cellWidth, height * cellHeight);
 	}
 }

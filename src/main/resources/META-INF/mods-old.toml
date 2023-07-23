@@ -1,0 +1,51 @@
+modLoader="javafml" #mandatory
+# A version range to match for said mod loader - for regular FML @Mod it will be the forge version
+loaderVersion="[41,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+# Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
+license="MIT"
+# A URL to refer people to when problems occur with this mod
+# issueTrackerURL="" #optional
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+# The modid of the mod
+modId="buildersaddition" #mandatory
+# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
+version="${file.jarVersion}" #mandatory
+ # A display name for the mod
+displayName="Builders Crafts & Additions" #mandatory
+# A URL to query for updates for this mod. See the JSON update specification <here>
+# updateJSONURL="" #optional
+# A URL for the "homepage" for this mod, displayed in the mod UI
+displayURL="https://github.com/mrh0/buildersaddition" #optional
+# A file name (in the root of the mod JAR) containing a logo for display
+logoFile="buildersaddition.png" #optional
+# A text field displayed in the mod UI
+credits="Special thanks to the official Forge discord." #optional
+# A text field displayed in the mod UI
+authors="MRH0" #optional
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Additional building blocks for Minecraft Forge.
+Building, Storage, Furnature & Decoration.
+Join the Discord: https://discord.gg/qv9FvXVUX2
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.buildersaddition]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[43.1.0,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+# Here's another dependency
+[[dependencies.buildersaddition]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2, 1.20)"
+    ordering="NONE"
+    side="BOTH"
+

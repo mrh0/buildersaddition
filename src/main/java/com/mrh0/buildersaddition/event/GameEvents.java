@@ -43,7 +43,7 @@ public class GameEvents {
         	BlockState stateClicked = evt.getLevel().getBlockState(evt.getPos());
         	if(stateClicked.is(Blocks.GRAVEL)) {
         		BlockState stateAbove = evt.getLevel().getBlockState(evt.getPos().above());
-    			if(!stateAbove.getMaterial().isSolid() || stateAbove.getBlock() instanceof FenceGateBlock) {
+    			if(stateAbove.isAir() || stateAbove.getBlock() instanceof FenceGateBlock) {
 	        		if(!evt.getLevel().isClientSide()) {
 	        			evt.getLevel().setBlockAndUpdate(evt.getPos(), Index.GRAVEL_PATH.get().defaultBlockState());
 	        			evt.getItemStack().hurtAndBreak(1, evt.getEntity(), (Player e) -> {});
@@ -72,15 +72,8 @@ public class GameEvents {
         		evt.getEntity().playSound(SoundEvents.UI_STONECUTTER_TAKE_RESULT, 1, 1);
     		}	
         }
-        else if(item == Items.REPEATER) {
-        	//"ars_nouveau:glyph_press"
+        /*else if(item == Items.REPEATER) {
         	if(evt.getFace().getAxis() != Axis.Y) {
-        		/*ResourceLocation blockRes = evt.getWorld().getBlockState(evt.getPos()).getBlock().getRegistryName();
-        		if(blockRes.getNamespace().equals("ars_nouveau") && blockRes.getPath().equals("glyph_press"))
-        			return;*/
-        		//System.out.println(evt.getUseBlock());
-        		//if(evt.getUseBlock() != Result.DEFAULT)
-        		//	return;
         		BlockPos pos = evt.getPos().relative(evt.getFace());
         		if(evt.getLevel().getBlockState(pos).isAir()) {
         			
@@ -95,9 +88,6 @@ public class GameEvents {
         				
         			boolean flag = evt.getHitVec().getLocation().y - (double) evt.getPos().getY() - .5d < 0;
         			BlockState state = Index.VERTICAL_REPEATER.get().defaultBlockState().setValue(VerticalRepeaterBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).setValue(VerticalRepeaterBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
-        			//TODO
-        			//if(!evt.getWorld().isModifiable(evt.getPlayer(), pos))
-        			//	return;
         			
         			if(!evt.getLevel().getBlockState(evt.getPos()).isFaceSturdy(evt.getLevel(), evt.getPos(), evt.getFace()))
         				return;
@@ -131,9 +121,6 @@ public class GameEvents {
         			boolean flag = evt.getHitVec().getLocation().y - (double) evt.getPos().getY() - .5d < 0;
         			BlockState state = Index.VERTICAL_COMPARATOR.get().defaultBlockState().setValue(VerticalComparatorBlock.HORIZONTAL_FACING, evt.getFace().getOpposite()).setValue(VerticalComparatorBlock.VERTICAL_FACING, flag ? Direction.UP : Direction.DOWN);
         			
-        			//if(!evt.getWorld().isModifiable(evt.getPlayer(), pos))
-        			//	return;
-        			
         			if(!evt.getLevel().getBlockState(evt.getPos()).isFaceSturdy(evt.getLevel(), evt.getPos(), evt.getFace()))
         				return;
         			
@@ -148,7 +135,7 @@ public class GameEvents {
             		evt.getEntity().playSound(snd.getPlaceSound(), snd.getVolume(), snd.getPitch());
         		}
         	}
-        }
+        }*/
         //add event: When r-clicking a piston face with slime turn into a sticky-piston
     }
 	

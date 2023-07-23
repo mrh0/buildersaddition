@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.container.ShelfContainer;
 
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -32,19 +33,19 @@ public class ShelfGui extends AbstractContainerScreen<ShelfContainer> {
 
 	// Render
 	@Override
-	public void render(PoseStack stack, int x, int y, float ticks) {
-		this.renderBackground(stack);
-		super.render(stack, x, y, ticks);
-		this.renderTooltip(stack, x, y);
+	public void render(GuiGraphics gg, int x, int y, float ticks) {
+		this.renderBackground(gg);
+		super.render(gg, x, y, ticks);
+		this.renderTooltip(gg, x, y);
 	}
 
 
 	@Override
-	protected void renderBg(PoseStack stack, float partialTicks, int x, int y) {
+	protected void renderBg(GuiGraphics gg, float partialTicks, int x, int y) {
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-		RenderSystem.setShaderTexture(0, GUI);//this.minecraft.getTextureManager().bindForSetup(GUI);
+		//RenderSystem.setShaderTexture(0, GUI);
 		int i = (this.width - this.imageWidth) / 2;
 		int j = (this.height - this.imageHeight) / 2;
-		this.blit(stack, i, j, 0, 0, this.imageWidth, this.imageHeight);
+		gg.blit(GUI, i, j, 0, 0, this.imageWidth, this.imageHeight);
 	}
 }

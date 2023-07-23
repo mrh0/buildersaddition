@@ -53,7 +53,7 @@ public class PlayNotePacket {
 	private static void sendUpdate(BlockPos pos, ServerPlayer player, int note) {
 		if(!Config.MIDI_ENABLED.get())
 			return;
-		BaseInstrument te = (BaseInstrument) player.level.getBlockEntity(pos);
+		BaseInstrument te = (BaseInstrument) player.level().getBlockEntity(pos);
         if (te != null) {
         	te.playNote(note);
         	Packet<ClientGamePacketListener> supdatetileentitypacket = te.getUpdatePacket();
