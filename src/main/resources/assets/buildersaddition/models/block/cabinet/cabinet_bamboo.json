@@ -1,0 +1,8 @@
+{
+  "parent": "buildersaddition:block/cabinet/cabinet_base",
+  "textures": {
+        "stripped": "minecraft:block/stripped_bamboo_block",
+        "planks": "minecraft:block/bamboo_planks",
+        "particle": "minecraft:block/bamboo_planks"
+    }
+}

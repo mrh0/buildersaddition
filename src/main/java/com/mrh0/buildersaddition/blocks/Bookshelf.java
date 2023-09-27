@@ -8,6 +8,7 @@ import com.mrh0.buildersaddition.util.IComparetorOverride;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
 import net.minecraft.world.Containers;
@@ -33,6 +34,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
 
 public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
@@ -140,8 +142,12 @@ public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
 			boolean isMoving) {
 		if (!state.is(newState.getBlock())) {
 			BlockEntity tileentity = world.getBlockEntity(pos);
-			if (tileentity instanceof Container) {
-				Containers.dropContents(world, pos, (Container) tileentity);
+			if (tileentity instanceof BookshelfTileEntity bste) {
+				NonNullList<ItemStack> content = NonNullList.create();
+				for(int i = 0; i < bste.handler.getSlots(); i++) {
+					content.add(bste.handler.getStackInSlot(i));
+				}
+				Containers.dropContents(world, pos, content);
 				world.updateNeighborsAt(pos, this);
 			}
 		}

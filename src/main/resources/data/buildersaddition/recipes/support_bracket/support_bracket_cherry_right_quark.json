@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SS","WP"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:cherry_slab"
+		},
+		"P":
+		{
+			"item": "quark:cherry_vertical_slab"
+		},
+		"W":
+		{
+			"tag": "forge:rods/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:support_bracket_cherry",
+		"count": 4
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "buildersaddition:block/stool/stool_base",
+  "textures": {
+		"planks": "minecraft:block/cherry_planks",
+		"stripped": "minecraft:block/stripped_cherry_log",
+
+        "particle": "minecraft:block/cherry_planks"
+    }
+}

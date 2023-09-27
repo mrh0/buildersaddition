@@ -1,0 +1,29 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	["SS","WP"],
+	"key":
+	{
+		"S":
+		{
+			"item": "minecraft:bamboo_slab"
+		},
+		"P":
+		{
+			"item": "quark:bamboo_vertical_slab"
+		},
+		"W":
+		{
+			"tag": "forge:rods/wooden"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:support_bracket_bamboo",
+		"count": 4
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

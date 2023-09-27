@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "quark:cherry_vertical_slab"
+		},
+		{
+			"item": "quark:cherry_vertical_slab"
+		},
+		{
+			"item": "quark:cherry_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_cherry"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_cherry",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

@@ -3,13 +3,12 @@
 	
 	"pattern":
 	[
-		"SSS",
-		"F F",
-		"F F"
+		"PP",
+		"FF"
 	],
 	"key":
 	{
-		"S":
+		"P":
 		{
 			"item": "minecraft:crimson_slab"
 		},
@@ -20,6 +19,6 @@
 	},
 	"result":{
 		"item": "buildersaddition:table_crimson",
-		"count": 3
+		"count": 2
 	}
 }

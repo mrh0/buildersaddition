@@ -1,0 +1,9 @@
+{
+    "parent": "buildersaddition:block/counter/counter_base",
+    "textures": {
+          "stripped": "minecraft:block/stripped_bamboo_block",
+          "detail": "minecraft:block/polished_diorite",
+          "planks": "minecraft:block/bamboo_planks",
+          "particle": "minecraft:block/bamboo_planks"
+      }
+  }

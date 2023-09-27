@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:cherry_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:cherry_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:cherry_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_cherry",
+		"count": 2
+	}
+}

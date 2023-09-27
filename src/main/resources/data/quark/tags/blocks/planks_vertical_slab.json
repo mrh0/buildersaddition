@@ -8,6 +8,9 @@
 	"buildersaddition:spruce_vertical_slab",
 	"buildersaddition:jungle_vertical_slab",
 	"buildersaddition:crimson_vertical_slab",
-	"buildersaddition:warped_vertical_slab"
+	"buildersaddition:warped_vertical_slab",
+  	"buildersaddition:mangrove_vertical_slab",
+  	"buildersaddition:cherry_vertical_slab",
+  	"buildersaddition:bamboo_vertical_slab"
   ]
 }

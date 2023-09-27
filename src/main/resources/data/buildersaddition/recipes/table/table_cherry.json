@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"PP",
+		"FF"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "minecraft:cherry_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:cherry_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:table_cherry",
+		"count": 2
+	}
+}

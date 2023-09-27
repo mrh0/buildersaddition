@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"item": "quark:bamboo_vertical_slab"
+		},
+		{
+			"item": "quark:bamboo_vertical_slab"
+		},
+		{
+			"item": "quark:bamboo_vertical_slab"
+		},
+		{
+			"item": "buildersaddition:table_bamboo"
+		}
+	],
+	"result":{
+		"item": "buildersaddition:bedside_table_bamboo",
+		"count": 1
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    }
+  ]}

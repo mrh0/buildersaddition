@@ -18,7 +18,7 @@ with open("list/vertical_slab.txt", 'r') as reader:
 			"count": "2"
 		})
 		copy_template_params("vertical_slab/crafting.json", "panel/recipe/"+name+"_vertical_slab.json", {
-			"item": "minecraft:"+name,
+			"item": "minecraft:"+craft,
 			"result": "buildersaddition:"+name+"_vertical_slab"
 		})
 		copy_template_params("vertical_slab/reverse.json", "slab/recipe/reverse/"+name+"_slab.json", {

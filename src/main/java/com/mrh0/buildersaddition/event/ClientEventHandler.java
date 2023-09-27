@@ -30,11 +30,10 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientEventHandler {
 	@SubscribeEvent
 	public static void registerColor(RegisterColorHandlersEvent.Block evt){
-		BlockColor bc = (a, b, c, d) -> {
-			return b != null && c != null ? BiomeColors.getAverageFoliageColor(b, c) : FoliageColor.getDefaultColor();
-		};
+		BlockColor bc = (a, b, c, d) ->
+				b != null && c != null ? BiomeColors.getAverageFoliageColor(b, c) : FoliageColor.getDefaultColor();
 		
-		evt.getBlockColors().register(bc, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get(),  Index.HEDGE_MANGROVE.get());
+		evt.getBlockColors().register(bc, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get(),  Index.HEDGE_MANGROVE.get(), Index.HEDGE_CHERRY.get());
 	}
 	
 	@SubscribeEvent
@@ -44,7 +43,7 @@ public class ClientEventHandler {
 			return Minecraft.getInstance().getBlockColors().getColor(blockstate, null, (BlockPos)null, b);
 		};
 		
-		evt.getItemColors().register(ic, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get(),  Index.HEDGE_MANGROVE.get());
+		evt.getItemColors().register(ic, Index.HEDGE_OAK.get(), Index.HEDGE_BIRCH.get(), Index.HEDGE_SPRUCE.get(), Index.HEDGE_DARK_OAK.get(), Index.HEDGE_JUNGLE.get(), Index.HEDGE_ACACIA.get(),  Index.HEDGE_MANGROVE.get(), Index.HEDGE_CHERRY.get());
 	}
 	
 	public static void clientRegistry() {
@@ -52,10 +51,7 @@ public class ClientEventHandler {
 		MenuScreens.register(Index.SHELF_CONTAINER.get(), ShelfGui::new);
 		MenuScreens.register(Index.SPEAKER_CONTAINER.get(), SpeakerGui::new);
 		MenuScreens.register(Index.ARCADE_CONTAINER.get(), ArcadeGui::new);
-		
-		// TODO FIX!
-    	//ClientRegistry.bindTileEntityRenderer(Index.SHOP_SIGN_TILE_ENTITY_TYPE, ShopSignRenderer::new);
-    	//ClientRegistry.bindTileEntityRenderer(Index.SHELF_TILE_ENTITY_TYPE, ShelfRenderer::new);
+
 		BlockEntityRenderers.register(Index.SHOP_SIGN_TILE_ENTITY_TYPE.get(), c -> new ShopSignRenderer(c.getBlockEntityRenderDispatcher()));
 		BlockEntityRenderers.register(Index.SHELF_TILE_ENTITY_TYPE.get(), c -> new ShelfRenderer(c.getBlockEntityRenderDispatcher()));
     	

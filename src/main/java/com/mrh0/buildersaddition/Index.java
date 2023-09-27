@@ -106,8 +106,8 @@ public class Index {
         ENTITIES.register(eventBus);
     }
     
-    public static final String[] woods = {"oak", "spruce", "birch", "acacia", "dark_oak", "jungle", "mangrove", "crimson", "warped"};
-	public static final Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.MANGROVE_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS};
+    public static final String[] woods = {"oak", "spruce", "birch", "acacia", "dark_oak", "jungle", "mangrove", "crimson", "warped", "cherry", "bamboo"};
+	public static final Block[] woodBlocks = {Blocks.OAK_PLANKS, Blocks.SPRUCE_PLANKS, Blocks.BIRCH_PLANKS, Blocks.DARK_OAK_PLANKS, Blocks.JUNGLE_PLANKS, Blocks.ACACIA_PLANKS, Blocks.MANGROVE_PLANKS, Blocks.CRIMSON_PLANKS, Blocks.WARPED_PLANKS, Blocks.CHERRY_PLANKS, Blocks.BAMBOO_PLANKS};
 	public static final String[] colors = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", 
 			"gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
 	
@@ -225,6 +225,8 @@ public class Index {
 	
 	public static RegistryObject<Block> MUD_BRICK_VERTICAL_SLAB;
 	public static RegistryObject<Block> MANGROVE_VERTICAL_SLAB;
+	public static RegistryObject<Block> CHERRY_VERTICAL_SLAB;
+	public static RegistryObject<Block> BAMBOO_VERTICAL_SLAB;
 	
 	/*public static Block BOP_CHERRY_VERTICAL_SLAB;
 	public static Block BOP_CUT_WHITE_SANDSTONE_VERTICAL_SLAB;
@@ -275,6 +277,8 @@ public class Index {
 	public static RegistryObject<Block> TABLE_CRIMSON;
 	public static RegistryObject<Block> TABLE_WARPED;
 	public static RegistryObject<Block> TABLE_MANGROVE;
+	public static RegistryObject<Block> TABLE_CHERRY;
+	public static RegistryObject<Block> TABLE_BAMBOO;
 	
 	/*public static RegistryObject<Block>[] STOOL_OAK = new RegistryObject<Block>[16];
 	public static RegistryObject<Block>[] STOOL_SPRUCE = new RegistryObject<Block>[16];
@@ -294,6 +298,8 @@ public class Index {
 	public static RegistryObject<Block> STOOL_CRIMSON;
 	public static RegistryObject<Block> STOOL_WARPED;
 	public static RegistryObject<Block> STOOL_MANGROVE;
+	public static RegistryObject<Block> STOOL_CHERRY;
+	public static RegistryObject<Block> STOOL_BAMBOO;
 	
 	public static RegistryObject<Block> CHAIR_OAK;
 	public static RegistryObject<Block> CHAIR_SPRUCE;
@@ -304,6 +310,8 @@ public class Index {
 	public static RegistryObject<Block> CHAIR_CRIMSON;
 	public static RegistryObject<Block> CHAIR_WARPED;
 	public static RegistryObject<Block> CHAIR_MANGROVE;
+	public static RegistryObject<Block> CHAIR_CHERRY;
+	public static RegistryObject<Block> CHAIR_BAMBOO;
 	
 	public static RegistryObject<Block> PLANTER;
 	
@@ -314,13 +322,14 @@ public class Index {
 	public static RegistryObject<Block> HEDGE_JUNGLE;
 	public static RegistryObject<Block> HEDGE_ACACIA;
 	public static RegistryObject<Block> HEDGE_MANGROVE;
+	public static RegistryObject<Block> HEDGE_CHERRY;
 	
-	public static RegistryObject<Block>[] COUNTER_ANDESITE = new RegistryObject[9];
-	public static RegistryObject<Block>[] COUNTER_DIORITE = new RegistryObject[9];
-	public static RegistryObject<Block>[] COUNTER_GRANITE = new RegistryObject[9];
-	public static RegistryObject<Block>[] COUNTER_BLACKSTONE = new RegistryObject[9];
-	public static RegistryObject<Block>[] COUNTER_DEEPSLATE = new RegistryObject[9];
-	public static RegistryObject<Block>[] COUNTER_ALL = new RegistryObject[9*5];
+	public static RegistryObject<Block>[] COUNTER_ANDESITE = new RegistryObject[11];
+	public static RegistryObject<Block>[] COUNTER_DIORITE = new RegistryObject[11];
+	public static RegistryObject<Block>[] COUNTER_GRANITE = new RegistryObject[11];
+	public static RegistryObject<Block>[] COUNTER_BLACKSTONE = new RegistryObject[11];
+	public static RegistryObject<Block>[] COUNTER_DEEPSLATE = new RegistryObject[11];
+	public static RegistryObject<Block>[] COUNTER_ALL = new RegistryObject[11*5];
 	
 	public static RegistryObject<Block> BOOKSHELF_OAK;
 	public static RegistryObject<Block> BOOKSHELF_BIRCH;
@@ -331,6 +340,8 @@ public class Index {
 	public static RegistryObject<Block> BOOKSHELF_WARPED;
 	public static RegistryObject<Block> BOOKSHELF_CRIMSON;
 	public static RegistryObject<Block> BOOKSHELF_MANGROVE;
+	public static RegistryObject<Block> BOOKSHELF_CHERRY;
+	public static RegistryObject<Block> BOOKSHELF_BAMBOO;
 	
 	public static RegistryObject<Block> SHELF_OAK;
 	public static RegistryObject<Block> SHELF_BIRCH;
@@ -341,6 +352,8 @@ public class Index {
 	public static RegistryObject<Block> SHELF_WARPED;
 	public static RegistryObject<Block> SHELF_CRIMSON;
 	public static RegistryObject<Block> SHELF_MANGROVE;
+	public static RegistryObject<Block> SHELF_CHERRY;
+	public static RegistryObject<Block> SHELF_BAMBOO;
 	
 	public static RegistryObject<Block> CABINET_OAK;
 	public static RegistryObject<Block> CABINET_BIRCH;
@@ -351,6 +364,8 @@ public class Index {
 	public static RegistryObject<Block> CABINET_WARPED;
 	public static RegistryObject<Block> CABINET_CRIMSON;
 	public static RegistryObject<Block> CABINET_MANGROVE;
+	public static RegistryObject<Block> CABINET_CHERRY;
+	public static RegistryObject<Block> CABINET_BAMBOO;
 	
 	public static RegistryObject<Block> CUPBOARD_OAK;
 	public static RegistryObject<Block> CUPBOARD_BIRCH;
@@ -361,6 +376,8 @@ public class Index {
 	public static RegistryObject<Block> CUPBOARD_WARPED;
 	public static RegistryObject<Block> CUPBOARD_CRIMSON;
 	public static RegistryObject<Block> CUPBOARD_MANGROVE;
+	public static RegistryObject<Block> CUPBOARD_CHERRY;
+	public static RegistryObject<Block> CUPBOARD_BAMBOO;
 	
 	public static RegistryObject<Block> SMALL_CUPBOARD_OAK;
 	public static RegistryObject<Block> SMALL_CUPBOARD_BIRCH;
@@ -371,6 +388,8 @@ public class Index {
 	public static RegistryObject<Block> SMALL_CUPBOARD_WARPED;
 	public static RegistryObject<Block> SMALL_CUPBOARD_CRIMSON;
 	public static RegistryObject<Block> SMALL_CUPBOARD_MANGROVE;
+	public static RegistryObject<Block> SMALL_CUPBOARD_CHERRY;
+	public static RegistryObject<Block> SMALL_CUPBOARD_BAMBOO;
 	
 	public static RegistryObject<Block> BENCH_OAK;
 	public static RegistryObject<Block> BENCH_BIRCH;
@@ -381,6 +400,8 @@ public class Index {
 	public static RegistryObject<Block> BENCH_WARPED;
 	public static RegistryObject<Block> BENCH_CRIMSON;
 	public static RegistryObject<Block> BENCH_MANGROVE;
+	public static RegistryObject<Block> BENCH_CHERRY;
+	public static RegistryObject<Block> BENCH_BAMBOO;
 	
 	public static RegistryObject<Block> SUPPORT_BRACKET_OAK;
 	public static RegistryObject<Block> SUPPORT_BRACKET_BIRCH;
@@ -391,6 +412,8 @@ public class Index {
 	public static RegistryObject<Block> SUPPORT_BRACKET_WARPED;
 	public static RegistryObject<Block> SUPPORT_BRACKET_CRIMSON;
 	public static RegistryObject<Block> SUPPORT_BRACKET_MANGROVE;
+	public static RegistryObject<Block> SUPPORT_BRACKET_CHERRY;
+	public static RegistryObject<Block> SUPPORT_BRACKET_BAMBOO;
 	
 	public static RegistryObject<Block> SOFA[] = new RegistryObject[16];
 	
@@ -398,7 +421,7 @@ public class Index {
 	
 	public static RegistryObject<Block> PILLOW[] = new RegistryObject[16];
 	
-	public static RegistryObject<Block>[] BEDSIDE_TABLE_ALL = new RegistryObject[9];
+	public static RegistryObject<Block>[] BEDSIDE_TABLE_ALL = new RegistryObject[11];
 	
 	public static RegistryObject<Block> SHOP_SIGN_WOOD;
 	public static RegistryObject<Block> IRON_LADDER;
@@ -425,6 +448,8 @@ public class Index {
 	public static RegistryObject<Block> ARCADE_WARPED;
 	public static RegistryObject<Block> ARCADE_CRIMSON;
 	public static RegistryObject<Block> ARCADE_MANGROVE;
+	public static RegistryObject<Block> ARCADE_CHERRY;
+	public static RegistryObject<Block> ARCADE_BAMBOO;
 	
 	public static RegistryObject<Block> FIREPLACE_GUARD;
 	public static RegistryObject<Block> ROUGH_FIREPLACE_GUARD;
@@ -558,6 +583,8 @@ public class Index {
 		WEATHERED_CUT_COPPER_VERTICAL_SLAB = block("weathered_cut_copper_vertical_slab", () -> new CopperVerticalSlab("weathered_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.WEATHERED));
 		OXIDIZED_CUT_COPPER_VERTICAL_SLAB = block("oxidized_cut_copper_vertical_slab", () -> new CopperVerticalSlab("oxidized_cut_copper", Blocks.COPPER_BLOCK, WeatheringCopper.WeatherState.OXIDIZED));
 		MANGROVE_VERTICAL_SLAB = block("mangrove_vertical_slab", () -> new VerticalSlab("mangrove", Blocks.MANGROVE_PLANKS));
+		CHERRY_VERTICAL_SLAB = block("cherry_vertical_slab", () -> new VerticalSlab("cherry", Blocks.CHERRY_PLANKS));
+		BAMBOO_VERTICAL_SLAB = block("bamboo_vertical_slab", () -> new VerticalSlab("bamboo", Blocks.BAMBOO_PLANKS));
 		MUD_BRICK_VERTICAL_SLAB = block("mud_bricks_vertical_slab", () -> new VerticalSlab("mud_bricks", Blocks.MUD_BRICKS));
 		
 		CUT_STONE_PILLAR = block("cut_stone_pillar", () -> new Pillar("stone", Blocks.STONE));
@@ -593,6 +620,8 @@ public class Index {
 		TABLE_CRIMSON = block("table_crimson", () -> new Table("crimson", Blocks.CRIMSON_PLANKS));
 		TABLE_WARPED = block("table_warped", () -> new Table("warped", Blocks.WARPED_PLANKS));
 		TABLE_MANGROVE = block("table_mangrove", () -> new Table("mangrove", Blocks.MANGROVE_PLANKS));
+		TABLE_CHERRY = block("table_cherry", () -> new Table("cherry", Blocks.CHERRY_PLANKS));
+		TABLE_BAMBOO = block("table_bamboo", () -> new Table("mangrove", Blocks.BAMBOO_PLANKS));
 		
 		/*for(int i = 0; i < colors.length; i++) {
 			STOOL_OAK[i] = new Stool("stool_oak_" + colors[i], Blocks.OAK_PLANKS);
@@ -619,6 +648,8 @@ public class Index {
 		STOOL_CRIMSON = block("stool_crimson", () -> new Stool("stool_crimson", Blocks.CRIMSON_PLANKS));
 		STOOL_WARPED = block("stool_warped", () -> new Stool("stool_warped", Blocks.WARPED_PLANKS));
 		STOOL_MANGROVE = block("stool_mangrove", () -> new Stool("stool_mangrove", Blocks.MANGROVE_PLANKS));
+		STOOL_CHERRY = block("stool_cherry", () -> new Stool("stool_cherry", Blocks.CHERRY_PLANKS));
+		STOOL_BAMBOO = block("stool_bamboo", () -> new Stool("stool_bamboo", Blocks.BAMBOO_PLANKS));
 		
 		CHAIR_OAK = block("chair_oak", () -> new Chair("chair_oak", Blocks.OAK_PLANKS));
 		CHAIR_SPRUCE = block("chair_spruce", () -> new Chair("chair_spruce", Blocks.SPRUCE_PLANKS));
@@ -629,6 +660,8 @@ public class Index {
 		CHAIR_CRIMSON = block("chair_crimson", () -> new Chair("chair_crimson", Blocks.CRIMSON_PLANKS));
 		CHAIR_WARPED = block("chair_warped", () -> new Chair("chair_warped", Blocks.WARPED_PLANKS));
 		CHAIR_MANGROVE = block("chair_mangrove", () -> new Chair("chair_mangrove", Blocks.MANGROVE_PLANKS));
+		CHAIR_CHERRY = block("chair_cherry", () -> new Chair("chair_cherry", Blocks.CHERRY_PLANKS));
+		CHAIR_BAMBOO = block("chair_bamboo", () -> new Chair("chair_bamboo", Blocks.BAMBOO_PLANKS));
 
 		HEDGE_OAK = block("hedge_oak", () -> new Hedge("oak", Blocks.OAK_LEAVES));
 		HEDGE_SPRUCE = block("hedge_spruce", () -> new Hedge("spruce", Blocks.SPRUCE_LEAVES));
@@ -637,6 +670,7 @@ public class Index {
 		HEDGE_JUNGLE = block("hedge_jungle", () -> new Hedge("jungle", Blocks.JUNGLE_LEAVES));
 		HEDGE_ACACIA = block("hedge_acacia", () -> new Hedge("acacia", Blocks.ACACIA_LEAVES));
 		HEDGE_MANGROVE = block("hedge_mangrove", () -> new Hedge("mangrove", Blocks.MANGROVE_LEAVES));
+		HEDGE_CHERRY = block("hedge_cherry", () -> new Hedge("cherry", Blocks.CHERRY_LEAVES));
 		
 		for(int i = 0; i < woods.length; i++) {
 			final String wood = woods[i];
@@ -663,6 +697,8 @@ public class Index {
 		BOOKSHELF_WARPED = block("bookshelf_warped", () -> new Bookshelf("warped"));
 		BOOKSHELF_CRIMSON = block("bookshelf_crimson", () -> new Bookshelf("crimson"));
 		BOOKSHELF_MANGROVE = block("bookshelf_mangrove", () -> new Bookshelf("mangrove"));
+		BOOKSHELF_CHERRY = block("bookshelf_cherry", () -> new Bookshelf("cherry"));
+		BOOKSHELF_BAMBOO = block("bookshelf_bamboo", () -> new Bookshelf("bamboo"));
 		
 		SHELF_OAK = block("shelf_oak", () -> new Shelf("oak"));
 		SHELF_BIRCH = block("shelf_birch", () -> new Shelf("birch"));
@@ -673,6 +709,8 @@ public class Index {
 		SHELF_WARPED = block("shelf_warped", () -> new Shelf("warped"));
 		SHELF_CRIMSON = block("shelf_crimson", () -> new Shelf("crimson"));
 		SHELF_MANGROVE = block("shelf_mangrove", () -> new Shelf("mangrove"));
+		SHELF_CHERRY = block("shelf_cherry", () -> new Shelf("cherry"));
+		SHELF_BAMBOO = block("shelf_bamboo", () -> new Shelf("bamboo"));
 
 		CABINET_OAK = block("cabinet_oak", () -> new Cabinet("oak"));
 		CABINET_BIRCH = block("cabinet_birch", () -> new Cabinet("birch"));
@@ -683,6 +721,8 @@ public class Index {
 		CABINET_WARPED = block("cabinet_warped", () -> new Cabinet("warped"));
 		CABINET_CRIMSON = block("cabinet_crimson", () -> new Cabinet("crimson"));
 		CABINET_MANGROVE = block("cabinet_mangrove", () -> new Cabinet("mangrove"));
+		CABINET_CHERRY = block("cabinet_cherry", () -> new Cabinet("cherry"));
+		CABINET_BAMBOO = block("cabinet_bamboo", () -> new Cabinet("bamboo"));
 		
 		CUPBOARD_OAK = block("cupboard_oak", () -> new Cupboard("oak", Blocks.OAK_PLANKS));
 		CUPBOARD_BIRCH = block("cupboard_birch", () -> new Cupboard("birch", Blocks.OAK_PLANKS));
@@ -693,6 +733,8 @@ public class Index {
 		CUPBOARD_WARPED = block("cupboard_warped", () -> new Cupboard("warped", Blocks.WARPED_PLANKS));
 		CUPBOARD_CRIMSON = block("cupboard_crimson", () -> new Cupboard("crimson", Blocks.CRIMSON_PLANKS));
 		CUPBOARD_MANGROVE = block("cupboard_mangrove", () -> new Cupboard("mangrove", Blocks.MANGROVE_PLANKS));
+		CUPBOARD_CHERRY = block("cupboard_cherry", () -> new Cupboard("cherry", Blocks.CHERRY_PLANKS));
+		CUPBOARD_BAMBOO = block("cupboard_bamboo", () -> new Cupboard("bamboo", Blocks.BAMBOO_PLANKS));
 
 		SMALL_CUPBOARD_OAK = block("small_cupboard_oak", () -> new SmallCupboard("oak", Blocks.OAK_PLANKS));
 		SMALL_CUPBOARD_BIRCH = block("small_cupboard_birch", () -> new SmallCupboard("birch", Blocks.OAK_PLANKS));
@@ -703,6 +745,8 @@ public class Index {
 		SMALL_CUPBOARD_WARPED = block("small_cupboard_warped", () -> new SmallCupboard("warped", Blocks.WARPED_PLANKS));
 		SMALL_CUPBOARD_CRIMSON = block("small_cupboard_crimson", () -> new SmallCupboard("crimson", Blocks.CRIMSON_PLANKS));
 		SMALL_CUPBOARD_MANGROVE = block("small_cupboard_mangrove", () -> new SmallCupboard("mangrove", Blocks.MANGROVE_PLANKS));
+		SMALL_CUPBOARD_CHERRY = block("small_cupboard_cherry", () -> new SmallCupboard("cherry", Blocks.CHERRY_PLANKS));
+		SMALL_CUPBOARD_BAMBOO = block("small_cupboard_bamboo", () -> new SmallCupboard("bamboo", Blocks.BAMBOO_PLANKS));
 		
 		BENCH_OAK = block("bench_oak", () -> new Bench("oak"));
 		BENCH_BIRCH = block("bench_birch", () -> new Bench("birch"));
@@ -713,6 +757,8 @@ public class Index {
 		BENCH_WARPED = block("bench_warped", () -> new Bench("warped", Blocks.WARPED_PLANKS));
 		BENCH_CRIMSON = block("bench_crimson", () -> new Bench("crimson", Blocks.CRIMSON_PLANKS));
 		BENCH_MANGROVE = block("bench_mangrove", () -> new Bench("mangrove", Blocks.MANGROVE_PLANKS));
+		BENCH_CHERRY = block("bench_cherry", () -> new Bench("cherry", Blocks.CHERRY_PLANKS));
+		BENCH_BAMBOO = block("bench_bamboo", () -> new Bench("bamboo", Blocks.BAMBOO_PLANKS));
 		
 		SUPPORT_BRACKET_OAK = block("support_bracket_oak", () -> new SupportBracket("oak"));
 		SUPPORT_BRACKET_BIRCH = block("support_bracket_birch", () -> new SupportBracket("birch"));
@@ -723,6 +769,8 @@ public class Index {
 		SUPPORT_BRACKET_WARPED = block("support_bracket_warped", () -> new SupportBracket("warped", Blocks.WARPED_PLANKS));
 		SUPPORT_BRACKET_CRIMSON = block("support_bracket_crimson", () -> new SupportBracket("crimson", Blocks.CRIMSON_PLANKS));
 		SUPPORT_BRACKET_MANGROVE = block("support_bracket_mangrove", () -> new SupportBracket("mangrove", Blocks.MANGROVE_PLANKS));
+		SUPPORT_BRACKET_CHERRY = block("support_bracket_cherry", () -> new SupportBracket("cherry", Blocks.CHERRY_PLANKS));
+		SUPPORT_BRACKET_BAMBOO = block("support_bracket_bamboo", () -> new SupportBracket("bamboo", Blocks.BAMBOO_PLANKS));
 		
 		for(int i = 0; i < colors.length; i++) {
 			final String color = colors[i];
@@ -764,6 +812,8 @@ public class Index {
 		ARCADE_WARPED = block("arcade_warped", () -> new Arcade("warped"));
 		ARCADE_CRIMSON = block("arcade_crimson", () -> new Arcade("crimson"));
 		ARCADE_MANGROVE = block("arcade_mangrove", () -> new Arcade("mangrove"));
+		ARCADE_CHERRY = block("arcade_cherry", () -> new Arcade("cherry"));
+		ARCADE_BAMBOO = block("arcade_bamboo", () -> new Arcade("bamboo"));
 		
 		FIREPLACE_GUARD = block("fireplace_guard", () -> new FireplaceGuard("fireplace_guard"));
 		ROUGH_FIREPLACE_GUARD = block("rough_fireplace_guard", () -> new FireplaceGuard("rough_fireplace_guard"));
@@ -779,10 +829,10 @@ public class Index {
 		SHARD_PAINTING = PAINTINGS.register("shard", () -> RegistryUtil.createPainting(1, 1));
 		SKARGARD_PAINTING = PAINTINGS.register("skargard", () -> RegistryUtil.createPainting(2, 1));
 		HORIZONS_PAINTING = PAINTINGS.register("horizons", () -> RegistryUtil.createPainting(1, 1));
-		PORTRAIT_PAINTING = PAINTINGS.register("portrait", () -> RegistryUtil.createPainting(1, 1));
+		PORTRAIT_PAINTING = PAINTINGS.register("self_portrait", () -> RegistryUtil.createPainting(1, 1));
 		PROMO_PAINTING = PAINTINGS.register("promo", () -> RegistryUtil.createPainting(1, 1));
-		HEROBRINE_PAINTING = PAINTINGS.register("herobrine", () -> RegistryUtil.createPainting(1, 1));
-		ENDERMAN_PAINTING = PAINTINGS.register("enderman", () -> RegistryUtil.createPainting(1, 2));
+		HEROBRINE_PAINTING = PAINTINGS.register("herobrine_stare", () -> RegistryUtil.createPainting(1, 1));
+		ENDERMAN_PAINTING = PAINTINGS.register("enderman_stare", () -> RegistryUtil.createPainting(1, 2));
 		WINTER_PAINTING = PAINTINGS.register("winter", () -> RegistryUtil.createPainting(2, 2));
 		
 		/*SUMMER_FIELD_PAINTING = RegistryUtil.createPainting("summer_field", 1, 1);
@@ -809,19 +859,19 @@ public class Index {
         	BlockEntityType.Builder.of(CounterTileEntity::new, getAll(COUNTER_ALL)).build(null));
 		
 		CUPBOARD_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("cupboard", () ->
-    		BlockEntityType.Builder.of(CupboardTileEntity::new, getAll(CUPBOARD_OAK, CUPBOARD_ACACIA, CUPBOARD_BIRCH, CUPBOARD_CRIMSON, CUPBOARD_DARK_OAK, CUPBOARD_JUNGLE, CUPBOARD_SPRUCE, CUPBOARD_WARPED, CUPBOARD_MANGROVE)).build(null));
+    		BlockEntityType.Builder.of(CupboardTileEntity::new, getAll(CUPBOARD_OAK, CUPBOARD_ACACIA, CUPBOARD_BIRCH, CUPBOARD_CRIMSON, CUPBOARD_DARK_OAK, CUPBOARD_JUNGLE, CUPBOARD_SPRUCE, CUPBOARD_WARPED, CUPBOARD_MANGROVE, CUPBOARD_CHERRY, CUPBOARD_BAMBOO)).build(null));
 		
 		SMALL_CUPBOARD_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("small_cupboard", () ->
-    		BlockEntityType.Builder.of(SmallCupboardTileEntity::new, getAll(SMALL_CUPBOARD_OAK, SMALL_CUPBOARD_ACACIA, SMALL_CUPBOARD_BIRCH, SMALL_CUPBOARD_CRIMSON, SMALL_CUPBOARD_DARK_OAK, SMALL_CUPBOARD_JUNGLE, SMALL_CUPBOARD_SPRUCE, SMALL_CUPBOARD_WARPED, SMALL_CUPBOARD_MANGROVE)).build(null));
+    		BlockEntityType.Builder.of(SmallCupboardTileEntity::new, getAll(SMALL_CUPBOARD_OAK, SMALL_CUPBOARD_ACACIA, SMALL_CUPBOARD_BIRCH, SMALL_CUPBOARD_CRIMSON, SMALL_CUPBOARD_DARK_OAK, SMALL_CUPBOARD_JUNGLE, SMALL_CUPBOARD_SPRUCE, SMALL_CUPBOARD_WARPED, SMALL_CUPBOARD_CHERRY, SMALL_CUPBOARD_BAMBOO)).build(null));
 		
 		CABINET_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("cabinet", () ->
-    		BlockEntityType.Builder.of(CabinetTileEntity::new, getAll(CABINET_OAK, CABINET_BIRCH, CABINET_SPRUCE, CABINET_DARK_OAK, CABINET_JUNGLE, CABINET_ACACIA, CABINET_WARPED, CABINET_CRIMSON, CABINET_MANGROVE)).build(null));
+    		BlockEntityType.Builder.of(CabinetTileEntity::new, getAll(CABINET_OAK, CABINET_BIRCH, CABINET_SPRUCE, CABINET_DARK_OAK, CABINET_JUNGLE, CABINET_ACACIA, CABINET_WARPED, CABINET_CRIMSON, CABINET_MANGROVE, CABINET_CHERRY, CABINET_BAMBOO)).build(null));
 		
 		BOOKSHELF_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("bookshelf", () ->
-    		BlockEntityType.Builder.of(BookshelfTileEntity::new, getAll(BOOKSHELF_OAK, BOOKSHELF_BIRCH, BOOKSHELF_SPRUCE, BOOKSHELF_DARK_OAK, BOOKSHELF_JUNGLE, BOOKSHELF_ACACIA, BOOKSHELF_WARPED, BOOKSHELF_CRIMSON, BOOKSHELF_MANGROVE)).build(null));
+    		BlockEntityType.Builder.of(BookshelfTileEntity::new, getAll(BOOKSHELF_OAK, BOOKSHELF_BIRCH, BOOKSHELF_SPRUCE, BOOKSHELF_DARK_OAK, BOOKSHELF_JUNGLE, BOOKSHELF_ACACIA, BOOKSHELF_WARPED, BOOKSHELF_CRIMSON, BOOKSHELF_MANGROVE, BOOKSHELF_CHERRY, BOOKSHELF_BAMBOO)).build(null));
 		
 		SHELF_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("shelf", () ->
-    		BlockEntityType.Builder.of(ShelfTileEntity::new, getAll(SHELF_OAK, SHELF_BIRCH, SHELF_SPRUCE, SHELF_DARK_OAK, SHELF_ACACIA, SHELF_JUNGLE, SHELF_CRIMSON, SHELF_WARPED, SHELF_MANGROVE)).build(null));
+    		BlockEntityType.Builder.of(ShelfTileEntity::new, getAll(SHELF_OAK, SHELF_BIRCH, SHELF_SPRUCE, SHELF_DARK_OAK, SHELF_ACACIA, SHELF_JUNGLE, SHELF_CRIMSON, SHELF_WARPED, SHELF_MANGROVE, SHELF_CHERRY, SHELF_BAMBOO)).build(null));
 		
 		SHOP_SIGN_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("shop_sign", () ->
     		BlockEntityType.Builder.of(ShopSignTileEntity::new, SHOP_SIGN_WOOD.get()).build(null));
@@ -833,7 +883,7 @@ public class Index {
     		BlockEntityType.Builder.of(SpeakerTileEntity::new, SPEAKER.get()).build(null));
 		
 		ARCADE_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("arcade", () ->
-    		BlockEntityType.Builder.of(ArcadeTileEntity::new, getAll(ARCADE_OAK, ARCADE_BIRCH, ARCADE_SPRUCE, ARCADE_DARK_OAK, ARCADE_JUNGLE, ARCADE_ACACIA, ARCADE_WARPED, ARCADE_CRIMSON, ARCADE_MANGROVE)).build(null));
+    		BlockEntityType.Builder.of(ArcadeTileEntity::new, getAll(ARCADE_OAK, ARCADE_BIRCH, ARCADE_SPRUCE, ARCADE_DARK_OAK, ARCADE_JUNGLE, ARCADE_ACACIA, ARCADE_WARPED, ARCADE_CRIMSON, ARCADE_MANGROVE, ARCADE_CHERRY, ARCADE_BAMBOO)).build(null));
 		
 		ENTITY_DETECTOR_TILE_ENTITY_TYPE = BLOCK_ENTITIES.register("entity_detector", () ->
     		BlockEntityType.Builder.of(EntityDetectorTileEntity::new, ENTITY_DETECTOR.get()).build(null));

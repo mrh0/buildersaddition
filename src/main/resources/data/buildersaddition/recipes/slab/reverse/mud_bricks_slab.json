@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "minecraft:mud_brick_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:mud_bricks",
+		"count": 1
+	}
+}

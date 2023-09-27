@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "quark:bamboo_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:bamboo_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:bamboo_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_bamboo",
+		"count": 2
+	},
+	"conditions": [ {
+		"type": "forge:mod_loaded",
+		"modid": "quark"
+    } ]
+}

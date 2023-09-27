@@ -7,3 +7,5 @@ oak,oak_planks,oak_log
 spruce,spruce_planks,spruce_log
 warped,warped_planks,warped_stem
 mangrove,mangrove_planks,mangrove_log
+cherry,cherry_planks,cherry_log
+bamboo,bamboo_planks,bamboo_block

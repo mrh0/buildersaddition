@@ -1,0 +1,24 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern":
+	[
+		"PP",
+		"FF"
+	],
+	"key":
+	{
+		"P":
+		{
+			"item": "minecraft:bamboo_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:bamboo_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:table_bamboo",
+		"count": 2
+	}
+}

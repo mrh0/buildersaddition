@@ -1,0 +1,14 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	["PP"],
+	"key": {
+		"P": {
+			"item": "minecraft:cherry_slab"
+		}
+	},
+	"result":{
+		"item": "minecraft:cherry_planks",
+		"count": 1
+	}
+}

@@ -79,6 +79,9 @@
 	"block.buildersaddition.oxidized_cut_copper_vertical_slab":"Oxidized Cut Copper Panel",
 	"block.buildersaddition.mud_bricks_vertical_slab":"Mud Bricks Panel",
 	"block.buildersaddition.mangrove_vertical_slab":"Mangrove Panel",
+
+	"block.buildersaddition.cherry_vertical_slab": "Cherry Panel",
+	"block.buildersaddition.bamboo_vertical_slab": "Bamboo Panel",
 	
 	"block.buildersaddition.cut_nether_bricks_pillar":"Cut Nether Bricks Pillar",
 	"block.buildersaddition.cut_red_nether_bricks_pillar":"Cut Red Nether Bricks Pillar",
@@ -113,6 +116,8 @@
 	"block.buildersaddition.table_crimson":"Crimson Table",
 	"block.buildersaddition.table_warped":"Warped Table",
 	"block.buildersaddition.table_mangrove":"Mangrove Table",
+	"block.buildersaddition.table_cherry":"Cherry Table",
+	"block.buildersaddition.table_bamboo":"Bamboo Table",
 	
 	"block.buildersaddition.bookshelf_oak":"Oak Bookshelf",
 	"block.buildersaddition.bookshelf_spruce":"Spruce Bookshelf",
@@ -123,6 +128,8 @@
 	"block.buildersaddition.bookshelf_crimson":"Crimson Bookshelf",
 	"block.buildersaddition.bookshelf_warped":"Warped Bookshelf",
 	"block.buildersaddition.bookshelf_mangrove":"Mangrove Bookshelf",
+	"block.buildersaddition.bookshelf_cherry":"Cherry Bookshelf",
+	"block.buildersaddition.bookshelf_bamboo":"Bamboo Bookshelf",
 	
 	"block.buildersaddition.shelf_oak":"Oak Shelf",
 	"block.buildersaddition.shelf_spruce":"Spruce Shelf",
@@ -133,6 +140,8 @@
 	"block.buildersaddition.shelf_crimson":"Crimson Shelf",
 	"block.buildersaddition.shelf_warped":"Warped Shelf",
 	"block.buildersaddition.shelf_mangrove":"Mangrove Shelf",
+	"block.buildersaddition.shelf_cherry":"Cherry Shelf",
+	"block.buildersaddition.shelf_bamboo":"Bamboo Shelf",
 	
 	"block.buildersaddition.cabinet_oak":"Oak Cabinet",
 	"block.buildersaddition.cabinet_spruce":"Spruce Cabinet",
@@ -143,6 +152,8 @@
 	"block.buildersaddition.cabinet_crimson":"Crimson Cabinet",
 	"block.buildersaddition.cabinet_warped":"Warped Cabinet",
 	"block.buildersaddition.cabinet_mangrove":"Mangrove Cabinet",
+	"block.buildersaddition.cabinet_cherry":"Cherry Cabinet",
+	"block.buildersaddition.cabinet_bamboo":"Bamboo Cabinet",
 	
 	"block.buildersaddition.bedside_table_oak":"Oak Bedside Table",
 	"block.buildersaddition.bedside_table_spruce":"Spruce Bedside Table",
@@ -153,6 +164,8 @@
 	"block.buildersaddition.bedside_table_crimson":"Crimson Bedside Table",
 	"block.buildersaddition.bedside_table_warped":"Warped Bedside Table",
 	"block.buildersaddition.bedside_table_mangrove":"Mangrove Bedside Table",
+	"block.buildersaddition.bedside_table_cherry":"Cherry Bedside Table",
+	"block.buildersaddition.bedside_table_bamboo":"Bamboo Bedside Table",
 	
 	"block.buildersaddition.hedge_oak":"Oak Hedge",
 	"block.buildersaddition.hedge_spruce":"Spruce Hedge",
@@ -163,6 +176,8 @@
 	"block.buildersaddition.hedge_crimson":"Nether Hedge",
 	"block.buildersaddition.hedge_warped":"Warped Hedge",
 	"block.buildersaddition.hedge_mangrove":"Mangrove Hedge",
+	"block.buildersaddition.hedge_cherry":"Cherry Hedge",
+	"block.buildersaddition.hedge_bamboo":"Bamboo Hedge",
 	
 	"block.buildersaddition.bench_oak":"Oak Bench",
 	"block.buildersaddition.bench_spruce":"Spruce Bench",
@@ -173,6 +188,8 @@
 	"block.buildersaddition.bench_crimson":"Nether Bench",
 	"block.buildersaddition.bench_warped":"Warped Bench",
 	"block.buildersaddition.bench_mangrove":"Mangrove Bench",
+	"block.buildersaddition.bench_cherry":"Cherry Bench",
+	"block.buildersaddition.bench_bamboo":"Bamboo Bench",
 	
 	"block.buildersaddition.sofa_black":"Black Sofa",
 	"block.buildersaddition.sofa_blue":"Blue Sofa",
@@ -190,7 +207,7 @@
 	"block.buildersaddition.sofa_red":"Red Sofa",
 	"block.buildersaddition.sofa_white":"White Sofa",
 	"block.buildersaddition.sofa_yellow":"Yellow Sofa",
-	
+
 	"block.buildersaddition.counter_acacia_andesite":"Counter Acacia Andesite",
 	"block.buildersaddition.counter_birch_andesite":"Counter Birch Andesite",
 	"block.buildersaddition.counter_crimson_andesite":"Counter Crimson Andesite",
@@ -200,6 +217,8 @@
 	"block.buildersaddition.counter_spruce_andesite":"Counter Spruce Andesite",
 	"block.buildersaddition.counter_warped_andesite":"Counter Warped Andesite",
 	"block.buildersaddition.counter_mangrove_andesite":"Counter Mangrove Andesite",
+	"block.buildersaddition.counter_cherry_andesite":"Counter Cherry Andesite",
+	"block.buildersaddition.counter_bamboo_andesite":"Counter Bamboo Andesite",
 	"block.buildersaddition.counter_acacia_diorite":"Counter Acacia Diorite",
 	"block.buildersaddition.counter_birch_diorite":"Counter Birch Diorite",
 	"block.buildersaddition.counter_crimson_diorite":"Counter Crimson Diorite",
@@ -209,6 +228,8 @@
 	"block.buildersaddition.counter_spruce_diorite":"Counter Spruce Diorite",
 	"block.buildersaddition.counter_warped_diorite":"Counter Warped Diorite",
 	"block.buildersaddition.counter_mangrove_diorite":"Counter Mangrove Diorite",
+	"block.buildersaddition.counter_cherry_diorite":"Counter Cherry Diorite",
+	"block.buildersaddition.counter_bamboo_diorite":"Counter Bamboo Diorite",
 	"block.buildersaddition.counter_acacia_granite":"Counter Acacia Granite",
 	"block.buildersaddition.counter_birch_granite":"Counter Birch Granite",
 	"block.buildersaddition.counter_crimson_granite":"Counter Crimson Granite",
@@ -218,6 +239,8 @@
 	"block.buildersaddition.counter_spruce_granite":"Counter Spruce Granite",
 	"block.buildersaddition.counter_warped_granite":"Counter Warped Granite",
 	"block.buildersaddition.counter_mangrove_granite":"Counter Mangrove Granite",
+	"block.buildersaddition.counter_cherry_granite":"Counter Cherry Granite",
+	"block.buildersaddition.counter_bamboo_granite":"Counter Bamboo Granite",
 	"block.buildersaddition.counter_acacia_blackstone":"Counter Acacia Blackstone",
 	"block.buildersaddition.counter_birch_blackstone":"Counter Birch Blackstone",
 	"block.buildersaddition.counter_crimson_blackstone":"Counter Crimson Blackstone",
@@ -227,6 +250,8 @@
 	"block.buildersaddition.counter_spruce_blackstone":"Counter Spruce Blackstone",
 	"block.buildersaddition.counter_warped_blackstone":"Counter Warped Blackstone",
 	"block.buildersaddition.counter_mangrove_blackstone":"Counter Mangrove Blackstone",
+	"block.buildersaddition.counter_cherry_blackstone":"Counter Cherry Blackstone",
+	"block.buildersaddition.counter_bamboo_blackstone":"Counter Bamboo Blackstone",
 	"block.buildersaddition.counter_acacia_deepslate":"Counter Acacia Deepslate",
 	"block.buildersaddition.counter_birch_deepslate":"Counter Birch Deepslate",
 	"block.buildersaddition.counter_crimson_deepslate":"Counter Crimson Deepslate",
@@ -236,6 +261,8 @@
 	"block.buildersaddition.counter_spruce_deepslate":"Counter Spruce Deepslate",
 	"block.buildersaddition.counter_warped_deepslate":"Counter Warped Deepslate",
 	"block.buildersaddition.counter_mangrove_deepslate":"Counter Mangrove Deepslate",
+	"block.buildersaddition.counter_cherry_deepslate":"Counter Cherry Deepslate",
+	"block.buildersaddition.counter_bamboo_deepslate":"Counter Bamboo Deepslate",
 	
 	"block.buildersaddition.stool_oak":"Oak Stool",
 	"block.buildersaddition.stool_spruce":"Spruce Stool",
@@ -246,6 +273,8 @@
 	"block.buildersaddition.stool_crimson":"Crimson Stool",
 	"block.buildersaddition.stool_warped":"Warped Stool",
 	"block.buildersaddition.stool_mangrove":"Mangrove Stool",
+	"block.buildersaddition.stool_cherry":"Cherry Stool",
+	"block.buildersaddition.stool_bamboo":"Bamboo Stool",
 	
 	"block.buildersaddition.chair_oak":"Oak Chair",
 	"block.buildersaddition.chair_spruce":"Spruce Chair",
@@ -256,6 +285,8 @@
 	"block.buildersaddition.chair_crimson":"Crimson Chair",
 	"block.buildersaddition.chair_warped":"Warped Chair",
 	"block.buildersaddition.chair_mangrove":"Mangrove Chair",
+	"block.buildersaddition.chair_cherry":"Cherry Chair",
+	"block.buildersaddition.chair_bamboo":"Bamboo Chair",
 	
 	"block.buildersaddition.cupboard_oak":"Oak Cupboard",
 	"block.buildersaddition.cupboard_spruce":"Spruce Cupboard",
@@ -266,7 +297,9 @@
 	"block.buildersaddition.cupboard_crimson":"Crimson Cupboard",
 	"block.buildersaddition.cupboard_warped":"Warped Cupboard",
 	"block.buildersaddition.cupboard_mangrove":"Mangrove Cupboard",
-	
+	"block.buildersaddition.cupboard_cherry":"Cherry Cupboard",
+	"block.buildersaddition.cupboard_bamboo":"Bamboo Cupboard",
+
 	"block.buildersaddition.small_cupboard_acacia":"Small Acacia Cupboard",
 	"block.buildersaddition.small_cupboard_birch":"Small Birch Cupboard",
 	"block.buildersaddition.small_cupboard_crimson":"Small Crimson Cupboard",
@@ -276,6 +309,8 @@
 	"block.buildersaddition.small_cupboard_spruce":"Small Spruce Cupboard",
 	"block.buildersaddition.small_cupboard_warped":"Small Warped Cupboard",
 	"block.buildersaddition.small_cupboard_mangrove":"Small Mangrove Cupboard",
+	"block.buildersaddition.small_cupboard_cherry":"Small Cherry Cupboard",
+	"block.buildersaddition.small_cupboard_bamboo":"Small Bamboo Cupboard",
 	
 	"block.buildersaddition.arcade_oak":"Oak Arcade",
 	"block.buildersaddition.arcade_spruce":"Spruce Arcade",
@@ -286,6 +321,8 @@
 	"block.buildersaddition.arcade_crimson":"Crimson Arcade",
 	"block.buildersaddition.arcade_warped":"Warped Arcade",
 	"block.buildersaddition.arcade_mangrove":"Mangrove Arcade",
+	"block.buildersaddition.arcade_cherry":"Cherry Arcade",
+	"block.buildersaddition.arcade_bamboo":"Bamboo Arcade",
 	
 	"block.buildersaddition.pillow_black":"Black Pillow",
 	"block.buildersaddition.pillow_blue":"Blue Pillow",
@@ -330,6 +367,8 @@
 	"block.buildersaddition.support_bracket_crimson":"Crimson Support Bracket",
 	"block.buildersaddition.support_bracket_warped":"Warped Support Bracket",
 	"block.buildersaddition.support_bracket_mangrove":"Mangrove Support Bracket",
+	"block.buildersaddition.support_bracket_cherry":"Cherry Support Bracket",
+	"block.buildersaddition.support_bracket_bamboo":"Bamboo Support Bracket",
 	
 	"block.buildersaddition.vertical_repeater":"Vertical Repeater",
 	"block.buildersaddition.vertical_comparator":"Vertical Comparator",

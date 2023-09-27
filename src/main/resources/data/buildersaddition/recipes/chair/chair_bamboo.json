@@ -1,0 +1,28 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+        "PP",
+		"SS",
+		"FF"
+	],
+	"key":
+	{
+        "P":
+		{
+			"item": "buildersaddition:bamboo_vertical_slab"
+		},
+		"S":
+		{
+			"item": "minecraft:bamboo_slab"
+		},
+		"F":
+		{
+			"item": "minecraft:bamboo_fence"
+		}
+	},
+	"result":{
+		"item": "buildersaddition:chair_bamboo",
+		"count": 2
+	}
+}

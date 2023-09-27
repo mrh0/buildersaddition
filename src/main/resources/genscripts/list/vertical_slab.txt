@@ -50,3 +50,5 @@ waxed_weathered_cut_copper,weathered_cut_copper,waxed_weathered_cut_copper
 waxed_oxidized_cut_copper,oxidized_cut_copper,waxed_oxidized_cut_copper
 mud_bricks,mud_bricks,mud_bricks
 mangrove,mangrove_planks,mangrove_planks
+cherry,cherry_planks,cherry_planks
+bamboo,bamboo_planks,bamboo_planks
