@@ -1,17 +1,11 @@
 {
   "values": [
-    "buildersaddition:waxed_cut_copper_vertical_slab",
-    "buildersaddition:waxed_exposed_cut_copper_vertical_slab",
-    "buildersaddition:waxed_weathered_cut_copper_vertical_slab",
-    "buildersaddition:waxed_oxidized_cut_copper_vertical_slab",
-    "buildersaddition:cut_copper_vertical_slab",
-    "buildersaddition:exposed_cut_copper_vertical_slab",
-    "buildersaddition:weathered_cut_copper_vertical_slab",
-    "buildersaddition:oxidized_cut_copper_vertical_slab",
     "buildersaddition:iron_ladder",
     "buildersaddition:iron_ladder_rough",
     "buildersaddition:iron_fence",
     "buildersaddition:iron_fence_rough",
+    "buildersaddition:rough_iron_block",
+    "buildersaddition:crossrail",
     "buildersaddition:fireplace_guard",
     "buildersaddition:rough_fireplace_guard"
   ]
