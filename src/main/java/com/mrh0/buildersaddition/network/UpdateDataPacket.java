@@ -1,15 +1,12 @@
 package com.mrh0.buildersaddition.network;
 
-import java.util.function.Supplier;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 public class UpdateDataPacket {
 	
@@ -31,11 +28,11 @@ public class UpdateDataPacket {
         return scp;
     }
 	
-	public static void handle(UpdateDataPacket pkt, Supplier<NetworkEvent.Context> ctx) {
+	public static void handle(UpdateDataPacket pkt, CustomPayloadEvent.Context ctx) {
 		//System.out.println("Sending Update");
-		ctx.get().enqueueWork(() -> {
+		ctx.enqueueWork(() -> {
 			try {
-				ServerPlayer player = ctx.get().getSender();
+				ServerPlayer player = ctx.getSender();
 			
 			if (player != null) {
 				sendUpdate(pkt.pos, player, pkt.data);
@@ -46,7 +43,7 @@ public class UpdateDataPacket {
 			}
 		});
 		
-		ctx.get().setPacketHandled(true);
+		ctx.setPacketHandled(true);
 		
 		}
 	private static void sendUpdate(BlockPos pos, ServerPlayer player, int data) {

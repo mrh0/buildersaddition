@@ -8,6 +8,7 @@ import com.mrh0.buildersaddition.state.PillarState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -26,6 +27,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 public class Pillar extends BaseDerivativeBlock implements SimpleWaterloggedBlock {
 	
@@ -132,8 +134,8 @@ public class Pillar extends BaseDerivativeBlock implements SimpleWaterloggedBloc
 	}
 
 	@Override
-	public boolean canPlaceLiquid(BlockGetter world, BlockPos pos, BlockState state, Fluid fluidIn) {
-		return SimpleWaterloggedBlock.super.canPlaceLiquid(world, pos, state, fluidIn);
+	public boolean canPlaceLiquid(@Nullable Player player, BlockGetter getter, BlockPos pos, BlockState state, Fluid fluid) {
+		return SimpleWaterloggedBlock.super.canPlaceLiquid(player, getter, pos, state, fluid);
 	}
 
 	@Override

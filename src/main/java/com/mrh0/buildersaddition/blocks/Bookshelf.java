@@ -35,7 +35,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.network.NetworkHooks;
 
 public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
 
@@ -104,9 +103,10 @@ public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
         }
     	
     	BookshelfTileEntity mte = (BookshelfTileEntity) world.getBlockEntity(pos);
-		NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+		player.openMenu((MenuProvider) mte);
+		/*NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos);
-        });
+        });*/
     	return InteractionResult.CONSUME;
 	}
 	

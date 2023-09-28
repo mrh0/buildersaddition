@@ -6,6 +6,7 @@ import com.mrh0.buildersaddition.state.HedgeState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -26,6 +27,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IForgeShearable;
+import org.jetbrains.annotations.Nullable;
 
 public class Hedge extends BaseDerivativeBlock implements SimpleWaterloggedBlock, IForgeShearable {
 	
@@ -229,8 +231,8 @@ public class Hedge extends BaseDerivativeBlock implements SimpleWaterloggedBlock
 	}
 
 	@Override
-	public boolean canPlaceLiquid(BlockGetter world, BlockPos pos, BlockState state, Fluid fluidIn) {
-		return SimpleWaterloggedBlock.super.canPlaceLiquid(world, pos, state, fluidIn);
+	public boolean canPlaceLiquid(@Nullable Player player, BlockGetter getter, BlockPos pos, BlockState state, Fluid fluid) {
+		return SimpleWaterloggedBlock.super.canPlaceLiquid(player, getter, pos, state, fluid);
 	}
 
 	@Override

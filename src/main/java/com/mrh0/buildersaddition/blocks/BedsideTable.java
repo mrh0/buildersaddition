@@ -1,7 +1,7 @@
 package com.mrh0.buildersaddition.blocks;
 
 import java.util.Random;
-import javax.annotation.Nullable;
+
 import com.mrh0.buildersaddition.blocks.base.BaseDerivativeBlock;
 import com.mrh0.buildersaddition.tileentity.BedsideTileEntity;
 import com.mrh0.buildersaddition.util.IComparetorOverride;
@@ -43,6 +43,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.Nullable;
 
 public class BedsideTable extends BaseDerivativeBlock implements SimpleWaterloggedBlock, EntityBlock {
 
@@ -87,8 +88,8 @@ public class BedsideTable extends BaseDerivativeBlock implements SimpleWaterlogg
 	}
 
 	@Override
-	public boolean canPlaceLiquid(BlockGetter world, BlockPos pos, BlockState state, Fluid fluidIn) {
-		return SimpleWaterloggedBlock.super.canPlaceLiquid(world, pos, state, fluidIn);
+	public boolean canPlaceLiquid(@Nullable Player player, BlockGetter getter, BlockPos pos, BlockState state, Fluid fluid) {
+		return SimpleWaterloggedBlock.super.canPlaceLiquid(player, getter, pos, state, fluid);
 	}
 
 	@Override

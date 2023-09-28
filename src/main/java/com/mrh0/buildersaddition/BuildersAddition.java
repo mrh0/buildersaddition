@@ -25,8 +25,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.network.Channel;
+import net.minecraftforge.network.ChannelBuilder;
+import net.minecraftforge.network.SimpleChannel;
 
 
 /*
@@ -38,14 +39,14 @@ import net.minecraftforge.network.simple.SimpleChannel;
 public class BuildersAddition {
 	public static final String MODID = "buildersaddition";
 	public static CommonProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
-	private static final String PROTOCOL = "1";
+	private static final int PROTOCOL = 1;
 	public static MidiHandler midi = null;
 	public static boolean BOP_ACTIVE = false;
 	
-	public static final SimpleChannel Network = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(MODID, "main"))
-            .clientAcceptedVersions(PROTOCOL::equals)
-            .serverAcceptedVersions(PROTOCOL::equals)
-            .networkProtocolVersion(() -> PROTOCOL)
+	public static final SimpleChannel Network = ChannelBuilder.named(new ResourceLocation(MODID, "main"))
+            .clientAcceptedVersions(Channel.VersionTest.exact(PROTOCOL))
+            .serverAcceptedVersions(Channel.VersionTest.exact(PROTOCOL))
+            .networkProtocolVersion(PROTOCOL)
             .simpleChannel();
 	
 	public BuildersAddition() {
@@ -86,8 +87,16 @@ public class BuildersAddition {
     
     public void postInit(FMLLoadCompleteEvent evt) {
     	int i = 0;
-        Network.registerMessage(i++, PlayNotePacket.class, PlayNotePacket::encode, PlayNotePacket::decode, PlayNotePacket::handle);
-        Network.registerMessage(i++, UpdateDataPacket.class, UpdateDataPacket::encode, UpdateDataPacket::decode, UpdateDataPacket::handle);
+		Network.messageBuilder(PlayNotePacket.class, i++)
+				.encoder(PlayNotePacket::encode)
+				.decoder(PlayNotePacket::decode)
+				.consumerMainThread(PlayNotePacket::handle);
+		Network.messageBuilder(UpdateDataPacket.class, i++)
+				.encoder(UpdateDataPacket::encode)
+				.decoder(UpdateDataPacket::decode)
+				.consumerMainThread(UpdateDataPacket::handle);
+        //Network.registerMessage(i++, PlayNotePacket.class, PlayNotePacket::encode, PlayNotePacket::decode, PlayNotePacket::handle);
+        //Network.registerMessage(i++, UpdateDataPacket.class, UpdateDataPacket::encode, UpdateDataPacket::decode, UpdateDataPacket::handle);
     	System.out.println("Builders Addition Initialized!");
     }
 

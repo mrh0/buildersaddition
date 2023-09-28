@@ -19,6 +19,8 @@ import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.network.NetworkDirection;
+import net.minecraftforge.network.PacketDistributor;
 
 public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implements IMidiEvent {
 
@@ -121,7 +123,7 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 
 	private void sendInstrumentUpdate(int data) {
 		if (getTE() != null)
-			BuildersAddition.Network.sendToServer(new UpdateDataPacket(this.getTE().getBlockPos(), data));
+			BuildersAddition.Network.send(new UpdateDataPacket(this.getTE().getBlockPos(), data), PacketDistributor.SERVER.noArg());
 	}
 
 	// render
@@ -165,7 +167,7 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 
 	private void sendNote(int note) {
 		if (getTE() != null)
-			BuildersAddition.Network.sendToServer(new PlayNotePacket(this.getTE().getBlockPos(), note));
+			BuildersAddition.Network.send(new PlayNotePacket(this.getTE().getBlockPos(), note), PacketDistributor.SERVER.noArg());
 	}
 
 	@Override
@@ -179,7 +181,7 @@ public class SpeakerGui extends AbstractContainerScreen<SpeakerContainer> implem
 
 	@Override
 	protected void renderBg(GuiGraphics gg, float partialTicks, int x, int y) {
-		renderBackground(gg);//renderBackground
+		renderBackground(gg, x, y, partialTicks);//renderBackground
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 	}
 }

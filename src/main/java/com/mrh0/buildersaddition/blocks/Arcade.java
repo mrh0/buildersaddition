@@ -42,7 +42,8 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
+
+import java.nio.channels.NetworkChannel;
 
 public class Arcade extends BaseBlock implements EntityBlock {
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
@@ -142,9 +143,10 @@ public class Arcade extends BaseBlock implements EntityBlock {
         }
     	
     	ArcadeTileEntity mte = getTE(state, world, pos);
-		NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
+		player.openMenu(mte);
+		/*NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos); //mte.pos
-        });
+        });*/
     	return InteractionResult.SUCCESS;
 	}
 

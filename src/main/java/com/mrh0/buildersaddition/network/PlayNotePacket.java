@@ -1,6 +1,5 @@
 package com.mrh0.buildersaddition.network;
 
-import java.util.function.Supplier;
 import com.mrh0.buildersaddition.config.Config;
 import com.mrh0.buildersaddition.tileentity.base.BaseInstrument;
 
@@ -8,9 +7,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.event.network.CustomPayloadEvent;
 
 public class PlayNotePacket {
 	
@@ -32,11 +30,11 @@ public class PlayNotePacket {
         return scp;
     }
 	
-	public static void handle(PlayNotePacket pkt, Supplier<NetworkEvent.Context> ctx) {
+	public static void handle(PlayNotePacket pkt, CustomPayloadEvent.Context ctx) {
 		//System.out.println("Sending Note");
-		ctx.get().enqueueWork(() -> {
+		ctx.enqueueWork(() -> {
 			try {
-				ServerPlayer player = ctx.get().getSender();
+				ServerPlayer player = ctx.getSender();
 			
 			if (player != null) {
 				sendUpdate(pkt.pos, player, pkt.note);
@@ -47,7 +45,7 @@ public class PlayNotePacket {
 			}
 		});
 		
-		ctx.get().setPacketHandled(true);
+		ctx.setPacketHandled(true);
 		
 		}
 	private static void sendUpdate(BlockPos pos, ServerPlayer player, int note) {

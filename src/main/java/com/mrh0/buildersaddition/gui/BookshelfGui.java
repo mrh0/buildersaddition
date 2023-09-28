@@ -33,10 +33,10 @@ public class BookshelfGui extends AbstractContainerScreen<BookshelfContainer> {
 	}
 
 	// Render
-	public void render(GuiGraphics gg, int p_230430_2_, int p_230430_3_, float ticks) {
-		this.renderBackground(gg);
-		super.render(gg, p_230430_2_, p_230430_3_, ticks);
-		this.renderTooltip(gg, p_230430_2_, p_230430_3_);
+	public void render(GuiGraphics gg, int x, int y, float ticks) {
+		this.renderBackground(gg, x, y, ticks);
+		super.render(gg, x, y, ticks);
+		this.renderTooltip(gg, x, y);
 	}
 
 	@Override

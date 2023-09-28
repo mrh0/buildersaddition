@@ -11,12 +11,14 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraftforge.network.NetworkHooks;
+import net.minecraftforge.fluids.FluidType;
+import org.joml.Vector3f;
 
 public class SeatEntity extends Entity {
 
@@ -35,22 +37,36 @@ public class SeatEntity extends Entity {
         this(Index.SEAT_ENTITY_TYPE.get(), world);
         this.setPos(pos.getX() + 0.5, pos.getY() + y, pos.getZ() + 0.5);
     }
+
+	private BlockPos getCheckPos() {
+		int x = (int)this.getX();
+		int y = (int)this.getY();
+		int z = (int)this.getZ();
+		return new BlockPos(x < 0 ? x-1 : x, y < 0 ? y-1 : y, z < 0 ? z-1 : z);
+	}
 	
 	@Override
 	public void tick() {
 		super.tick();
 		if(!level().isClientSide()) {
-			if(this.getPassengers().isEmpty() || !(level().getBlockState(new BlockPos((int)this.getX(), (int)this.getY(), (int)this.getZ())).getBlock() instanceof ISeat)) {
+
+			if(this.getPassengers().isEmpty() || !(level().getBlockState(getCheckPos()).getBlock() instanceof ISeat)) {
+				System.out.println(this.getPassengers().isEmpty() + ":" + !(level().getBlockState(getCheckPos()).getBlock() instanceof ISeat) + ":" + getCheckPos());
 				this.setRemoved(RemovalReason.KILLED);
 			}
 		}
 	}
 
-	@Override
+	/*@Override
 	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
+	}*/
+
+	@Override
+	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+		return super.getAddEntityPacket();
 	}
-	
+
 	@Override
 	protected boolean canAddPassenger(Entity p_20354_) {
 		return true;
@@ -60,9 +76,9 @@ public class SeatEntity extends Entity {
 	public boolean isPushable() {
 		return false;
 	}
-	
+
 	@Override
-	public boolean isPushedByFluid() {
+	public boolean isPushedByFluid(FluidType type) {
 		return false;
 	}
 	
@@ -75,10 +91,15 @@ public class SeatEntity extends Entity {
 	public boolean canRiderInteract() {
 		return false;
 	}
-	
-	@Override
+
+	/*@Override
 	public double getPassengersRidingOffset() {
 		return -.1d;
+	}*/
+
+	@Override
+	protected Vector3f getPassengerAttachmentPoint(Entity p_297569_, EntityDimensions p_297882_, float p_300288_) {
+		return new Vector3f(0f, -.1f, 0f);
 	}
 
 	public static InteractionResult createSeat(Level world, BlockPos pos, LivingEntity e, double y, SoundEvent sound) {

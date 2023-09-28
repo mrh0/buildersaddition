@@ -2,7 +2,6 @@ package com.mrh0.buildersaddition.gui;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrh0.buildersaddition.BuildersAddition;
 import com.mrh0.buildersaddition.arcade.ArcadeGame;
 import com.mrh0.buildersaddition.arcade.ArcadeManager.GameConstructor;
@@ -13,12 +12,10 @@ import com.mrh0.buildersaddition.tileentity.ArcadeTileEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
-import net.minecraft.client.gui.screens.inventory.ContainerScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.wrapper.PlayerInvWrapper;
 
 public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 
@@ -45,8 +42,8 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics gg, float p_97788_, int p_97789_, int p_97790_) {
-		renderBackground(gg);
+	protected void renderBg(GuiGraphics gg, float ticks, int x, int y) {
+		renderBackground(gg, x, y, ticks); //renderBackground(gg)
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		//RenderSystem.setShaderTexture(0, GUI);
 

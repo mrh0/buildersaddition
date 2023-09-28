@@ -9,6 +9,7 @@ import com.mrh0.buildersaddition.state.VerticalSlabState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -169,16 +170,12 @@ public class VerticalSlab extends BaseDerivativeBlock implements SimpleWaterlogg
 
 	@Override
 	public boolean placeLiquid(LevelAccessor worldIn, BlockPos pos, BlockState state, FluidState fluidStateIn) {
-		return (state.getValue(TYPE) != VerticalSlabState.DOUBLEX && state.getValue(TYPE) != VerticalSlabState.DOUBLEZ)
-				? SimpleWaterloggedBlock.super.placeLiquid(worldIn, pos, state, fluidStateIn)
-				: false;
+		return state.getValue(TYPE) != VerticalSlabState.DOUBLEX && state.getValue(TYPE) != VerticalSlabState.DOUBLEZ && SimpleWaterloggedBlock.super.placeLiquid(worldIn, pos, state, fluidStateIn);
 	}
 
 	@Override
-	public boolean canPlaceLiquid(BlockGetter worldIn, BlockPos pos, BlockState state, Fluid fluidIn) {
-		return (state.getValue(TYPE) != VerticalSlabState.DOUBLEX && state.getValue(TYPE) != VerticalSlabState.DOUBLEZ)
-				? SimpleWaterloggedBlock.super.canPlaceLiquid(worldIn, pos, state, fluidIn)
-				: false;
+	public boolean canPlaceLiquid(@org.jetbrains.annotations.Nullable Player player, BlockGetter getter, BlockPos pos, BlockState state, Fluid fluid) {
+		return state.getValue(TYPE) != VerticalSlabState.DOUBLEX && state.getValue(TYPE) != VerticalSlabState.DOUBLEZ && SimpleWaterloggedBlock.super.canPlaceLiquid(player, getter, pos, state, fluid);
 	}
 
 	@Override
@@ -192,15 +189,9 @@ public class VerticalSlab extends BaseDerivativeBlock implements SimpleWaterlogg
 
 	@Override
 	public boolean isPathfindable(BlockState state, BlockGetter world, BlockPos pos, PathComputationType type) {
-		switch (type) {
-		case LAND:
-			return false;
-		case WATER:
-			return world.getFluidState(pos).is(FluidTags.WATER);
-		case AIR:
-			return false;
-		default:
-			return false;
-		}
+		return switch (type) {
+			case LAND, AIR -> false;
+			case WATER -> world.getFluidState(pos).is(FluidTags.WATER);
+		};
 	}
 }

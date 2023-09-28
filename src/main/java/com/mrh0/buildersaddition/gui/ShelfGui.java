@@ -34,7 +34,7 @@ public class ShelfGui extends AbstractContainerScreen<ShelfContainer> {
 	// Render
 	@Override
 	public void render(GuiGraphics gg, int x, int y, float ticks) {
-		this.renderBackground(gg);
+		this.renderBackground(gg, x, y, ticks);
 		super.render(gg, x, y, ticks);
 		this.renderTooltip(gg, x, y);
 	}
