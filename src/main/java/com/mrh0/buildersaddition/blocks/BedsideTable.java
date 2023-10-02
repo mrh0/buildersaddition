@@ -43,6 +43,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeServerPlayer;
 import org.jetbrains.annotations.Nullable;
 
 public class BedsideTable extends BaseDerivativeBlock implements SimpleWaterloggedBlock, EntityBlock {
@@ -138,7 +139,10 @@ public class BedsideTable extends BaseDerivativeBlock implements SimpleWaterlogg
 				return InteractionResult.CONSUME;
 			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof BedsideTileEntity) {
-				player.openMenu((BedsideTileEntity) tileentity);
+				if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+				fsp.openMenu((MenuProvider) tileentity, extraData -> {
+					extraData.writeBlockPos(pos); //mte.pos
+				});
 				PiglinAi.angerNearbyPiglins(player, true);
 			}
 

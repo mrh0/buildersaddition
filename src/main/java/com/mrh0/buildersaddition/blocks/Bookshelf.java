@@ -34,6 +34,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeServerPlayer;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
@@ -103,7 +104,10 @@ public class Bookshelf extends BaseDerivativeBlock implements EntityBlock {
         }
     	
     	BookshelfTileEntity mte = (BookshelfTileEntity) world.getBlockEntity(pos);
-		player.openMenu((MenuProvider) mte);
+		if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+		fsp.openMenu((MenuProvider) mte, extraData -> {
+			extraData.writeBlockPos(pos); //mte.pos
+		});
 		/*NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos);
         });*/

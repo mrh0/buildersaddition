@@ -10,10 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
@@ -41,6 +38,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeServerPlayer;
 import org.jetbrains.annotations.Nullable;
 
 public class Cabinet extends BaseDerivativeBlock implements SimpleWaterloggedBlock, EntityBlock {
@@ -126,7 +124,10 @@ public class Cabinet extends BaseDerivativeBlock implements SimpleWaterloggedBlo
 		} else {
 			BlockEntity tileentity = world.getBlockEntity(pos);
 			if (tileentity instanceof CabinetTileEntity) {
-				player.openMenu((CabinetTileEntity) tileentity);
+				if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+				fsp.openMenu((MenuProvider) tileentity, extraData -> {
+					extraData.writeBlockPos(pos); //mte.pos
+				});
 				PiglinAi.angerNearbyPiglins(player, true);
 			}
 

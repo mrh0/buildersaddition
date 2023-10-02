@@ -43,7 +43,7 @@ public class ArcadeGui extends AbstractContainerScreen<ArcadeContainer> {
 
 	@Override
 	protected void renderBg(GuiGraphics gg, float ticks, int x, int y) {
-		renderBackground(gg, x, y, ticks); //renderBackground(gg)
+		//renderBackground(gg, x, y, ticks); //renderBackground(gg)
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		//RenderSystem.setShaderTexture(0, GUI);
 

@@ -12,10 +12,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.world.Container;
-import net.minecraft.world.Containers;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.piglin.PiglinAi;
 import net.minecraft.world.entity.player.Player;
@@ -46,6 +43,7 @@ import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeServerPlayer;
 
 public class Cupboard extends BaseBlock implements SimpleWaterloggedBlock, EntityBlock {
 
@@ -165,7 +163,10 @@ public class Cupboard extends BaseBlock implements SimpleWaterloggedBlock, Entit
 					return InteractionResult.CONSUME;
 				BlockEntity tileentity = world.getBlockEntity(pos);
 				if (tileentity instanceof CupboardTileEntity) {
-					player.openMenu((CupboardTileEntity) tileentity);
+					if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+					fsp.openMenu((MenuProvider) tileentity, extraData -> {
+						extraData.writeBlockPos(pos); //mte.pos
+					});
 					PiglinAi.angerNearbyPiglins(player, true);
 				}
 			}
@@ -174,7 +175,10 @@ public class Cupboard extends BaseBlock implements SimpleWaterloggedBlock, Entit
 					return InteractionResult.CONSUME;
 				BlockEntity tileentity = world.getBlockEntity(pos.below());
 				if (tileentity instanceof CupboardTileEntity) {
-					player.openMenu((CupboardTileEntity) tileentity);
+					if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+					fsp.openMenu((MenuProvider) tileentity, extraData -> {
+						extraData.writeBlockPos(pos); //mte.pos
+					});
 					PiglinAi.angerNearbyPiglins(player, true);
 				}
 			}

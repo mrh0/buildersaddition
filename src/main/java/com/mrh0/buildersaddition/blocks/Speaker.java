@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeServerPlayer;
 
 public class Speaker extends BaseDerivativeBlock implements EntityBlock {
 	
@@ -55,7 +56,10 @@ public class Speaker extends BaseDerivativeBlock implements EntityBlock {
         }
     	
     	BaseInstrument mte = (BaseInstrument) world.getBlockEntity(pos);
-		player.openMenu((MenuProvider)mte);
+		if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+		fsp.openMenu((MenuProvider) mte, extraData -> {
+			extraData.writeBlockPos(pos); //mte.pos
+		});
 		/*NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos);
         });*/

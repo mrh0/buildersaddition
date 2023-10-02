@@ -42,6 +42,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeServerPlayer;
 
 import java.nio.channels.NetworkChannel;
 
@@ -143,7 +144,11 @@ public class Arcade extends BaseBlock implements EntityBlock {
         }
     	
     	ArcadeTileEntity mte = getTE(state, world, pos);
-		player.openMenu(mte);
+		if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+		fsp.openMenu((MenuProvider) mte, extraData -> {
+			extraData.writeBlockPos(pos); //mte.pos
+		});
+
 		/*NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
             extraData.writeBlockPos(pos); //mte.pos
         });*/

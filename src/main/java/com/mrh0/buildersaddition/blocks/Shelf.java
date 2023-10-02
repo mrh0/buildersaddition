@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.extensions.IForgeServerPlayer;
 
 public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -81,7 +82,10 @@ public class Shelf extends BaseDerivativeBlock implements EntityBlock {
 		}
 
 		ShelfTileEntity mte = (ShelfTileEntity) world.getBlockEntity(pos);
-		player.openMenu((MenuProvider) mte);
+		if(!(player instanceof IForgeServerPlayer fsp)) return InteractionResult.SUCCESS;
+		fsp.openMenu((MenuProvider) mte, extraData -> {
+			extraData.writeBlockPos(pos); //mte.pos
+		});
 		/*NetworkHooks.openScreen((ServerPlayer) player, (MenuProvider) mte, extraData -> {
 			extraData.writeBlockPos(mte.getBlockPos());
 		});*/
