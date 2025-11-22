@@ -159,7 +159,6 @@ public abstract class BaseChestTileEntity extends RandomizableContainerBlockEnti
 		if (!this.tryLoadLootTable(p_155349_)) {
 			ContainerHelper.loadAllItems(p_155349_, this.inv);
 		}
-
 	}
 	
 	@Override
